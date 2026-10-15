@@ -89,7 +89,7 @@ export function InquiryForm() {
       if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }))
     }
 
-  const onSubmit = async (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const found = validate(fields)
     setErrors(found)
