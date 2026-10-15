@@ -21,7 +21,7 @@ interface ButtonLinkProps {
 
 /** A link styled as a button. Internal routes use the router; hashes and external URLs use an anchor. */
 export function ButtonLink({ children, to, variant = "primary", className = "", onClick }: ButtonLinkProps) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-200 ${STYLES[variant]} ${className}`
+  const classes = `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${STYLES[variant]} ${className}`
 
   if (to.startsWith("/")) {
     return (

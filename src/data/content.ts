@@ -52,11 +52,11 @@ export const SERVICES = [
     slug: "custom-software",
     title: "Custom Software Development",
     summary:
-      "Business applications designed around how your company actually works — not around a generic template.",
+      "Web applications, internal tools, and business systems designed around how your company actually works.",
     outcomes: [
-      "Internal tools shaped to your workflow",
-      "Admin panels and management systems",
-      "Dashboards your team will actually use",
+      "Custom software and web applications",
+      "Admin panels, dashboards, and management systems",
+      "Workflows shaped to your team, not a template",
     ],
     technologies: ["React", "TypeScript", "Node.js", "PostgreSQL"],
     cta: "Discuss a custom build",
@@ -78,10 +78,10 @@ export const SERVICES = [
     slug: "ai-automation",
     title: "AI Automation & Intelligent Workflows",
     summary:
-      "Practical automation that reads documents, routes inquiries, and drafts routine work — applied where it genuinely saves time.",
+      "AI integrations and business-process automation that read, route, and draft routine work — only where that genuinely saves time.",
     outcomes: [
       "Inquiry and document processing",
-      "Automated follow-ups and notifications",
+      "Automated follow-ups and handoffs",
       "Assistants grounded in your own data",
     ],
     technologies: ["LLM APIs", "Workflow engines", "Webhooks", "Vector search"],
@@ -89,13 +89,13 @@ export const SERVICES = [
   },
   {
     slug: "cloud-api",
-    title: "Cloud Solutions & API Integration",
+    title: "Cloud, APIs & Maintenance",
     summary:
-      "The connective layer: APIs, integrations, and cloud hosting that keep your systems reliable and connected.",
+      "The connective layer: third-party integrations, cloud deployment, and the maintenance that keeps software reliable after launch.",
     outcomes: [
-      "Integrations with the tools you use",
-      "Secure, documented APIs",
-      "Hosting, monitoring, and backups",
+      "API and third-party integrations",
+      "Cloud deployment, monitoring, and backups",
+      "Ongoing maintenance and technical support",
     ],
     technologies: ["REST", "Cloud hosting", "CI/CD", "Monitoring"],
     cta: "Connect your systems",
@@ -268,19 +268,25 @@ export const PROCESS_STEPS = [
   },
   {
     number: "03",
+    title: "Design",
+    description:
+      "We shape the screens and the flow with you, so the software matches how the work actually happens.",
+  },
+  {
+    number: "04",
     title: "Build",
     description:
       "We develop in visible increments, integrating with your existing systems and sharing progress at each milestone.",
   },
   {
-    number: "04",
+    number: "05",
     title: "Validate",
     description:
       "We test functionality, usability, and security together, and fix what the testing finds before anything goes live.",
   },
   {
-    number: "05",
-    title: "Launch & Improve",
+    number: "06",
+    title: "Launch & Support",
     description:
       "We deploy, monitor, and stay available — maintaining, fixing, and improving the software as your business changes.",
   },

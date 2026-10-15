@@ -21,7 +21,7 @@ export function Industries() {
           const Icon = ICONS[i]
           return (
             <Reveal key={industry.title} delay={(i % 3) * 0.07}>
-              <article className="h-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent p-6 transition-colors hover:border-white/25">
+              <article className="card-lift h-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent p-6">
                 <Icon size={22} className="text-cyan-300" aria-hidden="true" />
                 <h3 className="mt-4 font-display text-lg font-semibold text-white">{industry.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">{industry.description}</p>

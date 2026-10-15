@@ -1,5 +1,5 @@
 import { CheckCircle2, Loader2, Send } from "lucide-react"
-import { cloneElement, isValidElement, useState, type FormEvent, type ReactElement, type ReactNode } from "react"
+import { cloneElement, isValidElement, useRef, useState, type FormEvent, type ReactElement, type ReactNode } from "react"
 import { Link } from "react-router-dom"
 import { BUDGET_OPTIONS, SERVICE_OPTIONS } from "../../data/content"
 
@@ -80,6 +80,7 @@ export function InquiryForm() {
   const [fields, setFields] = useState<Fields>(EMPTY)
   const [errors, setErrors] = useState<Errors>({})
   const [status, setStatus] = useState<Status>("idle")
+  const sending = useRef(false)
 
   const update =
     (key: keyof Fields) =>
@@ -99,6 +100,8 @@ export function InquiryForm() {
       return
     }
 
+    if (sending.current) return
+    sending.current = true
     setStatus("submitting")
     const gotcha = String(new FormData(e.currentTarget).get("_gotcha") ?? "")
     try {
@@ -106,6 +109,7 @@ export function InquiryForm() {
       setStatus("success")
       setFields(EMPTY)
     } catch {
+      sending.current = false
       setStatus("error")
     }
   }

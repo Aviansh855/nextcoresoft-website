@@ -16,7 +16,7 @@ export function Solutions() {
       <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
         {SOLUTIONS.map((solution, i) => (
           <Reveal key={solution.title} delay={(i % 3) * 0.06} className="h-full">
-            <article className="flex h-full flex-col bg-ink p-7">
+            <article className="group flex h-full flex-col bg-ink p-7 transition-colors duration-300 hover:bg-white/[0.04]">
               <span className="self-start rounded-full border border-cyan-300/30 px-2.5 py-1 text-[11px] font-medium tracking-wide text-cyan-200 uppercase">
                 {solution.kind}
               </span>

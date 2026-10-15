@@ -3,7 +3,17 @@ import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { NAV_LINKS } from "../../data/content"
 import { ButtonLink } from "../ui/Button"
+import { NavLinkAnimated } from "../ui/NavLinkAnimated"
 import { Logo } from "./Logo"
+
+function isCurrent(href: string, pathname: string, hash: string) {
+  const hashIndex = href.indexOf("#")
+  if (hashIndex >= 0) {
+    const path = href.slice(0, hashIndex) || "/"
+    return pathname === path && hash === `#${href.slice(hashIndex + 1)}`
+  }
+  return pathname === href
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(() => typeof window !== "undefined" && window.scrollY > 12)
@@ -37,20 +47,20 @@ export function Navbar() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8" aria-label="Primary">
+      <nav className="shell flex h-16 items-center justify-between" aria-label="Primary">
         <Logo onClick={() => setOpen(false)} />
 
-        <ul className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                to={link.href}
-                className="rounded-md text-sm text-slate-300 transition-colors hover:text-white"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+        <ul className="hidden items-center gap-7 lg:flex">
+          {NAV_LINKS.map((link) => {
+            const current = isCurrent(link.href, location.pathname, location.hash)
+            return (
+              <li key={link.href}>
+                <NavLinkAnimated to={link.href} current={current}>
+                  {link.label}
+                </NavLinkAnimated>
+              </li>
+            )
+          })}
         </ul>
 
         <div className="hidden lg:block">
@@ -74,16 +84,22 @@ export function Navbar() {
       {open && (
         <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-ink px-5 pt-4 pb-10 lg:hidden">
           <ul className="flex flex-col">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  className="block rounded-lg px-2 py-3 text-base text-slate-200 hover:bg-white/5 hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const current = isCurrent(link.href, location.pathname, location.hash)
+              return (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    aria-current={current ? "page" : undefined}
+                    className={`block rounded-lg px-2 py-3 text-base hover:bg-white/5 hover:text-white ${
+                      current ? "text-white" : "text-slate-200"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
           <ButtonLink to="/contact" className="mt-3 w-full">
             Let&apos;s Talk

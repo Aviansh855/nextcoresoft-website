@@ -95,13 +95,25 @@ Canonical URLs, the sitemap, and `robots.txt` all point at
 `https://nextcoresoft.com`, so no code changes are needed once the domain is
 connected.
 
+## Deployment on Cloudflare Pages
+
+The live site is hosted on Cloudflare Pages. `vercel.json` is not read there.
+
+1. Create a Pages project from the GitHub repository.
+2. Build command: `npm run build`. Output directory: `dist`.
+3. `public/_redirects` is copied into the build and sends unknown paths to
+   `index.html` with status 200, so `/about`, `/contact`, and `/services/...`
+   still work after a refresh.
+4. No environment variables are required for the contact form. It posts to the
+   Formspree URL in `src/components/contact/InquiryForm.tsx`.
+
 ## 3D hero and performance
 
 The hero centerpiece is a real Three.js scene (React Three Fiber) with
-pointer-driven parallax. It is lazy-loaded and only mounted on desktop
-browsers that support WebGL. Phones, tablets, `prefers-reduced-motion`, and
-data-saver mode get a lightweight CSS version instead, so the 3D code never
-blocks the main content on those devices.
+pointer-driven parallax. It is lazy-loaded. Phones under 768px,
+`prefers-reduced-motion`, data-saver mode, and browsers without WebGL get a
+CSS fallback. A touch-screen laptop still gets the 3D scene, because treating
+every coarse pointer as "no WebGL" was hiding the animation in production.
 
 ## Notes on content
 

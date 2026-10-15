@@ -1,4 +1,4 @@
-import { useReducedMotion } from "framer-motion"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { Check, Pause, Play, RotateCcw } from "lucide-react"
 import { useEffect, useState, type ReactNode } from "react"
 import { WORKFLOW_STEPS } from "../../data/content"
@@ -114,9 +114,18 @@ export function WorkflowShowcase() {
             </div>
           </div>
 
-          <p className="mt-5 text-sm leading-relaxed text-slate-300 sm:text-base">
-            {WORKFLOW_STEPS[active].detail}
-          </p>
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={WORKFLOW_STEPS[active].id}
+              className="mt-5 text-sm leading-relaxed text-slate-300 sm:text-base"
+              initial={reduced ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduced ? undefined : { opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {WORKFLOW_STEPS[active].detail}
+            </motion.p>
+          </AnimatePresence>
 
           {/* Stage visualization */}
           <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_auto_1fr]">
@@ -156,7 +165,19 @@ export function WorkflowShowcase() {
             </StagePanel>
           </div>
 
-          {active >= 3 && <DashboardPreview />}
+          <AnimatePresence>
+            {active >= 3 && (
+              <motion.div
+                key="dashboard"
+                initial={reduced ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduced ? undefined : { opacity: 0, y: 10 }}
+                transition={{ duration: 0.35 }}
+              >
+                <DashboardPreview />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <p className="mt-5 text-xs text-slate-500">
             Demonstration only — sample data, no live automation. Names and companies shown here are fictional

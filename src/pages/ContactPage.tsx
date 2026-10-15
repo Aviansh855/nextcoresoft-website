@@ -15,7 +15,7 @@ export function ContactPage() {
   }, [])
 
   return (
-    <section className="relative px-5 pt-32 pb-24 sm:px-8">
+    <section className="relative pt-32 pb-24">
       <div
         className="pointer-events-none absolute top-0 left-1/2 -z-10 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-blue-600/15 blur-[120px]"
         aria-hidden="true"

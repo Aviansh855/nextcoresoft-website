@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { Analytics } from "./components/seo/Analytics"
+import { BackToTop } from "./components/layout/BackToTop"
 import { Footer } from "./components/layout/Footer"
 import { Navbar } from "./components/layout/Navbar"
 import { ScrollToTop } from "./components/layout/ScrollToTop"
@@ -27,6 +28,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <BackToTop />
       <Analytics />
     </>
   )

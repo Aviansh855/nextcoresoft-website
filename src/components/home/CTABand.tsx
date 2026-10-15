@@ -5,9 +5,9 @@ import { Reveal } from "../ui/Reveal"
 /** Closing conversion band for pages that don't contain the full inquiry form. */
 export function CTABand() {
   return (
-    <section className="px-5 pb-24 sm:px-8">
+    <section className="pb-24">
       <Reveal>
-        <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-blue-950/80 to-ink-soft px-8 py-14 text-center sm:px-16 sm:py-20">
+        <div className="cta-shimmer shell relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-blue-950/80 to-ink-soft px-8 py-14 text-center sm:px-16 sm:py-20">
           <div
             className="pointer-events-none absolute top-[-40%] left-1/2 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-cyan-400/15 blur-[100px]"
             aria-hidden="true"

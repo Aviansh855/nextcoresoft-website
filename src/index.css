@@ -14,6 +14,8 @@
 
   --animate-marquee: marquee 42s linear infinite;
   --animate-pulse-soft: pulse-soft 4.5s ease-in-out infinite;
+  --animate-drift: ambient-drift 18s ease-in-out infinite;
+  --animate-drift-slow: ambient-drift 26s ease-in-out infinite reverse;
 
   @keyframes marquee {
     from {
@@ -33,10 +35,41 @@
       opacity: 1;
     }
   }
+
+  @keyframes ambient-drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(3%, -2%) scale(1.06);
+    }
+  }
+
+  @keyframes shimmer-line {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* One horizontal measure for nav, hero, and sections. 90rem is 1440px. */
+.shell {
+  width: min(100% - 2.5rem, 90rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .shell {
+    width: min(100% - 4rem, 90rem);
+  }
 }
 
 body {
@@ -82,6 +115,71 @@ body {
 }
 .no-scrollbar {
   scrollbar-width: none;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-electric));
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.hero-orb {
+  animation: var(--animate-drift);
+}
+
+.hero-orb-alt {
+  animation: var(--animate-drift-slow);
+}
+
+.cta-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(125, 211, 252, 0.12) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: shimmer-line 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.card-lift {
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.25);
+  box-shadow: 0 20px 40px -24px rgba(34, 211, 238, 0.35);
 }
 
 @media (prefers-reduced-motion: reduce) {

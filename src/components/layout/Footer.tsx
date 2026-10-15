@@ -26,7 +26,7 @@ const SOCIALS = [
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-ink">
-      <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-4">
+      <div className="shell grid gap-12 py-16 md:grid-cols-4">
         <div className="md:col-span-1">
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">{SITE.tagline}</p>

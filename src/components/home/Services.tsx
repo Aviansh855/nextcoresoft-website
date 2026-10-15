@@ -33,15 +33,15 @@ export function Services() {
           return (
             <Reveal key={service.slug} delay={(i % 2) * 0.1}>
               <TiltCard className="h-full">
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.02] p-7">
+                <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.02] p-7 transition-all duration-300 hover:border-cyan-300/25 hover:shadow-[0_24px_48px_-28px_rgba(34,211,238,0.45)]">
                   <div
                     className={`pointer-events-none absolute -top-16 -right-16 h-44 w-44 rounded-full blur-3xl ${accent.glow}`}
                     aria-hidden="true"
                   />
                   <span
-                    className={`flex h-12 w-12 items-center justify-center rounded-xl border ${accent.chip}`}
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl border transition-transform duration-300 group-hover:scale-110 ${accent.chip}`}
                   >
-                    <Icon size={22} aria-hidden="true" />
+                    <Icon size={22} aria-hidden="true" className="transition-transform duration-300 group-hover:-rotate-6" />
                   </span>
                   <h3 className="mt-6 font-display text-xl font-semibold text-white">{service.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-300">{service.summary}</p>

@@ -11,7 +11,7 @@ export function Process() {
       <Reveal>
         <SectionHeading
           eyebrow="Our process"
-          title="Five steps, from first conversation to a system in production."
+          title="From the first conversation to a system in production."
           description="You always know what stage the work is in, what happens next, and what it costs."
         />
       </Reveal>
@@ -23,7 +23,7 @@ export function Process() {
           className="absolute top-2 bottom-2 left-[19px] w-px origin-top bg-gradient-to-b from-cyan-300/70 via-blue-400/40 to-transparent sm:left-[23px]"
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
-          viewport={{ once: true, margin: "0px 0px -120px 0px" }}
+          viewport={{ once: false, margin: "0px 0px -120px 0px", amount: 0.2 }}
           transition={{ duration: reduced ? 0 : 1.1, ease: "easeOut" }}
         />
 
