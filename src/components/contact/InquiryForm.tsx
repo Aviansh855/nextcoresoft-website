@@ -33,6 +33,17 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzedydog"
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+function resolveFormEndpoint(): string {
+  const fromEnv = import.meta.env.VITE_FORM_ENDPOINT?.trim()
+  const endpoint = fromEnv || FORMSPREE_ENDPOINT
+  if (!/^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(endpoint)) {
+    throw new Error("Contact form is misconfigured. Check VITE_FORM_ENDPOINT.")
+  }
+  return endpoint
+}
+
+type FormspreeResult = { ok?: boolean; error?: string; errors?: { message: string; code?: string }[] }
+
 function validate(fields: Fields): Errors {
   const errors: Errors = {}
   if (fields.name.trim().length < 2) errors.name = "Please enter your name."
@@ -52,25 +63,52 @@ function validate(fields: Fields): Errors {
  * The endpoint URL is public by design; no API key is sent from the browser.
  */
 async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
-  const endpoint = (import.meta.env.VITE_FORM_ENDPOINT as string | undefined) || FORMSPREE_ENDPOINT
+  if (gotcha.trim()) {
+    throw new Error("Submission blocked.")
+  }
+
+  const endpoint = resolveFormEndpoint()
   const body = new FormData()
-  body.append("_gotcha", gotcha)
+  body.append("_gotcha", "")
   body.append("name", fields.name.trim())
   body.append("email", fields.email.trim())
+  body.append("_replyto", fields.email.trim())
   body.append("company", fields.company.trim())
   body.append("phone", fields.phone.trim() || "Not provided")
   body.append("service", fields.service)
   body.append("budget", fields.budget || "Not specified")
   body.append("message", fields.description.trim())
+  body.append("description", fields.description.trim())
+  body.append("consent", fields.consent ? "Yes" : "No")
   body.append("_subject", `New inquiry from ${fields.company.trim()} — NextCoreSoft website`)
 
-  const response = await fetch(endpoint, {
-    method: "POST",
-    body,
-    headers: { Accept: "application/json" },
-  })
+  let response: Response
+  try {
+    response = await fetch(endpoint, {
+      method: "POST",
+      body,
+      headers: { Accept: "application/json" },
+    })
+  } catch {
+    throw new Error(
+      "Could not reach the form service. Disable ad blockers for this site or email hello@nextcoresoft.com directly.",
+    )
+  }
 
-  if (!response.ok) throw new Error(`Form endpoint responded ${response.status}`)
+  let payload: FormspreeResult = {}
+  try {
+    payload = (await response.json()) as FormspreeResult
+  } catch {
+    /* non-JSON body */
+  }
+
+  if (!response.ok || payload.ok === false) {
+    const detail =
+      payload.error ||
+      payload.errors?.map((e) => e.message).join(" ") ||
+      `The form service returned ${response.status}.`
+    throw new Error(detail)
+  }
 }
 
 const inputClass =
@@ -80,6 +118,7 @@ export function InquiryForm() {
   const [fields, setFields] = useState<Fields>(EMPTY)
   const [errors, setErrors] = useState<Errors>({})
   const [status, setStatus] = useState<Status>("idle")
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const sending = useRef(false)
 
   const update =
@@ -102,15 +141,18 @@ export function InquiryForm() {
 
     if (sending.current) return
     sending.current = true
+    setSubmitError(null)
     setStatus("submitting")
     const gotcha = String(new FormData(e.currentTarget).get("_gotcha") ?? "")
     try {
       await sendInquiry(fields, gotcha)
       setStatus("success")
       setFields(EMPTY)
-    } catch {
+      sending.current = false
+    } catch (err) {
       sending.current = false
       setStatus("error")
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.")
     }
   }
 
@@ -124,7 +166,10 @@ export function InquiryForm() {
         </p>
         <button
           type="button"
-          onClick={() => setStatus("idle")}
+          onClick={() => {
+          setStatus("idle")
+          setSubmitError(null)
+        }}
           className="mt-6 text-sm font-semibold text-cyan-600 hover:text-slate-900"
         >
           Send another inquiry
@@ -252,13 +297,20 @@ export function InquiryForm() {
             as described in the <Link to="/privacy" className="text-cyan-600 underline-offset-2 hover:underline">Privacy Policy</Link>.
           </span>
         </label>
-        {errors.consent && <p className="mt-1.5 text-xs text-rose-300">{errors.consent}</p>}
+        {errors.consent && <p className="mt-1.5 text-xs font-medium text-rose-600">{errors.consent}</p>}
       </div>
 
       {status === "error" && (
-        <p role="alert" className="rounded-xl border border-rose-300/30 bg-rose-400/10 px-4 py-3 text-sm text-rose-100">
-          Something went wrong sending your inquiry. Please try again in a moment, or email us directly.
-        </p>
+        <div
+          role="alert"
+          className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800"
+        >
+          <p className="font-medium">We couldn&apos;t send your inquiry.</p>
+          <p className="mt-1 leading-relaxed">
+            {submitError ??
+              "Please try again in a moment, or email us directly at hello@nextcoresoft.com."}
+          </p>
+        </div>
       )}
 
       <button
@@ -303,7 +355,7 @@ function Field({
       </label>
       <div className="[&>*]:w-full">{withId(children, id, error ? `${id}-error` : undefined)}</div>
       {error && (
-        <p id={`${id}-error`} className="mt-1.5 text-xs text-rose-300">
+        <p id={`${id}-error`} className="mt-1.5 text-xs font-medium text-rose-600">
           {error}
         </p>
       )}

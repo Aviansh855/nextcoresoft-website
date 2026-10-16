@@ -44,6 +44,20 @@ In the Formspree dashboard, confirm the notification email is the inbox you
 read, and that email notifications are turned on. The form includes a
 `_gotcha` honeypot; leave Formspree's spam filter enabled.
 
+**Submissions not showing?**
+
+1. Log in at [formspree.io](https://formspree.io) with the **same account that
+   owns form `xzedydog`** (Forms → open the form → **Submissions**). Submissions
+   do not appear in a different Formspree login.
+2. Check the form's **Spam** tab in Formspree.
+3. Under form **Settings**, confirm **Allowed domains** includes
+   `nextcoresoft.com` (or turn domain restriction off while testing).
+4. On Cloudflare Pages, if you set `VITE_FORM_ENDPOINT`, it must be exactly
+   `https://formspree.io/f/yourFormId` — then trigger a **new deploy**. A wrong
+   value is baked into the build.
+5. If the site shows a red error after submit, read the message (ad blockers
+   often block `formspree.io`).
+
 To point the form somewhere else, set `VITE_FORM_ENDPOINT` in `.env.local` to
 another URL that accepts a multipart POST and returns HTTP 2xx, then restart
 the dev server.
