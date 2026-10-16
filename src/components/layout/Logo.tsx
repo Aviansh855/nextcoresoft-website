@@ -1,22 +1,31 @@
 import { Link } from "react-router-dom"
+import { SITE } from "../../data/content"
 
-/** Wordmark: a small geometric core mark plus the company name. */
-export function Logo({ onClick }: { onClick?: () => void }) {
+type LogoProps = {
+  onClick?: () => void
+  /** Slightly larger mark in the footer. */
+  size?: "nav" | "footer"
+}
+
+export function Logo({ onClick, size = "nav" }: LogoProps) {
+  const heightClass = size === "footer" ? "h-12 sm:h-14" : "h-9 sm:h-10"
+
   return (
     <Link
       to="/"
       onClick={onClick}
-      aria-label="NextCoreSoft home"
-      className="flex items-center gap-2.5 rounded-md"
+      aria-label={`${SITE.name} home`}
+      className="inline-flex shrink-0 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
     >
-      <span className="relative flex h-8 w-8 items-center justify-center" aria-hidden="true">
-        <span className="absolute inset-0 rounded-full border border-cyan-300/50" />
-        <span className="absolute inset-[5px] rounded-full border border-blue-400/60" />
-        <span className="h-2 w-2 rounded-full bg-cyan-200 shadow-[0_0_10px_2px] shadow-cyan-300/70" />
-      </span>
-      <span className="font-display text-[17px] font-semibold tracking-tight text-white">
-        NextCore<span className="text-cyan-300">Soft</span>
-      </span>
+      <img
+        src={SITE.logo}
+        alt={SITE.name}
+        className={`${heightClass} w-auto rounded-md`}
+        width={160}
+        height={48}
+        decoding="async"
+        fetchPriority={size === "nav" ? "high" : undefined}
+      />
     </Link>
   )
 }

@@ -10,6 +10,9 @@ export const SITE = {
   name: "NextCoreSoft",
   domain: "nextcoresoft.com",
   url: "https://nextcoresoft.com",
+  /** Official wordmark (served from /public). */
+  logo: "/nextcoresoft-logo.jpg",
+  logoUrl: "https://nextcoresoft.com/nextcoresoft-logo.jpg",
   tagline: "Custom software, mobile apps, and AI automation for growing businesses.",
   description:
     "NextCoreSoft builds custom software, Android and iOS applications, and AI automations that help businesses streamline operations, reduce repetitive work, and scale efficiently.",

@@ -28,7 +28,7 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-ink">
       <div className="shell grid gap-12 py-16 md:grid-cols-4">
         <div className="md:col-span-1">
-          <Logo />
+          <Logo size="footer" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">{SITE.tagline}</p>
         </div>
 

@@ -19,7 +19,9 @@ export function applyMeta({ title, description, path }: PageMeta) {
   setMeta("og:url", `${SITE.url}${path}`, "property")
   setMeta("og:type", "website", "property")
   setMeta("og:site_name", SITE.name, "property")
+  setMeta("og:image", SITE.logoUrl, "property")
   setMeta("twitter:card", "summary_large_image")
+  setMeta("twitter:image", SITE.logoUrl)
   setMeta("twitter:title", title)
   setMeta("twitter:description", description)
 
@@ -48,5 +50,6 @@ export const ORGANIZATION_SCHEMA = {
   "@type": "Organization",
   name: SITE.name,
   url: SITE.url,
+  logo: SITE.logoUrl,
   description: SITE.description,
 }
