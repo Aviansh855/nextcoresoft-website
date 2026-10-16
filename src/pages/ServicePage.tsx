@@ -1,23 +1,46 @@
-import { ArrowLeft, ArrowRight } from "lucide-react"
-import { useEffect } from "react"
+import { ArrowRight } from "lucide-react"
+import { useEffect, useMemo } from "react"
 import { Link, Navigate, useParams } from "react-router-dom"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import { JsonLd } from "../components/seo/JsonLd"
 import { ButtonLink } from "../components/ui/Button"
 import { Reveal } from "../components/ui/Reveal"
 import { SERVICE_DETAILS, SERVICES, SITE, type Service } from "../data/content"
-import { applyMeta } from "../lib/seo"
+import { applyMeta, breadcrumbSchema, servicePageMeta, serviceSchema } from "../lib/seo"
 
 export function ServicePage() {
   const { slug } = useParams()
   const service = SERVICES.find((item) => item.slug === slug)
 
+  const crumbs = useMemo(
+    () =>
+      service
+        ? [
+            { label: "Home", to: "/" },
+            { label: "Services", to: "/#services" },
+            { label: service.title },
+          ]
+        : [],
+    [service],
+  )
+
+  const schemaItems = useMemo(
+    () =>
+      service
+        ? [
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/#services" },
+            { name: service.title, path: `/services/${service.slug}` },
+          ]
+        : [],
+    [service],
+  )
+
   useEffect(() => {
-    if (!service) return
-    applyMeta({
-      title: `${service.title} — ${SITE.name}`,
-      description: service.summary,
-      path: `/services/${service.slug}`,
-    })
-  }, [service])
+    if (!service || !slug) return
+    const meta = servicePageMeta(slug)
+    if (meta) applyMeta(meta)
+  }, [service, slug])
 
   if (!service) return <Navigate to="/404" replace />
 
@@ -26,9 +49,10 @@ export function ServicePage() {
 
   return (
     <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8">
-      <Link to="/#services" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-900">
-        <ArrowLeft size={15} aria-hidden="true" /> All services
-      </Link>
+      <JsonLd id="jsonld-service" data={serviceSchema(service.slug)} />
+      <JsonLd id="jsonld-breadcrumbs" data={breadcrumbSchema(schemaItems)} />
+
+      <Breadcrumbs items={crumbs} />
 
       <Reveal>
         <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-slate-900 text-balance sm:text-5xl">
@@ -50,7 +74,7 @@ export function ServicePage() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <h2 className="mt-12 font-display text-2xl font-semibold text-slate-900">Technologies</h2>
+        <h2 className="mt-12 font-display text-2xl font-semibold text-slate-900">Technologies we use</h2>
         <ul className="mt-5 flex flex-wrap gap-2">
           {service.technologies.map((tech) => (
             <li key={tech} className="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-sm text-slate-700">
@@ -58,7 +82,8 @@ export function ServicePage() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
+        <h2 className="mt-10 font-display text-xl font-semibold text-slate-900">Who this is for</h2>
+        <p className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
           {details.fit}
         </p>
       </Reveal>
@@ -71,7 +96,7 @@ export function ServicePage() {
       </div>
 
       <aside className="mt-16 border-t border-slate-200 pt-10">
-        <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-400 uppercase">Other services</h2>
+        <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-400 uppercase">Related services</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-3">
           {others.map((item: Service) => (
             <li key={item.slug}>
@@ -84,6 +109,17 @@ export function ServicePage() {
             </li>
           ))}
         </ul>
+        <p className="mt-6 text-sm text-slate-500">
+          Questions about {service.title.toLowerCase()}? See our{" "}
+          <Link to="/#faq" className="text-cyan-700 hover:underline">
+            FAQ
+          </Link>{" "}
+          or{" "}
+          <Link to="/contact" className="text-cyan-700 hover:underline">
+            contact {SITE.name}
+          </Link>
+          .
+        </p>
       </aside>
     </article>
   )

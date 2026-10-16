@@ -1,0 +1,28 @@
+# NextCoreSoft
+
+> Custom software, mobile apps, and AI automation for growing businesses.
+
+NextCoreSoft is a software development studio. We build custom web applications, Android and iOS apps, and practical AI workflow automations for small and medium businesses and startups. We do not sell off-the-shelf SaaS products; each project is scoped and quoted individually.
+
+## Canonical site
+
+- https://nextcoresoft.com/
+
+## Key pages
+
+- Home: https://nextcoresoft.com/
+- About: https://nextcoresoft.com/about
+- Contact / free consultation: https://nextcoresoft.com/contact
+- Custom software: https://nextcoresoft.com/services/custom-software
+- Mobile apps: https://nextcoresoft.com/services/mobile-apps
+- AI automation: https://nextcoresoft.com/services/ai-automation
+- Cloud & APIs: https://nextcoresoft.com/services/cloud-api
+
+## Contact
+
+- Inquiry form: https://nextcoresoft.com/contact
+- Email (placeholder until confirmed): hello@nextcoresoft.com
+
+## What we do not claim
+
+No published client case studies with measured results on the marketing site. Demonstration projects are labeled as such. No physical office address is listed until verified.

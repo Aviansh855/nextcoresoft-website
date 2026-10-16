@@ -1,15 +1,10 @@
 import { useEffect } from "react"
 import { ButtonLink } from "../components/ui/Button"
-import { SITE } from "../data/content"
-import { applyMeta } from "../lib/seo"
+import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 export function NotFoundPage() {
   useEffect(() => {
-    applyMeta({
-      title: `Page not found — ${SITE.name}`,
-      description: "This page doesn't exist. Head back to the NextCoreSoft homepage.",
-      path: "/404",
-    })
+    applyMeta(ROUTE_SEO.notFound)
   }, [])
 
   return (

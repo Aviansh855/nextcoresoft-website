@@ -10,21 +10,20 @@ import { Services } from "../components/home/Services"
 import { Solutions } from "../components/home/Solutions"
 import { WhyUs } from "../components/home/WhyUs"
 import { WorkflowShowcase } from "../components/home/WorkflowShowcase"
-import { SITE } from "../data/content"
-import { applyMeta } from "../lib/seo"
+import { CompanySummary } from "../components/home/CompanySummary"
+import { JsonLd } from "../components/seo/JsonLd"
+import { applyMeta, faqPageSchema, ROUTE_SEO } from "../lib/seo"
 
 export function HomePage() {
   useEffect(() => {
-    applyMeta({
-      title: `${SITE.name} — Custom Software, Mobile Apps & AI Automation`,
-      description: SITE.description,
-      path: "/",
-    })
+    applyMeta(ROUTE_SEO.home)
   }, [])
 
   return (
     <>
+      <JsonLd id="jsonld-faq" data={faqPageSchema()} />
       <Hero />
+      <CompanySummary />
       <Benefits />
       <Services />
       <WorkflowShowcase />

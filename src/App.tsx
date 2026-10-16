@@ -14,6 +14,12 @@ import { ServicePage } from "./pages/ServicePage"
 export default function App() {
   return (
     <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+      >
+        Skip to main content
+      </a>
       <ScrollToTop />
       <Navbar />
       <main id="main">

@@ -1,8 +1,10 @@
 import { useEffect } from "react"
 import { CTABand } from "../components/home/CTABand"
 import { Reveal } from "../components/ui/Reveal"
+import { JsonLd } from "../components/seo/JsonLd"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { SITE } from "../data/content"
-import { applyMeta } from "../lib/seo"
+import { applyMeta, breadcrumbSchema, ROUTE_SEO } from "../lib/seo"
 
 const PRINCIPLES = [
   {
@@ -25,17 +27,20 @@ const PRINCIPLES = [
 
 export function AboutPage() {
   useEffect(() => {
-    applyMeta({
-      title: `About — ${SITE.name}`,
-      description:
-        "NextCoreSoft is a software and AI automation studio building custom software, mobile apps, and intelligent workflows for growing businesses.",
-      path: "/about",
-    })
+    applyMeta(ROUTE_SEO.about)
   }, [])
 
   return (
     <>
+      <JsonLd
+        id="jsonld-about-breadcrumbs"
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-8 sm:px-8">
+        <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "About" }]} />
         <Reveal>
           <p className="text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">About</p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-slate-900 text-balance sm:text-5xl">

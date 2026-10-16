@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Optional reference for AI crawlers (not a Google ranking signal)
+# https://nextcoresoft.com/llms.txt
+
 Sitemap: https://nextcoresoft.com/sitemap.xml

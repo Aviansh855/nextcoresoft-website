@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from "react"
 import { SITE } from "../data/content"
-import { applyMeta } from "../lib/seo"
+import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 interface LegalSection {
   heading: string
@@ -148,13 +148,7 @@ export function LegalPage({ kind }: { kind: "privacy" | "terms" }) {
   const sections = isPrivacy ? PRIVACY : TERMS
 
   useEffect(() => {
-    applyMeta({
-      title: `${isPrivacy ? "Privacy Policy" : "Terms of Service"} — ${SITE.name}`,
-      description: isPrivacy
-        ? `How ${SITE.name} collects, uses, and protects information submitted through this website.`
-        : `The terms governing use of the ${SITE.name} website.`,
-      path: isPrivacy ? "/privacy" : "/terms",
-    })
+    applyMeta(isPrivacy ? ROUTE_SEO.privacy : ROUTE_SEO.terms)
   }, [isPrivacy])
 
   return (
