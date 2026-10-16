@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { TrailingSlashRedirectRoutes } from "./components/routing/TrailingSlashRedirects"
 import { Analytics } from "./components/seo/Analytics"
 import { BackToTop } from "./components/layout/BackToTop"
 import { Footer } from "./components/layout/Footer"
@@ -25,6 +26,7 @@ export default function App() {
       <Navbar />
       <main id="main">
         <Routes>
+          <TrailingSlashRedirectRoutes />
           <Route path="/" element={<HomePage />} />
           <Route path="/services/:slug" element={<ServicePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />

@@ -115,10 +115,12 @@ The live site is hosted on Cloudflare Pages. `vercel.json` is not read there.
 
 1. Create a Pages project from the GitHub repository.
 2. Build command: `npm run build`. Output directory: `dist`.
-3. `public/_redirects` is copied into the build and sends unknown paths to
-   `index.html` with status 200, so `/about`, `/contact`, and `/services/...`
-   still work after a refresh.
-4. No environment variables are required for the contact form. It posts to the
+3. `npm run build` generates `public/_redirects` from `shared/indexable-paths.mjs`
+   so **every** indexable route works as `/contact`, `/contact/`, `/services/custom-software/`,
+   etc., without redirect loops. **`functions/_middleware.js` must not 301-strip trailing
+   slashes** (that caused `/contact` ↔ `/contact/` loops). Deploy both `dist/` and `functions/`.
+4. Unknown paths fall back to `index.html` (SPA); middleware returns real **404** for junk URLs.
+5. No environment variables are required for the contact form. It posts to the
    Formspree URL in `src/components/contact/InquiryForm.tsx`.
 
 ## 3D hero and performance

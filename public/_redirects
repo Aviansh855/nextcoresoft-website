@@ -1,18 +1,27 @@
-# Canonical host (apex HTTPS). Configure matching redirects in your DNS/CDN if needed.
+# Canonical host (apex HTTPS).
 https://www.nextcoresoft.com/*  https://nextcoresoft.com/:splat  301
 http://www.nextcoresoft.com/*   https://nextcoresoft.com/:splat  301
 http://nextcoresoft.com/*       https://nextcoresoft.com/:splat  301
 
-# Per-route HTML (from build prerender) — must come BEFORE SPA fallback.
-/about                           /about/index.html                           200
-/contact                         /contact/index.html                         200
-/portfolio                       /portfolio/index.html                       200
-/services/custom-software        /services/custom-software/index.html      200
-/services/mobile-apps            /services/mobile-apps/index.html            200
-/services/ai-automation          /services/ai-automation/index.html          200
-/services/cloud-api              /services/cloud-api/index.html              200
-/privacy                         /privacy/index.html                         200
-/terms                           /terms/index.html                           200
+# Per-route prerender HTML — both /path and /path/ (Cloudflare 308-safe). Generated from INDEXABLE_PATHS.
+/about/                       /about/index.html  200
+/about                       /about/index.html  200
+/contact/                     /contact/index.html  200
+/contact                     /contact/index.html  200
+/portfolio/                   /portfolio/index.html  200
+/portfolio                   /portfolio/index.html  200
+/services/custom-software/    /services/custom-software/index.html  200
+/services/custom-software    /services/custom-software/index.html  200
+/services/mobile-apps/        /services/mobile-apps/index.html  200
+/services/mobile-apps        /services/mobile-apps/index.html  200
+/services/ai-automation/      /services/ai-automation/index.html  200
+/services/ai-automation      /services/ai-automation/index.html  200
+/services/cloud-api/          /services/cloud-api/index.html  200
+/services/cloud-api          /services/cloud-api/index.html  200
+/privacy/                     /privacy/index.html  200
+/privacy                     /privacy/index.html  200
+/terms/                       /terms/index.html  200
+/terms                       /terms/index.html  200
 
-# SPA fallback for client-side routing only.
+# SPA fallback for unknown client routes.
 /*    /index.html   200

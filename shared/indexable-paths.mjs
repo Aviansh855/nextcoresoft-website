@@ -1,6 +1,10 @@
 /**
  * Single source of truth for URLs that should return HTTP 200 (indexable app routes).
  * Used by sitemap generation, Cloudflare Pages middleware, and Vercel edge middleware.
+ *
+ * SEO canonical policy: only these path strings (no trailing slash except "/") appear in
+ * sitemap.xml, `<link rel="canonical">`, and og:url. Cloudflare may 308 `/path` → `/path/`;
+ * both serve the same prerender HTML with canonical pointing at `/path` (see docs/SEO.md).
  */
 
 export const SITE_ORIGIN = "https://nextcoresoft.com"

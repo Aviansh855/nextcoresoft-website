@@ -19,9 +19,12 @@ Google generally renders JavaScript, but **crawl and index timing can lag** comp
 
 ## Indexable URLs (in sitemap)
 
+Canonical URLs are **HTTPS apex, non-www, no trailing slash** (except homepage `https://nextcoresoft.com/`). The sitemap lists exactly these paths — see `shared/indexable-paths.mjs`.
+
 - `/`
 - `/about`
 - `/contact`
+- `/portfolio`
 - `/services/custom-software`
 - `/services/mobile-apps`
 - `/services/ai-automation`
@@ -30,6 +33,19 @@ Google generally renders JavaScript, but **crawl and index timing can lag** comp
 - `/terms`
 
 Not in sitemap: client-side 404, hash routes (`/#services` are sections on `/`).
+
+### Trailing slashes (Cloudflare Pages)
+
+Cloudflare may **308** `/portfolio` → `/portfolio/` when `portfolio/index.html` exists. We **do not** 301-strip slashes in Pages middleware (that caused redirect loops).
+
+SEO-safe behavior:
+
+1. **`public/_redirects`** — both `/path` and `/path/` rewrite with **200** to the same prerendered `index.html`.
+2. **Prerender + `applyMeta()`** — each file sets `<link rel="canonical">` and `og:url` to the **non-trailing** URL (e.g. `https://nextcoresoft.com/portfolio`).
+3. **Sitemap** — only non-trailing URLs (never `/portfolio/`).
+4. **React Router** — client redirect from `/path/` → `/path` for a consistent address bar (optional for crawlers; canonical tag is what Google uses for deduplication).
+
+Internal links and GSC URL Inspection should use the **sitemap** URLs. Rich results are not guaranteed.
 
 ## Structured data implemented
 

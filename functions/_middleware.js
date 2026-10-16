@@ -14,9 +14,8 @@ export async function onRequest(context) {
 
   const path = normalizePathname(rawPath)
 
-  if (rawPath.length > 1 && rawPath.endsWith("/")) {
-    return Response.redirect(`${url.origin}${path}`, 301)
-  }
+  // Do not 301 strip trailing slashes here — Cloudflare Pages may 308-add them for
+  // directory index.html routes, which caused /portfolio ↔ /portfolio/ redirect loops.
 
   const response = await context.next()
   if (isIndexablePath(path)) {

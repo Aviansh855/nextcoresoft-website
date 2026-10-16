@@ -13,6 +13,7 @@ NextCoreSoft is a software development studio. We build custom web applications,
 - Home: https://nextcoresoft.com/
 - About: https://nextcoresoft.com/about
 - Contact / free consultation: https://nextcoresoft.com/contact
+- Portfolio (project showcases): https://nextcoresoft.com/portfolio
 - Custom software: https://nextcoresoft.com/services/custom-software
 - Mobile apps: https://nextcoresoft.com/services/mobile-apps
 - AI automation: https://nextcoresoft.com/services/ai-automation
@@ -21,7 +22,7 @@ NextCoreSoft is a software development studio. We build custom web applications,
 ## Contact
 
 - Inquiry form: https://nextcoresoft.com/contact
-- Email (placeholder until confirmed): hello@nextcoresoft.com
+- Email: hello@nextcoresoft.com
 
 ## What we do not claim
 

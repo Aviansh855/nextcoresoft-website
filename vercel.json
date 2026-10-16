@@ -15,14 +15,23 @@
   ],
   "rewrites": [
     { "source": "/about", "destination": "/about/index.html" },
+    { "source": "/about/", "destination": "/about/index.html" },
     { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/contact/", "destination": "/contact/index.html" },
     { "source": "/portfolio", "destination": "/portfolio/index.html" },
+    { "source": "/portfolio/", "destination": "/portfolio/index.html" },
     { "source": "/services/custom-software", "destination": "/services/custom-software/index.html" },
+    { "source": "/services/custom-software/", "destination": "/services/custom-software/index.html" },
     { "source": "/services/mobile-apps", "destination": "/services/mobile-apps/index.html" },
+    { "source": "/services/mobile-apps/", "destination": "/services/mobile-apps/index.html" },
     { "source": "/services/ai-automation", "destination": "/services/ai-automation/index.html" },
+    { "source": "/services/ai-automation/", "destination": "/services/ai-automation/index.html" },
     { "source": "/services/cloud-api", "destination": "/services/cloud-api/index.html" },
+    { "source": "/services/cloud-api/", "destination": "/services/cloud-api/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/privacy/", "destination": "/privacy/index.html" },
     { "source": "/terms", "destination": "/terms/index.html" },
+    { "source": "/terms/", "destination": "/terms/index.html" },
     { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
   ],
   "headers": [

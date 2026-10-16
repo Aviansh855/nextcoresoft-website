@@ -15,10 +15,6 @@ export default async function middleware(request) {
 
   const path = normalizePathname(rawPath)
 
-  if (rawPath.length > 1 && rawPath.endsWith("/")) {
-    return Response.redirect(`${url.origin}${path}`, 301)
-  }
-
   if (isIndexablePath(path)) {
     return
   }
