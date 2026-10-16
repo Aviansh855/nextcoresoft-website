@@ -14,8 +14,8 @@ export function NavLinkAnimated({ to, children, current, className = "", onClick
       to={to}
       onClick={onClick}
       aria-current={current ? "page" : undefined}
-      className={`nav-link rounded-md text-sm transition-colors hover:text-white ${
-        current ? "text-white" : "text-slate-300"
+      className={`nav-link rounded-md text-sm transition-colors hover:text-slate-900 ${
+        current ? "text-slate-900" : "text-slate-600"
       } ${className}`}
     >
       {children}

@@ -14,11 +14,11 @@ export function NotFoundPage() {
 
   return (
     <section className="mx-auto flex min-h-[70vh] w-full max-w-3xl flex-col items-start justify-center px-5 pt-24 sm:px-8">
-      <p className="font-display text-sm font-semibold tracking-[0.22em] text-cyan-300 uppercase">404</p>
-      <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+      <p className="font-display text-sm font-semibold tracking-[0.22em] text-cyan-600 uppercase">404</p>
+      <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-6xl">
         This page isn&apos;t here.
       </h1>
-      <p className="mt-4 max-w-md text-base text-slate-300">
+      <p className="mt-4 max-w-md text-base text-slate-600">
         The link may be outdated, or the page may have moved. The work, however, is all on the homepage.
       </p>
       <div className="mt-8 flex gap-3">

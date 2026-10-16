@@ -23,27 +23,27 @@ export function ContactPage() {
       <div className="mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
         <Reveal>
           <div>
-            <p className="text-xs font-semibold tracking-[0.22em] text-cyan-300 uppercase">Contact</p>
-            <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">
+            <p className="text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">Contact</p>
+            <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-slate-900 text-balance sm:text-5xl">
               Let&apos;s Build Something That Moves Your Business Forward.
             </h1>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-slate-300">
+            <p className="mt-5 max-w-md text-base leading-relaxed text-slate-600">
               Describe the problem and we&apos;ll come back with a clear view of the approach, the likely scope, and
               whether we&apos;re the right team. The consultation is free.
             </p>
 
-            <dl className="mt-10 space-y-6 border-t border-white/10 pt-8">
+            <dl className="mt-10 space-y-6 border-t border-slate-200 pt-8">
               <div>
                 <dt className="text-xs font-semibold tracking-[0.16em] text-slate-400 uppercase">What happens next</dt>
-                <dd className="mt-1.5 text-sm leading-relaxed text-slate-300">
+                <dd className="mt-1.5 text-sm leading-relaxed text-slate-600">
                   We reply within one business day to arrange a short call. If we&apos;re not the right fit, we&apos;ll
                   say so.
                 </dd>
               </div>
               <div>
                 <dt className="text-xs font-semibold tracking-[0.16em] text-slate-400 uppercase">Prefer email?</dt>
-                <dd className="mt-1.5 text-sm text-slate-300">
-                  <a href="mailto:hello@nextcoresoft.com" className="text-cyan-300 hover:text-white">
+                <dd className="mt-1.5 text-sm text-slate-600">
+                  <a href="mailto:hello@nextcoresoft.com" className="text-cyan-600 hover:text-slate-900">
                     hello@nextcoresoft.com
                   </a>
                   <span className="mt-0.5 block text-xs text-slate-500">Placeholder address — confirm before launch.</span>
@@ -54,7 +54,7 @@ export function ContactPage() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-9">
+          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-9">
             <InquiryForm />
           </div>
         </Reveal>

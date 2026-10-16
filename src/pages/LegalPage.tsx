@@ -159,15 +159,15 @@ export function LegalPage({ kind }: { kind: "privacy" | "terms" }) {
 
   return (
     <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8">
-      <p className="text-xs font-semibold tracking-[0.22em] text-cyan-300 uppercase">Legal</p>
-      <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+      <p className="text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">Legal</p>
+      <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
         {isPrivacy ? "Privacy Policy" : "Terms of Service"}
       </h1>
       <div className="mt-10 space-y-9">
         {sections.map((section) => (
           <section key={section.heading}>
-            <h2 className="font-display text-xl font-semibold text-white">{section.heading}</h2>
-            <div className="mt-3 space-y-3 text-sm leading-relaxed text-slate-300 sm:text-base [&_li]:mt-1.5 [&_ul]:list-disc [&_ul]:pl-5">
+            <h2 className="font-display text-xl font-semibold text-slate-900">{section.heading}</h2>
+            <div className="mt-3 space-y-3 text-sm leading-relaxed text-slate-600 sm:text-base [&_li]:mt-1.5 [&_ul]:list-disc [&_ul]:pl-5">
               {section.body}
             </div>
           </section>

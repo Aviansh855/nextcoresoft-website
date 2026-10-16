@@ -217,7 +217,7 @@ export function HeroSceneCanvas({ pointer, reducedMotion }: HeroSceneProps) {
       <pointLight position={[3, 2, 3]} intensity={10} color="#22d3ee" distance={14} />
       <pointLight position={[0, -2, -2]} intensity={6} color="#8b7cf7" distance={12} />
       <Core pointer={pointer} reducedMotion={reducedMotion} />
-      <ContactShadows position={[0, -3.2, 0]} opacity={0.4} scale={14} blur={2.4} far={5} color="#020617" />
+      <ContactShadows position={[0, -3.2, 0]} opacity={0.25} scale={14} blur={2.4} far={5} color="#94a3b8" />
     </Canvas>
   )
 }

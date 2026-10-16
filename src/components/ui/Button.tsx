@@ -5,10 +5,10 @@ type Variant = "primary" | "secondary" | "ghost"
 
 const STYLES: Record<Variant, string> = {
   primary:
-    "bg-white text-ink hover:bg-cyan-100 shadow-[0_8px_30px_-12px_rgba(125,211,252,0.7)]",
+    "bg-slate-900 text-white hover:bg-slate-800 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.35)]",
   secondary:
-    "border border-white/20 bg-white/5 text-white backdrop-blur-sm hover:border-cyan-300/50 hover:bg-white/10",
-  ghost: "text-cyan-200 hover:text-white",
+    "border border-slate-300 bg-white text-slate-800 hover:border-cyan-500/60 hover:bg-slate-50",
+  ghost: "text-cyan-600 hover:text-slate-900",
 }
 
 interface ButtonLinkProps {

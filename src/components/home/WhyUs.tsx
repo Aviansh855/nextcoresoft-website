@@ -16,10 +16,10 @@ export function WhyUs() {
         {REASONS.map((reason, i) => (
           <Reveal key={reason.title} delay={(i % 3) * 0.06}>
             <article>
-              <span className="font-display text-sm font-semibold text-cyan-300/80">
+              <span className="font-display text-sm font-semibold text-cyan-600/90">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="mt-2 font-display text-lg font-semibold text-white">{reason.title}</h3>
+              <h3 className="mt-2 font-display text-lg font-semibold text-slate-900">{reason.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-400">{reason.description}</p>
             </article>
           </Reveal>

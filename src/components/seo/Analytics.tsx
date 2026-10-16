@@ -42,9 +42,9 @@ export function Analytics() {
     <div
       role="dialog"
       aria-label="Analytics consent"
-      className="fixed inset-x-3 bottom-3 z-50 mx-auto flex max-w-xl flex-col gap-4 rounded-2xl border border-white/15 bg-ink-soft/95 p-5 shadow-2xl backdrop-blur-md sm:inset-x-auto sm:right-5 sm:bottom-5 sm:flex-row sm:items-center"
+      className="fixed inset-x-3 bottom-3 z-50 mx-auto flex max-w-xl flex-col gap-4 rounded-2xl border border-slate-200 bg-white/95 p-5 shadow-2xl backdrop-blur-md sm:inset-x-auto sm:right-5 sm:bottom-5 sm:flex-row sm:items-center"
     >
-      <p className="text-sm leading-relaxed text-slate-300">
+      <p className="text-sm leading-relaxed text-slate-600">
         We use privacy-friendly, cookie-less analytics to understand which pages are useful. It only runs if you allow
         it.
       </p>
@@ -52,14 +52,14 @@ export function Analytics() {
         <button
           type="button"
           onClick={() => choose("denied")}
-          className="rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-slate-200 hover:border-white/40"
+          className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-400"
         >
           Decline
         </button>
         <button
           type="button"
           onClick={() => choose("granted")}
-          className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink hover:bg-cyan-100"
+          className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
         >
           Allow
         </button>

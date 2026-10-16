@@ -25,21 +25,23 @@ const SOCIALS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-ink">
-      <div className="shell grid gap-12 py-16 md:grid-cols-4">
-        <div className="md:col-span-1">
-          <Logo size="footer" />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">{SITE.tagline}</p>
-        </div>
+    <footer className="mt-8 border-t border-slate-200 bg-white">
+      <div className="shell flex flex-col items-center border-b border-slate-100 px-2 py-14 text-center sm:py-16">
+        <Logo size="footer" layout="stacked" />
+        <p className="mt-5 max-w-md text-pretty text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem]">
+          {SITE.tagline}
+        </p>
+      </div>
 
+      <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
         <div>
-          <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-300 uppercase">Services</h2>
+          <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-800 uppercase">Services</h2>
           <ul className="mt-4 space-y-2.5">
             {SERVICES.map((service) => (
               <li key={service.slug}>
                 <Link
                   to={`/services/${service.slug}`}
-                  className="rounded text-sm text-slate-400 transition-colors hover:text-white"
+                  className="rounded text-sm text-slate-600 transition-colors hover:text-cyan-700"
                 >
                   {service.title}
                 </Link>
@@ -49,7 +51,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-300 uppercase">Company</h2>
+          <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-800 uppercase">Company</h2>
           <ul className="mt-4 space-y-2.5">
             {[
               { label: "About", to: "/about" },
@@ -58,7 +60,7 @@ export function Footer() {
               { label: "Terms of Service", to: "/terms" },
             ].map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="rounded text-sm text-slate-400 transition-colors hover:text-white">
+                <Link to={item.to} className="rounded text-sm text-slate-600 transition-colors hover:text-cyan-700">
                   {item.label}
                 </Link>
               </li>
@@ -66,18 +68,21 @@ export function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-300 uppercase">Contact</h2>
-          <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
+        <div className="sm:col-span-2 lg:col-span-1">
+          <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-800 uppercase">Contact</h2>
+          <ul className="mt-4 space-y-2.5 text-sm text-slate-600">
             <li>
-              <a href="mailto:hello@nextcoresoft.com" className="rounded transition-colors hover:text-white">
+              <a
+                href="mailto:hello@nextcoresoft.com"
+                className="rounded font-medium text-slate-800 transition-colors hover:text-cyan-700"
+              >
                 hello@nextcoresoft.com
               </a>
               <span className="mt-0.5 block text-xs text-slate-500">Placeholder — update before launch</span>
             </li>
             <li className="pt-2">
               <p className="text-xs tracking-wide text-slate-500 uppercase">Social</p>
-              <div className="mt-2 flex gap-4">
+              <div className="mt-2 flex flex-wrap justify-start gap-4 sm:justify-start lg:justify-start">
                 {SOCIALS.map((social) => (
                   <a
                     key={social.label}
@@ -96,8 +101,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <div className="border-t border-slate-200 bg-slate-50/80">
+        <div className="shell flex flex-col gap-2 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
             <Copyright />
           </p>

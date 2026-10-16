@@ -74,7 +74,7 @@ async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500 transition-colors focus:border-cyan-300/60 focus:outline-none"
+  "w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-500 transition-colors focus:border-cyan-300/60 focus:outline-none"
 
 export function InquiryForm() {
   const [fields, setFields] = useState<Fields>(EMPTY)
@@ -117,15 +117,15 @@ export function InquiryForm() {
   if (status === "success") {
     return (
       <div className="rounded-2xl border border-cyan-300/30 bg-cyan-300/10 p-8 text-center" role="status">
-        <CheckCircle2 size={32} className="mx-auto text-cyan-300" aria-hidden="true" />
-        <h3 className="mt-4 font-display text-xl font-semibold text-white">Inquiry received.</h3>
-        <p className="mt-2 text-sm leading-relaxed text-slate-300">
+        <CheckCircle2 size={32} className="mx-auto text-cyan-600" aria-hidden="true" />
+        <h3 className="mt-4 font-display text-xl font-semibold text-slate-900">Inquiry received.</h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
           Thank you. We&apos;ll reply to the email you provided, usually within one business day.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-semibold text-cyan-300 hover:text-white"
+          className="mt-6 text-sm font-semibold text-cyan-600 hover:text-slate-900"
         >
           Send another inquiry
         </button>
@@ -238,7 +238,7 @@ export function InquiryForm() {
       </div>
 
       <div>
-        <label className="flex items-start gap-3 text-sm text-slate-300">
+        <label className="flex items-start gap-3 text-sm text-slate-600">
           <input
             type="checkbox"
             name="consent"
@@ -249,7 +249,7 @@ export function InquiryForm() {
           />
           <span>
             I agree that NextCoreSoft may contact me about this inquiry and store these details for that purpose,
-            as described in the <Link to="/privacy" className="text-cyan-300 underline-offset-2 hover:underline">Privacy Policy</Link>.
+            as described in the <Link to="/privacy" className="text-cyan-600 underline-offset-2 hover:underline">Privacy Policy</Link>.
           </span>
         </label>
         {errors.consent && <p className="mt-1.5 text-xs text-rose-300">{errors.consent}</p>}
@@ -264,7 +264,7 @@ export function InquiryForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-cyan-100 disabled:cursor-progress disabled:opacity-70 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:cursor-progress disabled:opacity-70 sm:w-auto"
       >
         {status === "submitting" ? (
           <>
@@ -296,7 +296,7 @@ function Field({
   const id = label.toLowerCase().replace(/[^a-z]+/g, "-")
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 flex items-baseline justify-between text-sm font-medium text-slate-200">
+      <label htmlFor={id} className="mb-1.5 flex items-baseline justify-between text-sm font-medium text-slate-700">
         {label}
         {required && <span className="text-xs font-normal text-slate-500">Required</span>}
         {optional && <span className="text-xs font-normal text-slate-500">Optional</span>}

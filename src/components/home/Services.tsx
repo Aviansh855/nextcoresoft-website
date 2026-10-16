@@ -9,7 +9,7 @@ const ICONS = [Cpu, Smartphone, Workflow, Cloud]
 
 /** A distinct accent per card so the four services read as a set, not clones. */
 const ACCENTS = [
-  { chip: "text-cyan-300 bg-cyan-300/10 border-cyan-300/20", glow: "bg-cyan-400/10" },
+  { chip: "text-cyan-600 bg-cyan-300/10 border-cyan-300/20", glow: "bg-cyan-400/10" },
   { chip: "text-blue-300 bg-blue-400/10 border-blue-300/20", glow: "bg-blue-500/10" },
   { chip: "text-violet-300 bg-violet-400/10 border-violet-300/20", glow: "bg-violet-500/10" },
   { chip: "text-sky-200 bg-sky-300/10 border-sky-200/20", glow: "bg-sky-400/10" },
@@ -33,7 +33,7 @@ export function Services() {
           return (
             <Reveal key={service.slug} delay={(i % 2) * 0.1}>
               <TiltCard className="h-full">
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.02] p-7 transition-all duration-300 hover:border-cyan-300/25 hover:shadow-[0_24px_48px_-28px_rgba(34,211,238,0.45)]">
+                <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-7 transition-all duration-300 hover:border-cyan-300/25 hover:shadow-[0_24px_48px_-28px_rgba(34,211,238,0.45)]">
                   <div
                     className={`pointer-events-none absolute -top-16 -right-16 h-44 w-44 rounded-full blur-3xl ${accent.glow}`}
                     aria-hidden="true"
@@ -43,8 +43,8 @@ export function Services() {
                   >
                     <Icon size={22} aria-hidden="true" className="transition-transform duration-300 group-hover:-rotate-6" />
                   </span>
-                  <h3 className="mt-6 font-display text-xl font-semibold text-white">{service.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-300">{service.summary}</p>
+                  <h3 className="mt-6 font-display text-xl font-semibold text-slate-900">{service.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.summary}</p>
 
                   <ul className="mt-5 space-y-2">
                     {service.outcomes.map((outcome) => (
@@ -59,7 +59,7 @@ export function Services() {
                     {service.technologies.map((tech) => (
                       <li
                         key={tech}
-                        className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-300"
+                        className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs text-slate-600"
                       >
                         {tech}
                       </li>
@@ -68,7 +68,7 @@ export function Services() {
 
                   <Link
                     to={`/services/${service.slug}`}
-                    className="mt-6 inline-flex items-center gap-1.5 self-start rounded text-sm font-semibold text-cyan-300 transition-colors group-hover:text-white"
+                    className="mt-6 inline-flex items-center gap-1.5 self-start rounded text-sm font-semibold text-cyan-600 transition-colors group-hover:text-slate-900"
                   >
                     {service.cta}
                     <ArrowUpRight size={15} aria-hidden="true" />

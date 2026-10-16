@@ -16,7 +16,7 @@ export function FAQ() {
         />
       </Reveal>
 
-      <div className="mx-auto mt-12 max-w-3xl divide-y divide-white/10 border-y border-white/10">
+      <div className="mx-auto mt-12 max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
         {FAQS.map((faq, i) => {
           const isOpen = open === i
           return (
@@ -28,7 +28,7 @@ export function FAQ() {
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="flex w-full items-center justify-between gap-6 py-5 text-left"
                 >
-                  <span className="font-display text-base font-semibold text-white sm:text-lg">
+                  <span className="font-display text-base font-semibold text-slate-900 sm:text-lg">
                     {faq.question}
                   </span>
                   <ChevronDown
@@ -38,7 +38,7 @@ export function FAQ() {
                   />
                 </button>
               </h3>
-              {isOpen && <p className="pb-5 text-sm leading-relaxed text-slate-300 sm:text-base">{faq.answer}</p>}
+              {isOpen && <p className="pb-5 text-sm leading-relaxed text-slate-600 sm:text-base">{faq.answer}</p>}
             </div>
           )
         })}

@@ -26,22 +26,22 @@ export function ServicePage() {
 
   return (
     <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8">
-      <Link to="/#services" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white">
+      <Link to="/#services" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-900">
         <ArrowLeft size={15} aria-hidden="true" /> All services
       </Link>
 
       <Reveal>
-        <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">
+        <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-slate-900 text-balance sm:text-5xl">
           {service.title}
         </h1>
-        <p className="mt-5 text-lg leading-relaxed text-slate-300">{details.intro}</p>
+        <p className="mt-5 text-lg leading-relaxed text-slate-600">{details.intro}</p>
       </Reveal>
 
       <Reveal delay={0.05}>
-        <h2 className="mt-12 font-display text-2xl font-semibold text-white">What&apos;s included</h2>
+        <h2 className="mt-12 font-display text-2xl font-semibold text-slate-900">What&apos;s included</h2>
         <ul className="mt-5 space-y-3">
           {details.includes.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-slate-300">
+            <li key={item} className="flex items-start gap-3 text-slate-600">
               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" aria-hidden="true" />
               {item}
             </li>
@@ -50,15 +50,15 @@ export function ServicePage() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <h2 className="mt-12 font-display text-2xl font-semibold text-white">Technologies</h2>
+        <h2 className="mt-12 font-display text-2xl font-semibold text-slate-900">Technologies</h2>
         <ul className="mt-5 flex flex-wrap gap-2">
           {service.technologies.map((tech) => (
-            <li key={tech} className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-sm text-slate-200">
+            <li key={tech} className="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-sm text-slate-700">
               {tech}
             </li>
           ))}
         </ul>
-        <p className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm leading-relaxed text-slate-300">
+        <p className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
           {details.fit}
         </p>
       </Reveal>
@@ -70,14 +70,14 @@ export function ServicePage() {
         </ButtonLink>
       </div>
 
-      <aside className="mt-16 border-t border-white/10 pt-10">
+      <aside className="mt-16 border-t border-slate-200 pt-10">
         <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-400 uppercase">Other services</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-3">
           {others.map((item: Service) => (
             <li key={item.slug}>
               <Link
                 to={`/services/${item.slug}`}
-                className="block rounded-xl border border-white/10 p-4 text-sm font-medium text-slate-200 transition-colors hover:border-cyan-300/40 hover:text-white"
+                className="block rounded-xl border border-slate-200 p-4 text-sm font-medium text-slate-700 transition-colors hover:border-cyan-300/40 hover:text-slate-900"
               >
                 {item.title}
               </Link>

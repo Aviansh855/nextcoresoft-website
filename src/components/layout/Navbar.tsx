@@ -43,7 +43,7 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || open
-          ? "border-b border-white/10 bg-ink/85 backdrop-blur-lg"
+          ? "border-b border-slate-200 bg-white/95 backdrop-blur-lg"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -71,7 +71,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-lg text-white lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-slate-900 lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -82,7 +82,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-ink px-5 pt-4 pb-10 lg:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-slate-200 bg-white px-5 pt-4 pb-10 lg:hidden">
           <ul className="flex flex-col">
             {NAV_LINKS.map((link) => {
               const current = isCurrent(link.href, location.pathname, location.hash)
@@ -91,8 +91,8 @@ export function Navbar() {
                   <Link
                     to={link.href}
                     aria-current={current ? "page" : undefined}
-                    className={`block rounded-lg px-2 py-3 text-base hover:bg-white/5 hover:text-white ${
-                      current ? "text-white" : "text-slate-200"
+                    className={`block rounded-lg px-2 py-3 text-base hover:bg-slate-50 hover:text-slate-900 ${
+                      current ? "text-slate-900" : "text-slate-700"
                     }`}
                   >
                     {link.label}

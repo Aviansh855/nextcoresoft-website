@@ -48,7 +48,7 @@ export function WorkflowShowcase() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.03] p-4 sm:p-6 lg:p-8">
+        <div className="mt-12 rounded-3xl border border-slate-200 bg-slate-50 p-4 sm:p-6 lg:p-8">
           {/* Step controls */}
           <div className="flex items-center justify-between gap-4">
             <ol className="grid flex-1 grid-cols-4 gap-2" aria-label="Workflow stages">
@@ -66,20 +66,20 @@ export function WorkflowShowcase() {
                       className={`w-full rounded-xl border px-2 py-2.5 text-left transition-colors sm:px-3 ${
                         i === active
                           ? "border-cyan-300/50 bg-cyan-300/10"
-                          : "border-white/10 bg-white/[0.02] hover:border-white/25"
+                          : "border-slate-200 bg-slate-50 hover:border-slate-300"
                       }`}
                     >
                       <span className="flex items-center gap-2">
                         <span
                           className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold ${
-                            reached ? "bg-cyan-300 text-ink" : "bg-white/10 text-slate-400"
+                            reached ? "bg-cyan-500 text-white" : "bg-slate-100 text-slate-500"
                           }`}
                         >
                           {i + 1}
                         </span>
-                        <span className="hidden text-xs font-medium text-slate-200 sm:inline">{step.label}</span>
+                        <span className="hidden text-xs font-medium text-slate-700 sm:inline">{step.label}</span>
                       </span>
-                      <span className="mt-1.5 block h-0.5 overflow-hidden rounded-full bg-white/10" aria-hidden="true">
+                      <span className="mt-1.5 block h-0.5 overflow-hidden rounded-full bg-slate-100" aria-hidden="true">
                         <span
                           className={`block h-full bg-cyan-300 ${i === active && playing && !reduced ? "origin-left animate-[grow_2.6s_linear]" : ""}`}
                           style={{ width: reached ? "100%" : "0%" }}
@@ -96,7 +96,7 @@ export function WorkflowShowcase() {
                 type="button"
                 onClick={() => setPlaying((v) => !v)}
                 aria-label={playing ? "Pause walkthrough" : "Play walkthrough"}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-slate-200 hover:border-white/40"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 hover:border-slate-400"
               >
                 {playing && !reduced ? <Pause size={15} /> : <Play size={15} />}
               </button>
@@ -107,7 +107,7 @@ export function WorkflowShowcase() {
                   setPlaying(false)
                 }}
                 aria-label="Restart walkthrough"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-slate-200 hover:border-white/40"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 hover:border-slate-400"
               >
                 <RotateCcw size={15} />
               </button>
@@ -117,7 +117,7 @@ export function WorkflowShowcase() {
           <AnimatePresence mode="wait">
             <motion.p
               key={WORKFLOW_STEPS[active].id}
-              className="mt-5 text-sm leading-relaxed text-slate-300 sm:text-base"
+              className="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base"
               initial={reduced ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={reduced ? undefined : { opacity: 0, y: -8 }}
@@ -131,7 +131,7 @@ export function WorkflowShowcase() {
           <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_auto_1fr]">
             <StagePanel title="Incoming inquiry" dimmed={active > 1}>
               <p className="text-xs text-slate-400">{SAMPLE.from}</p>
-              <p className="mt-2 text-sm leading-relaxed text-slate-200">&ldquo;{SAMPLE.message}&rdquo;</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">&ldquo;{SAMPLE.message}&rdquo;</p>
             </StagePanel>
 
             <div className="hidden items-center justify-center lg:flex" aria-hidden="true">
@@ -144,16 +144,16 @@ export function WorkflowShowcase() {
                   {SAMPLE.extracted.map(([k, v]) => (
                     <div key={k} className="flex justify-between gap-4 text-sm">
                       <dt className="text-slate-400">{k}</dt>
-                      <dd className="text-right text-slate-100">{v}</dd>
+                      <dd className="text-right text-slate-800">{v}</dd>
                     </div>
                   ))}
                 </dl>
               )}
               {active >= 2 && (
-                <ul className="mt-4 space-y-1.5 border-t border-white/10 pt-3">
+                <ul className="mt-4 space-y-1.5 border-t border-slate-200 pt-3">
                   {SAMPLE.actions.map((action) => (
-                    <li key={action} className="flex items-center gap-2 text-sm text-slate-200">
-                      <Check size={14} className="text-cyan-300" aria-hidden="true" />
+                    <li key={action} className="flex items-center gap-2 text-sm text-slate-700">
+                      <Check size={14} className="text-cyan-600" aria-hidden="true" />
                       {action}
                     </li>
                   ))}
@@ -201,8 +201,8 @@ function StagePanel({
   dimmed?: boolean
 }) {
   return (
-    <div className={`rounded-2xl border border-white/10 bg-ink/60 p-5 transition-opacity ${dimmed ? "opacity-60" : ""}`}>
-      <p className="text-[11px] font-semibold tracking-[0.16em] text-cyan-300/80 uppercase">{title}</p>
+    <div className={`rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-opacity ${dimmed ? "opacity-60" : ""}`}>
+      <p className="text-[11px] font-semibold tracking-[0.16em] text-cyan-600/90 uppercase">{title}</p>
       <div className="mt-3">{children}</div>
     </div>
   )
@@ -215,9 +215,9 @@ function DashboardPreview() {
     ["Lumen Clinic", "Call booked", "3 days"],
   ]
   return (
-    <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
-      <div className="flex items-center justify-between bg-white/[0.04] px-5 py-3">
-        <p className="text-[11px] font-semibold tracking-[0.16em] text-slate-300 uppercase">Pipeline · this week</p>
+    <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200">
+      <div className="flex items-center justify-between bg-slate-100 px-5 py-3">
+        <p className="text-[11px] font-semibold tracking-[0.16em] text-slate-600 uppercase">Pipeline · this week</p>
         <span className="text-xs text-slate-500">Sample view</span>
       </div>
       <table className="w-full text-left text-sm">
@@ -231,8 +231,8 @@ function DashboardPreview() {
         <tbody>
           {rows.map(([lead, status, time], i) => (
             <tr key={lead} className={i === 0 ? "bg-cyan-300/[0.06]" : ""}>
-              <td className="px-5 py-2.5 text-slate-200">{lead}</td>
-              <td className="px-5 py-2.5 text-slate-300">{status}</td>
+              <td className="px-5 py-2.5 text-slate-700">{lead}</td>
+              <td className="px-5 py-2.5 text-slate-600">{status}</td>
               <td className="px-5 py-2.5 text-slate-400">{time}</td>
             </tr>
           ))}

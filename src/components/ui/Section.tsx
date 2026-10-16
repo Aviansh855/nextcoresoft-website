@@ -10,12 +10,12 @@ interface SectionHeadingProps {
 export function SectionHeading({ eyebrow, title, description, align = "left" }: SectionHeadingProps) {
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <p className="inline-block text-xs font-semibold tracking-[0.22em] text-cyan-300 uppercase">{eyebrow}</p>
-      <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white text-balance sm:text-4xl">
+      <p className="inline-block text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">{eyebrow}</p>
+      <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-slate-900 text-balance sm:text-4xl">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-slate-300 text-pretty sm:text-lg">
+        <p className="mt-4 text-base leading-relaxed text-slate-600 text-pretty sm:text-lg">
           {description}
         </p>
       )}

@@ -37,11 +37,11 @@ export function AboutPage() {
     <>
       <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-8 sm:px-8">
         <Reveal>
-          <p className="text-xs font-semibold tracking-[0.22em] text-cyan-300 uppercase">About</p>
-          <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">
+          <p className="text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">About</p>
+          <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-slate-900 text-balance sm:text-5xl">
             A software studio focused on how businesses actually operate.
           </h1>
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+          <div className="mt-6 space-y-5 text-base leading-relaxed text-slate-600 sm:text-lg">
             <p>
               {SITE.name} designs and builds custom software, Android and iOS applications, and AI-powered automations
               for small and medium-sized businesses, startups, and established companies modernizing their operations.
@@ -58,12 +58,12 @@ export function AboutPage() {
           </div>
         </Reveal>
 
-        <h2 className="mt-16 font-display text-2xl font-semibold text-white">How we work</h2>
+        <h2 className="mt-16 font-display text-2xl font-semibold text-slate-900">How we work</h2>
         <div className="mt-8 space-y-8">
           {PRINCIPLES.map((principle, i) => (
             <Reveal key={principle.title} delay={i * 0.05}>
-              <div className="border-t border-white/10 pt-6">
-                <h3 className="font-display text-lg font-semibold text-white">{principle.title}</h3>
+              <div className="border-t border-slate-200 pt-6">
+                <h3 className="font-display text-lg font-semibold text-slate-900">{principle.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400 sm:text-base">{principle.text}</p>
               </div>
             </Reveal>

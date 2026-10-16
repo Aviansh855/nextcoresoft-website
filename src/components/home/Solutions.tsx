@@ -13,14 +13,14 @@ export function Solutions() {
         />
       </Reveal>
 
-      <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 sm:grid-cols-2 lg:grid-cols-3">
         {SOLUTIONS.map((solution, i) => (
           <Reveal key={solution.title} delay={(i % 3) * 0.06} className="h-full">
-            <article className="group flex h-full flex-col bg-ink p-7 transition-colors duration-300 hover:bg-white/[0.04]">
-              <span className="self-start rounded-full border border-cyan-300/30 px-2.5 py-1 text-[11px] font-medium tracking-wide text-cyan-200 uppercase">
+            <article className="group flex h-full flex-col bg-white p-7 transition-colors duration-300 hover:bg-slate-100">
+              <span className="self-start rounded-full border border-cyan-300/30 px-2.5 py-1 text-[11px] font-medium tracking-wide text-cyan-600 uppercase">
                 {solution.kind}
               </span>
-              <h3 className="mt-4 font-display text-lg font-semibold text-white">{solution.title}</h3>
+              <h3 className="mt-4 font-display text-lg font-semibold text-slate-900">{solution.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-400">{solution.description}</p>
             </article>
           </Reveal>

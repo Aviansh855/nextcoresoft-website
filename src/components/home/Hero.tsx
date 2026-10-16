@@ -17,20 +17,20 @@ export function Hero() {
       <div className="shell grid items-center gap-10 pt-14 pb-16 sm:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-6 lg:pt-24 lg:pb-20">
         <HeroEntrance>
           <HeroEntranceItem>
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium tracking-wide text-cyan-200 backdrop-blur-sm">
+            <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-medium tracking-wide text-cyan-600 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-cyan-300" aria-hidden="true" />
               Software · Mobile · AI Automation
             </p>
           </HeroEntranceItem>
 
           <HeroEntranceItem>
-            <h1 className="mt-6 max-w-[14ch] font-display text-[2.6rem] leading-[1.05] font-semibold tracking-tight text-white text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 max-w-[14ch] font-display text-[2.6rem] leading-[1.05] font-semibold tracking-tight text-slate-900 text-balance sm:text-6xl lg:text-7xl">
               Build Smarter. Automate More. Grow Faster.
             </h1>
           </HeroEntranceItem>
 
           <HeroEntranceItem>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 text-pretty sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 text-pretty sm:text-lg">
               We build custom software, mobile applications, and intelligent AI automations that help
               businesses streamline operations, reduce repetitive work, and scale efficiently.
             </p>
@@ -49,14 +49,14 @@ export function Hero() {
           </HeroEntranceItem>
 
           <HeroEntranceItem>
-            <dl className="mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-white/10 pt-6">
+            <dl className="mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-slate-200 pt-6">
               {[
                 ["Custom", "Software built around your workflow"],
                 ["Mobile", "Android and iOS applications"],
                 ["AI", "Automation that removes routine work"],
               ].map(([term, detail]) => (
                 <div key={term}>
-                  <dt className="font-display text-sm font-semibold text-white">{term}</dt>
+                  <dt className="font-display text-sm font-semibold text-slate-900">{term}</dt>
                   <dd className="mt-1 text-xs leading-snug text-slate-400">{detail}</dd>
                 </div>
               ))}
