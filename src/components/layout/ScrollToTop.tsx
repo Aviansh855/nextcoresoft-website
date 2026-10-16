@@ -7,10 +7,17 @@ import { useLocation, useNavigate } from "react-router-dom"
  * address bar does not stay on the homepage hash.
  */
 export function ScrollToTop() {
-  const { pathname, hash } = useLocation()
+  const { pathname, hash, search } = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
+    if (pathname.length > 1 && pathname.endsWith("/")) {
+      navigate(
+        { pathname: pathname.replace(/\/+$/, ""), search, hash },
+        { replace: true },
+      )
+      return
+    }
     if (hash === "#about") {
       navigate("/about", { replace: true })
       return
@@ -24,7 +31,7 @@ export function ScrollToTop() {
       }
     }
     window.scrollTo(0, 0)
-  }, [pathname, hash, navigate])
+  }, [pathname, hash, search, navigate])
 
   return null
 }
