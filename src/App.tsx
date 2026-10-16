@@ -9,6 +9,7 @@ import { ContactPage } from "./pages/ContactPage"
 import { HomePage } from "./pages/HomePage"
 import { LegalPage } from "./pages/LegalPage"
 import { NotFoundPage } from "./pages/NotFoundPage"
+import { PortfolioPage } from "./pages/PortfolioPage"
 import { ServicePage } from "./pages/ServicePage"
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services/:slug" element={<ServicePage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy" element={<LegalPage kind="privacy" />} />

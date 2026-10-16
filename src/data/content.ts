@@ -6,6 +6,8 @@
  * statistic that has not been verified.
  */
 
+import { PORTFOLIO_ITEMS as _PORTFOLIO_ITEMS } from "./portfolio"
+
 export const SITE = {
   name: "NextCoreSoft",
   domain: "nextcoresoft.com",
@@ -20,6 +22,7 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { label: "Services", href: "/#services" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Solutions", href: "/#solutions" },
   { label: "Industries", href: "/#industries" },
   { label: "Our Process", href: "/#process" },
@@ -107,55 +110,9 @@ export const SERVICES = [
 
 export type Service = (typeof SERVICES)[number]
 
-export const SERVICE_DETAILS: Record<
-  Service["slug"],
-  { intro: string; includes: string[]; fit: string }
-> = {
-  "custom-software": {
-    intro:
-      "When off-the-shelf software forces your business to work around it, a purpose-built application is often the more economical choice. We design and build web applications, internal tools, admin panels, and management systems around your actual process.",
-    includes: [
-      "Discovery of the workflow before any code is written",
-      "Web applications, admin panels, and role-based dashboards",
-      "Data models designed for reporting, not just data entry",
-      "Documentation and handover your team can maintain",
-    ],
-    fit: "A good fit when a spreadsheet, a shared inbox, or a generic tool has become the bottleneck.",
-  },
-  "mobile-apps": {
-    intro:
-      "We build applications for Android and iOS — for your customers, or for the people doing the work in the field. Where it makes sense we share one codebase across both platforms, and we say so when a native approach is the better investment.",
-    includes: [
-      "Customer apps published to both app stores",
-      "Staff and field-force apps with reliable offline behavior",
-      "Push notifications, authentication, and secure APIs",
-      "Store submission support and release management",
-    ],
-    fit: "A good fit when the work happens away from a desk, or when customers expect to reach you from their phone.",
-  },
-  "ai-automation": {
-    intro:
-      "We apply AI where it removes real work: reading incoming inquiries, extracting details from documents, drafting routine replies, and routing tasks to the right person. We are direct about what current models do well and where a person should stay in the loop.",
-    includes: [
-      "Workflow mapping before any model is chosen",
-      "Document and inquiry extraction with human review where it matters",
-      "Connections into your CRM, inbox, and messaging tools",
-      "Evaluation of accuracy on your own examples before launch",
-    ],
-    fit: "A good fit when a person currently reads, copies, and retypes the same kinds of information every day.",
-  },
-  "cloud-api": {
-    intro:
-      "Software only helps if the pieces connect. We design and build the APIs and integrations that move data between your systems, and we host, monitor, and maintain what we deploy.",
-    includes: [
-      "Integrations with CRMs, accounting tools, payment providers, and messaging platforms",
-      "Secure REST APIs with authentication and documentation",
-      "Cloud deployment with backups and uptime monitoring",
-      "Ongoing maintenance so integrations keep working as vendors change",
-    ],
-    fit: "A good fit when information is being exported, emailed, and re-imported between tools by hand.",
-  },
-}
+export { SERVICE_DETAILS } from "./service-details"
+export { PORTFOLIO_ITEMS } from "./portfolio"
+export type { PortfolioItem } from "./portfolio"
 
 export const WORKFLOW_STEPS = [
   {
@@ -295,35 +252,24 @@ export const PROCESS_STEPS = [
   },
 ] as const
 
-export const PROJECTS = [
-  {
-    name: "Service Desk",
-    label: "Demonstration project",
-    problem:
-      "A service business tracking job requests through a shared inbox and a spreadsheet, with no reliable view of what was pending.",
-    solution:
-      "A job management application: incoming requests become tracked jobs, assigned to technicians, with status visible to the whole team.",
-    stack: ["React", "TypeScript", "PostgreSQL"],
-  },
-  {
-    name: "Field Reporter",
-    label: "Demonstration project",
-    problem:
-      "Field staff reporting completed work through chat messages and photos, which were hard to find again later.",
-    solution:
-      "A mobile reporting app where each visit is logged with notes, photos, and a timestamp against the assigned job.",
-    stack: ["React Native", "Cloud storage", "REST API"],
-  },
-  {
-    name: "Inquiry Desk",
-    label: "Demonstration project",
-    problem:
-      "Customer inquiries arriving by email and web form, read and retyped into a CRM by hand each morning.",
-    solution:
-      "An automation that reads each inquiry, records the lead, drafts a follow-up for review, and notifies the owner.",
-    stack: ["LLM API", "Webhooks", "CRM integration"],
-  },
-] as const
+/** Homepage teaser cards — first three portfolio showcases. */
+export const PROJECTS = _PORTFOLIO_ITEMS.slice(0, 3).map((item) => ({
+  id: item.id,
+  name: item.name,
+  label: item.label,
+  problem: item.problem,
+  solution: item.solutionOverview,
+  stack: [...item.stack],
+  mockupVariant: item.mockupVariant,
+}))
+
+/** Maps service page slugs to contact form service dropdown values. */
+export const SERVICE_SLUG_TO_FORM: Record<Service["slug"], (typeof SERVICE_OPTIONS)[number]> = {
+  "custom-software": "Custom software development",
+  "mobile-apps": "Android & iOS app development",
+  "ai-automation": "AI automation & workflows",
+  "cloud-api": "Cloud solutions & API integration",
+}
 
 export const REASONS = [
   {
@@ -416,5 +362,10 @@ export const FAQS = [
     question: "What support do we get after launch?",
     answer:
       "Every project includes a handover and a stabilization period. Beyond that, ongoing support is available as a maintenance agreement: monitoring, fixes, small improvements, and a named point of contact. Terms are agreed in writing before launch.",
+  },
+  {
+    question: "Can we see examples of your work before hiring you?",
+    answer:
+      "Yes. Our portfolio lists software and app projects we can demonstrate in a call. Items are labeled as project showcases unless you have approved a formal client case study. We do not publish client logos or revenue claims without your permission.",
   },
 ] as const

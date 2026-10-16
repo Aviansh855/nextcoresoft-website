@@ -1,0 +1,337 @@
+export type ServiceSlug = "custom-software" | "mobile-apps" | "ai-automation" | "cloud-api"
+
+export type ServiceDetail = {
+  seoTitle: string
+  metaDescription: string
+  h1: string
+  intro: string
+  audience: string
+  problems: string[]
+  benefits: string[]
+  deliverables: string[]
+  process: { title: string; description: string }[]
+  includes: string[]
+  faqs: { question: string; answer: string }[]
+  /** Portfolio item ids to highlight on this service page */
+  portfolioIds: string[]
+}
+
+export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
+  "custom-software": {
+    seoTitle: "Custom Software Development for SMBs",
+    metaDescription:
+      "NextCoreSoft builds custom web apps, admin panels, and internal tools for SMBs and startups stuck on spreadsheets. Fewer manual steps, clearer workflows. Free consultation.",
+    h1: "Custom Software Development for Growing Businesses",
+    intro:
+      "NextCoreSoft designs and builds web applications, admin panels, dashboards, and internal tools around how your team actually works — not how a generic product expects you to work.",
+    audience:
+      "Small and mid-sized businesses, operations teams, and founders who have outgrown spreadsheets, shared inboxes, or off-the-shelf software that does not match their process.",
+    problems: [
+      "Critical work lives in spreadsheets that only one person understands, so reporting and handoffs break when they are away.",
+      "Staff retype the same customer or order data between email, chat, and separate tools because nothing is connected.",
+      "Leadership cannot see pipeline, inventory, or job status without asking someone to export a file.",
+      "You need a workflow that fits your business, but packaged software forces awkward workarounds.",
+    ],
+    benefits: [
+      "Replace repetitive copy-paste between tools with one system your team uses daily",
+      "Role-based dashboards and reports built around the numbers you already track",
+      "Software you own: documentation, credentials, and handover your staff can maintain",
+      "Discovery and milestones agreed in writing before development starts",
+    ],
+    deliverables: [
+      "Written scope and quotation with milestones before build work starts",
+      "Working web application deployed to your chosen hosting environment",
+      "Admin or staff interfaces with role-based access where needed",
+      "Data model and exports suitable for the reports you care about",
+      "Handover notes, credentials, and a stabilization period after launch",
+    ],
+    process: [
+      {
+        title: "Discovery",
+        description:
+          "We map the current workflow, the people involved, and the tools in use — and confirm whether custom software is the right investment.",
+      },
+      {
+        title: "Scope & quote",
+        description:
+          "You receive a written proposal with features, milestones, timeline assumptions, and cost — no surprise scope later.",
+      },
+      {
+        title: "Design & build",
+        description:
+          "Screens and flows are reviewed with you; development proceeds in increments with demos at each milestone.",
+      },
+      {
+        title: "Test & launch",
+        description:
+          "We test with your team, fix issues found in real use, deploy, and stay available through the first weeks live.",
+      },
+    ],
+    includes: [
+      "Workflow discovery before any code is written",
+      "Web applications, admin panels, and role-based dashboards",
+      "Data models designed for reporting, not just data entry",
+      "Integrations with the tools you already use where needed",
+    ],
+    faqs: [
+      {
+        question: "Do we need a full specification before contacting you?",
+        answer:
+          "No. A short description of the business problem and how work happens today is enough to start. We help shape requirements during discovery and document them before quoting.",
+      },
+      {
+        question: "Can you replace our spreadsheets without disrupting daily work?",
+        answer:
+          "We usually migrate in phases: read-only reporting first, then data entry, then retiring the old sheet. Timing depends on how critical the spreadsheet is — we plan that with you.",
+      },
+      {
+        question: "Who owns the code and data?",
+        answer:
+          "You do, under the terms in our agreement. We deliver source code, deployment access, and documentation so you are not locked in to a single vendor.",
+      },
+      {
+        question: "How is project cost estimated?",
+        answer:
+          "After discovery we quote fixed milestones when requirements are clear, or time-and-materials with caps when they are still evolving. Budget ranges on the contact form help us suggest a realistic first phase.",
+      },
+    ],
+    portfolioIds: ["techwheels-service-management", "pbic-attendance", "milk-delivery-management"],
+  },
+  "mobile-apps": {
+    seoTitle: "Android & iOS App Development",
+    metaDescription:
+      "NextCoreSoft builds Android and iOS apps for customer self-service and field teams. Store launch, secure APIs, offline-ready workflows. For service, retail, and ops-heavy businesses.",
+    h1: "Android & iOS App Development for Customers and Field Teams",
+    intro:
+      "We build mobile applications for both major platforms — for your customers in the app stores, and for staff who need reliable tools away from a desk. We recommend cross-platform or native based on what fits your budget and timeline.",
+    audience:
+      "Service businesses, retailers, logistics and field operations, and product teams that need a branded mobile experience for customers or employees who work on the move.",
+    problems: [
+      "Customers expect to book, pay, or track service from their phone, but you only offer a website or phone calls.",
+      "Field staff report status through chat threads and photos that are hard to search or audit later.",
+      "You need offline access in areas with poor connectivity, but a mobile website is not enough.",
+      "Store policies, push notifications, and secure login feel overwhelming without a team that has shipped apps before.",
+    ],
+    benefits: [
+      "Reach customers on the devices they already use every day",
+      "Give field and operations staff offline-tolerant apps instead of paper or chat threads",
+      "Secure login, push notifications, and APIs connected to your backend",
+      "Support through app store submission and release updates",
+    ],
+    deliverables: [
+      "App design aligned with your brand and the tasks users perform most often",
+      "Builds for Google Play and/or Apple App Store, or internal distribution when appropriate",
+      "Backend or API integration with your existing systems",
+      "Release notes, store listing copy guidance, and update process documentation",
+    ],
+    process: [
+      {
+        title: "Use-case review",
+        description:
+          "We clarify who uses the app (customers vs staff), which devices matter, and whether cross-platform or native is appropriate.",
+      },
+      {
+        title: "Prototype & quote",
+        description:
+          "Key screens and flows are agreed, then quoted with store submission and backend work included explicitly.",
+      },
+      {
+        title: "Build & device testing",
+        description:
+          "Development includes real-device testing for the platforms you target, including offline behavior where required.",
+      },
+      {
+        title: "Store submission & updates",
+        description:
+          "We guide you through developer accounts, review feedback, and a plan for post-launch fixes and version updates.",
+      },
+    ],
+    includes: [
+      "Customer apps published to Google Play and the Apple App Store",
+      "Staff and field-force apps with offline behavior where it matters",
+      "Authentication, push notifications, and secure API integration",
+      "Store submission guidance and release management",
+    ],
+    faqs: [
+      {
+        question: "One codebase for Android and iOS, or separate native apps?",
+        answer:
+          "For most business apps we use a cross-platform stack so both stores are covered efficiently. If you need deep platform-specific hardware features, we explain the native option and the cost difference before you commit.",
+      },
+      {
+        question: "Do you handle Apple and Google developer accounts?",
+        answer:
+          "Accounts stay in your name for store ownership. We help you create them if needed and use your credentials to upload builds — we do not take ownership of your store listings.",
+      },
+      {
+        question: "Can the app work with our existing web admin?",
+        answer:
+          "Yes, when your backend exposes secure APIs. Many projects pair a mobile client with a web admin built in the same engagement or an existing system you already run.",
+      },
+      {
+        question: "What maintenance is needed after launch?",
+        answer:
+          "Mobile OS and store rules change regularly. We offer maintenance agreements for dependency updates, crash monitoring, and small fixes — optional but recommended for production apps.",
+      },
+    ],
+    portfolioIds: ["food-explore", "pg-booking", "milk-delivery-management", "anonymous-chat"],
+  },
+  "ai-automation": {
+    seoTitle: "AI Automation for Business Workflows",
+    metaDescription:
+      "NextCoreSoft automates inquiries, documents, and routine handoffs with practical AI — for teams drowning in email and retyping. Human review where it matters. SMBs and growing companies.",
+    h1: "AI Automation & Intelligent Workflows",
+    intro:
+      "We connect AI to real business steps: reading incoming inquiries, extracting fields from documents, drafting routine replies, and routing work to the right person — only where that genuinely saves time, with humans kept in the loop when accuracy matters.",
+    audience:
+      "Operations, sales, and admin teams at SMBs and growing companies where people still read, classify, and retype the same kinds of messages, forms, or documents every day.",
+    problems: [
+      "Inquiries sit in a shared inbox because sorting and CRM entry take longer than replying.",
+      "Staff copy fields from PDFs, scans, or emails into spreadsheets or CRM records every day.",
+      "Follow-ups depend on someone remembering to nudge — not on a reliable workflow.",
+      "Leadership wants “AI” but past experiments produced generic chatbots that did not connect to real work.",
+    ],
+    benefits: [
+      "Faster response to leads and customer messages without hiring only for inbox work",
+      "Less manual data entry from PDFs, emails, and forms into your CRM or sheets",
+      "Automations wired into tools you already use (inbox, CRM, messaging, webhooks)",
+      "Pilot tested on your own examples before anything goes live",
+    ],
+    deliverables: [
+      "Workflow diagram showing triggers, AI steps, human review points, and outputs",
+      "Working automation integrated with agreed tools (email, CRM, webhooks, etc.)",
+      "Runbook for your team: what to check, how to override, and how to report issues",
+      "Accuracy notes from testing on your sample data — honest limits included",
+    ],
+    process: [
+      {
+        title: "Workflow mapping",
+        description:
+          "We document the steps people take today and identify where automation saves time without unacceptable error risk.",
+      },
+      {
+        title: "Pilot on your samples",
+        description:
+          "We test extraction, classification, or drafting on real examples you provide before building production integrations.",
+      },
+      {
+        title: "Integrate & review gates",
+        description:
+          "Automations write to your systems with human approval where mistakes would be costly.",
+      },
+      {
+        title: "Monitor & tune",
+        description:
+          "After launch we watch failure modes and adjust prompts, rules, or review steps — not set-and-forget.",
+      },
+    ],
+    includes: [
+      "Workflow mapping before any model or vendor is chosen",
+      "Document and inquiry extraction with review steps where needed",
+      "Integrations into CRM, email, and messaging platforms",
+      "Accuracy checks on your sample data before launch",
+    ],
+    faqs: [
+      {
+        question: "Will AI replace our staff?",
+        answer:
+          "Our goal is to remove repetitive reading and retyping, not judgment calls. We design review steps wherever errors would hurt customers, compliance, or revenue.",
+      },
+      {
+        question: "Is our data sent to third-party AI providers?",
+        answer:
+          "Often yes, when using hosted model APIs — under their terms and your agreement with us. We discuss data sensitivity upfront and can limit what is sent, use regional options where available, and avoid sending secrets or unnecessary personal data.",
+      },
+      {
+        question: "How do you measure if automation is working?",
+        answer:
+          "We agree on operational metrics you can observe: time to first response, items processed per day, or reduction in manual steps — not vanity “AI scores.” We do not invent percentage improvements for marketing.",
+      },
+      {
+        question: "Can you automate our industry-specific documents?",
+        answer:
+          "Usually, after we see samples. Layout, handwriting, and edge cases affect accuracy. We quote only after a pilot on representative documents.",
+      },
+    ],
+    portfolioIds: ["leaf-disease-detection", "house-price-prediction"],
+  },
+  "cloud-api": {
+    seoTitle: "Cloud Deployment, APIs & Integrations",
+    metaDescription:
+      "NextCoreSoft connects CRMs, accounting, payments, and custom software with REST APIs, cloud hosting, and ongoing maintenance — for teams tired of manual exports and broken integrations.",
+    h1: "Cloud, API Integrations & Software Maintenance",
+    intro:
+      "We build the connective layer between your systems: REST APIs, third-party integrations, cloud deployment, monitoring, and the maintenance that keeps everything running after launch.",
+    audience:
+      "Businesses running on several SaaS tools or a mix of custom and off-the-shelf software, where staff export CSVs, email files, or re-enter data because systems do not talk to each other.",
+    problems: [
+      "Two systems both hold customer data, but sync happens manually once a week.",
+      "A vendor API changed and an integration silently stopped working.",
+      "Software runs on a single machine or ad-hoc hosting with no backups or monitoring.",
+      "You need a partner API for clients or suppliers, but only have undocumented internal scripts.",
+    ],
+    benefits: [
+      "Data flows between tools automatically instead of through someone's inbox",
+      "Documented APIs your future developers or partners can use safely",
+      "Hosted deployments with backups and monitoring, not “it runs on one laptop”",
+      "Ongoing fixes when vendors change APIs or your process evolves",
+    ],
+    deliverables: [
+      "Integration design with error handling, logging, and retry behavior documented",
+      "REST or webhook endpoints with authentication appropriate to exposure (internal vs public)",
+      "Deployment configuration, environment separation, and backup approach",
+      "Maintenance plan options for vendor API changes and security updates",
+    ],
+    process: [
+      {
+        title: "Systems audit",
+        description:
+          "We list systems, data owners, API availability, and failure impact before proposing connections.",
+      },
+      {
+        title: "Integration build",
+        description:
+          "We implement and test sync or event flows in a staging environment when possible.",
+      },
+      {
+        title: "Deploy & observe",
+        description:
+          "Production deployment includes monitoring hooks and alert paths you can act on.",
+      },
+      {
+        title: "Maintain",
+        description:
+          "Retainer or ticket-based support for break-fix and planned updates — terms agreed in writing.",
+      },
+    ],
+    includes: [
+      "Integrations with CRMs, accounting, payments, and messaging platforms",
+      "Secure REST APIs with authentication and developer documentation",
+      "Cloud deployment with backups and uptime monitoring",
+      "Maintenance retainers so integrations survive vendor updates",
+    ],
+    faqs: [
+      {
+        question: "Can you integrate with our legacy on-premise software?",
+        answer:
+          "Sometimes, via exports, database read replicas, or middleware — only after we understand licensing and security constraints. We will say no if the risk or access is unrealistic.",
+      },
+      {
+        question: "Which cloud platforms do you use?",
+        answer:
+          "We deploy to common managed hosts and the major clouds depending on your preference, compliance needs, and existing accounts. We do not mandate a single vendor.",
+      },
+      {
+        question: "What happens when a third-party API changes?",
+        answer:
+          "Without maintenance, integrations can break. Maintenance agreements include monitoring and scheduled updates; one-off fixes can be quoted separately if you prefer.",
+      },
+      {
+        question: "How do you handle credentials and secrets?",
+        answer:
+          "Secrets live in environment configuration or your secret manager — not in source code. Access is limited to people who need it for the engagement, and rotated when staff change roles.",
+      },
+    ],
+    portfolioIds: ["anonymous-chat", "pbic-attendance"],
+  },
+}

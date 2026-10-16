@@ -4,7 +4,21 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    {
+      name: "inject-gsc-verification",
+      transformIndexHtml(html) {
+        const token = process.env.VITE_GSC_SITE_VERIFICATION?.trim()
+        if (!token) return html
+        return html.replace(
+          "</head>",
+          `    <meta name="google-site-verification" content="${token}" />\n  </head>`,
+        )
+      },
+    },
+  ],
   build: {
     rollupOptions: {
       output: {

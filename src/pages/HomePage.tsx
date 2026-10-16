@@ -12,7 +12,7 @@ import { WhyUs } from "../components/home/WhyUs"
 import { WorkflowShowcase } from "../components/home/WorkflowShowcase"
 import { CompanySummary } from "../components/home/CompanySummary"
 import { JsonLd } from "../components/seo/JsonLd"
-import { applyMeta, faqPageSchema, ROUTE_SEO } from "../lib/seo"
+import { applyMeta, faqPageSchema, ROUTE_SEO, webPageSchema } from "../lib/seo"
 
 export function HomePage() {
   useEffect(() => {
@@ -21,6 +21,7 @@ export function HomePage() {
 
   return (
     <>
+      <JsonLd id="jsonld-webpage" data={webPageSchema(ROUTE_SEO.home)} />
       <JsonLd id="jsonld-faq" data={faqPageSchema()} />
       <Hero />
       <CompanySummary />

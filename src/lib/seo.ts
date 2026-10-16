@@ -1,4 +1,4 @@
-import { FAQS, SERVICES, SITE } from "../data/content"
+import { FAQS, SERVICE_DETAILS, SERVICES, SITE } from "../data/content"
 
 export interface PageMeta {
   title: string
@@ -44,6 +44,12 @@ export const ROUTE_SEO = {
     description: "Terms governing use of the NextCoreSoft website and related services.",
     path: "/terms",
   },
+  portfolio: {
+    title: "Project Portfolio | NextCoreSoft",
+    description:
+      "Explore software and app builds from NextCoreSoft — service management, mobile apps, booking systems, and automation. Project showcases, not verified client case studies unless stated.",
+    path: "/portfolio",
+  },
   notFound: {
     title: "Page Not Found | NextCoreSoft",
     description: "This page does not exist. Visit the NextCoreSoft homepage or contact us about your project.",
@@ -54,20 +60,11 @@ export const ROUTE_SEO = {
 
 export function servicePageMeta(slug: string) {
   const service = SERVICES.find((s) => s.slug === slug)
-  if (!service) return null
-  const descriptions: Record<string, string> = {
-    "custom-software":
-      "Custom web apps, admin panels, and internal tools built around your workflow. Discovery, milestone delivery, and integrations. Talk to NextCoreSoft.",
-    "mobile-apps":
-      "Android and iOS business apps for customers and field teams. Cross-platform development, APIs, and launch support from NextCoreSoft.",
-    "ai-automation":
-      "AI automation and intelligent workflows: inquiry routing, document processing, and assistants grounded in your data — when it genuinely saves time.",
-    "cloud-api":
-      "Cloud deployment, REST and third-party API integrations, monitoring, and ongoing maintenance for software NextCoreSoft builds or inherits.",
-  }
+  const details = SERVICE_DETAILS[slug as keyof typeof SERVICE_DETAILS]
+  if (!service || !details) return null
   return {
-    title: `${service.title} | NextCoreSoft`,
-    description: descriptions[service.slug] ?? service.summary,
+    title: `${details.seoTitle} | ${SITE.name}`,
+    description: details.metaDescription,
     path: `/services/${service.slug}`,
   }
 }
@@ -81,6 +78,12 @@ export function applyMeta({ title, description, path, robots = "index, follow", 
 
   setMeta("description", description)
   setMeta("robots", robots)
+  setMeta(
+    "googlebot",
+    robots.includes("noindex")
+      ? robots
+      : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  )
   setMeta("og:title", title, "property")
   setMeta("og:description", description, "property")
   setMeta("og:url", path === "/" ? `${SITE.url}/` : `${SITE.url}${path}`, "property")
@@ -93,9 +96,8 @@ export function applyMeta({ title, description, path, robots = "index, follow", 
   setMeta("twitter:title", title)
   setMeta("twitter:description", description)
 
-  const canonicalPath = path === "/404" ? "/404" : path
   const canonicalHref =
-    canonicalPath === "/" ? `${SITE.url}/` : `${SITE.url}${canonicalPath.replace(/\/$/, "")}`
+    path === "/" ? `${SITE.url}/` : `${SITE.url}${path.replace(/\/$/, "")}`
 
   let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
   if (!canonical) {
@@ -152,10 +154,15 @@ export function websiteSchema() {
 }
 
 export function faqPageSchema() {
+  return faqPageSchemaFromItems(FAQS)
+}
+
+export function faqPageSchemaFromItems(faqs: readonly { question: string; answer: string }[]) {
+  if (faqs.length === 0) return null
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: FAQS.map((faq) => ({
+    mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: {
@@ -168,12 +175,13 @@ export function faqPageSchema() {
 
 export function serviceSchema(slug: string) {
   const service = SERVICES.find((s) => s.slug === slug)
-  if (!service) return null
+  const details = SERVICE_DETAILS[slug as keyof typeof SERVICE_DETAILS]
+  if (!service || !details) return null
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.title,
-    description: service.summary,
+    name: details.h1,
+    description: details.metaDescription,
     url: `${SITE.url}/services/${service.slug}`,
     provider: { "@id": ORG_ID },
     serviceType: service.title,
@@ -181,6 +189,21 @@ export function serviceSchema(slug: string) {
       "@type": "Place",
       name: "Worldwide",
     },
+  }
+}
+
+export function webPageSchema(meta: { title: string; description: string; path: string }) {
+  const url = meta.path === "/" ? `${SITE.url}/` : `${SITE.url}${meta.path}`
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: meta.title,
+    description: meta.description,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: { "@id": ORG_ID },
+    inLanguage: "en-US",
   }
 }
 
@@ -200,10 +223,12 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
 /** @deprecated use organizationSchema() — kept for any legacy imports */
 export const ORGANIZATION_SCHEMA = organizationSchema()
 
+/** Keep in sync with `shared/indexable-paths.mjs` (sitemap + edge 404 middleware). */
 export const INDEXABLE_PATHS = [
   "/",
   "/about",
   "/contact",
+  "/portfolio",
   ...SERVICES.map((s) => `/services/${s.slug}`),
   "/privacy",
   "/terms",

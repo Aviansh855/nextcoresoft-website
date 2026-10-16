@@ -1,7 +1,15 @@
 import { CheckCircle2, Loader2, Send } from "lucide-react"
-import { cloneElement, isValidElement, useRef, useState, type FormEvent, type ReactElement, type ReactNode } from "react"
-import { Link } from "react-router-dom"
-import { BUDGET_OPTIONS, SERVICE_OPTIONS } from "../../data/content"
+import {
+  cloneElement,
+  isValidElement,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactElement,
+  type ReactNode,
+} from "react"
+import { Link, useSearchParams } from "react-router-dom"
+import { BUDGET_OPTIONS, PORTFOLIO_ITEMS, SERVICE_OPTIONS, SERVICE_SLUG_TO_FORM, type Service } from "../../data/content"
 
 interface Fields {
   name: string
@@ -114,12 +122,34 @@ async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
 const inputClass =
   "w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-500 transition-colors focus:border-cyan-300/60 focus:outline-none"
 
+function initialFieldsFromSearch(params: URLSearchParams): Fields {
+  const next = { ...EMPTY }
+  const serviceSlug = params.get("service")?.trim()
+  if (serviceSlug && serviceSlug in SERVICE_SLUG_TO_FORM) {
+    next.service = SERVICE_SLUG_TO_FORM[serviceSlug as Service["slug"]]
+  }
+  const projectId = params.get("project")?.trim()
+  const project = projectId ? PORTFOLIO_ITEMS.find((p) => p.id === projectId) : undefined
+  const intent = params.get("intent")?.trim()
+  const parts: string[] = []
+  if (intent === "quote") {
+    parts.push("I would like a written quotation for this project.")
+  }
+  if (project) {
+    parts.push(`Portfolio item: ${project.name}.`)
+  }
+  if (parts.length) next.description = parts.join(" ")
+  return next
+}
+
 export function InquiryForm() {
-  const [fields, setFields] = useState<Fields>(EMPTY)
+  const [searchParams] = useSearchParams()
+  const [fields, setFields] = useState<Fields>(() => initialFieldsFromSearch(searchParams))
   const [errors, setErrors] = useState<Errors>({})
   const [status, setStatus] = useState<Status>("idle")
   const [submitError, setSubmitError] = useState<string | null>(null)
   const sending = useRef(false)
+  const intentQuote = searchParams.get("intent") === "quote"
 
   const update =
     (key: keyof Fields) =>
@@ -179,7 +209,13 @@ export function InquiryForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5">
+    <form onSubmit={onSubmit} noValidate className="space-y-5" aria-labelledby="inquiry-form-heading">
+      <h2 id="inquiry-form-heading" className="font-display text-lg font-semibold text-slate-900">
+        {intentQuote ? "Request a quote" : "Discuss your project"}
+      </h2>
+      <p className="text-sm text-slate-600">
+        Required fields are marked. We use your business email to reply — usually within one business day.
+      </p>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" error={errors.name} required>
           <input
@@ -324,7 +360,7 @@ export function InquiryForm() {
           </>
         ) : (
           <>
-            <Send size={15} aria-hidden="true" /> Send inquiry
+            <Send size={15} aria-hidden="true" /> {intentQuote ? "Request quote" : "Send inquiry"}
           </>
         )}
       </button>

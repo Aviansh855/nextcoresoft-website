@@ -1,17 +1,22 @@
 import { useEffect } from "react"
+import { useSearchParams } from "react-router-dom"
 import { InquiryForm } from "../components/contact/InquiryForm"
 import { Reveal } from "../components/ui/Reveal"
 import { JsonLd } from "../components/seo/JsonLd"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
-import { applyMeta, breadcrumbSchema, ROUTE_SEO } from "../lib/seo"
+import { ServicePageLinks } from "../components/seo/ServicePageLinks"
+import { applyMeta, breadcrumbSchema, ROUTE_SEO, webPageSchema } from "../lib/seo"
 
 export function ContactPage() {
+  const [searchParams] = useSearchParams()
+
   useEffect(() => {
     applyMeta(ROUTE_SEO.contact)
   }, [])
 
   return (
     <section className="relative pt-32 pb-24">
+      <JsonLd id="jsonld-contact-webpage" data={webPageSchema(ROUTE_SEO.contact)} />
       <JsonLd
         id="jsonld-contact-breadcrumbs"
         data={breadcrumbSchema([
@@ -29,11 +34,11 @@ export function ContactPage() {
             <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Contact" }]} />
             <p className="mt-4 text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">Contact</p>
             <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-slate-900 text-balance sm:text-5xl">
-              Let&apos;s Build Something That Moves Your Business Forward.
+              Discuss your project or request a quote
             </h1>
             <p className="mt-5 max-w-md text-base leading-relaxed text-slate-600">
-              Describe the problem and we&apos;ll come back with a clear view of the approach, the likely scope, and
-              whether we&apos;re the right team. The consultation is free.
+              Tell us what you need built or automated. We reply with an honest view of scope, timeline, and how we
+              would quote the work. The initial consultation is free and there is no obligation.
             </p>
 
             <dl className="mt-10 space-y-6 border-t border-slate-200 pt-8">
@@ -50,16 +55,19 @@ export function ContactPage() {
                   <a href="mailto:hello@nextcoresoft.com" className="text-cyan-600 hover:text-slate-900">
                     hello@nextcoresoft.com
                   </a>
-                  <span className="mt-0.5 block text-xs text-slate-500">Placeholder address — confirm before launch.</span>
                 </dd>
               </div>
             </dl>
+
+            <div className="mt-10 border-t border-slate-200 pt-8">
+              <ServicePageLinks heading="Not sure which service fits?" />
+            </div>
           </div>
         </Reveal>
 
         <Reveal delay={0.08}>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-9">
-            <InquiryForm />
+            <InquiryForm key={searchParams.toString()} />
           </div>
         </Reveal>
       </div>

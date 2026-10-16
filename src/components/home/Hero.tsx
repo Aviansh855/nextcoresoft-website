@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { ServicePageLinks } from "../seo/ServicePageLinks"
 import { ButtonLink } from "../ui/Button"
 import { HeroEntrance, HeroEntranceItem } from "../ui/HeroEntrance"
 import { HeroVisual } from "../three/HeroVisual"
@@ -43,24 +44,14 @@ export function Hero() {
                 <ArrowRight size={16} aria-hidden="true" />
               </ButtonLink>
               <ButtonLink to="/#services" variant="secondary">
-                Explore Our Solutions
+                View all services
               </ButtonLink>
             </div>
           </HeroEntranceItem>
 
           <HeroEntranceItem>
-            <dl className="mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-slate-200 pt-6">
-              {[
-                ["Custom", "Software built around your workflow"],
-                ["Mobile", "Android and iOS applications"],
-                ["AI", "Automation that removes routine work"],
-              ].map(([term, detail]) => (
-                <div key={term}>
-                  <dt className="font-display text-sm font-semibold text-slate-900">{term}</dt>
-                  <dd className="mt-1 text-xs leading-snug text-slate-400">{detail}</dd>
-                </div>
-              ))}
-            </dl>
+            <p className="mt-8 text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">Service pages</p>
+            <ServicePageLinks variant="compact" className="mt-3 max-w-xl" />
           </HeroEntranceItem>
         </HeroEntrance>
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { SITE } from "../../data/content"
+import { ServicePageLinks } from "../seo/ServicePageLinks"
 import { Reveal } from "../ui/Reveal"
 import { Section } from "../ui/Section"
 
@@ -14,12 +15,25 @@ export function CompanySummary() {
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
             {SITE.name} is a software development studio that designs and builds{" "}
-            <strong className="font-medium text-slate-800">custom business software</strong>,{" "}
-            <strong className="font-medium text-slate-800">Android and iOS applications</strong>, and{" "}
-            <strong className="font-medium text-slate-800">AI-powered workflow automation</strong> for small and
-            medium-sized businesses and startups. We focus on replacing manual, repetitive work with systems your team
-            actually uses — with scope, timeline, and cost agreed before build begins.
+            <Link to="/services/custom-software" className="font-medium text-cyan-800 underline-offset-2 hover:underline">
+              custom business software
+            </Link>
+            ,{" "}
+            <Link to="/services/mobile-apps" className="font-medium text-cyan-800 underline-offset-2 hover:underline">
+              Android and iOS applications
+            </Link>
+            ,{" "}
+            <Link to="/services/ai-automation" className="font-medium text-cyan-800 underline-offset-2 hover:underline">
+              AI-powered workflow automation
+            </Link>
+            , and{" "}
+            <Link to="/services/cloud-api" className="font-medium text-cyan-800 underline-offset-2 hover:underline">
+              cloud integrations and API work
+            </Link>{" "}
+            for small and medium-sized businesses and startups. We focus on replacing manual, repetitive work with
+            systems your team actually uses — with scope, timeline, and cost agreed before build begins.
           </p>
+          <ServicePageLinks variant="list" heading="Explore each service" className="mt-6 border-t border-slate-200 pt-6" />
           <p className="mt-4 text-sm leading-relaxed text-slate-600">
             We serve clients remotely and work in English. We do not sell pre-packaged SaaS; each engagement is scoped
             to the business in front of us.{" "}

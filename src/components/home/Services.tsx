@@ -43,7 +43,14 @@ export function Services() {
                   >
                     <Icon size={22} aria-hidden="true" className="transition-transform duration-300 group-hover:-rotate-6" />
                   </span>
-                  <h3 className="mt-6 font-display text-xl font-semibold text-slate-900">{service.title}</h3>
+                  <h3 className="mt-6 font-display text-xl font-semibold text-slate-900">
+                    <Link
+                      to={`/services/${service.slug}`}
+                      className="rounded transition-colors hover:text-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500"
+                    >
+                      {service.title}
+                    </Link>
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.summary}</p>
 
                   <ul className="mt-5 space-y-2">

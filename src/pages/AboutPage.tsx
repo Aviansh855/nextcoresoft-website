@@ -3,8 +3,9 @@ import { CTABand } from "../components/home/CTABand"
 import { Reveal } from "../components/ui/Reveal"
 import { JsonLd } from "../components/seo/JsonLd"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import { ServicePageLinks } from "../components/seo/ServicePageLinks"
 import { SITE } from "../data/content"
-import { applyMeta, breadcrumbSchema, ROUTE_SEO } from "../lib/seo"
+import { applyMeta, breadcrumbSchema, ROUTE_SEO, webPageSchema } from "../lib/seo"
 
 const PRINCIPLES = [
   {
@@ -32,6 +33,7 @@ export function AboutPage() {
 
   return (
     <>
+      <JsonLd id="jsonld-about-webpage" data={webPageSchema(ROUTE_SEO.about)} />
       <JsonLd
         id="jsonld-about-breadcrumbs"
         data={breadcrumbSchema([
@@ -62,6 +64,13 @@ export function AboutPage() {
             </p>
           </div>
         </Reveal>
+
+        <div className="mt-16 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
+          <ServicePageLinks heading="What we build" />
+          <p className="mt-4 text-sm leading-relaxed text-slate-600">
+            Each link goes to a dedicated page with scope, who it&apos;s for, and typical deliverables.
+          </p>
+        </div>
 
         <h2 className="mt-16 font-display text-2xl font-semibold text-slate-900">How we work</h2>
         <div className="mt-8 space-y-8">

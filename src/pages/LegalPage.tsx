@@ -1,6 +1,9 @@
 import { useEffect, type ReactNode } from "react"
+import { Link } from "react-router-dom"
 import { SITE } from "../data/content"
-import { applyMeta, ROUTE_SEO } from "../lib/seo"
+import { JsonLd } from "../components/seo/JsonLd"
+import { ServicePageLinks } from "../components/seo/ServicePageLinks"
+import { applyMeta, ROUTE_SEO, webPageSchema } from "../lib/seo"
 
 interface LegalSection {
   heading: string
@@ -151,7 +154,11 @@ export function LegalPage({ kind }: { kind: "privacy" | "terms" }) {
     applyMeta(isPrivacy ? ROUTE_SEO.privacy : ROUTE_SEO.terms)
   }, [isPrivacy])
 
+  const meta = isPrivacy ? ROUTE_SEO.privacy : ROUTE_SEO.terms
+
   return (
+    <>
+      <JsonLd id={`jsonld-${kind}-webpage`} data={webPageSchema(meta)} />
     <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8">
       <p className="text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">Legal</p>
       <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
@@ -167,6 +174,39 @@ export function LegalPage({ kind }: { kind: "privacy" | "terms" }) {
           </section>
         ))}
       </div>
+
+      <nav className="mt-12 border-t border-slate-200 pt-8 text-sm text-slate-600" aria-label="Site">
+        <p>
+          <Link to="/" className="text-cyan-700 hover:underline">
+            Home
+          </Link>
+          {" · "}
+          <Link to="/about" className="text-cyan-700 hover:underline">
+            About
+          </Link>
+          {" · "}
+          <Link to="/contact" className="text-cyan-700 hover:underline">
+            Contact
+          </Link>
+          {isPrivacy ? (
+            <>
+              {" · "}
+              <Link to="/terms" className="text-cyan-700 hover:underline">
+                Terms of Service
+              </Link>
+            </>
+          ) : (
+            <>
+              {" · "}
+              <Link to="/privacy" className="text-cyan-700 hover:underline">
+                Privacy Policy
+              </Link>
+            </>
+          )}
+        </p>
+        <ServicePageLinks variant="compact" className="mt-4" />
+      </nav>
     </article>
+    </>
   )
 }

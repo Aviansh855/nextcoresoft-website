@@ -54,6 +54,7 @@ export function Footer() {
           <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-800 uppercase">Company</h2>
           <ul className="mt-4 space-y-2.5">
             {[
+              { label: "Portfolio", to: "/portfolio" },
               { label: "About", to: "/about" },
               { label: "Contact", to: "/contact" },
               { label: "Privacy Policy", to: "/privacy" },
@@ -106,7 +107,12 @@ export function Footer() {
           <p>
             <Copyright />
           </p>
-          <p>Custom software, mobile apps, and AI automation.</p>
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span>Custom software, mobile apps, and AI automation.</span>
+            <a href="/sitemap.xml" className="text-slate-500 underline-offset-2 hover:text-cyan-700 hover:underline">
+              Sitemap
+            </a>
+          </p>
         </div>
       </div>
     </footer>
