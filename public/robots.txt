@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
 # Optional reference for AI crawlers (not a Google ranking signal)
 # https://nextcoresoft.com/llms.txt
 
