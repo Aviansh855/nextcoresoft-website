@@ -98,9 +98,7 @@ export function BlogPostPage() {
           ) : null}
         </Reveal>
 
-        <Reveal delay={0.04}>
-          <BlogArticleBody sections={post.sections} />
-        </Reveal>
+        <BlogArticleBody sections={post.sections} />
 
         <Reveal delay={0.06}>
           <BlogRelatedPosts current={post} />

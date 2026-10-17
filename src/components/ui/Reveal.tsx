@@ -25,7 +25,8 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
       className={className}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: "0px 0px -80px 0px", amount: 0.2 }}
+      // amount: 0 — trigger when any part enters view (0.2 breaks long wrappers e.g. blog body)
+      viewport={{ once: false, margin: "0px 0px -80px 0px", amount: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
     >
       {children}
