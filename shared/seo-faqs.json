@@ -1,0 +1,158 @@
+{
+  "home": [
+    {
+      "question": "What services does NextCoreSoft offer?",
+      "answer": "Custom business software, Android and iOS applications, AI automation and workflow integration, cloud hosting and API integrations, plus ongoing maintenance and technical consulting. If you are unsure which applies, describe the problem and we will tell you honestly whether we are the right fit."
+    },
+    {
+      "question": "How long does a typical project take?",
+      "answer": "A focused internal tool or automation commonly takes a few weeks; a full application with mobile clients takes longer. We give a milestone-based timeline in the written proposal, after we understand the scope — we don't quote durations before that conversation."
+    },
+    {
+      "question": "How does pricing and quotation work?",
+      "answer": "After a discovery conversation we send a written quotation with scope, milestones, and cost. We work fixed-scope where requirements are clear and time-based where they are still evolving. The initial consultation is free and there is no obligation."
+    },
+    {
+      "question": "Can you integrate with the systems we already use?",
+      "answer": "Usually, yes. We regularly connect CRMs, accounting tools, payment providers, email, and messaging platforms through their APIs. If a system has no usable API we will say so and propose a realistic alternative rather than forcing it."
+    },
+    {
+      "question": "Do you build for both Android and iOS?",
+      "answer": "Yes. For most business apps we use a cross-platform approach so both stores are covered from one codebase. When a project genuinely needs native development for one platform, we recommend that and explain the trade-off in cost and timeline."
+    },
+    {
+      "question": "How do we know whether AI automation is feasible for us?",
+      "answer": "We assess it against your real examples. AI works well for reading, sorting, extracting, and drafting; it is a poor fit where every output must be exact and unsupervised. We test accuracy on your own data before recommending a build, and we design a human review step wherever the cost of an error is high."
+    },
+    {
+      "question": "How do you handle security and maintenance?",
+      "answer": "Access control, encrypted connections, secrets management, and regular dependency updates are part of every build. After launch we offer maintenance agreements covering monitoring, security updates, and bug fixes. We do not claim certifications we do not hold."
+    },
+    {
+      "question": "What support do we get after launch?",
+      "answer": "Every project includes a handover and a stabilization period. Beyond that, ongoing support is available as a maintenance agreement: monitoring, fixes, small improvements, and a named point of contact. Terms are agreed in writing before launch."
+    },
+    {
+      "question": "Can we see examples of your work before hiring you?",
+      "answer": "Yes. Our portfolio lists software and app projects we can demonstrate in a call. Items are labeled as project showcases unless you have approved a formal client case study. We do not publish client logos or revenue claims without your permission."
+    },
+    {
+      "question": "Does NextCoreSoft build custom websites and web applications?",
+      "answer": "Yes. We build custom web applications and business-facing websites as part of software development engagements — not generic template installs. Marketing sites are in scope when they are tied to a product, portal, or admin system your team needs."
+    },
+    {
+      "question": "Is NextCoreSoft an AI automation company?",
+      "answer": "We implement AI automation for real business steps — reading inquiries, extracting document fields, routing work, and drafting routine replies — with human review where errors are costly. We are not a consumer chatbot vendor; projects are scoped to your tools and data."
+    },
+    {
+      "question": "Do you work with clients searching “near me” or only remotely?",
+      "answer": "We deliver remotely and work in English with clients in many countries. This website does not list a public office address. Google’s local “near me” map results usually require a verified Google Business Profile and address — we do not claim map-pack placement here. You can still contact us for a video consultation from anywhere."
+    }
+  ],
+  "servicesHub": [
+    {
+      "question": "Which software development services does NextCoreSoft offer?",
+      "answer": "Custom software and web applications, Android and iOS mobile apps, AI workflow automation, and cloud hosting with API integrations. Each service has its own page with deliverables and FAQs; start at /services or contact us if you are unsure which fits."
+    },
+    {
+      "question": "Do you quote web development and mobile apps separately?",
+      "answer": "Yes. Web apps, mobile clients, and automation are scoped independently with milestones and written cost. A discovery call clarifies whether you need one track or a combined roadmap."
+    },
+    {
+      "question": "Can one vendor handle custom software, mobile, and AI automation?",
+      "answer": "We often deliver all three for one product — for example a web admin, mobile field app, and document automation — so integrations stay consistent. We will recommend a smaller first phase if that reduces risk."
+    },
+    {
+      "question": "How do I request a quote for a specific service?",
+      "answer": "Use the contact form and mention the service (or open a service page and click Request a quote). We reply within one business day with scope questions and how we would structure the quotation."
+    }
+  ],
+  "blogHub": [
+    {
+      "question": "What topics does the NextCoreSoft blog cover?",
+      "answer": "Custom software versus spreadsheets, hiring a development company, mobile and web projects, and practical AI automation — written for business owners and operations teams, not developers only."
+    },
+    {
+      "question": "Are blog posts a substitute for a consultation?",
+      "answer": "No. Articles explain patterns and questions to ask; your timeline, integrations, and budget need a discovery conversation. Contact us when you are ready to scope a real project."
+    },
+    {
+      "question": "How often is new content published?",
+      "answer": "We add articles when we have something useful and verified to say. The blog index lists current guides — including custom software and mobile app costs in India and MVP vs full product planning."
+    }
+  ],
+  "services": {
+    "custom-software": [
+      {
+        "question": "Do we need a full specification before contacting you?",
+        "answer": "No. A short description of the business problem and how work happens today is enough to start. We help shape requirements during discovery and document them before quoting."
+      },
+      {
+        "question": "Can you replace our spreadsheets without disrupting daily work?",
+        "answer": "We usually migrate in phases: read-only reporting first, then data entry, then retiring the old sheet. Timing depends on how critical the spreadsheet is — we plan that with you."
+      },
+      {
+        "question": "Who owns the code and data?",
+        "answer": "You do, under the terms in our agreement. We deliver source code, deployment access, and documentation so you are not locked in to a single vendor."
+      },
+      {
+        "question": "How is project cost estimated?",
+        "answer": "After discovery we quote fixed milestones when requirements are clear, or time-and-materials with caps when they are still evolving. Budget ranges on the contact form help us suggest a realistic first phase."
+      }
+    ],
+    "mobile-apps": [
+      {
+        "question": "One codebase for Android and iOS, or separate native apps?",
+        "answer": "For most business apps we use a cross-platform stack so both stores are covered efficiently. If you need deep platform-specific hardware features, we explain the native option and the cost difference before you commit."
+      },
+      {
+        "question": "Do you handle Apple and Google developer accounts?",
+        "answer": "Accounts stay in your name for store ownership. We help you create them if needed and use your credentials to upload builds — we do not take ownership of your store listings."
+      },
+      {
+        "question": "Can the app work with our existing web admin?",
+        "answer": "Yes, when your backend exposes secure APIs. Many projects pair a mobile client with a web admin built in the same engagement or an existing system you already run."
+      },
+      {
+        "question": "What maintenance is needed after launch?",
+        "answer": "Mobile OS and store rules change regularly. We offer maintenance agreements for dependency updates, crash monitoring, and small fixes — optional but recommended for production apps."
+      }
+    ],
+    "ai-automation": [
+      {
+        "question": "Will AI replace our staff?",
+        "answer": "Our goal is to remove repetitive reading and retyping, not judgment calls. We design review steps wherever errors would hurt customers, compliance, or revenue."
+      },
+      {
+        "question": "Is our data sent to third-party AI providers?",
+        "answer": "Often yes, when using hosted model APIs — under their terms and your agreement with us. We discuss data sensitivity upfront and can limit what is sent, use regional options where available, and avoid sending secrets or unnecessary personal data."
+      },
+      {
+        "question": "How do you measure if automation is working?",
+        "answer": "We agree on operational metrics you can observe: time to first response, items processed per day, or reduction in manual steps — not vanity “AI scores.” We do not invent percentage improvements for marketing."
+      },
+      {
+        "question": "Can you automate our industry-specific documents?",
+        "answer": "Usually, after we see samples. Layout, handwriting, and edge cases affect accuracy. We quote only after a pilot on representative documents."
+      }
+    ],
+    "cloud-api": [
+      {
+        "question": "Can you integrate with our legacy on-premise software?",
+        "answer": "Sometimes, via exports, database read replicas, or middleware — only after we understand licensing and security constraints. We will say no if the risk or access is unrealistic."
+      },
+      {
+        "question": "Which cloud platforms do you use?",
+        "answer": "We deploy to common managed hosts and the major clouds depending on your preference, compliance needs, and existing accounts. We do not mandate a single vendor."
+      },
+      {
+        "question": "What happens when a third-party API changes?",
+        "answer": "Without maintenance, integrations can break. Maintenance agreements include monitoring and scheduled updates; one-off fixes can be quoted separately if you prefer."
+      },
+      {
+        "question": "How do you handle credentials and secrets?",
+        "answer": "Secrets live in environment configuration or your secret manager — not in source code. Access is limited to people who need it for the engagement, and rotated when staff change roles."
+      }
+    ]
+  }
+}

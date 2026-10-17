@@ -2,10 +2,9 @@ import { useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { InquiryForm } from "../components/contact/InquiryForm"
 import { Reveal } from "../components/ui/Reveal"
-import { JsonLd } from "../components/seo/JsonLd"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { ServicePageLinks } from "../components/seo/ServicePageLinks"
-import { applyMeta, breadcrumbSchema, ROUTE_SEO, webPageSchema } from "../lib/seo"
+import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 export function ContactPage() {
   const [searchParams] = useSearchParams()
@@ -16,14 +15,6 @@ export function ContactPage() {
 
   return (
     <section className="relative pt-32 pb-24">
-      <JsonLd id="jsonld-contact-webpage" data={webPageSchema(ROUTE_SEO.contact)} />
-      <JsonLd
-        id="jsonld-contact-breadcrumbs"
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact" },
-        ])}
-      />
       <div
         className="pointer-events-none absolute top-0 left-1/2 -z-10 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-blue-600/15 blur-[120px]"
         aria-hidden="true"

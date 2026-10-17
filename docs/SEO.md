@@ -2,7 +2,7 @@
 
 ## Rendering note (important)
 
-This site is a **client-rendered SPA** (React + Vite) on Cloudflare Pages. `index.html` includes baseline Organization and WebSite JSON-LD and default meta tags. Per-route titles, descriptions, canonical URLs, and additional JSON-LD are updated in the browser via `applyMeta()` and `JsonLd` when users navigate.
+This site is a **client-rendered SPA** (React + Vite) on Cloudflare Pages. `index.html` includes baseline Organization and WebSite JSON-LD. **Per-route `@graph` JSON-LD** is injected at build time into each prerendered `index.html` (`shared/jsonld-graph.mjs` + `scripts/prerender-routes.mjs`). React `RouteJsonLd` keeps the same graph on client navigations. Titles, descriptions, and canonical URLs are updated via `applyMeta()`.
 
 Google generally renders JavaScript, but **crawl and index timing can lag** compared with SSR. This project **prerenders static HTML** per indexable route at build time (`scripts/prerender-routes.mjs`) so each URL has the correct title, description, and canonical before JS runs. Bing and some social crawlers may not execute JS fully. For maximum reliability, consider later: static prerender of key URLs, Cloudflare Workers prerender, or SSR — none of these are required for launch but they improve predictability.
 
@@ -65,13 +65,17 @@ Internal links and GSC URL Inspection should use the **sitemap** URLs. Rich resu
 
 | Type | Where |
 |------|--------|
-| Organization | `index.html` (static, via `shared/jsonld-static.mjs`) |
+| Organization | `index.html` (static, `shared/jsonld-static.mjs`) |
 | WebSite | `index.html` (static) |
-| FAQPage | Homepage, `/services`, `/blog`, service pages, blog posts |
-| ProfessionalService + OfferCatalog | Homepage (`JsonLd`) |
-| Article | Each blog post |
-| Service | Each service page |
-| BreadcrumbList | About, Contact, Service pages |
+| Route `@graph` | Prerender + `RouteJsonLd` — `shared/jsonld-graph.mjs` |
+| WebPage / AboutPage / ContactPage / CollectionPage | Per route in `@graph` |
+| FAQPage | Home, `/services`, `/blog`, each service page, each blog post |
+| ProfessionalService + OfferCatalog | Homepage `@graph` |
+| BlogPosting | Each blog post `@graph` |
+| Service | Each `/services/*` `@graph` |
+| BreadcrumbList | All indexable routes (in `@graph`) |
+
+FAQ copy for JSON-LD: `shared/seo-faqs.json` (keep aligned with `src/data/content.ts` and `service-details.ts`).
 
 No Review, AggregateRating, or LocalBusiness street address (no verified public office on site). No guaranteed rankings — SEO improves discoverability over time; map-pack “near me” needs Google Business Profile separately.
 

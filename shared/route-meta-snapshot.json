@@ -1,0 +1,107 @@
+{
+  "/": {
+    "title": "NextCoreSoft | Custom Software, Web & App Development, AI Automation",
+    "description": "Custom software development company for web apps, business websites, Android & iOS apps, and AI automation. NextCoreSoft works with SMBs worldwide. Free consultation.",
+    "h1": "Custom software, web development, mobile apps and AI automation",
+    "staticLead": "NextCoreSoft is a software development studio for custom web applications, mobile app development, and practical AI workflow automation for growing businesses.",
+    "robots": "index, follow"
+  },
+  "/services": {
+    "title": "Software Development Services | Web, Mobile & AI | NextCoreSoft",
+    "description": "Explore custom software development, web development, Android and iOS app development, AI automation, and API integrations — one studio, milestone-based delivery.",
+    "h1": "Software development services for web, mobile, and AI automation",
+    "staticLead": "Service overview for businesses looking for a software, web, mobile, or AI automation development partner.",
+    "robots": "index, follow"
+  },
+  "/about": {
+    "title": "About NextCoreSoft | Software & AI Automation Studio",
+    "description": "Learn how NextCoreSoft designs custom software, mobile apps, and practical AI automations around real business workflows — with clear scope, timeline, and cost.",
+    "h1": "A software studio focused on how businesses actually operate",
+    "staticLead": "NextCoreSoft designs and builds custom software, mobile apps, and AI automations for SMBs, startups, and teams modernizing operations.",
+    "robots": "index, follow"
+  },
+  "/contact": {
+    "title": "Contact NextCoreSoft | Free Software Consultation",
+    "description": "Describe your project and book a free consultation with NextCoreSoft. Custom software, mobile development, AI automation, and integrations for growing businesses.",
+    "h1": "Discuss your project or request a quote",
+    "staticLead": "Tell us what you need built or automated. We reply within one business day with scope guidance and how we would quote the work.",
+    "robots": "index, follow"
+  },
+  "/portfolio": {
+    "title": "Project Portfolio | NextCoreSoft",
+    "description": "Explore software and app builds from NextCoreSoft — service management, mobile apps, booking systems, and automation. Project showcases, not verified client case studies unless stated.",
+    "h1": "Software and apps we can show you today",
+    "staticLead": "Real builds and product-style projects from NextCoreSoft, presented as project showcases — ask us for a walkthrough during a consultation.",
+    "robots": "index, follow"
+  },
+  "/services/custom-software": {
+    "title": "Custom Software & Web Development Company | NextCoreSoft",
+    "description": "Custom software and web development for business apps, admin panels, and internal tools. NextCoreSoft replaces spreadsheets with systems built for your workflow. Free consultation.",
+    "h1": "Custom Software and Web Development for Growing Businesses",
+    "staticLead": "Purpose-built web apps, admin panels, and internal tools for teams that have outgrown spreadsheets and generic SaaS.",
+    "robots": "index, follow"
+  },
+  "/services/mobile-apps": {
+    "title": "Mobile App Development Company (Android & iOS) | NextCoreSoft",
+    "description": "Mobile app development company for Android and iOS — customer apps, field teams, secure APIs, and store launch support. NextCoreSoft builds for service, retail, and operations.",
+    "h1": "Mobile App Development for Android, iOS, and Field Teams",
+    "staticLead": "Mobile apps for both major platforms — for customers in the app stores and for staff who work away from a desk.",
+    "robots": "index, follow"
+  },
+  "/services/ai-automation": {
+    "title": "AI Automation Company for Business Workflows | NextCoreSoft",
+    "description": "AI automation company for document processing, inquiry routing, and workflow integration — practical AI with human review where it matters. NextCoreSoft serves SMBs and growing teams.",
+    "h1": "AI Automation and Intelligent Workflows for Business",
+    "staticLead": "Practical AI for inquiry routing, document extraction, and routine handoffs — with humans in the loop when accuracy matters.",
+    "robots": "index, follow"
+  },
+  "/services/cloud-api": {
+    "title": "Cloud Deployment, APIs & Integrations | NextCoreSoft",
+    "description": "NextCoreSoft connects CRMs, accounting, payments, and custom software with REST APIs, cloud hosting, and ongoing maintenance — for teams tired of manual exports and broken integrations.",
+    "h1": "Cloud, API Integrations & Software Maintenance",
+    "staticLead": "APIs and integrations that move data between your tools, plus cloud hosting and maintenance after launch.",
+    "robots": "index, follow"
+  },
+  "/privacy": {
+    "title": "Privacy Policy | NextCoreSoft",
+    "description": "How NextCoreSoft collects, uses, and protects information submitted through the website contact form and optional analytics.",
+    "h1": "Privacy Policy",
+    "staticLead": "How we handle information you submit through the NextCoreSoft website contact form and optional analytics.",
+    "robots": "index, follow"
+  },
+  "/terms": {
+    "title": "Terms of Service | NextCoreSoft",
+    "description": "Terms governing use of the NextCoreSoft website and related services.",
+    "h1": "Terms of Service",
+    "staticLead": "Terms for using the NextCoreSoft website and related services.",
+    "robots": "index, follow"
+  },
+  "/blog": {
+    "title": "Blog | NextCoreSoft — Custom Software & Automation",
+    "description": "Guides on custom software and mobile app development costs in India, MVP planning, and software project scoping for Indian SMBs and founders.",
+    "h1": "Insights on software, automation, and growing operations",
+    "staticLead": "Long-form guides for Indian SMBs and founders — software and app costs, MVP vs full product, and honest scoping advice.",
+    "robots": "index, follow"
+  },
+  "/blog/custom-software-development-cost-india": {
+    "title": "Custom Software Development Cost in India (2026) | NextCoreSoft",
+    "description": "Explore custom software development costs in India for 2026, including planning ranges, key price drivers, ongoing expenses, and ways to control scope.",
+    "h1": "How Much Does Custom Software Cost in India in 2026?",
+    "staticLead": "In India, a focused internal business tool may be planned in the low single-digit lakhs, a custom CRM or customer portal may require several lakhs to the mid-teens, and a multi-module ERP or multi-role platform can cost …",
+    "robots": "index, follow"
+  },
+  "/blog/mobile-app-development-cost-india": {
+    "title": "Mobile App Development Cost in India: 2026 Guide | NextCoreSoft",
+    "description": "Learn mobile app development costs in India, what affects Android, iOS and cross-platform pricing, and how to plan an app budget confidently.",
+    "h1": "How Much Does Mobile App Development Cost in India?",
+    "staticLead": "A simple mobile app with limited screens and no complex backend can cost much less than a customer app that includes login, payments, notifications, an admin dashboard, multiple user roles and integrations. As an initial…",
+    "robots": "index, follow"
+  },
+  "/blog/mvp-vs-full-product": {
+    "title": "MVP vs Full Product: What Should You Build First? | NextCoreSoft",
+    "description": "Compare an MVP with a full product, learn what belongs in the first release, and use a practical framework to reduce risk before scaling.",
+    "h1": "MVP vs Full Product: What Should You Build First?",
+    "staticLead": "Build an MVP when the most important assumptions about your users, workflow or willingness to pay still need validation. Build a broader product when the core value is already understood and the additional capabilities a…",
+    "robots": "index, follow"
+  }
+}

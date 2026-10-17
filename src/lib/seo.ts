@@ -85,16 +85,22 @@ export function articleSchema(slug: string) {
   const post = getBlogPost(slug)
   if (!post) return null
   const url = `${SITE.url}/blog/${post.slug}`
+  const logo = { "@type": "ImageObject" as const, url: SITE.logoUrl, contentUrl: SITE.logoUrl }
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "@id": `${url}#article`,
-    headline: post.title,
+    headline: post.h1,
     description: post.metaDescription,
     datePublished: post.published,
     dateModified: post.updated,
-    author: { "@type": "Organization", "@id": ORG_ID, name: SITE.name },
-    publisher: { "@type": "Organization", "@id": ORG_ID, name: SITE.name, logo: { "@type": "ImageObject", url: SITE.logoUrl } },
+    author: {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: "author" in post && post.author ? post.author : `${SITE.name} Editorial Team`,
+    },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: SITE.name, logo },
+    image: logo,
     mainEntityOfPage: { "@type": "WebPage", "@id": `${url}#webpage` },
     url,
     inLanguage: "en-US",
@@ -130,7 +136,7 @@ export function applyMeta({ title, description, path, robots = "index, follow", 
   setMeta("og:title", title, "property")
   setMeta("og:description", description, "property")
   setMeta("og:url", path === "/" ? `${SITE.url}/` : `${SITE.url}${path}`, "property")
-  setMeta("og:type", "website", "property")
+  setMeta("og:type", path.startsWith("/blog/") ? "article" : "website", "property")
   setMeta("og:site_name", SITE.name, "property")
   setMeta("og:locale", "en_US", "property")
   setMeta("og:image", image ?? DEFAULT_OG_IMAGE, "property")
@@ -168,7 +174,11 @@ export function organizationSchema() {
     "@id": ORG_ID,
     name: SITE.name,
     url: `${SITE.url}/`,
-    logo: SITE.logoUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: SITE.logoUrl,
+      contentUrl: SITE.logoUrl,
+    },
     description: SITE.description,
     email: "hello@nextcoresoft.com",
     knowsAbout: [

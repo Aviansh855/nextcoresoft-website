@@ -5,19 +5,11 @@ import { BlogArticleBody } from "../components/blog/BlogArticleBody"
 import { BlogRelatedPosts } from "../components/blog/BlogRelatedPosts"
 import { ServiceFaq } from "../components/services/ServiceFaq"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
-import { JsonLd } from "../components/seo/JsonLd"
 import { ButtonLink } from "../components/ui/Button"
 import { Reveal } from "../components/ui/Reveal"
 import { BLOG_INDEX_PATH, getBlogPost } from "../data/blog"
 import { blogPrimaryServicePath, blogReadingMinutes } from "../lib/blog-utils"
-import {
-  applyMeta,
-  articleSchema,
-  blogPostMeta,
-  breadcrumbSchema,
-  faqPageSchemaFromItems,
-  webPageSchema,
-} from "../lib/seo"
+import { applyMeta, blogPostMeta } from "../lib/seo"
 import { NotFoundPage } from "./NotFoundPage"
 
 function formatDate(iso: string) {
@@ -40,25 +32,11 @@ export function BlogPostPage() {
 
   if (!post) return <NotFoundPage />
 
-  const meta = blogPostMeta(post.slug)!
-  const faqSchema = faqPageSchemaFromItems(post.faqs)
   const readMinutes = blogReadingMinutes(post)
   const servicePath = blogPrimaryServicePath(post)
 
   return (
     <>
-      <JsonLd id="jsonld-article-webpage" data={webPageSchema(meta)} />
-      <JsonLd id="jsonld-article" data={articleSchema(post.slug)} />
-      {faqSchema ? <JsonLd id="jsonld-article-faq" data={faqSchema} /> : null}
-      <JsonLd
-        id="jsonld-article-breadcrumbs"
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Blog", path: BLOG_INDEX_PATH },
-          { name: post.title, path: `/blog/${post.slug}` },
-        ])}
-      />
-
       <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8">
         <Breadcrumbs
           items={[

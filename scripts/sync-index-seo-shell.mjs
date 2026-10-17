@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import { organizationJsonLd, websiteJsonLd } from "../shared/jsonld-static.mjs"
-import { noscriptBlock } from "../shared/route-meta.mjs"
+import { canonicalUrl, noscriptBlock, ROUTE_META } from "../shared/route-meta.mjs"
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const indexPath = join(root, "index.html")
@@ -51,5 +51,17 @@ html =
   `<!-- BEGIN:ROOT_NOSCRIPT -->\n    ${noscript}\n    <!-- END:ROOT_NOSCRIPT -->` +
   html.slice(noscriptEnd + "<!-- END:ROOT_NOSCRIPT -->".length)
 
+const home = ROUTE_META["/"]
+const homeCanonical = canonicalUrl("/")
+const homeTitle = home.title.replace(/&/g, "&amp;")
+const homeDescription = home.description.replace(/&/g, "&amp;")
+
+html = html.replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${homeTitle}" />`)
+html = html.replace(
+  /<meta property="og:description" content="[^"]*" \/>/,
+  `<meta property="og:description" content="${homeDescription}" />`,
+)
+html = html.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${homeCanonical}" />`)
+
 writeFileSync(indexPath, html, "utf8")
-console.log("Synced index.html JSON-LD and root noscript from shared SEO sources.")
+console.log("Synced index.html JSON-LD, OG tags, and root noscript from shared SEO sources.")

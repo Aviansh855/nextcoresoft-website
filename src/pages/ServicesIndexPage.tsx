@@ -2,11 +2,10 @@ import { ArrowRight } from "lucide-react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
-import { JsonLd } from "../components/seo/JsonLd"
 import { ButtonLink } from "../components/ui/Button"
 import { Reveal } from "../components/ui/Reveal"
 import { SERVICES, SERVICES_HUB_FAQS, SERVICES_HUB_H1, SITE } from "../data/content"
-import { applyMeta, breadcrumbSchema, faqPageSchemaFromItems, ROUTE_SEO, webPageSchema } from "../lib/seo"
+import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 export function ServicesIndexPage() {
   useEffect(() => {
@@ -15,16 +14,6 @@ export function ServicesIndexPage() {
 
   return (
     <>
-      <JsonLd id="jsonld-services-webpage" data={webPageSchema(ROUTE_SEO.services)} />
-      <JsonLd
-        id="jsonld-services-breadcrumbs"
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Services", path: "/services" },
-        ])}
-      />
-      <JsonLd id="jsonld-services-faq" data={faqPageSchemaFromItems(SERVICES_HUB_FAQS)} />
-
       <div className="mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8">
         <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Services" }]} />
 

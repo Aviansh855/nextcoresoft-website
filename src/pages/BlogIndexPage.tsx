@@ -3,13 +3,12 @@ import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { BlogPostCard } from "../components/blog/BlogPostCard"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
-import { JsonLd } from "../components/seo/JsonLd"
 import { ButtonLink } from "../components/ui/Button"
 import { Reveal } from "../components/ui/Reveal"
-import { BLOG_INDEX_PATH, BLOG_POSTS } from "../data/blog"
+import { BLOG_POSTS } from "../data/blog"
 import { BLOG_HUB_FAQS } from "../data/content"
 import { blogCategories, sortBlogPostsNewestFirst } from "../lib/blog-utils"
-import { applyMeta, breadcrumbSchema, faqPageSchemaFromItems, ROUTE_SEO, webPageSchema } from "../lib/seo"
+import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 export function BlogIndexPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All")
@@ -30,16 +29,6 @@ export function BlogIndexPage() {
 
   return (
     <>
-      <JsonLd id="jsonld-blog-webpage" data={webPageSchema(ROUTE_SEO.blog)} />
-      <JsonLd
-        id="jsonld-blog-breadcrumbs"
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Blog", path: BLOG_INDEX_PATH },
-        ])}
-      />
-      <JsonLd id="jsonld-blog-faq" data={faqPageSchemaFromItems(BLOG_HUB_FAQS)} />
-
       <div className="mx-auto w-full max-w-5xl px-5 pt-32 pb-24 sm:px-8">
         <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Blog" }]} />
 

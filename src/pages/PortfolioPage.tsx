@@ -2,13 +2,12 @@ import { ArrowRight } from "lucide-react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { PortfolioMockup } from "../components/portfolio/PortfolioMockup"
-import { JsonLd } from "../components/seo/JsonLd"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { ServicePageLinks } from "../components/seo/ServicePageLinks"
 import { ButtonLink } from "../components/ui/Button"
 import { Reveal } from "../components/ui/Reveal"
 import { PORTFOLIO_ITEMS, SERVICES, SITE } from "../data/content"
-import { applyMeta, breadcrumbSchema, ROUTE_SEO, webPageSchema } from "../lib/seo"
+import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 export function PortfolioPage() {
   useEffect(() => {
@@ -17,15 +16,6 @@ export function PortfolioPage() {
 
   return (
     <>
-      <JsonLd id="jsonld-portfolio-webpage" data={webPageSchema(ROUTE_SEO.portfolio)} />
-      <JsonLd
-        id="jsonld-portfolio-breadcrumbs"
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Portfolio", path: "/portfolio" },
-        ])}
-      />
-
       <div className="mx-auto w-full max-w-6xl px-5 pt-32 pb-24 sm:px-8">
         <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Portfolio" }]} />
 

@@ -104,6 +104,15 @@ for (const path of INDEXABLE_PATHS) {
   if (path === "/" && !html.includes('"knowsAbout"')) {
     fail("/: Organization JSON-LD must include knowsAbout — run sync-index-seo-shell.mjs")
   }
+  if (!html.includes('id="jsonld-route-graph"')) {
+    fail(`${path}: missing prerendered route JSON-LD (jsonld-route-graph)`)
+  }
+  if (path === "/" && !html.includes('"FAQPage"')) {
+    fail("/: route JSON-LD must include FAQPage")
+  }
+  if (path.startsWith("/blog/") && path !== "/blog" && !html.includes('"BlogPosting"')) {
+    fail(`${path}: route JSON-LD must include BlogPosting`)
+  }
   if (!html.includes(`<h1>${meta.h1.replace(/&/g, "&amp;")}</h1>`) && !html.includes(`<h1>${meta.h1}</h1>`)) {
     fail(`${path}: prerender noscript h1 must match ROUTE_META.h1`)
   }

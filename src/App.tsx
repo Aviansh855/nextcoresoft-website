@@ -1,5 +1,6 @@
 import { Routes } from "react-router-dom"
 import { Analytics } from "./components/seo/Analytics"
+import { RouteJsonLd } from "./components/seo/RouteJsonLd"
 import { BackToTop } from "./components/layout/BackToTop"
 import { Footer } from "./components/layout/Footer"
 import { Navbar } from "./components/layout/Navbar"
@@ -16,6 +17,7 @@ export default function App() {
         Skip to main content
       </a>
       <ScrollToTop />
+      <RouteJsonLd />
       <Navbar />
       <main id="main">
         <Routes>{createAppRouteElements()}</Routes>

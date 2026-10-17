@@ -1,11 +1,10 @@
 import { useEffect } from "react"
 import { CTABand } from "../components/home/CTABand"
 import { Reveal } from "../components/ui/Reveal"
-import { JsonLd } from "../components/seo/JsonLd"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { ServicePageLinks } from "../components/seo/ServicePageLinks"
 import { SITE } from "../data/content"
-import { applyMeta, breadcrumbSchema, ROUTE_SEO, webPageSchema } from "../lib/seo"
+import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 const PRINCIPLES = [
   {
@@ -33,14 +32,6 @@ export function AboutPage() {
 
   return (
     <>
-      <JsonLd id="jsonld-about-webpage" data={webPageSchema(ROUTE_SEO.about)} />
-      <JsonLd
-        id="jsonld-about-breadcrumbs"
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "About", path: "/about" },
-        ])}
-      />
       <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-8 sm:px-8">
         <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "About" }]} />
         <Reveal>

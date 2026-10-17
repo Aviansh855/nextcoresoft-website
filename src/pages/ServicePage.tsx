@@ -4,17 +4,9 @@ import { NotFoundPage } from "./NotFoundPage"
 import { ServiceFaq } from "../components/services/ServiceFaq"
 import { ServiceLeadCTAs } from "../components/services/ServiceLeadCTAs"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
-import { JsonLd } from "../components/seo/JsonLd"
 import { Reveal } from "../components/ui/Reveal"
 import { PORTFOLIO_ITEMS, SERVICE_DETAILS, SERVICES, SITE, type Service } from "../data/content"
-import {
-  applyMeta,
-  breadcrumbSchema,
-  faqPageSchemaFromItems,
-  servicePageMeta,
-  serviceSchema,
-  webPageSchema,
-} from "../lib/seo"
+import { applyMeta, servicePageMeta } from "../lib/seo"
 
 function BulletList({ items }: { items: readonly string[] }) {
   return (
@@ -45,18 +37,6 @@ export function ServicePage() {
     [service],
   )
 
-  const schemaItems = useMemo(
-    () =>
-      service
-        ? [
-            { name: "Home", path: "/" },
-            { name: "Services", path: "/#services" },
-            { name: service.title, path: `/services/${service.slug}` },
-          ]
-        : [],
-    [service],
-  )
-
   useEffect(() => {
     if (!service || !slug) return
     const meta = servicePageMeta(slug)
@@ -65,21 +45,14 @@ export function ServicePage() {
 
   if (!service) return <NotFoundPage />
 
-  const pageMeta = servicePageMeta(service.slug)
   const details = SERVICE_DETAILS[service.slug]
   const others = SERVICES.filter((item) => item.slug !== service.slug)
   const relatedPortfolio = details.portfolioIds
     .map((id) => PORTFOLIO_ITEMS.find((p) => p.id === id))
     .filter(Boolean)
-  const faqSchema = faqPageSchemaFromItems(details.faqs)
 
   return (
     <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8">
-      {pageMeta ? <JsonLd id="jsonld-service-webpage" data={webPageSchema(pageMeta)} /> : null}
-      <JsonLd id="jsonld-service" data={serviceSchema(service.slug)} />
-      <JsonLd id="jsonld-breadcrumbs" data={breadcrumbSchema(schemaItems)} />
-      {faqSchema ? <JsonLd id="jsonld-service-faq" data={faqSchema} /> : null}
-
       <Breadcrumbs items={crumbs} />
 
       <Reveal>

@@ -1,4 +1,5 @@
 import { SITE } from "./site.mjs"
+import { logoImageObject } from "./jsonld-graph.mjs"
 
 const ORG_ID = `${SITE.url}/#organization`
 
@@ -9,7 +10,7 @@ export function organizationJsonLd() {
     "@id": ORG_ID,
     name: SITE.name,
     url: `${SITE.url}/`,
-    logo: SITE.logoUrl,
+    logo: logoImageObject(),
     description: SITE.description,
     email: "hello@nextcoresoft.com",
     knowsAbout: [
