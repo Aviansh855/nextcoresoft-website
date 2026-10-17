@@ -17,11 +17,7 @@ function Copyright() {
   )
 }
 
-const SOCIALS = [
-  { label: "LinkedIn", href: "#" },
-  { label: "GitHub", href: "#" },
-  { label: "X", href: "#" },
-] as const
+const SOCIALS = ["LinkedIn", "GitHub", "X"] as const
 
 export function Footer() {
   return (
@@ -55,6 +51,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5">
             {[
               { label: "Portfolio", to: "/portfolio" },
+              { label: "Blog", to: "/blog" },
               { label: "About", to: "/about" },
               { label: "Contact", to: "/contact" },
               { label: "Privacy Policy", to: "/privacy" },
@@ -79,24 +76,16 @@ export function Footer() {
               >
                 hello@nextcoresoft.com
               </a>
-              <span className="mt-0.5 block text-xs text-slate-500">Placeholder — update before launch</span>
             </li>
             <li className="pt-2">
               <p className="text-xs tracking-wide text-slate-500 uppercase">Social</p>
-              <div className="mt-2 flex flex-wrap justify-start gap-4 sm:justify-start lg:justify-start">
-                {SOCIALS.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-disabled="true"
-                    title={`${social.label} profile not yet published`}
-                    className="cursor-not-allowed rounded text-slate-500"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    {social.label}
-                  </a>
-                ))}
-              </div>
+              <p className="mt-2 text-sm text-slate-500">
+                {SOCIALS.join(" · ")} — profiles not published yet.{" "}
+                <Link to="/contact" className="font-medium text-cyan-700 hover:underline">
+                  Contact us
+                </Link>{" "}
+                in the meantime.
+              </p>
             </li>
           </ul>
         </div>

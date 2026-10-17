@@ -46,7 +46,7 @@ export function AboutPage() {
         <Reveal>
           <p className="text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">About</p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-slate-900 text-balance sm:text-5xl">
-            A software studio focused on how businesses actually operate.
+            A software studio focused on how businesses actually operate
           </h1>
           <div className="mt-6 space-y-5 text-base leading-relaxed text-slate-600 sm:text-lg">
             <p>

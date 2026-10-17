@@ -1,8 +1,8 @@
 # NextCoreSoft
 
-> Custom software, mobile apps, and AI automation for growing businesses.
+> Custom software development company — web applications, mobile apps (Android & iOS), and AI workflow automation for growing businesses.
 
-NextCoreSoft is a software development studio. We build custom web applications, Android and iOS apps, and practical AI workflow automations for small and medium businesses and startups. We do not sell off-the-shelf SaaS products; each project is scoped and quoted individually.
+NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor. We build custom web applications, business software, mobile apps, and practical AI automations for SMBs and startups. Projects are scoped and quoted individually. We work remotely worldwide in English.
 
 ## Canonical site
 
@@ -11,13 +11,21 @@ NextCoreSoft is a software development studio. We build custom web applications,
 ## Key pages
 
 - Home: https://nextcoresoft.com/
+- Services overview: https://nextcoresoft.com/services
 - About: https://nextcoresoft.com/about
 - Contact / free consultation: https://nextcoresoft.com/contact
 - Portfolio (project showcases): https://nextcoresoft.com/portfolio
-- Custom software: https://nextcoresoft.com/services/custom-software
-- Mobile apps: https://nextcoresoft.com/services/mobile-apps
-- AI automation: https://nextcoresoft.com/services/ai-automation
+- Blog: https://nextcoresoft.com/blog
+- Custom software & web development: https://nextcoresoft.com/services/custom-software
+- Mobile app development: https://nextcoresoft.com/services/mobile-apps
+- AI automation company (workflows): https://nextcoresoft.com/services/ai-automation
 - Cloud & APIs: https://nextcoresoft.com/services/cloud-api
+
+## Blog (2026 guides)
+
+- Custom software development cost in India: https://nextcoresoft.com/blog/custom-software-development-cost-india
+- Mobile app development cost in India: https://nextcoresoft.com/blog/mobile-app-development-cost-india
+- MVP vs full product — what to build first: https://nextcoresoft.com/blog/mvp-vs-full-product
 
 ## Contact
 
@@ -26,4 +34,4 @@ NextCoreSoft is a software development studio. We build custom web applications,
 
 ## What we do not claim
 
-No published client case studies with measured results on the marketing site. Demonstration projects are labeled as such. No physical office address is listed until verified.
+No guaranteed Google rankings or #1 placement. No published client case studies with measured results unless stated. No public office address on this site — local “near me” map results require a verified Google Business Profile separately. Demonstration portfolio items are labeled as showcases. Blog cost ranges are indicative planning examples for India, not binding quotations.

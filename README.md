@@ -119,9 +119,18 @@ The live site is hosted on Cloudflare Pages. `vercel.json` is not read there.
    so **every** indexable route works as `/contact`, `/contact/`, `/services/custom-software/`,
    etc., without redirect loops. **`functions/_middleware.js` must not 301-strip trailing
    slashes** (that caused `/contact` ↔ `/contact/` loops). Deploy both `dist/` and `functions/`.
-4. Unknown paths fall back to `index.html` (SPA); middleware returns real **404** for junk URLs.
-5. No environment variables are required for the contact form. It posts to the
-   Formspree URL in `src/components/contact/InquiryForm.tsx`.
+4. Unknown paths fall back to `index.html` (SPA); **`functions/_middleware.js`** returns real **404**
+   + `X-Robots-Tag: noindex` for junk URLs. Confirm the latest deploy includes the `functions/` folder.
+5. Optional Cloudflare **Production** env vars (then redeploy): `VITE_GSC_SITE_VERIFICATION` (Search Console HTML tag),
+   `VITE_PLAUSIBLE_DOMAIN`, `VITE_FORM_ENDPOINT` if you change Formspree.
+6. The contact form posts to Formspree (`InquiryForm.tsx`); no env var required for the default endpoint.
+
+**After every production deploy**, spot-check:
+
+- `https://nextcoresoft.com/sitemap.xml` lists all indexable URLs (see `shared/indexable-paths.mjs` — blog posts come from `shared/blog-posts.json`).
+- `https://nextcoresoft.com/blog` and `https://nextcoresoft.com/services` return **200** (not 404).
+- Homepage `<title>` includes **Web & App Development**.
+- If GSC sitemap fetch fails with **403**, see `docs/CLOUDFLARE-403-GOOGLEBOT.md`.
 
 ## 3D hero and performance
 

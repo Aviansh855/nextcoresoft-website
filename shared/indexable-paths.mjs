@@ -7,6 +7,8 @@
  * both serve the same prerender HTML with canonical pointing at `/path` (see docs/SEO.md).
  */
 
+import { BLOG_INDEX_PATH, blogPostIndexablePaths, blogSitemapEntries } from "./blog-posts.mjs"
+
 export const SITE_ORIGIN = "https://nextcoresoft.com"
 
 export const INDEXABLE_PATHS = [
@@ -14,6 +16,9 @@ export const INDEXABLE_PATHS = [
   "/about",
   "/contact",
   "/portfolio",
+  BLOG_INDEX_PATH,
+  ...blogPostIndexablePaths(),
+  "/services",
   "/services/custom-software",
   "/services/mobile-apps",
   "/services/ai-automation",
@@ -52,6 +57,8 @@ export const SITEMAP_ENTRIES = [
   { loc: "/about", changefreq: "monthly", priority: "0.8" },
   { loc: "/contact", changefreq: "monthly", priority: "0.9" },
   { loc: "/portfolio", changefreq: "monthly", priority: "0.85" },
+  ...blogSitemapEntries(),
+  { loc: "/services", changefreq: "monthly", priority: "0.88" },
   { loc: "/services/custom-software", changefreq: "monthly", priority: "0.85" },
   { loc: "/services/mobile-apps", changefreq: "monthly", priority: "0.85" },
   { loc: "/services/ai-automation", changefreq: "monthly", priority: "0.85" },

@@ -7,22 +7,18 @@
  */
 
 import { PORTFOLIO_ITEMS as _PORTFOLIO_ITEMS } from "./portfolio"
+import site from "../../shared/site.json"
+import headings from "../../shared/page-headings.json"
 
-export const SITE = {
-  name: "NextCoreSoft",
-  domain: "nextcoresoft.com",
-  url: "https://nextcoresoft.com",
-  /** Official wordmark (served from /public). */
-  logo: "/nextcoresoft-logo.jpg",
-  logoUrl: "https://nextcoresoft.com/nextcoresoft-logo.jpg",
-  tagline: "Custom software, mobile apps, and AI automation for growing businesses.",
-  description:
-    "NextCoreSoft builds custom software, Android and iOS applications, and AI automations that help businesses streamline operations, reduce repetitive work, and scale efficiently.",
-} as const
+export const SITE = site
+export const HOME_H1 = headings.HOME_H1
+export const HOME_TAGLINE = headings.HOME_TAGLINE
+export const SERVICES_HUB_H1 = headings.SERVICES_HUB_H1
 
 export const NAV_LINKS = [
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Blog", href: "/blog" },
   { label: "Solutions", href: "/#solutions" },
   { label: "Industries", href: "/#industries" },
   { label: "Our Process", href: "/#process" },
@@ -322,6 +318,49 @@ export const BUDGET_OPTIONS = [
   "I'd like guidance on budget",
 ] as const
 
+/** Services hub — AEO / FAQ rich results (distinct from homepage FAQ). */
+export const SERVICES_HUB_FAQS = [
+  {
+    question: "Which software development services does NextCoreSoft offer?",
+    answer:
+      "Custom software and web applications, Android and iOS mobile apps, AI workflow automation, and cloud hosting with API integrations. Each service has its own page with deliverables and FAQs; start at /services or contact us if you are unsure which fits.",
+  },
+  {
+    question: "Do you quote web development and mobile apps separately?",
+    answer:
+      "Yes. Web apps, mobile clients, and automation are scoped independently with milestones and written cost. A discovery call clarifies whether you need one track or a combined roadmap.",
+  },
+  {
+    question: "Can one vendor handle custom software, mobile, and AI automation?",
+    answer:
+      "We often deliver all three for one product — for example a web admin, mobile field app, and document automation — so integrations stay consistent. We will recommend a smaller first phase if that reduces risk.",
+  },
+  {
+    question: "How do I request a quote for a specific service?",
+    answer:
+      "Use the contact form and mention the service (or open a service page and click Request a quote). We reply within one business day with scope questions and how we would structure the quotation.",
+  },
+] as const
+
+/** Blog index — common questions for search and answer engines. */
+export const BLOG_HUB_FAQS = [
+  {
+    question: "What topics does the NextCoreSoft blog cover?",
+    answer:
+      "Custom software versus spreadsheets, hiring a development company, mobile and web projects, and practical AI automation — written for business owners and operations teams, not developers only.",
+  },
+  {
+    question: "Are blog posts a substitute for a consultation?",
+    answer:
+      "No. Articles explain patterns and questions to ask; your timeline, integrations, and budget need a discovery conversation. Contact us when you are ready to scope a real project.",
+  },
+  {
+    question: "How often is new content published?",
+    answer:
+      "We add articles when we have something useful and verified to say. The blog index lists current guides — including custom software and mobile app costs in India and MVP vs full product planning.",
+  },
+] as const
+
 export const FAQS = [
   {
     question: "What services does NextCoreSoft offer?",
@@ -367,5 +406,20 @@ export const FAQS = [
     question: "Can we see examples of your work before hiring you?",
     answer:
       "Yes. Our portfolio lists software and app projects we can demonstrate in a call. Items are labeled as project showcases unless you have approved a formal client case study. We do not publish client logos or revenue claims without your permission.",
+  },
+  {
+    question: "Does NextCoreSoft build custom websites and web applications?",
+    answer:
+      "Yes. We build custom web applications and business-facing websites as part of software development engagements — not generic template installs. Marketing sites are in scope when they are tied to a product, portal, or admin system your team needs.",
+  },
+  {
+    question: "Is NextCoreSoft an AI automation company?",
+    answer:
+      "We implement AI automation for real business steps — reading inquiries, extracting document fields, routing work, and drafting routine replies — with human review where errors are costly. We are not a consumer chatbot vendor; projects are scoped to your tools and data.",
+  },
+  {
+    question: "Do you work with clients searching “near me” or only remotely?",
+    answer:
+      "We deliver remotely and work in English with clients in many countries. This website does not list a public office address. Google’s local “near me” map results usually require a verified Google Business Profile and address — we do not claim map-pack placement here. You can still contact us for a video consultation from anywhere.",
   },
 ] as const

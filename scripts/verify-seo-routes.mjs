@@ -101,6 +101,12 @@ for (const path of INDEXABLE_PATHS) {
   if (!html.includes(meta.description.slice(0, 40))) {
     fail(`${path}: description snippet missing in ${file}`)
   }
+  if (path === "/" && !html.includes('"knowsAbout"')) {
+    fail("/: Organization JSON-LD must include knowsAbout — run sync-index-seo-shell.mjs")
+  }
+  if (!html.includes(`<h1>${meta.h1.replace(/&/g, "&amp;")}</h1>`) && !html.includes(`<h1>${meta.h1}</h1>`)) {
+    fail(`${path}: prerender noscript h1 must match ROUTE_META.h1`)
+  }
 }
 
 if (failed) process.exit(1)

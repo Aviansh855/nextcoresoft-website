@@ -6,6 +6,17 @@ This site is a **client-rendered SPA** (React + Vite) on Cloudflare Pages. `inde
 
 Google generally renders JavaScript, but **crawl and index timing can lag** compared with SSR. This project **prerenders static HTML** per indexable route at build time (`scripts/prerender-routes.mjs`) so each URL has the correct title, description, and canonical before JS runs. Bing and some social crawlers may not execute JS fully. For maximum reliability, consider later: static prerender of key URLs, Cloudflare Workers prerender, or SSR — none of these are required for launch but they improve predictability.
 
+### Build pipeline (`npm run build`)
+
+1. `generate-redirects.mjs` / `generate-sitemap.mjs` from `shared/indexable-paths.mjs`
+2. `verify-jsonld-sync.mjs` — `shared/site.json` matches static JSON-LD
+3. `sync-index-seo-shell.mjs` — Organization/WebSite JSON-LD + root noscript from `shared/route-meta.mjs`
+4. Vite build → `prerender-routes.mjs` → `verify-seo-routes.mjs` (14 URLs, canonical, noscript H1)
+
+Copy and H1 strings: `shared/site.json`, `shared/page-headings.json` (imported by React via `src/data/content.ts`).
+
+**Blog content:** edit `content/nextcoresoft_3_seo_blog_posts.md`, then run `npm run blogs:compile` (or full `npm run build`) to regenerate `shared/blog-posts.json`.
+
 ## Google Search Console
 
 1. Add property: **URL prefix** `https://nextcoresoft.com/` (or **Domain** `nextcoresoft.com` with DNS TXT verification).
@@ -25,6 +36,9 @@ Canonical URLs are **HTTPS apex, non-www, no trailing slash** (except homepage `
 - `/about`
 - `/contact`
 - `/portfolio`
+- `/services` (hub linking to all four service pages)
+- `/blog`
+- `/blog/{slug}` (one post per entry in `shared/blog-posts.json`)
 - `/services/custom-software`
 - `/services/mobile-apps`
 - `/services/ai-automation`
@@ -51,13 +65,19 @@ Internal links and GSC URL Inspection should use the **sitemap** URLs. Rich resu
 
 | Type | Where |
 |------|--------|
-| Organization | `index.html` (static) |
+| Organization | `index.html` (static, via `shared/jsonld-static.mjs`) |
 | WebSite | `index.html` (static) |
-| FAQPage | Homepage (`JsonLd`) |
+| FAQPage | Homepage, `/services`, `/blog`, service pages, blog posts |
+| ProfessionalService + OfferCatalog | Homepage (`JsonLd`) |
+| Article | Each blog post |
 | Service | Each service page |
 | BreadcrumbList | About, Contact, Service pages |
 
-No Review, AggregateRating, LocalBusiness address, VideoObject, or SoftwareApplication (not a downloadable product; no watch-page videos).
+No Review, AggregateRating, or LocalBusiness street address (no verified public office on site). No guaranteed rankings — SEO improves discoverability over time; map-pack “near me” needs Google Business Profile separately.
+
+## Search intent we target (honestly)
+
+Homepage and service copy mention **custom software development**, **web development**, **mobile app development**, and **AI automation company** in natural language — not keyword stuffing. Blog and `/services` hub support long-tail queries. **#1 on Google is not promised**; continue GSC monitoring with `npm run gsc:report`.
 
 ## llms.txt
 

@@ -1,14 +1,25 @@
+import { blogRouteMetaByPath } from "./blog-posts.mjs"
 import { SITE_ORIGIN } from "./indexable-paths.mjs"
+import { HOME_H1, SERVICES_HUB_H1 } from "./page-headings.mjs"
 
 /** Static HTML meta per indexable route. Service h1/lead must match `SERVICE_DETAILS` in `src/data/content.ts`. */
 export const ROUTE_META = {
   "/": {
-    title: "NextCoreSoft | Custom Software, Mobile Apps & AI Automation",
+    title: "NextCoreSoft | Custom Software, Web & App Development, AI Automation",
     description:
-      "NextCoreSoft builds custom software, Android and iOS apps, and AI workflow automation for SMBs and startups. Free consultation. Milestone-based delivery.",
-    h1: "Custom Software, Mobile Apps & AI Automation",
+      "Custom software development company for web apps, business websites, Android & iOS apps, and AI automation. NextCoreSoft works with SMBs worldwide. Free consultation.",
+    h1: HOME_H1,
     staticLead:
-      "NextCoreSoft builds custom software, mobile applications, and AI workflow automation for small and medium-sized businesses and startups.",
+      "NextCoreSoft is a software development studio for custom web applications, mobile app development, and practical AI workflow automation for growing businesses.",
+    robots: "index, follow",
+  },
+  "/services": {
+    title: "Software Development Services | Web, Mobile & AI | NextCoreSoft",
+    description:
+      "Explore custom software development, web development, Android and iOS app development, AI automation, and API integrations — one studio, milestone-based delivery.",
+    h1: SERVICES_HUB_H1,
+    staticLead:
+      "Service overview for businesses looking for a software, web, mobile, or AI automation development partner.",
     robots: "index, follow",
   },
   "/about": {
@@ -39,28 +50,28 @@ export const ROUTE_META = {
     robots: "index, follow",
   },
   "/services/custom-software": {
-    title: "Custom Software Development for SMBs | NextCoreSoft",
+    title: "Custom Software & Web Development Company | NextCoreSoft",
     description:
-      "NextCoreSoft builds custom web apps, admin panels, and internal tools for SMBs and startups stuck on spreadsheets. Fewer manual steps, clearer workflows. Free consultation.",
-    h1: "Custom Software Development for Growing Businesses",
+      "Custom software and web development for business apps, admin panels, and internal tools. NextCoreSoft replaces spreadsheets with systems built for your workflow. Free consultation.",
+    h1: "Custom Software and Web Development for Growing Businesses",
     staticLead:
       "Purpose-built web apps, admin panels, and internal tools for teams that have outgrown spreadsheets and generic SaaS.",
     robots: "index, follow",
   },
   "/services/mobile-apps": {
-    title: "Android & iOS App Development | NextCoreSoft",
+    title: "Mobile App Development Company (Android & iOS) | NextCoreSoft",
     description:
-      "NextCoreSoft builds Android and iOS apps for customer self-service and field teams. Store launch, secure APIs, offline-ready workflows. For service, retail, and ops-heavy businesses.",
-    h1: "Android & iOS App Development for Customers and Field Teams",
+      "Mobile app development company for Android and iOS — customer apps, field teams, secure APIs, and store launch support. NextCoreSoft builds for service, retail, and operations.",
+    h1: "Mobile App Development for Android, iOS, and Field Teams",
     staticLead:
       "Mobile apps for both major platforms — for customers in the app stores and for staff who work away from a desk.",
     robots: "index, follow",
   },
   "/services/ai-automation": {
-    title: "AI Automation for Business Workflows | NextCoreSoft",
+    title: "AI Automation Company for Business Workflows | NextCoreSoft",
     description:
-      "NextCoreSoft automates inquiries, documents, and routine handoffs with practical AI — for teams drowning in email and retyping. Human review where it matters. SMBs and growing companies.",
-    h1: "AI Automation & Intelligent Workflows",
+      "AI automation company for document processing, inquiry routing, and workflow integration — practical AI with human review where it matters. NextCoreSoft serves SMBs and growing teams.",
+    h1: "AI Automation and Intelligent Workflows for Business",
     staticLead:
       "Practical AI for inquiry routing, document extraction, and routine handoffs — with humans in the loop when accuracy matters.",
     robots: "index, follow",
@@ -89,6 +100,7 @@ export const ROUTE_META = {
     staticLead: "Terms for using the NextCoreSoft website and related services.",
     robots: "index, follow",
   },
+  ...blogRouteMetaByPath(),
 }
 
 export function canonicalUrl(path) {
@@ -113,6 +125,7 @@ export function noscriptBlock(path) {
     ["/portfolio", "Portfolio"],
     ["/services/custom-software", "Custom software"],
     ["/services/mobile-apps", "Mobile apps"],
+    ["/services", "Services"],
     ["/services/ai-automation", "AI automation"],
     ["/services/cloud-api", "Cloud & API"],
   ]

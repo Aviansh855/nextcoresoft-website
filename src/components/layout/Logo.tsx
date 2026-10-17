@@ -16,7 +16,8 @@ function LogoMark({ large }: { large?: boolean }) {
   return (
     <span
       className={`logo-mark shrink-0 bg-white bg-no-repeat ${box}`}
-      aria-hidden="true"
+      role="img"
+      aria-label={`${SITE.name} logo`}
     />
   )
 }

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-redirects.mjs && node scripts/generate-sitemap.mjs && tsc -b && vite build && node scripts/prerender-routes.mjs && node scripts/verify-seo-routes.mjs",
+    "build": "node scripts/compile-blogs-from-md.mjs && node scripts/generate-redirects.mjs && node scripts/generate-sitemap.mjs && node scripts/verify-jsonld-sync.mjs && node scripts/sync-index-seo-shell.mjs && tsc -b && vite build && node scripts/prerender-routes.mjs && node scripts/verify-seo-routes.mjs",
+    "blogs:compile": "node scripts/compile-blogs-from-md.mjs",
     "gsc:report": "node scripts/gsc-performance-report.mjs",
     "lint": "oxlint",
     "preview": "vite preview"

@@ -1,5 +1,7 @@
 import type { ReactNode } from "react"
 import { Route } from "react-router-dom"
+import { BlogIndexPage } from "../pages/BlogIndexPage"
+import { BlogPostPage } from "../pages/BlogPostPage"
 import { AboutPage } from "../pages/AboutPage"
 import { ContactPage } from "../pages/ContactPage"
 import { HomePage } from "../pages/HomePage"
@@ -7,6 +9,7 @@ import { LegalPage } from "../pages/LegalPage"
 import { NotFoundPage } from "../pages/NotFoundPage"
 import { PortfolioPage } from "../pages/PortfolioPage"
 import { ServicePage } from "../pages/ServicePage"
+import { ServicesIndexPage } from "../pages/ServicesIndexPage"
 
 /** Each indexable path and its trailing-slash alias — must stay direct `<Route>` children of `<Routes>`. */
 function pathWithTrailingSlash(path: string, element: ReactNode) {
@@ -26,12 +29,16 @@ function pathWithTrailingSlash(path: string, element: ReactNode) {
  */
 export function createAppRouteElements() {
   return [
-    ...pathWithTrailingSlash("/portfolio", <PortfolioPage />),
     ...pathWithTrailingSlash("/", <HomePage />),
-    <Route key="/services/:slug" path="/services/:slug" element={<ServicePage />} />,
-    <Route key="/services/:slug/" path="/services/:slug/" element={<ServicePage />} />,
     ...pathWithTrailingSlash("/about", <AboutPage />),
     ...pathWithTrailingSlash("/contact", <ContactPage />),
+    ...pathWithTrailingSlash("/portfolio", <PortfolioPage />),
+    <Route key="/blog/:slug" path="/blog/:slug" element={<BlogPostPage />} />,
+    <Route key="/blog/:slug/" path="/blog/:slug/" element={<BlogPostPage />} />,
+    ...pathWithTrailingSlash("/blog", <BlogIndexPage />),
+    <Route key="/services/:slug" path="/services/:slug" element={<ServicePage />} />,
+    <Route key="/services/:slug/" path="/services/:slug/" element={<ServicePage />} />,
+    ...pathWithTrailingSlash("/services", <ServicesIndexPage />),
     ...pathWithTrailingSlash("/privacy", <LegalPage kind="privacy" />),
     ...pathWithTrailingSlash("/terms", <LegalPage kind="terms" />),
     <Route key="*" path="*" element={<NotFoundPage />} />,

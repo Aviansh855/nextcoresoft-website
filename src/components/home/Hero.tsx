@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { HOME_H1, HOME_TAGLINE } from "../../data/content"
 import { ServicePageLinks } from "../seo/ServicePageLinks"
 import { ButtonLink } from "../ui/Button"
 import { HeroEntrance, HeroEntranceItem } from "../ui/HeroEntrance"
@@ -20,20 +21,22 @@ export function Hero() {
           <HeroEntranceItem>
             <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-medium tracking-wide text-cyan-600 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-cyan-300" aria-hidden="true" />
-              Software · Mobile · AI Automation
+              Custom software · Web & app development · AI automation
             </p>
           </HeroEntranceItem>
 
           <HeroEntranceItem>
-            <h1 className="mt-6 max-w-[14ch] font-display text-[2.6rem] leading-[1.05] font-semibold tracking-tight text-slate-900 text-balance sm:text-6xl lg:text-7xl">
-              Build Smarter. Automate More. Grow Faster.
+            <h1 className="mt-6 max-w-[22ch] font-display text-[2.15rem] leading-[1.08] font-semibold tracking-tight text-slate-900 text-balance sm:text-5xl lg:text-[3.25rem]">
+              {HOME_H1}
             </h1>
+            <p className="mt-4 max-w-xl font-display text-lg font-medium tracking-tight text-slate-700 text-pretty sm:text-xl">
+              {HOME_TAGLINE}
+            </p>
           </HeroEntranceItem>
 
           <HeroEntranceItem>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 text-pretty sm:text-lg">
-              We build custom software, mobile applications, and intelligent AI automations that help
-              businesses streamline operations, reduce repetitive work, and scale efficiently.
+              {`We are a software development partner for custom web applications, business websites, Android and iOS apps, and AI automation — helping teams replace manual work with systems that fit how you operate.`}
             </p>
           </HeroEntranceItem>
 
@@ -43,7 +46,7 @@ export function Hero() {
                 Book a Free Consultation
                 <ArrowRight size={16} aria-hidden="true" />
               </ButtonLink>
-              <ButtonLink to="/#services" variant="secondary">
+              <ButtonLink to="/services" variant="secondary">
                 View all services
               </ButtonLink>
             </div>

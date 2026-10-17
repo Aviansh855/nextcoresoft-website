@@ -18,10 +18,10 @@ export type ServiceDetail = {
 
 export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
   "custom-software": {
-    seoTitle: "Custom Software Development for SMBs",
+    seoTitle: "Custom Software & Web Development Company",
     metaDescription:
-      "NextCoreSoft builds custom web apps, admin panels, and internal tools for SMBs and startups stuck on spreadsheets. Fewer manual steps, clearer workflows. Free consultation.",
-    h1: "Custom Software Development for Growing Businesses",
+      "Custom software and web development for business apps, admin panels, and internal tools. NextCoreSoft replaces spreadsheets with systems built for your workflow. Free consultation.",
+    h1: "Custom Software and Web Development for Growing Businesses",
     intro:
       "NextCoreSoft designs and builds web applications, admin panels, dashboards, and internal tools around how your team actually works — not how a generic product expects you to work.",
     audience:
@@ -177,10 +177,10 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     portfolioIds: ["food-explore", "pg-booking", "milk-delivery-management", "anonymous-chat"],
   },
   "ai-automation": {
-    seoTitle: "AI Automation for Business Workflows",
+    seoTitle: "AI Automation Company for Business Workflows",
     metaDescription:
-      "NextCoreSoft automates inquiries, documents, and routine handoffs with practical AI — for teams drowning in email and retyping. Human review where it matters. SMBs and growing companies.",
-    h1: "AI Automation & Intelligent Workflows",
+      "AI automation company for document processing, inquiry routing, and workflow integration — practical AI with human review where it matters. NextCoreSoft serves SMBs and growing teams.",
+    h1: "AI Automation and Intelligent Workflows for Business",
     intro:
       "We connect AI to real business steps: reading incoming inquiries, extracting fields from documents, drafting routine replies, and routing work to the right person — only where that genuinely saves time, with humans kept in the loop when accuracy matters.",
     audience:

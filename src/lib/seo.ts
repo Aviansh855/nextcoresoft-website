@@ -1,3 +1,4 @@
+import { getBlogPost } from "../data/blog"
 import { FAQS, SERVICE_DETAILS, SERVICES, SITE } from "../data/content"
 
 export interface PageMeta {
@@ -16,10 +17,16 @@ const ORG_ID = `${SITE.url}/#organization`
 /** Keyword-aware defaults per route (≤60 char titles, ~150–160 char descriptions where possible). */
 export const ROUTE_SEO = {
   home: {
-    title: "NextCoreSoft | Custom Software, Mobile Apps & AI Automation",
+    title: "NextCoreSoft | Custom Software, Web & App Development, AI Automation",
     description:
-      "NextCoreSoft builds custom software, Android and iOS apps, and AI workflow automation for SMBs and startups. Free consultation. Milestone-based delivery.",
+      "Custom software development company for web apps, business websites, Android & iOS apps, and AI automation. NextCoreSoft works with SMBs worldwide. Free consultation.",
     path: "/",
+  },
+  services: {
+    title: "Software Development Services | Web, Mobile & AI | NextCoreSoft",
+    description:
+      "Explore custom software development, web development, Android and iOS app development, AI automation, and API integrations — one studio, milestone-based delivery.",
+    path: "/services",
   },
   about: {
     title: "About NextCoreSoft | Software & AI Automation Studio",
@@ -50,6 +57,12 @@ export const ROUTE_SEO = {
       "Explore software and app builds from NextCoreSoft — service management, mobile apps, booking systems, and automation. Project showcases, not verified client case studies unless stated.",
     path: "/portfolio",
   },
+  blog: {
+    title: "Blog | NextCoreSoft — Custom Software & Automation",
+    description:
+      "Guides on custom software and mobile app development costs in India, MVP planning, and software project scoping for Indian SMBs and founders.",
+    path: "/blog",
+  },
   notFound: {
     title: "Page Not Found | NextCoreSoft",
     description: "This page does not exist. Visit the NextCoreSoft homepage or contact us about your project.",
@@ -57,6 +70,36 @@ export const ROUTE_SEO = {
     robots: "noindex, follow",
   },
 } as const
+
+export function blogPostMeta(slug: string) {
+  const post = getBlogPost(slug)
+  if (!post) return null
+  return {
+    title: `${post.seoTitle} | ${SITE.name}`,
+    description: post.metaDescription,
+    path: `/blog/${post.slug}`,
+  }
+}
+
+export function articleSchema(slug: string) {
+  const post = getBlogPost(slug)
+  if (!post) return null
+  const url = `${SITE.url}/blog/${post.slug}`
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: post.title,
+    description: post.metaDescription,
+    datePublished: post.published,
+    dateModified: post.updated,
+    author: { "@type": "Organization", "@id": ORG_ID, name: SITE.name },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: SITE.name, logo: { "@type": "ImageObject", url: SITE.logoUrl } },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${url}#webpage` },
+    url,
+    inLanguage: "en-US",
+  }
+}
 
 export function servicePageMeta(slug: string) {
   const service = SERVICES.find((s) => s.slug === slug)
@@ -124,19 +167,70 @@ export function organizationSchema() {
     "@type": "Organization",
     "@id": ORG_ID,
     name: SITE.name,
-    url: SITE.url,
+    url: `${SITE.url}/`,
     logo: SITE.logoUrl,
     description: SITE.description,
     email: "hello@nextcoresoft.com",
+    knowsAbout: [
+      "Custom software development",
+      "Web application development",
+      "Business website development",
+      "Android app development",
+      "iOS app development",
+      "AI workflow automation",
+      "API integration",
+      "Cloud software deployment",
+    ],
+    areaServed: {
+      "@type": "Place",
+      name: "Worldwide",
+      description:
+        "Remote delivery; consult via video and email. No public storefront address listed on this site.",
+    },
     contactPoint: [
       {
         "@type": "ContactPoint",
-        contactType: "customer support",
+        contactType: "sales",
         email: "hello@nextcoresoft.com",
         url: `${SITE.url}/contact`,
         availableLanguage: ["English"],
       },
     ],
+  }
+}
+
+/** Visible on homepage — describes what the business offers (not a guarantee of local map rankings). */
+export function professionalServiceSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${SITE.url}/#professional-service`,
+    name: SITE.name,
+    url: SITE.url,
+    image: SITE.logoUrl,
+    description: SITE.description,
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "Place", name: "Worldwide" },
+    serviceType: [
+      "Custom software development",
+      "Web development",
+      "Mobile application development",
+      "AI automation consulting and implementation",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Software development services",
+      itemListElement: SERVICES.map((s, i) => ({
+        "@type": "Offer",
+        position: i + 1,
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          url: `${SITE.url}/services/${s.slug}`,
+          description: s.summary,
+        },
+      })),
+    },
   }
 }
 
@@ -146,10 +240,38 @@ export function websiteSchema() {
     "@type": "WebSite",
     "@id": `${SITE.url}/#website`,
     name: SITE.name,
-    url: SITE.url,
+    url: `${SITE.url}/`,
     description: SITE.description,
     publisher: { "@id": ORG_ID },
     inLanguage: "en-US",
+  }
+}
+
+export function webPageSchema(meta: { title: string; description: string; path: string }) {
+  const url = meta.path === "/" ? `${SITE.url}/` : `${SITE.url}${meta.path}`
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: meta.title,
+    description: meta.description,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: { "@id": ORG_ID },
+    inLanguage: "en-US",
+  }
+}
+
+export function breadcrumbSchema(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.path === "/" ? `${SITE.url}/` : `${SITE.url}${item.path}`,
+    })),
   }
 }
 
@@ -192,44 +314,5 @@ export function serviceSchema(slug: string) {
   }
 }
 
-export function webPageSchema(meta: { title: string; description: string; path: string }) {
-  const url = meta.path === "/" ? `${SITE.url}/` : `${SITE.url}${meta.path}`
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${url}#webpage`,
-    url,
-    name: meta.title,
-    description: meta.description,
-    isPartOf: { "@id": `${SITE.url}/#website` },
-    about: { "@id": ORG_ID },
-    inLanguage: "en-US",
-  }
-}
-
-export function breadcrumbSchema(items: { name: string; path: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.path === "/" ? `${SITE.url}/` : `${SITE.url}${item.path}`,
-    })),
-  }
-}
-
 /** @deprecated use organizationSchema() — kept for any legacy imports */
 export const ORGANIZATION_SCHEMA = organizationSchema()
-
-/** Keep in sync with `shared/indexable-paths.mjs` (sitemap + edge 404 middleware). */
-export const INDEXABLE_PATHS = [
-  "/",
-  "/about",
-  "/contact",
-  "/portfolio",
-  ...SERVICES.map((s) => `/services/${s.slug}`),
-  "/privacy",
-  "/terms",
-] as const
