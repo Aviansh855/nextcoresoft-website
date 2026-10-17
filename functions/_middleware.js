@@ -14,6 +14,10 @@ export async function onRequest(context) {
 
   const path = normalizePathname(rawPath)
 
+  if (path.startsWith("/api/")) {
+    return context.next()
+  }
+
   // Do not 301 strip trailing slashes here — Cloudflare Pages may 308-add them for
   // directory index.html routes, which caused /portfolio ↔ /portfolio/ redirect loops.
 

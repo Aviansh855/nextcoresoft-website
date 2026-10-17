@@ -1,13 +1,158 @@
-------formdata-undici-042640375342
+------formdata-undici-030075836064
 Content-Disposition: form-data; name="metadata"
 
-{"main_module":"functionsWorker-0.9657312205958941.js"}
-------formdata-undici-042640375342
-Content-Disposition: form-data; name="functionsWorker-0.9657312205958941.js"; filename="functionsWorker-0.9657312205958941.js"
+{"main_module":"functionsWorker-0.3764107895656347.js"}
+------formdata-undici-030075836064
+Content-Disposition: form-data; name="functionsWorker-0.3764107895656347.js"; filename="functionsWorker-0.3764107895656347.js"
 Content-Type: application/javascript+module
 
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+
+// ../shared/inquiry-payload.mjs
+function inquiryFieldsFromClientPayload(raw) {
+  if (!raw || typeof raw !== "object")
+    return null;
+  const name = String(raw.name ?? "").trim();
+  const company = String(raw.company ?? "").trim();
+  const email = String(raw.email ?? "").trim();
+  const phone = String(raw.phone ?? "").trim();
+  const service = String(raw.service ?? "").trim();
+  const budget = String(raw.budget ?? "").trim();
+  const description = String(raw.description ?? "").trim();
+  const consent = Boolean(raw.consent);
+  const _gotcha = String(raw._gotcha ?? "");
+  if (!name || !company || !email || !service || description.length < 20 || !consent) {
+    return null;
+  }
+  return {
+    _gotcha,
+    name,
+    email,
+    _replyto: email,
+    company,
+    phone: phone || "Not provided",
+    service,
+    budget: budget || "Not specified",
+    message: description,
+    description,
+    consent: consent ? "Yes" : "No",
+    _subject: `New inquiry from ${company} \u2014 NextCoreSoft website`
+  };
+}
+__name(inquiryFieldsFromClientPayload, "inquiryFieldsFromClientPayload");
+
+// ../shared/formspree-proxy.mjs
+var FORMSPREE_URL_PATTERN = /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i;
+async function proxyInquiryToFormspree(formspreeUrl, fields) {
+  if (!formspreeUrl || !FORMSPREE_URL_PATTERN.test(formspreeUrl)) {
+    return {
+      ok: false,
+      status: 503,
+      payload: { ok: false, error: "Contact form is not configured on the server." }
+    };
+  }
+  const gotcha = String(fields._gotcha ?? "").trim();
+  if (gotcha) {
+    return { ok: true, status: 200, payload: { ok: true } };
+  }
+  const body = new FormData();
+  body.append("_gotcha", "");
+  for (const [key, value] of Object.entries(fields)) {
+    if (key === "_gotcha")
+      continue;
+    if (value != null && String(value).length > 0) {
+      body.append(key, String(value));
+    }
+  }
+  let response;
+  try {
+    response = await fetch(formspreeUrl, {
+      method: "POST",
+      body,
+      headers: { Accept: "application/json" }
+    });
+  } catch {
+    return {
+      ok: false,
+      status: 502,
+      payload: { ok: false, error: "Could not reach the form delivery service." }
+    };
+  }
+  let payload = {};
+  try {
+    payload = await response.json();
+  } catch {
+  }
+  const accepted = response.ok && payload.ok !== false;
+  return { ok: accepted, status: accepted ? 200 : response.status, payload };
+}
+__name(proxyInquiryToFormspree, "proxyInquiryToFormspree");
+
+// api/contact.js
+var ALLOWED_ORIGINS = /* @__PURE__ */ new Set([
+  "https://nextcoresoft.com",
+  "https://www.nextcoresoft.com",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "http://localhost:4173",
+  "http://127.0.0.1:4173"
+]);
+function jsonResponse(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store"
+    }
+  });
+}
+__name(jsonResponse, "jsonResponse");
+function originAllowed(request) {
+  const origin = request.headers.get("Origin");
+  if (origin && ALLOWED_ORIGINS.has(origin))
+    return true;
+  const referer = request.headers.get("Referer");
+  if (!referer)
+    return false;
+  try {
+    return ALLOWED_ORIGINS.has(new URL(referer).origin);
+  } catch {
+    return false;
+  }
+}
+__name(originAllowed, "originAllowed");
+async function onRequestPost(context) {
+  if (!originAllowed(context.request)) {
+    return jsonResponse({ ok: false, error: "Forbidden" }, 403);
+  }
+  const contentType = context.request.headers.get("content-type") ?? "";
+  if (!contentType.includes("application/json")) {
+    return jsonResponse({ ok: false, error: "Invalid content type." }, 415);
+  }
+  let raw;
+  try {
+    raw = await context.request.json();
+  } catch {
+    return jsonResponse({ ok: false, error: "Could not read form data." }, 400);
+  }
+  const fields = inquiryFieldsFromClientPayload(raw);
+  if (!fields) {
+    return jsonResponse({ ok: false, error: "Please check required fields and try again." }, 400);
+  }
+  const formspreeUrl = context.env?.FORMSPREE_FORM_URL?.trim();
+  const result = await proxyInquiryToFormspree(formspreeUrl, fields);
+  if (result.ok) {
+    return jsonResponse({ ok: true });
+  }
+  const message = result.payload?.error || (Array.isArray(result.payload?.errors) ? result.payload.errors.map((e) => e.message).join(" ") : null) || "Submission failed.";
+  return jsonResponse({ ok: false, error: message }, result.status >= 400 ? result.status : 502);
+}
+__name(onRequestPost, "onRequestPost");
+async function onRequest(context) {
+  return jsonResponse({ ok: false, error: "Method not allowed" }, 405);
+}
+__name(onRequest, "onRequest");
 
 // ../shared/blog-index.mjs
 var BLOG_INDEX_PATH = "/blog";
@@ -87,13 +232,16 @@ var SITEMAP_ENTRIES = [
 ];
 
 // _middleware.js
-async function onRequest(context) {
+async function onRequest2(context) {
   const url = new URL(context.request.url);
   const rawPath = url.pathname;
   if (isStaticAsset(rawPath)) {
     return context.next();
   }
   const path = normalizePathname(rawPath);
+  if (path.startsWith("/api/")) {
+    return context.next();
+  }
   const response = await context.next();
   if (isIndexablePath(path)) {
     return response;
@@ -110,15 +258,29 @@ async function onRequest(context) {
   }
   return response;
 }
-__name(onRequest, "onRequest");
+__name(onRequest2, "onRequest");
 
-// ../.wrangler/tmp/pages-fzWMEo/functionsRoutes-0.41106794210431763.mjs
+// ../.wrangler/tmp/pages-zAVMgS/functionsRoutes-0.8265879051287042.mjs
 var routes = [
+  {
+    routePath: "/api/contact",
+    mountPath: "/api",
+    method: "POST",
+    middlewares: [],
+    modules: [onRequestPost]
+  },
+  {
+    routePath: "/api/contact",
+    mountPath: "/api",
+    method: "",
+    middlewares: [],
+    modules: [onRequest]
+  },
   {
     routePath: "/",
     mountPath: "/",
     method: "",
-    middlewares: [onRequest],
+    middlewares: [onRequest2],
     modules: []
   }
 ];
@@ -572,4 +734,4 @@ export {
   pages_template_worker_default as default
 };
 
-------formdata-undici-042640375342--
+------formdata-undici-030075836064--

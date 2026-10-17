@@ -36,36 +36,28 @@ All visitor-facing copy lives in `src/data/content.ts`. Edit it there.
 
 ## Contact form setup
 
-The inquiry form validates input in the browser, then POSTs it as form data to
-Formspree at `https://formspree.io/f/xzedydog`. Success is shown only after
-Formspree accepts the submission.
+The inquiry form validates in the browser, then POSTs JSON to **`/api/contact`**
+(same origin). A **Cloudflare Pages Function** (`functions/api/contact.js`)
+forwards the message to Formspree using the server environment variable
+**`FORMSPREE_FORM_URL`**. That URL is **not** in the frontend bundle or this
+repository.
 
-In the Formspree dashboard, confirm the notification email is the inbox you
-read, and that email notifications are turned on. The form includes a
-`_gotcha` honeypot; leave Formspree's spam filter enabled.
+1. In [Formspree](https://formspree.io), create or open your form. Confirm
+   notification email and **Allowed domains** include `nextcoresoft.com`.
+2. In **Cloudflare Pages** → your project → **Settings** → **Environment
+   variables** → **Production** (and Preview if needed), add:
+   - Name: `FORMSPREE_FORM_URL`
+   - Value: `https://formspree.io/f/yourFormId` (your real form URL)
+3. Redeploy the site after saving the variable.
 
-**Submissions not showing?**
+**Local dev:** copy `.env.example` to `.env.local` and set `FORMSPREE_FORM_URL`
+there (never commit `.env.local`). Restart `npm run dev`.
 
-1. Log in at [formspree.io](https://formspree.io) with the **same account that
-   owns form `xzedydog`** (Forms → open the form → **Submissions**). Submissions
-   do not appear in a different Formspree login.
-2. Check the form's **Spam** tab in Formspree.
-3. Under form **Settings**, confirm **Allowed domains** includes
-   `nextcoresoft.com` (or turn domain restriction off while testing).
-4. On Cloudflare Pages, if you set `VITE_FORM_ENDPOINT`, it must be exactly
-   `https://formspree.io/f/yourFormId` — then trigger a **new deploy**. A wrong
-   value is baked into the build.
-5. If the site shows a red error after submit, read the message (ad blockers
-   often block `formspree.io`).
+**If the old form ID was ever committed to git**, create a **new** Formspree form
+and use the new URL in `FORMSPREE_FORM_URL` only — the old public ID may still
+receive spam until you disable or delete that form in Formspree.
 
-To point the form somewhere else, set `VITE_FORM_ENDPOINT` in `.env.local` to
-another URL that accepts a multipart POST and returns HTTP 2xx, then restart
-the dev server.
-
-**Never put secret keys in `VITE_` variables** — anything with that prefix is
-embedded in the client bundle. The Formspree endpoint URL is designed to be
-public; your Formspree account password and API keys are not needed and must
-not be added here.
+**Never use `VITE_` for Formspree URLs** — those values are embedded in client JS.
 
 ## Analytics
 
@@ -122,7 +114,7 @@ The live site is hosted on Cloudflare Pages. `vercel.json` is not read there.
 4. Unknown paths fall back to `index.html` (SPA); **`functions/_middleware.js`** returns real **404**
    + `X-Robots-Tag: noindex` for junk URLs. Confirm the latest deploy includes the `functions/` folder.
 5. Optional Cloudflare **Production** env vars (then redeploy): `VITE_GSC_SITE_VERIFICATION` (Search Console HTML tag),
-   `VITE_PLAUSIBLE_DOMAIN`, `VITE_FORM_ENDPOINT` if you change Formspree.
+   `VITE_PLAUSIBLE_DOMAIN`, and Cloudflare `FORMSPREE_FORM_URL` for the contact form.
 6. The contact form posts to Formspree (`InquiryForm.tsx`); no env var required for the default endpoint.
 
 **After every production deploy**, spot-check:

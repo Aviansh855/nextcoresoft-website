@@ -36,21 +36,11 @@ const EMPTY: Fields = {
 type Errors = Partial<Record<keyof Fields, string>>
 type Status = "idle" | "submitting" | "success" | "error"
 
-/** Public Formspree form URL. Override with VITE_FORM_ENDPOINT if the form changes. */
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzedydog"
+const CONTACT_API = "/api/contact"
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-function resolveFormEndpoint(): string {
-  const fromEnv = import.meta.env.VITE_FORM_ENDPOINT?.trim()
-  const endpoint = fromEnv || FORMSPREE_ENDPOINT
-  if (!/^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(endpoint)) {
-    throw new Error("Contact form is misconfigured. Check VITE_FORM_ENDPOINT.")
-  }
-  return endpoint
-}
-
-type FormspreeResult = { ok?: boolean; error?: string; errors?: { message: string; code?: string }[] }
+type ApiResult = { ok?: boolean; error?: string; errors?: { message: string; code?: string }[] }
 
 function validate(fields: Fields): Errors {
   const errors: Errors = {}
@@ -66,46 +56,41 @@ function validate(fields: Fields): Errors {
   return errors
 }
 
-/**
- * Posts the inquiry to Formspree as multipart form data.
- * The endpoint URL is public by design; no API key is sent from the browser.
- */
+/** Posts to same-origin API; Formspree URL lives only in server env (Cloudflare). */
 async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
   if (gotcha.trim()) {
     throw new Error("Submission blocked.")
   }
 
-  const endpoint = resolveFormEndpoint()
-  const body = new FormData()
-  body.append("_gotcha", "")
-  body.append("name", fields.name.trim())
-  body.append("email", fields.email.trim())
-  body.append("_replyto", fields.email.trim())
-  body.append("company", fields.company.trim())
-  body.append("phone", fields.phone.trim() || "Not provided")
-  body.append("service", fields.service)
-  body.append("budget", fields.budget || "Not specified")
-  body.append("message", fields.description.trim())
-  body.append("description", fields.description.trim())
-  body.append("consent", fields.consent ? "Yes" : "No")
-  body.append("_subject", `New inquiry from ${fields.company.trim()} — NextCoreSoft website`)
-
   let response: Response
   try {
-    response = await fetch(endpoint, {
+    response = await fetch(CONTACT_API, {
       method: "POST",
-      body,
-      headers: { Accept: "application/json" },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: fields.name.trim(),
+        email: fields.email.trim(),
+        company: fields.company.trim(),
+        phone: fields.phone.trim(),
+        service: fields.service,
+        budget: fields.budget,
+        description: fields.description.trim(),
+        consent: fields.consent,
+        _gotcha: gotcha,
+      }),
     })
   } catch {
     throw new Error(
-      "Could not reach the form service. Disable ad blockers for this site or email hello@nextcoresoft.com directly.",
+      "Could not reach the server. Check your connection or email hello@nextcoresoft.com directly.",
     )
   }
 
-  let payload: FormspreeResult = {}
+  let payload: ApiResult = {}
   try {
-    payload = (await response.json()) as FormspreeResult
+    payload = (await response.json()) as ApiResult
   } catch {
     /* non-JSON body */
   }
@@ -114,7 +99,7 @@ async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
     const detail =
       payload.error ||
       payload.errors?.map((e) => e.message).join(" ") ||
-      `The form service returned ${response.status}.`
+      `The server returned ${response.status}.`
     throw new Error(detail)
   }
 }
@@ -310,7 +295,7 @@ export function InquiryForm() {
         />
       </Field>
 
-      {/* Honeypot: hidden from people, tempting to bots. Submissions filling it are dropped server-side by Formspree. */}
+      {/* Honeypot: hidden from people, tempting to bots. Filled submissions are dropped server-side. */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label>
           Company website
