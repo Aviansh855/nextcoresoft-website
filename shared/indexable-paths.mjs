@@ -7,7 +7,7 @@
  * both serve the same prerender HTML with canonical pointing at `/path` (see docs/SEO.md).
  */
 
-import { BLOG_INDEX_PATH, blogPostIndexablePaths, blogSitemapEntries } from "./blog-posts.mjs"
+import { BLOG_INDEX_PATH, blogPostIndexablePaths, blogSitemapEntries } from "./blog-index.mjs"
 
 export const SITE_ORIGIN = "https://nextcoresoft.com"
 

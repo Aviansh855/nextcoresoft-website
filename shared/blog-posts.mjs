@@ -1,8 +1,12 @@
 /**
- * Blog posts — shared by prerender, sitemap, and indexable paths.
+ * Full blog post data for prerender + route meta (Node build only — not imported by Pages Functions).
  * Edit `shared/blog-posts.json`, then run `npm run build`.
+ * URL lists for middleware/sitemap live in `shared/blog-index.mjs`.
  */
-import posts from "./blog-posts.json" with { type: "json" }
+import { createRequire } from "node:module"
+
+const require = createRequire(import.meta.url)
+const posts = require("./blog-posts.json")
 
 export const BLOG_INDEX_PATH = "/blog"
 export const BLOG_POSTS = posts
