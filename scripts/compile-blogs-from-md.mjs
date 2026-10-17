@@ -5,8 +5,53 @@
 import { readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
+import { SITE_ORIGIN } from "../shared/indexable-paths.mjs"
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
+
+/** Internal markdown targets → https://nextcoresoft.com/... (never localhost). */
+function normalizeMarkdownLinks(text) {
+  if (!text || typeof text !== "string") return text
+  let out = text.replace(
+    /\]\(https?:\/\/localhost(?::\d+)?([^)]*)\)/gi,
+    `](${SITE_ORIGIN}$1)`,
+  )
+  out = out.replace(/\]\((\/[^)]+)\)/g, `](${SITE_ORIGIN}$1)`)
+  return out
+}
+
+function normalizeSiteHref(href) {
+  if (!href) return href
+  if (/^https?:\/\/localhost(?::\d+)?/i.test(href)) {
+    try {
+      const u = new URL(href)
+      return `${SITE_ORIGIN}${u.pathname}${u.search}${u.hash}`
+    } catch {
+      return SITE_ORIGIN
+    }
+  }
+  if (href.startsWith("/")) return `${SITE_ORIGIN}${href}`
+  if (/^https?:\/\/(www\.)?nextcoresoft\.com/i.test(href)) {
+    try {
+      const u = new URL(href)
+      return `${SITE_ORIGIN}${u.pathname}${u.search}${u.hash}`
+    } catch {
+      return href
+    }
+  }
+  return href
+}
+
+function normalizeSection(section) {
+  const s = { ...section }
+  if (s.text) s.text = normalizeMarkdownLinks(s.text)
+  if (s.items) s.items = s.items.map((item) => normalizeMarkdownLinks(item))
+  if (s.rows) {
+    s.rows = s.rows.map((row) => row.map((cell) => normalizeMarkdownLinks(cell)))
+  }
+  if (s.href) s.href = normalizeSiteHref(s.href)
+  return s
+}
 const mdPath = join(root, "content", "nextcoresoft_3_seo_blog_posts.md")
 const outPath = join(root, "shared", "blog-posts.json")
 
@@ -198,7 +243,7 @@ function parseBodyToSections(body, faqs) {
           type: "cta",
           text: "",
           buttonLabel: m[1],
-          href: m[2].replace("https://nextcoresoft.com", ""),
+          href: normalizeSiteHref(m[2]),
         })
       }
       i++
@@ -301,7 +346,7 @@ function extractArticle(chunk, metaDefaults) {
     categories: metaDefaults.categories,
     primaryKeyword: seo.primaryKeyword,
     sections: sectionsNoCta.map(({ id, lead, ...rest }) => {
-      const s = { ...rest }
+      const s = normalizeSection({ ...rest })
       if (lead) s.lead = true
       if (id) s.id = id
       return s

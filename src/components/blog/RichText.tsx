@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { isOnSiteHref, siteAbsoluteUrl } from "../../lib/site-url"
 
 type Segment =
   | { kind: "text"; value: string }
@@ -38,21 +38,6 @@ export function parseRichText(input: string): Segment[] {
   return segments.filter((s) => s.kind !== "text" || s.value.length > 0)
 }
 
-function isInternalHref(href: string) {
-  return href.startsWith("/") || href.startsWith("https://nextcoresoft.com")
-}
-
-function toInternalPath(href: string) {
-  if (href.startsWith("/")) return href
-  try {
-    const u = new URL(href)
-    if (u.hostname === "nextcoresoft.com") return `${u.pathname}${u.search}`
-  } catch {
-    /* keep external */
-  }
-  return null
-}
-
 export function RichText({ text, className }: { text: string; className?: string }) {
   const segments = parseRichText(text)
   return (
@@ -60,12 +45,15 @@ export function RichText({ text, className }: { text: string; className?: string
       {segments.map((seg, idx) => {
         if (seg.kind === "text") return <span key={idx}>{seg.value}</span>
         if (seg.kind === "bold") return <strong key={idx}>{seg.value}</strong>
-        const internal = isInternalHref(seg.href) ? toInternalPath(seg.href) : null
-        if (internal) {
+        if (isOnSiteHref(seg.href)) {
           return (
-            <Link key={idx} to={internal} className="font-medium text-cyan-700 hover:underline">
+            <a
+              key={idx}
+              href={siteAbsoluteUrl(seg.href)}
+              className="font-medium text-cyan-700 hover:underline"
+            >
               {seg.label}
-            </Link>
+            </a>
           )
         }
         return (
