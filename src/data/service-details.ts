@@ -14,6 +14,13 @@ export type ServiceDetail = {
   faqs: { question: string; answer: string }[]
   /** Portfolio item ids to highlight on this service page */
   portfolioIds: string[]
+  /** Answer-first summary for visitors and answer engines (visible on page). */
+  aeo: {
+    quickAnswer: string
+    suitableFor: string
+    quoteNeeds: string[]
+    decisionChecklist?: string[]
+  }
 }
 
 export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
@@ -96,6 +103,24 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     portfolioIds: ["techwheels-service-management", "pbic-attendance", "milk-delivery-management"],
+    aeo: {
+      quickAnswer:
+        "Custom software and web applications are built around your workflows — admin panels, internal tools, and customer-facing portals — instead of forcing your team into generic spreadsheets or off-the-shelf SaaS. Engagements usually include discovery, a written scope and quote, iterative build with demos, testing with your team, deployment, and optional maintenance.",
+      suitableFor:
+        "Teams that outgrow spreadsheets and shared inboxes, need role-based access and reporting, or must connect several steps (forms, approvals, notifications) in one place.",
+      quoteNeeds: [
+        "What work happens today, step by step, and who is involved",
+        "Rough number of user roles and whether customers log in",
+        "Systems you must integrate with (CRM, accounting, messaging, etc.)",
+        "Must-have outcomes for the first release versus later phases",
+      ],
+      decisionChecklist: [
+        "Is the pain from missing software, or from process that should be simplified first?",
+        "Do you need a customer-facing portal, an internal tool, or both?",
+        "Can a first phase replace one critical spreadsheet or inbox workflow?",
+        "Who will own product decisions and accept milestones on your side?",
+      ],
+    },
   },
   "mobile-apps": {
     seoTitle: "Android & iOS App Development",
@@ -175,6 +200,24 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     portfolioIds: ["food-explore", "pg-booking", "milk-delivery-management", "anonymous-chat"],
+    aeo: {
+      quickAnswer:
+        "Mobile app development covers Android and iOS apps for customers, field staff, or internal teams — usually paired with a secure backend or your existing admin system. We recommend cross-platform or native based on your features, timeline, and budget; store submission support and post-launch maintenance can be included in scope.",
+      suitableFor:
+        "Businesses whose users need reliable mobile access — bookings, status updates, field data capture, or branded customer apps — not only a mobile website.",
+      quoteNeeds: [
+        "Who uses the app (customers, staff, both) and on which devices",
+        "Offline or poor-connectivity requirements",
+        "Login, payments, push notifications, or maps if needed",
+        "Whether a web admin or API already exists",
+      ],
+      decisionChecklist: [
+        "Is a responsive web app enough for the first release?",
+        "Do you need both app stores, or one platform or internal distribution?",
+        "Who owns Apple/Google developer accounts and store listings?",
+        "What happens after launch (monitoring, OS updates, dependency updates)?",
+      ],
+    },
   },
   "ai-automation": {
     seoTitle: "AI Automation Company for Business Workflows",
@@ -254,6 +297,24 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     portfolioIds: ["leaf-disease-detection", "house-price-prediction"],
+    aeo: {
+      quickAnswer:
+        "AI automation connects practical steps in your business — reading inquiries, extracting fields from documents, routing work, drafting routine replies — to the tools you already use. We map the workflow first, test on your samples, add human review where mistakes are costly, and integrate with email, CRM, or webhooks rather than deploying a generic chatbot.",
+      suitableFor:
+        "Operations and admin teams that still read, classify, and retype the same kinds of messages, forms, or documents every day.",
+      quoteNeeds: [
+        "Examples of real inputs (emails, PDFs, forms) you want automated",
+        "Where results must land (CRM, spreadsheet, ticket system)",
+        "Tolerance for errors and who reviews exceptions",
+        "Data sensitivity and any restrictions on third-party AI APIs",
+      ],
+      decisionChecklist: [
+        "Is the task repetitive reading/typing, or does it need human judgment every time?",
+        "What is the cost of a wrong automated output?",
+        "Do you have labelled examples to test accuracy before build?",
+        "Should automation stop at a draft for human approval?",
+      ],
+    },
   },
   "cloud-api": {
     seoTitle: "Cloud Deployment, APIs & Integrations",
@@ -333,5 +394,23 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     portfolioIds: ["anonymous-chat", "pbic-attendance"],
+    aeo: {
+      quickAnswer:
+        "Cloud and API work connects your software to CRMs, accounting, payments, and other systems — plus deployment, monitoring, backups, and maintenance after launch. We document integrations, handle auth and errors, and plan for vendor API changes; hosting and third-party fees depend on the providers you choose.",
+      suitableFor:
+        "Businesses running several tools where staff still export CSVs, email files, or re-enter data because systems do not sync reliably.",
+      quoteNeeds: [
+        "Systems involved and direction of data flow",
+        "Whether APIs exist or exports/manual steps are used today",
+        "Security and compliance constraints",
+        "Who will operate production after go-live",
+      ],
+      decisionChecklist: [
+        "Is the breakage from missing integration or from unclear process ownership?",
+        "Do you need event-driven sync, scheduled jobs, or on-demand APIs?",
+        "What monitoring and alerting do you expect when a sync fails?",
+        "Is ongoing maintenance budgeted when vendors change APIs?",
+      ],
+    },
   },
 }

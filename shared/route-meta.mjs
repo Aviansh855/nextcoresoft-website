@@ -37,7 +37,7 @@ export const ROUTE_META = {
       "Describe your project and book a free consultation with NextCoreSoft. Custom software, mobile development, AI automation, and integrations for growing businesses.",
     h1: "Discuss your project or request a quote",
     staticLead:
-      "Tell us what you need built or automated. We reply within one business day with scope guidance and how we would quote the work.",
+      "Tell us what you need built or automated. We aim to reply within one business day with scope guidance and how we would quote the work when volume allows.",
     robots: "index, follow",
   },
   "/portfolio": {

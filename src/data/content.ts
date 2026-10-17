@@ -338,7 +338,7 @@ export const SERVICES_HUB_FAQS = [
   {
     question: "How do I request a quote for a specific service?",
     answer:
-      "Use the contact form and mention the service (or open a service page and click Request a quote). We reply within one business day with scope questions and how we would structure the quotation.",
+      "Use the contact form and mention the service (or open a service page and click Request a quote). We aim to reply within one business day with scope questions and how we would structure the quotation when volume allows.",
   },
 ] as const
 

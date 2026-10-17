@@ -36,8 +36,8 @@ export function ContactPage() {
               <div>
                 <dt className="text-xs font-semibold tracking-[0.16em] text-slate-400 uppercase">What happens next</dt>
                 <dd className="mt-1.5 text-sm leading-relaxed text-slate-600">
-                  We reply within one business day to arrange a short call. If we&apos;re not the right fit, we&apos;ll
-                  say so.
+                  We aim to reply within one business day to arrange a short call when volume allows. If we&apos;re not
+                  the right fit, we&apos;ll say so.
                 </dd>
               </div>
               <div>

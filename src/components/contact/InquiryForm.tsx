@@ -177,7 +177,7 @@ export function InquiryForm() {
         <CheckCircle2 size={32} className="mx-auto text-cyan-600" aria-hidden="true" />
         <h3 className="mt-4 font-display text-xl font-semibold text-slate-900">Inquiry received.</h3>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          Thank you. We&apos;ll reply to the email you provided, usually within one business day.
+          Thank you. We&apos;ll reply to the email you provided; we aim for within one business day when volume allows.
         </p>
         <button
           type="button"
@@ -199,7 +199,7 @@ export function InquiryForm() {
         {intentQuote ? "Request a quote" : "Discuss your project"}
       </h2>
       <p className="text-sm text-slate-600">
-        Required fields are marked. We use your business email to reply — usually within one business day.
+        Required fields are marked. We use your business email to reply — we aim to respond within one business day when volume allows.
       </p>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" error={errors.name} required>

@@ -5,6 +5,7 @@ import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { ButtonLink } from "../components/ui/Button"
 import { Reveal } from "../components/ui/Reveal"
 import { SERVICES, SERVICES_HUB_FAQS, SERVICES_HUB_H1, SITE } from "../data/content"
+import { SERVICE_DETAILS, type ServiceSlug } from "../data/service-details"
 import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 export function ServicesIndexPage() {
@@ -42,6 +43,15 @@ export function ServicesIndexPage() {
                   </Link>
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.summary}</p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  <span className="font-medium text-slate-800">Typical deliverables: </span>
+                  {SERVICE_DETAILS[service.slug as ServiceSlug].deliverables.slice(0, 2).join(" · ")}
+                  …
+                </p>
+                <p className="mt-2 text-sm text-slate-600">
+                  <span className="font-medium text-slate-800">Good fit when: </span>
+                  {SERVICE_DETAILS[service.slug as ServiceSlug].aeo.suitableFor}
+                </p>
                 <Link
                   to={`/services/${service.slug}`}
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-700 hover:text-slate-900"

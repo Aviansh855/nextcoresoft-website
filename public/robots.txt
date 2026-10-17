@@ -4,7 +4,17 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-# Optional reference for AI crawlers (not a Google ranking signal)
+# --- Owner policy (AEO/GEO) — edit only with explicit approval ---
+# Search/discovery crawlers (examples): OAI-SearchBot, Claude-SearchBot, Claude-User — often used for
+# retrieval/citation in products; separate from model-training bots (e.g. GPTBot, ClaudeBot).
+# This file does NOT override Cloudflare WAF/bot rules at the edge (see docs/CLOUDFLARE-403-GOOGLEBOT.md).
+# To disallow training crawlers while keeping Allow: / above, uncomment ONE block at a time and redeploy:
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: ClaudeBot
+# Disallow: /
+
+# Optional first-party summary for AI systems (not required for Google ranking):
 # https://nextcoresoft.com/llms.txt
 
 Sitemap: https://nextcoresoft.com/sitemap.xml

@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react"
 import { Link, useParams } from "react-router-dom"
 import { NotFoundPage } from "./NotFoundPage"
+import { ServiceAnswerBlock } from "../components/services/ServiceAnswerBlock"
 import { ServiceFaq } from "../components/services/ServiceFaq"
 import { ServiceLeadCTAs } from "../components/services/ServiceLeadCTAs"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
@@ -30,7 +31,7 @@ export function ServicePage() {
       service
         ? [
             { label: "Home", to: "/" },
-            { label: "Services", to: "/#services" },
+            { label: "Services", to: "/services" },
             { label: service.title },
           ]
         : [],
@@ -61,6 +62,12 @@ export function ServicePage() {
           {details.h1}
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-slate-600">{details.intro}</p>
+        <ServiceAnswerBlock
+          quickAnswer={details.aeo.quickAnswer}
+          suitableFor={details.aeo.suitableFor}
+          quoteNeeds={details.aeo.quoteNeeds}
+          decisionChecklist={details.aeo.decisionChecklist}
+        />
         <ServiceLeadCTAs service={service} className="mt-8" />
       </Reveal>
 
