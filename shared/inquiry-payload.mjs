@@ -1,3 +1,5 @@
+import { CONTACT_NOTIFY_EMAIL } from "./contact-notify.mjs"
+
 /** Build Formspree field map from validated inquiry (browser or API). */
 
 export function inquiryFieldsFromClientPayload(raw) {
@@ -17,11 +19,14 @@ export function inquiryFieldsFromClientPayload(raw) {
     return null
   }
 
+  const notifyEmail = String(CONTACT_NOTIFY_EMAIL ?? "").trim()
+
   return {
     _gotcha,
     name,
     email,
     _replyto: email,
+    ...(notifyEmail.includes("@") ? { _cc: notifyEmail } : {}),
     company,
     phone: phone || "Not provided",
     service,

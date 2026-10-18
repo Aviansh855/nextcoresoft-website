@@ -19,11 +19,13 @@ export function logoImageObject() {
 }
 
 function pageUrl(path) {
-  return path === "/" ? `${SITE.url}/` : `${SITE.url}${path}`
+  // Preferred public URL = final URL after Cloudflare's 308 (trailing slash).
+  const clean = path.replace(/\/+$/, "")
+  return clean === "" ? `${SITE.url}/` : `${SITE.url}${clean}/`
 }
 
 function entityBase(path) {
-  return path === "/" ? SITE.url : `${SITE.url}${path}`
+  return pageUrl(path)
 }
 
 function wrapGraph(graph) {
@@ -99,7 +101,7 @@ function professionalServiceNode() {
         itemOffered: {
           "@type": "Service",
           name: s.title,
-          url: `${SITE.url}/services/${s.slug}`,
+          url: `${SITE.url}/services/${s.slug}/`,
           description: s.summary,
         },
       })),
@@ -234,7 +236,7 @@ export function buildRouteJsonLdGraph(path, ctx = {}) {
         breadcrumb: { "@id": bcId },
         hasPart: blogPosts.map((p) => ({
           "@type": "BlogPosting",
-          url: `${SITE.url}/blog/${p.slug}`,
+          url: `${SITE.url}/blog/${p.slug}/`,
           headline: p.h1,
         })),
       }),

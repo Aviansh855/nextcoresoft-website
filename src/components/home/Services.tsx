@@ -45,7 +45,7 @@ export function Services() {
                   </span>
                   <h3 className="mt-6 font-display text-xl font-semibold text-slate-900">
                     <Link
-                      to={`/services/${service.slug}`}
+                      to={`/services/${service.slug}/`}
                       className="rounded transition-colors hover:text-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500"
                     >
                       {service.title}
@@ -74,7 +74,7 @@ export function Services() {
                   </ul>
 
                   <Link
-                    to={`/services/${service.slug}`}
+                    to={`/services/${service.slug}/`}
                     className="mt-6 inline-flex items-center gap-1.5 self-start rounded text-sm font-semibold text-cyan-600 transition-colors group-hover:text-slate-900"
                   >
                     {service.cta}

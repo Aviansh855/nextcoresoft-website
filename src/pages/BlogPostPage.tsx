@@ -41,7 +41,7 @@ export function BlogPostPage() {
         <Breadcrumbs
           items={[
             { label: "Home", to: "/" },
-            { label: "Blog", to: BLOG_INDEX_PATH },
+            { label: "Blog", to: `${BLOG_INDEX_PATH}/` },
             { label: post.title },
           ]}
         />
@@ -94,22 +94,22 @@ export function BlogPostPage() {
                 </li>
               ) : null}
               <li>
-                <Link to="/services" className="text-cyan-700 hover:underline">
+                <Link to="/services/" className="text-cyan-700 hover:underline">
                   All software development services
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" className="text-cyan-700 hover:underline">
+                <Link to="/portfolio/" className="text-cyan-700 hover:underline">
                   Project portfolio
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-cyan-700 hover:underline">
+                <Link to="/contact/" className="text-cyan-700 hover:underline">
                   Contact / free consultation
                 </Link>
               </li>
             </ul>
-            <ButtonLink to="/contact?intent=quote" className="mt-6">
+            <ButtonLink to="/contact/?intent=quote" className="mt-6">
               Discuss Your Project
               <ArrowRight size={16} aria-hidden="true" />
             </ButtonLink>
@@ -121,7 +121,7 @@ export function BlogPostPage() {
         </Reveal>
 
         <p className="mt-10 text-sm">
-          <Link to={BLOG_INDEX_PATH} className="font-semibold text-cyan-700 hover:underline">
+          <Link to={`${BLOG_INDEX_PATH}/`} className="font-semibold text-cyan-700 hover:underline">
             ← All blog posts
           </Link>
         </p>

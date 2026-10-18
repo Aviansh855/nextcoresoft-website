@@ -14,6 +14,12 @@ export interface PageMeta {
 const DEFAULT_OG_IMAGE = SITE.logoUrl
 const ORG_ID = `${SITE.url}/#organization`
 
+/** Preferred public URL: apex HTTPS + trailing slash (final URL after Cloudflare 308). */
+export function preferredUrl(path: string): string {
+  const clean = path.replace(/\/+$/, "")
+  return clean === "" ? `${SITE.url}/` : `${SITE.url}${clean}/`
+}
+
 /** Keyword-aware defaults per route (≤60 char titles, ~150–160 char descriptions where possible). */
 export const ROUTE_SEO = {
   home: {
@@ -84,7 +90,7 @@ export function blogPostMeta(slug: string) {
 export function articleSchema(slug: string) {
   const post = getBlogPost(slug)
   if (!post) return null
-  const url = `${SITE.url}/blog/${post.slug}`
+  const url = `${SITE.url}/blog/${post.slug}/`
   const logo = { "@type": "ImageObject" as const, url: SITE.logoUrl, contentUrl: SITE.logoUrl }
   return {
     "@context": "https://schema.org",
@@ -135,7 +141,7 @@ export function applyMeta({ title, description, path, robots = "index, follow", 
   )
   setMeta("og:title", title, "property")
   setMeta("og:description", description, "property")
-  setMeta("og:url", path === "/" ? `${SITE.url}/` : `${SITE.url}${path}`, "property")
+  setMeta("og:url", preferredUrl(path), "property")
   setMeta("og:type", path.startsWith("/blog/") ? "article" : "website", "property")
   setMeta("og:site_name", SITE.name, "property")
   setMeta("og:locale", "en_US", "property")
@@ -145,8 +151,7 @@ export function applyMeta({ title, description, path, robots = "index, follow", 
   setMeta("twitter:title", title)
   setMeta("twitter:description", description)
 
-  const canonicalHref =
-    path === "/" ? `${SITE.url}/` : `${SITE.url}${path.replace(/\/$/, "")}`
+  const canonicalHref = preferredUrl(path)
 
   let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
   if (!canonical) {
@@ -202,7 +207,7 @@ export function organizationSchema() {
         "@type": "ContactPoint",
         contactType: "sales",
         email: "hello@nextcoresoft.com",
-        url: `${SITE.url}/contact`,
+        url: `${SITE.url}/contact/`,
         availableLanguage: ["English"],
       },
     ],
@@ -236,7 +241,7 @@ export function professionalServiceSchema() {
         itemOffered: {
           "@type": "Service",
           name: s.title,
-          url: `${SITE.url}/services/${s.slug}`,
+          url: `${SITE.url}/services/${s.slug}/`,
           description: s.summary,
         },
       })),
@@ -258,7 +263,7 @@ export function websiteSchema() {
 }
 
 export function webPageSchema(meta: { title: string; description: string; path: string }) {
-  const url = meta.path === "/" ? `${SITE.url}/` : `${SITE.url}${meta.path}`
+  const url = preferredUrl(meta.path)
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -280,7 +285,7 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.path === "/" ? `${SITE.url}/` : `${SITE.url}${item.path}`,
+      item: preferredUrl(item.path),
     })),
   }
 }
@@ -314,7 +319,7 @@ export function serviceSchema(slug: string) {
     "@type": "Service",
     name: details.h1,
     description: details.metaDescription,
-    url: `${SITE.url}/services/${service.slug}`,
+    url: `${SITE.url}/services/${service.slug}/`,
     provider: { "@id": ORG_ID },
     serviceType: service.title,
     areaServed: {

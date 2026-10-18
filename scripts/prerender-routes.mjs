@@ -75,11 +75,11 @@ function staticRootBlock(path) {
     ["/blog", "Blog"],
     ["/services", "Services"],
   ]
-    .map(([href, label]) => `<a href="${SITE_ORIGIN}${href === "/" ? "/" : href}">${label}</a>`)
+    .map(([href, label]) => `<a href="${canonicalUrl(href)}">${label}</a>`)
     .join(" · ")
   let extra = ""
   if (path === "/blog") {
-    extra = `<ul>${BLOG_POSTS.map((p) => `<li><a href="${SITE_ORIGIN}/blog/${p.slug}">${txt(p.h1)}</a> — ${txt(p.excerpt)}</li>`).join("")}</ul>`
+    extra = `<ul>${BLOG_POSTS.map((p) => `<li><a href="${SITE_ORIGIN}/blog/${p.slug}/">${txt(p.h1)}</a> — ${txt(p.excerpt)}</li>`).join("")}</ul>`
   } else if (path.startsWith("/blog/")) {
     const post = getBlogPost(path.slice("/blog/".length))
     if (post) {
@@ -93,7 +93,7 @@ function staticRootBlock(path) {
       extra = `${metaLine ? `<p>${metaLine}</p>` : ""}${(post.sections ?? []).map(renderBlogSection).join("\n")}${faqs}`
     }
   } else if (path === "/services" || path.startsWith("/services/")) {
-    extra = `<ul>${SERVICES_CATALOG.map((s) => `<li><a href="${SITE_ORIGIN}/services/${s.slug}">${txt(s.title)}</a> — ${txt(s.summary)}</li>`).join("")}</ul>`
+    extra = `<ul>${SERVICES_CATALOG.map((s) => `<li><a href="${SITE_ORIGIN}/services/${s.slug}/">${txt(s.title)}</a> — ${txt(s.summary)}</li>`).join("")}</ul>`
   }
   return `<main id="static-prerender"><h1>${escapeHtml(meta.h1)}</h1><p>${escapeHtml(meta.staticLead)}</p>${extra}<nav aria-label="Site">${nav}</nav></main>`
 }

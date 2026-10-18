@@ -42,11 +42,11 @@ export function Hero() {
 
           <HeroEntranceItem>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink to="/contact">
+              <ButtonLink to="/contact/">
                 Book a Free Consultation
                 <ArrowRight size={16} aria-hidden="true" />
               </ButtonLink>
-              <ButtonLink to="/services" variant="secondary">
+              <ButtonLink to="/services/" variant="secondary">
                 View all services
               </ButtonLink>
             </div>

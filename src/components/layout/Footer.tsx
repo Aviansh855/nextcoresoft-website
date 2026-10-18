@@ -36,7 +36,7 @@ export function Footer() {
             {SERVICES.map((service) => (
               <li key={service.slug}>
                 <Link
-                  to={`/services/${service.slug}`}
+                  to={`/services/${service.slug}/`}
                   className="rounded text-sm text-slate-600 transition-colors hover:text-cyan-700"
                 >
                   {service.title}
@@ -50,12 +50,12 @@ export function Footer() {
           <h2 className="text-xs font-semibold tracking-[0.18em] text-slate-800 uppercase">Company</h2>
           <ul className="mt-4 space-y-2.5">
             {[
-              { label: "Portfolio", to: "/portfolio" },
-              { label: "Blog", to: "/blog" },
-              { label: "About", to: "/about" },
-              { label: "Contact", to: "/contact" },
-              { label: "Privacy Policy", to: "/privacy" },
-              { label: "Terms of Service", to: "/terms" },
+              { label: "Portfolio", to: "/portfolio/" },
+              { label: "Blog", to: "/blog/" },
+              { label: "About", to: "/about/" },
+              { label: "Contact", to: "/contact/" },
+              { label: "Privacy Policy", to: "/privacy/" },
+              { label: "Terms of Service", to: "/terms/" },
             ].map((item) => (
               <li key={item.to}>
                 <Link to={item.to} className="rounded text-sm text-slate-600 transition-colors hover:text-cyan-700">
@@ -81,7 +81,7 @@ export function Footer() {
               <p className="text-xs tracking-wide text-slate-500 uppercase">Social</p>
               <p className="mt-2 text-sm text-slate-500">
                 {SOCIALS.join(" · ")} — profiles not published yet.{" "}
-                <Link to="/contact" className="font-medium text-cyan-700 hover:underline">
+                <Link to="/contact/" className="font-medium text-cyan-700 hover:underline">
                   Contact us
                 </Link>{" "}
                 in the meantime.

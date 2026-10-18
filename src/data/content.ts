@@ -16,14 +16,14 @@ export const HOME_TAGLINE = headings.HOME_TAGLINE
 export const SERVICES_HUB_H1 = headings.SERVICES_HUB_H1
 
 export const NAV_LINKS = [
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Blog", href: "/blog" },
+  { label: "Services", href: "/services/" },
+  { label: "Portfolio", href: "/portfolio/" },
+  { label: "Blog", href: "/blog/" },
   { label: "Solutions", href: "/#solutions" },
   { label: "Industries", href: "/#industries" },
   { label: "Our Process", href: "/#process" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "About", href: "/about/" },
+  { label: "Contact", href: "/contact/" },
 ] as const
 
 export const BENEFITS = [

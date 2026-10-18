@@ -42,8 +42,12 @@ forwards the message to Formspree using the server environment variable
 **`FORMSPREE_FORM_URL`**. That URL is **not** in the frontend bundle or this
 repository.
 
-1. In [Formspree](https://formspree.io), create or open your form. Confirm
-   notification email and **Allowed domains** include `nextcoresoft.com`.
+1. In [Formspree](https://formspree.io), create or open your form. Set the form’s
+   **notification / target email** to `hello@nextcoresoft.com` (must match
+   `shared/site.json` → `contactEmail`). Under **Settings → Allowed domains**, include
+   `nextcoresoft.com`. If you use **Form Rules**, add an **Always → Send email** rule
+   to `hello@nextcoresoft.com` — otherwise rules can block notifications even when
+   submissions appear in the dashboard.
 2. In **Cloudflare Pages** → your project → **Settings** → **Environment
    variables** → **Production** (and Preview if needed), add:
    - Name: `FORMSPREE_FORM_URL`

@@ -100,7 +100,7 @@
 - Organization name/url/logo from `shared/site.json` — matches footer and visible branding.
 - No fabricated `AggregateRating` / Review schema.
 - BlogPosting uses post title, dates, and canonical from compiled blog JSON when present.
-- Contact email in footer: `hello@nextcoresoft.com` — **no street address or phone** in `site.json`; schema should not invent them.
+- Contact email in footer: `admin@nextcoresoft.com` — **no street address or phone** in `site.json`; schema should not invent them.
 
 **External validation still required:** Google Rich Results Test / Schema.org validator per URL after deploy.
 
@@ -211,7 +211,7 @@ Unbranded queries (`custom software development company in India…`, etc.) were
 | 3 | ChatGPT Search (OAI-SearchBot) | No explicit OAI-SearchBot rule, but `User-agent: * Allow: /` does not disallow it. Per OpenAI docs, OAI-SearchBot (search) ≠ GPTBot (training); opting out of OAI-SearchBot removes sites from ChatGPT search answers | ⚠️ Allowed by default; **WAF/edge behaviour unverified** — a UA string test is not a verified-bot check. No change made without owner policy decision |
 | 4 | Other AI crawlers | Same `* Allow: /` covers Claude-SearchBot/Claude-User/PerplexityBot/Bingbot at robots level; training bots (GPTBot, ClaudeBot) only in commented templates | ⚠️ Robots OK; edge/WAF unknown for each |
 | 5 | Search index coverage | Historical GSC 403 on `/sitemap.xml` (Cloudflare Managed Rules, `docs/CLOUDFLARE-403-GOOGLEBOT.md`); Bing sample suggests little/no Bing presence | 🔴 **Likely blocker (esp. Bing/Copilot)** — owner: GSC + Bing WMT index/sitemap checks |
-| 6 | Entity clarity | Consistent name/offerings/email (`hello@nextcoresoft.com`) across site, footer, Organization JSON-LD; **no** address/phone/founder/socials in `site.json`; footer honestly says socials unpublished; name collides with many similar firms on Bing page 1 | ⚠️ Thin entity footprint + name ambiguity |
+| 6 | Entity clarity | Consistent name/offerings/email (`admin@nextcoresoft.com`) across site, footer, Organization JSON-LD; **no** address/phone/founder/socials in `site.json`; footer honestly says socials unpublished; name collides with many similar firms on Bing page 1 | ⚠️ Thin entity footprint + name ambiguity |
 | 7 | Independent corroboration | No verified third-party profiles/listings/reviews in repo; GitHub repo is the only off-site hit in Bing sample | 🔴 **Gap** — only legitimate, owner-controlled profiles should be created; no fake listings |
 | 8 | Content usefulness | Service answer blocks, process, FAQs, 3 sourced blog guides (Marketlube/Clutch cited, ranges labelled estimates); portfolio features/stack often intentionally blank pending owner verification | ⚠️ Improving; differentiation still generic vs established firms |
 | 9 | Technical readability | **Was:** full body JS-only. **Fixed locally 2026-10-18:** static `#root` fallback with full blog text (uncommitted, needs deploy). Google renders JS; several AI retrieval crawlers may not | 🔴→⚠️ Fixed in source, live after deploy |

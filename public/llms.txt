@@ -11,25 +11,25 @@ NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor.
 ## Key pages
 
 - Home: https://nextcoresoft.com/
-- Services overview: https://nextcoresoft.com/services
-- About: https://nextcoresoft.com/about
-- Contact / free consultation: https://nextcoresoft.com/contact
-- Portfolio (project showcases): https://nextcoresoft.com/portfolio
-- Blog: https://nextcoresoft.com/blog
-- Custom software & web development: https://nextcoresoft.com/services/custom-software
-- Mobile app development: https://nextcoresoft.com/services/mobile-apps
-- AI automation company (workflows): https://nextcoresoft.com/services/ai-automation
-- Cloud & APIs: https://nextcoresoft.com/services/cloud-api
+- Services overview: https://nextcoresoft.com/services/
+- About: https://nextcoresoft.com/about/
+- Contact / free consultation: https://nextcoresoft.com/contact/
+- Portfolio (project showcases): https://nextcoresoft.com/portfolio/
+- Blog: https://nextcoresoft.com/blog/
+- Custom software & web development: https://nextcoresoft.com/services/custom-software/
+- Mobile app development: https://nextcoresoft.com/services/mobile-apps/
+- AI automation company (workflows): https://nextcoresoft.com/services/ai-automation/
+- Cloud & APIs: https://nextcoresoft.com/services/cloud-api/
 
 ## Blog (2026 guides)
 
-- Custom software development cost in India: https://nextcoresoft.com/blog/custom-software-development-cost-india
-- Mobile app development cost in India: https://nextcoresoft.com/blog/mobile-app-development-cost-india
-- MVP vs full product — what to build first: https://nextcoresoft.com/blog/mvp-vs-full-product
+- Custom software development cost in India: https://nextcoresoft.com/blog/custom-software-development-cost-india/
+- Mobile app development cost in India: https://nextcoresoft.com/blog/mobile-app-development-cost-india/
+- MVP vs full product — what to build first: https://nextcoresoft.com/blog/mvp-vs-full-product/
 
 ## Contact
 
-- Inquiry form: https://nextcoresoft.com/contact
+- Inquiry form: https://nextcoresoft.com/contact/
 - Email: hello@nextcoresoft.com
 
 ## What we do not claim

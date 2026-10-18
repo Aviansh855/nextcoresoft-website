@@ -2,9 +2,12 @@
  * Single source of truth for URLs that should return HTTP 200 (indexable app routes).
  * Used by sitemap generation, Cloudflare Pages middleware, and Vercel edge middleware.
  *
- * SEO canonical policy: only these path strings (no trailing slash except "/") appear in
- * sitemap.xml, `<link rel="canonical">`, and og:url. Cloudflare may 308 `/path` → `/path/`;
- * both serve the same prerender HTML with canonical pointing at `/path` (see docs/SEO.md).
+ * SEO canonical policy (2026-10-18): internal route keys below stay WITHOUT a
+ * trailing slash, but the preferred public URL is the FINAL URL after
+ * Cloudflare Pages' 308 — i.e. WITH a trailing slash (`/portfolio/`), apex
+ * HTTPS host only. `preferredPath()` converts a route key to that public
+ * form; sitemap.xml, canonical, og:url and JSON-LD must all use it so the
+ * declared canonical matches the URL that actually serves 200.
  */
 
 import { BLOG_INDEX_PATH, blogPostIndexablePaths, blogSitemapEntries } from "./blog-index.mjs"
@@ -41,6 +44,12 @@ export function normalizePathname(pathname) {
   path = path.replace(/\/+/g, "/")
   if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1)
   return path || "/"
+}
+
+/** Public preferred form of a route key: "/" stays "/", others get a trailing slash. */
+export function preferredPath(pathname) {
+  const path = normalizePathname(pathname)
+  return path === "/" ? "/" : `${path}/`
 }
 
 export function isStaticAsset(pathname) {

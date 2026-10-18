@@ -3,8 +3,8 @@ import type { Service } from "../../data/content"
 import { ButtonLink } from "../ui/Button"
 
 export function ServiceLeadCTAs({ service, className = "" }: { service: Service; className?: string }) {
-  const quote = `/contact?intent=quote&service=${service.slug}`
-  const discuss = `/contact?service=${service.slug}`
+  const quote = `/contact/?intent=quote&service=${service.slug}`
+  const discuss = `/contact/?service=${service.slug}`
   return (
     <div
       className={`flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center ${className}`}

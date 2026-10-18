@@ -1,5 +1,5 @@
 import { inquiryFieldsFromClientPayload } from "../../shared/inquiry-payload.mjs"
-import { proxyInquiryToFormspree } from "../../shared/formspree-proxy.mjs"
+import { normalizeFormspreeUrl, proxyInquiryToFormspree } from "../../shared/formspree-proxy.mjs"
 
 const ALLOWED_ORIGINS = new Set([
   "https://nextcoresoft.com",
@@ -55,7 +55,17 @@ export async function onRequestPost(context) {
     return jsonResponse({ ok: false, error: "Please check required fields and try again." }, 400)
   }
 
-  const formspreeUrl = context.env?.FORMSPREE_FORM_URL?.trim()
+  const formspreeUrl = normalizeFormspreeUrl(context.env?.FORMSPREE_FORM_URL)
+  if (!formspreeUrl) {
+    return jsonResponse(
+      {
+        ok: false,
+        error:
+          "Contact form is not configured on the server. Set FORMSPREE_FORM_URL in Cloudflare Pages environment variables and redeploy.",
+      },
+      503,
+    )
+  }
   const result = await proxyInquiryToFormspree(formspreeUrl, fields)
 
   if (result.ok) {

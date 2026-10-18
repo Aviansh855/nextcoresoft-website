@@ -16,7 +16,7 @@ export function siteAbsoluteUrl(href: string): string {
   if (/^https?:\/\/(www\.)?nextcoresoft\.com/i.test(href)) {
     try {
       const u = new URL(href)
-      return `${origin}${u.pathname}${u.search}${u.hash}`
+      return `${origin}${preferredPathname(u.pathname)}${u.search}${u.hash}`
     } catch {
       return href
     }
@@ -27,6 +27,12 @@ export function siteAbsoluteUrl(href: string): string {
   }
 
   return href
+}
+
+/** Page routes (no file extension) use the preferred trailing-slash form. */
+function preferredPathname(pathname: string): string {
+  if (pathname === "/" || /\.[a-z0-9]+$/i.test(pathname)) return pathname
+  return pathname.endsWith("/") ? pathname : `${pathname}/`
 }
 
 export function isOnSiteHref(href: string): boolean {

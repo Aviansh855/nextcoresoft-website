@@ -19,7 +19,7 @@ export function BlogRelatedPosts({ current, limit = 3 }: { current: BlogPost; li
       <ul className="mt-4 space-y-3">
         {picks.map((post) => (
           <li key={post.slug}>
-            <Link to={`/blog/${post.slug}`} className="text-sm font-medium text-cyan-700 hover:underline sm:text-base">
+            <Link to={`/blog/${post.slug}/`} className="text-sm font-medium text-cyan-700 hover:underline sm:text-base">
               {post.title}
             </Link>
           </li>

@@ -64,7 +64,7 @@ export function Navbar() {
         </ul>
 
         <div className="hidden lg:block">
-          <ButtonLink to="/contact" className="px-5 py-2.5">
+          <ButtonLink to="/contact/" className="px-5 py-2.5">
             Let&apos;s Talk
           </ButtonLink>
         </div>
@@ -101,7 +101,7 @@ export function Navbar() {
               )
             })}
           </ul>
-          <ButtonLink to="/contact" className="mt-3 w-full">
+          <ButtonLink to="/contact/" className="mt-3 w-full">
             Let&apos;s Talk
           </ButtonLink>
         </div>

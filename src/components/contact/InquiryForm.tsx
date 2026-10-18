@@ -59,7 +59,9 @@ function validate(fields: Fields): Errors {
 /** Posts to same-origin API; Formspree URL lives only in server env (Cloudflare). */
 async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
   if (gotcha.trim()) {
-    throw new Error("Submission blocked.")
+    throw new Error(
+      "Your browser may have auto-filled a hidden field. Clear the form, type your details manually, and try again.",
+    )
   }
 
   let response: Response
@@ -88,14 +90,21 @@ async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
     )
   }
 
+  const contentType = response.headers.get("content-type") ?? ""
+  if (!contentType.includes("application/json")) {
+    throw new Error(
+      "The contact API did not respond correctly. Use npm run dev with FORMSPREE_FORM_URL in .env.local, or test on the deployed site.",
+    )
+  }
+
   let payload: ApiResult = {}
   try {
     payload = (await response.json()) as ApiResult
   } catch {
-    /* non-JSON body */
+    throw new Error("The server returned an invalid response. Please try again or email hello@nextcoresoft.com directly.")
   }
 
-  if (!response.ok || payload.ok === false) {
+  if (!response.ok || payload.ok !== true) {
     const detail =
       payload.error ||
       payload.errors?.map((e) => e.message).join(" ") ||
@@ -295,12 +304,17 @@ export function InquiryForm() {
         />
       </Field>
 
-      {/* Honeypot: hidden from people, tempting to bots. Filled submissions are dropped server-side. */}
-      <div className="absolute -left-[9999px]" aria-hidden="true">
-        <label>
-          Company website
-          <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
-        </label>
+      {/* Honeypot: must not look like "website" or autofill will fill it and block real users. */}
+      <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+        <label htmlFor="inquiry-hp">Leave this empty</label>
+        <input
+          id="inquiry-hp"
+          type="text"
+          name="_gotcha"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
       </div>
 
       <div>
@@ -315,7 +329,7 @@ export function InquiryForm() {
           />
           <span>
             I agree that NextCoreSoft may contact me about this inquiry and store these details for that purpose,
-            as described in the <Link to="/privacy" className="text-cyan-600 underline-offset-2 hover:underline">Privacy Policy</Link>.
+            as described in the <Link to="/privacy/" className="text-cyan-600 underline-offset-2 hover:underline">Privacy Policy</Link>.
           </span>
         </label>
         {errors.consent && <p className="mt-1.5 text-xs font-medium text-rose-600">{errors.consent}</p>}

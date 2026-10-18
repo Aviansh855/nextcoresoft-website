@@ -30,7 +30,7 @@ Copy and H1 strings: `shared/site.json`, `shared/page-headings.json` (imported b
 
 ## Indexable URLs (in sitemap)
 
-Canonical URLs are **HTTPS apex, non-www, no trailing slash** (except homepage `https://nextcoresoft.com/`). The sitemap lists exactly these paths — see `shared/indexable-paths.mjs`.
+Canonical URLs are **HTTPS apex, non-www, WITH trailing slash** (e.g. `https://nextcoresoft.com/portfolio/`) — the final URL after Cloudflare Pages' 308. The sitemap lists exactly these URLs — see `shared/indexable-paths.mjs` (`preferredPath()`). Changed 2026-10-18; see `docs/HTTPS_CANONICAL_AUDIT.md`.
 
 - `/`
 - `/about`
@@ -52,12 +52,12 @@ Not in sitemap: client-side 404, hash routes (`/#services` are sections on `/`).
 
 Cloudflare may **308** `/portfolio` → `/portfolio/` when `portfolio/index.html` exists. We **do not** 301-strip slashes in Pages middleware (that caused redirect loops).
 
-SEO-safe behavior:
+SEO-safe behavior (2026-10-18):
 
-1. **`public/_redirects`** — both `/path` and `/path/` rewrite with **200** to the same prerendered `index.html`.
-2. **Prerender + `applyMeta()`** — each file sets `<link rel="canonical">` and `og:url` to the **non-trailing** URL (e.g. `https://nextcoresoft.com/portfolio`).
-3. **Sitemap** — only non-trailing URLs (never `/portfolio/`).
-4. **React Router** — client redirect from `/path/` → `/path` for a consistent address bar (optional for crawlers; canonical tag is what Google uses for deduplication).
+1. **`public/_redirects`** — both `/path` and `/path/` rewrite with **200** to the same prerendered `index.html` (Cloudflare may still 308 `/path` → `/path/` at the edge; that final URL is the canonical one).
+2. **Prerender + `applyMeta()`** — each file sets `<link rel="canonical">` and `og:url` to the **trailing-slash** URL (e.g. `https://nextcoresoft.com/portfolio/`), matching the final served URL exactly.
+3. **Sitemap** — only trailing-slash URLs for non-root routes.
+4. **React Router** — routes accept both forms; the address bar is **not** rewritten away from the trailing-slash form.
 
 Internal links and GSC URL Inspection should use the **sitemap** URLs. Rich results are not guaranteed.
 

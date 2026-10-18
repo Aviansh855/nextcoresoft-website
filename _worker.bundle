@@ -54,7 +54,11 @@ async function proxyInquiryToFormspree(formspreeUrl, fields) {
   }
   const gotcha = String(fields._gotcha ?? "").trim();
   if (gotcha) {
-    return { ok: true, status: 200, payload: { ok: true } };
+    return {
+      ok: false,
+      status: 400,
+      payload: { ok: false, error: "Submission blocked." }
+    };
   }
   const body = new FormData();
   body.append("_gotcha", "");

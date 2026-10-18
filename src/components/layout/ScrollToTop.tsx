@@ -11,15 +11,10 @@ export function ScrollToTop() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (pathname.length > 1 && pathname.endsWith("/")) {
-      navigate(
-        { pathname: pathname.replace(/\/+$/, ""), search, hash },
-        { replace: true },
-      )
-      return
-    }
+    // Keep the trailing-slash URL the server settled on (preferred canonical
+    // form) — do not rewrite /portfolio/ → /portfolio in the address bar.
     if (hash === "#about") {
-      navigate("/about", { replace: true })
+      navigate("/about/", { replace: true })
       return
     }
     if (hash) {

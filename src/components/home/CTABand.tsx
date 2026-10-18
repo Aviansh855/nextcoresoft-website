@@ -20,7 +20,7 @@ export function CTABand() {
             honest view of what&apos;s worth building.
           </p>
           <div className="relative mt-9">
-            <ButtonLink to="/contact">
+            <ButtonLink to="/contact/">
               Book a Free Consultation
               <ArrowRight size={16} aria-hidden="true" />
             </ButtonLink>

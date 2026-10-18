@@ -26,7 +26,7 @@ export function ServicesIndexPage() {
           <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
             {SITE.name} helps businesses that search for a software development partner — custom web applications,
             Android and iOS apps, AI workflow automation, and cloud integrations. Choose a service below or{" "}
-            <Link to="/contact" className="font-medium text-cyan-700 hover:underline">
+            <Link to="/contact/" className="font-medium text-cyan-700 hover:underline">
               describe your project
             </Link>{" "}
             if you are not sure where to start.
@@ -38,7 +38,7 @@ export function ServicesIndexPage() {
             <Reveal key={service.slug} delay={index * 0.05}>
               <li className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 transition-colors hover:border-cyan-300/40">
                 <h2 className="font-display text-xl font-semibold text-slate-900">
-                  <Link to={`/services/${service.slug}`} className="hover:text-cyan-800">
+                  <Link to={`/services/${service.slug}/`} className="hover:text-cyan-800">
                     {service.title}
                   </Link>
                 </h2>
@@ -53,7 +53,7 @@ export function ServicesIndexPage() {
                   {SERVICE_DETAILS[service.slug as ServiceSlug].aeo.suitableFor}
                 </p>
                 <Link
-                  to={`/services/${service.slug}`}
+                  to={`/services/${service.slug}/`}
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-700 hover:text-slate-900"
                 >
                   View service details
@@ -66,8 +66,8 @@ export function ServicesIndexPage() {
 
         <Reveal>
           <div className="mt-12 flex flex-wrap gap-3">
-            <ButtonLink to="/contact?intent=quote">Request a Quote</ButtonLink>
-            <ButtonLink to="/portfolio" variant="secondary">
+            <ButtonLink to="/contact/?intent=quote">Request a Quote</ButtonLink>
+            <ButtonLink to="/portfolio/" variant="secondary">
               See portfolio
             </ButtonLink>
           </div>

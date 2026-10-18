@@ -19,7 +19,7 @@ export function ServicePageLinks({ variant = "list", className = "", heading }: 
         {SERVICES.map((service, index) => (
           <span key={service.slug}>
             {index > 0 && (index === SERVICES.length - 1 ? ", and " : ", ")}
-            <Link to={`/services/${service.slug}`} className={linkClass}>
+            <Link to={`/services/${service.slug}/`} className={linkClass}>
               {service.title}
             </Link>
           </span>
@@ -33,7 +33,7 @@ export function ServicePageLinks({ variant = "list", className = "", heading }: 
       <ul className={`flex flex-wrap gap-x-3 gap-y-2 text-sm ${className}`}>
         {SERVICES.map((service) => (
           <li key={service.slug}>
-            <Link to={`/services/${service.slug}`} className={linkClass}>
+            <Link to={`/services/${service.slug}/`} className={linkClass}>
               {service.title}
             </Link>
           </li>
@@ -51,7 +51,7 @@ export function ServicePageLinks({ variant = "list", className = "", heading }: 
         {SERVICES.map((service) => (
           <li key={service.slug}>
             <Link
-              to={`/services/${service.slug}`}
+              to={`/services/${service.slug}/`}
               className="block rounded-lg text-sm text-slate-600 transition-colors hover:text-cyan-800 sm:text-base"
             >
               {service.title}

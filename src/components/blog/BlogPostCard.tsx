@@ -55,7 +55,7 @@ export function BlogPostCard({ post, featured }: BlogPostCardProps) {
       </div>
 
       <h2 className="mt-4 font-display text-xl font-semibold text-slate-900 text-balance sm:text-2xl">
-        <Link to={`/blog/${post.slug}`} className="hover:text-cyan-800">
+        <Link to={`/blog/${post.slug}/`} className="hover:text-cyan-800">
           {post.title}
         </Link>
       </h2>
@@ -64,7 +64,7 @@ export function BlogPostCard({ post, featured }: BlogPostCardProps) {
 
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <Link
-          to={`/blog/${post.slug}`}
+          to={`/blog/${post.slug}/`}
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-700 hover:text-slate-900"
         >
           Read article

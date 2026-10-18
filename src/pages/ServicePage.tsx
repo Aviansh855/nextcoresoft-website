@@ -31,7 +31,7 @@ export function ServicePage() {
       service
         ? [
             { label: "Home", to: "/" },
-            { label: "Services", to: "/services" },
+            { label: "Services", to: "/services/" },
             { label: service.title },
           ]
         : [],
@@ -136,7 +136,7 @@ export function ServicePage() {
               item ? (
                 <li key={item.id}>
                   <Link
-                    to={`/portfolio#${item.id}`}
+                    to={`/portfolio/#${item.id}`}
                     className="block rounded-xl border border-slate-200 p-4 transition-colors hover:border-cyan-300/40"
                   >
                     <span className="font-medium text-slate-900">{item.name}</span>
@@ -147,7 +147,7 @@ export function ServicePage() {
             )}
           </ul>
           <p className="mt-4 text-sm">
-            <Link to="/portfolio" className="text-cyan-700 hover:underline">
+            <Link to="/portfolio/" className="text-cyan-700 hover:underline">
               View full portfolio
             </Link>
           </p>
@@ -172,7 +172,7 @@ export function ServicePage() {
           {others.map((item: Service) => (
             <li key={item.slug}>
               <Link
-                to={`/services/${item.slug}`}
+                to={`/services/${item.slug}/`}
                 className="block rounded-xl border border-slate-200 p-4 text-sm font-medium text-slate-700 transition-colors hover:border-cyan-300/40 hover:text-slate-900"
               >
                 {item.title}
@@ -186,15 +186,15 @@ export function ServicePage() {
             general FAQ
           </Link>
           ,{" "}
-          <Link to="/about" className="text-cyan-700 hover:underline">
+          <Link to="/about/" className="text-cyan-700 hover:underline">
             about {SITE.name}
           </Link>
           ,{" "}
-          <Link to="/portfolio" className="text-cyan-700 hover:underline">
+          <Link to="/portfolio/" className="text-cyan-700 hover:underline">
             portfolio
           </Link>
           , or{" "}
-          <Link to="/contact" className="text-cyan-700 hover:underline">
+          <Link to="/contact/" className="text-cyan-700 hover:underline">
             contact us
           </Link>
           .

@@ -1,5 +1,5 @@
 import { blogRouteMetaByPath } from "./blog-posts.mjs"
-import { SITE_ORIGIN } from "./indexable-paths.mjs"
+import { SITE_ORIGIN, preferredPath } from "./indexable-paths.mjs"
 import { HOME_H1, SERVICES_HUB_H1 } from "./page-headings.mjs"
 
 /** Static HTML meta per indexable route. Service h1/lead must match `SERVICE_DETAILS` in `src/data/content.ts`. */
@@ -104,7 +104,8 @@ export const ROUTE_META = {
 }
 
 export function canonicalUrl(path) {
-  return path === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`
+  // Preferred public URL = final URL after Cloudflare's 308 (trailing slash).
+  return `${SITE_ORIGIN}${preferredPath(path)}`
 }
 
 export function googlebotContent(robots) {
@@ -130,8 +131,7 @@ export function noscriptBlock(path) {
     ["/services/cloud-api", "Cloud & API"],
   ]
     .map(
-      ([href, label]) =>
-        `<a href="${SITE_ORIGIN}${href === "/" ? "/" : href}">${escapeHtml(label)}</a>`,
+      ([href, label]) => `<a href="${canonicalUrl(href)}">${escapeHtml(label)}</a>`,
     )
     .join(" · ")
 

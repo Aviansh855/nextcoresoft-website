@@ -64,8 +64,8 @@ if (!existsSync(sitemapPath)) {
       fail(`sitemap.xml missing <loc>${loc}</loc>`)
     }
   }
-  if (sitemap.includes("/portfolio/</loc>") || sitemap.match(/<loc>https:\/\/nextcoresoft\.com\/[^<]+\/<\/loc>/)) {
-    fail("sitemap.xml must not list trailing-slash URLs")
+  if (sitemap.match(/<loc>https:\/\/nextcoresoft\.com\/(about|contact|portfolio|blog|services|privacy|terms)[^<]*[^/]<\/loc>/)) {
+    fail("sitemap.xml must list preferred trailing-slash URLs for non-root routes")
   }
 }
 
@@ -85,8 +85,11 @@ for (const path of INDEXABLE_PATHS) {
     continue
   }
   const canonical = canonicalUrl(path)
-  if (canonical.endsWith("/") && path !== "/") {
-    fail(`canonicalUrl must not end with / for ${path}`)
+  if (!canonical.endsWith("/")) {
+    fail(`canonicalUrl must be the preferred trailing-slash URL for ${path}`)
+  }
+  if (canonical.includes("www.") || canonical.startsWith("http://")) {
+    fail(`canonicalUrl must be apex HTTPS for ${path}`)
   }
   const titleEsc = meta.title.replace(/&/g, "&amp;")
   if (!html.includes(`<title>${titleEsc}</title>`)) {

@@ -177,24 +177,24 @@ export function LegalPage({ kind }: { kind: "privacy" | "terms" }) {
             Home
           </Link>
           {" · "}
-          <Link to="/about" className="text-cyan-700 hover:underline">
+          <Link to="/about/" className="text-cyan-700 hover:underline">
             About
           </Link>
           {" · "}
-          <Link to="/contact" className="text-cyan-700 hover:underline">
+          <Link to="/contact/" className="text-cyan-700 hover:underline">
             Contact
           </Link>
           {isPrivacy ? (
             <>
               {" · "}
-              <Link to="/terms" className="text-cyan-700 hover:underline">
+              <Link to="/terms/" className="text-cyan-700 hover:underline">
                 Terms of Service
               </Link>
             </>
           ) : (
             <>
               {" · "}
-              <Link to="/privacy" className="text-cyan-700 hover:underline">
+              <Link to="/privacy/" className="text-cyan-700 hover:underline">
                 Privacy Policy
               </Link>
             </>

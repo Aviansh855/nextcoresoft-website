@@ -26,7 +26,7 @@ export function ProjectShowcase() {
                 {project.label}
               </span>
               <h3 className="mt-3 font-display text-lg font-semibold text-slate-900">
-                <Link to={`/portfolio#${project.id}`} className="hover:text-cyan-800">
+                <Link to={`/portfolio/#${project.id}`} className="hover:text-cyan-800">
                   {project.name}
                 </Link>
               </h3>
@@ -48,7 +48,7 @@ export function ProjectShowcase() {
                 </ul>
               )}
               <Link
-                to={`/contact?project=${project.id}`}
+                to={`/contact/?project=${project.id}`}
                 className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-cyan-700 hover:text-slate-900"
               >
                 Discuss this project
@@ -61,10 +61,10 @@ export function ProjectShowcase() {
 
       <Reveal delay={0.12}>
         <div className="mt-10 flex flex-wrap items-center gap-4">
-          <ButtonLink to="/portfolio" variant="secondary">
+          <ButtonLink to="/portfolio/" variant="secondary">
             View full portfolio
           </ButtonLink>
-          <ButtonLink to="/contact?intent=quote">
+          <ButtonLink to="/contact/?intent=quote">
             Request a Quote
             <ArrowRight size={16} aria-hidden="true" />
           </ButtonLink>

@@ -27,23 +27,23 @@ export function HomeEngagementOverview() {
             <p>
               <strong className="font-semibold text-slate-800">Typical path:</strong> discovery call → written scope
               and quote → design/build in demos → testing with your team → launch → optional maintenance. See{" "}
-              <Link to="/portfolio" className="font-medium text-cyan-700 underline-offset-2 hover:underline">
+              <Link to="/portfolio/" className="font-medium text-cyan-700 underline-offset-2 hover:underline">
                 project showcases
               </Link>{" "}
               for examples we can walk through (not client case studies unless agreed), or pick a service:{" "}
-              <Link to="/services/custom-software" className="text-cyan-700 hover:underline">
+              <Link to="/services/custom-software/" className="text-cyan-700 hover:underline">
                 custom software
               </Link>
               ,{" "}
-              <Link to="/services/mobile-apps" className="text-cyan-700 hover:underline">
+              <Link to="/services/mobile-apps/" className="text-cyan-700 hover:underline">
                 mobile apps
               </Link>
               ,{" "}
-              <Link to="/services/ai-automation" className="text-cyan-700 hover:underline">
+              <Link to="/services/ai-automation/" className="text-cyan-700 hover:underline">
                 AI automation
               </Link>
               ,{" "}
-              <Link to="/services/cloud-api" className="text-cyan-700 hover:underline">
+              <Link to="/services/cloud-api/" className="text-cyan-700 hover:underline">
                 cloud &amp; API
               </Link>
               .

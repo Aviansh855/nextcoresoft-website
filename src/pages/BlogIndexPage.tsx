@@ -44,7 +44,7 @@ export function BlogIndexPage() {
           </p>
           <p className="mt-4 text-sm text-slate-500">
             {BLOG_POSTS.length} articles · Updated regularly ·{" "}
-            <Link to="/services" className="font-medium text-cyan-700 hover:underline">
+            <Link to="/services/" className="font-medium text-cyan-700 hover:underline">
               Service overview
             </Link>
           </p>
@@ -108,20 +108,20 @@ export function BlogIndexPage() {
             <h2 className="font-display text-lg font-semibold text-slate-900">Ready to scope a project?</h2>
             <p className="mt-2 text-sm text-slate-600 sm:text-base">
               Mention an article or service on the{" "}
-              <Link to="/contact" className="font-medium text-cyan-700 hover:underline">
+              <Link to="/contact/" className="font-medium text-cyan-700 hover:underline">
                 contact form
               </Link>{" "}
               — custom software,{" "}
-              <Link to="/services/mobile-apps" className="font-medium text-cyan-700 hover:underline">
+              <Link to="/services/mobile-apps/" className="font-medium text-cyan-700 hover:underline">
                 mobile apps
               </Link>
               , or{" "}
-              <Link to="/services/ai-automation" className="font-medium text-cyan-700 hover:underline">
+              <Link to="/services/ai-automation/" className="font-medium text-cyan-700 hover:underline">
                 AI automation
               </Link>
               .
             </p>
-            <ButtonLink to="/contact?intent=quote" className="mt-6">
+            <ButtonLink to="/contact/?intent=quote" className="mt-6">
               Request a Quote
               <ArrowRight size={16} aria-hidden="true" />
             </ButtonLink>

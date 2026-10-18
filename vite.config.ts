@@ -20,6 +20,45 @@ function readJsonBody(req: import('node:http').IncomingMessage): Promise<unknown
   })
 }
 
+function createContactApiMiddleware(formspreeUrl: string | undefined) {
+  return async (
+    req: import('node:http').IncomingMessage,
+    res: import('node:http').ServerResponse,
+    next: () => void,
+  ) => {
+    const path = req.url?.split('?')[0]
+    if (path !== '/api/contact') return next()
+
+    if (req.method !== 'POST') {
+      res.statusCode = 405
+      res.setHeader('Content-Type', 'application/json')
+      res.end(JSON.stringify({ ok: false, error: 'Method not allowed' }))
+      return
+    }
+
+    try {
+      const { inquiryFieldsFromClientPayload } = await import('./shared/inquiry-payload.mjs')
+      const { proxyInquiryToFormspree } = await import('./shared/formspree-proxy.mjs')
+      const raw = await readJsonBody(req)
+      const fields = inquiryFieldsFromClientPayload(raw)
+      if (!fields) {
+        res.statusCode = 400
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ ok: false, error: 'Please check required fields and try again.' }))
+        return
+      }
+      const result = await proxyInquiryToFormspree(formspreeUrl?.trim(), fields)
+      res.statusCode = result.status
+      res.setHeader('Content-Type', 'application/json')
+      res.end(JSON.stringify(result.payload))
+    } catch {
+      res.statusCode = 500
+      res.setHeader('Content-Type', 'application/json')
+      res.end(JSON.stringify({ ok: false, error: 'Server error.' }))
+    }
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -31,39 +70,10 @@ export default defineConfig(({ mode }) => {
     {
       name: 'contact-api-dev',
       configureServer(server) {
-        server.middlewares.use(async (req, res, next) => {
-          const path = req.url?.split('?')[0]
-          if (path !== '/api/contact') return next()
-
-          if (req.method !== 'POST') {
-            res.statusCode = 405
-            res.setHeader('Content-Type', 'application/json')
-            res.end(JSON.stringify({ ok: false, error: 'Method not allowed' }))
-            return
-          }
-
-          try {
-            const { inquiryFieldsFromClientPayload } = await import('./shared/inquiry-payload.mjs')
-            const { proxyInquiryToFormspree } = await import('./shared/formspree-proxy.mjs')
-            const raw = await readJsonBody(req)
-            const fields = inquiryFieldsFromClientPayload(raw)
-            if (!fields) {
-              res.statusCode = 400
-              res.setHeader('Content-Type', 'application/json')
-              res.end(JSON.stringify({ ok: false, error: 'Please check required fields and try again.' }))
-              return
-            }
-            const formspreeUrl = env.FORMSPREE_FORM_URL?.trim()
-            const result = await proxyInquiryToFormspree(formspreeUrl, fields)
-            res.statusCode = result.status
-            res.setHeader('Content-Type', 'application/json')
-            res.end(JSON.stringify(result.payload))
-          } catch {
-            res.statusCode = 500
-            res.setHeader('Content-Type', 'application/json')
-            res.end(JSON.stringify({ ok: false, error: 'Server error.' }))
-          }
-        })
+        server.middlewares.use(createContactApiMiddleware(env.FORMSPREE_FORM_URL))
+      },
+      configurePreviewServer(server) {
+        server.middlewares.use(createContactApiMiddleware(env.FORMSPREE_FORM_URL))
       },
     },
     {

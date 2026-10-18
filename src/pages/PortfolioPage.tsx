@@ -31,7 +31,7 @@ export function PortfolioPage() {
             them and approve the wording. Ask us for a walkthrough of any item during a consultation.
           </p>
           <div className="mt-8">
-            <ButtonLink to="/contact?intent=quote">
+            <ButtonLink to="/contact/?intent=quote">
               Request a Quote
               <ArrowRight size={16} aria-hidden="true" />
             </ButtonLink>
@@ -92,14 +92,14 @@ export function PortfolioPage() {
                     return (
                       <span key={slug}>
                         {i > 0 ? ", " : ""}
-                        <Link to={`/services/${slug}`} className="text-cyan-700 hover:underline">
+                        <Link to={`/services/${slug}/`} className="text-cyan-700 hover:underline">
                           {svc.title}
                         </Link>
                       </span>
                     )
                   })}
                 </p>
-                <ButtonLink to={`/contact?service=${item.relatedServices[0] ?? "custom-software"}&project=${item.id}`} className="mt-6 self-start">
+                <ButtonLink to={`/contact/?service=${item.relatedServices[0] ?? "custom-software"}&project=${item.id}`} className="mt-6 self-start">
                   Discuss this project
                 </ButtonLink>
               </article>
@@ -112,7 +112,7 @@ export function PortfolioPage() {
             <h2 className="font-display text-xl font-semibold text-slate-900">Explore services</h2>
             <ServicePageLinks className="mt-4" />
             <p className="mt-6 text-sm text-slate-600">
-              <Link to="/about" className="text-cyan-700 hover:underline">
+              <Link to="/about/" className="text-cyan-700 hover:underline">
                 About {SITE.name}
               </Link>
               {" · "}
