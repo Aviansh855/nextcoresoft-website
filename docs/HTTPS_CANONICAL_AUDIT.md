@@ -1,7 +1,7 @@
 # HTTPS & Canonical URL Audit — NextCoreSoft (Local)
 
-**Date:** 2026-10-18
-**Scope:** Local `nextcoresoft` marketing repo only. No Cloudflare, DNS, certificate, or production changes made. All changes uncommitted.
+**Date:** 2026-10-18 (documentation refresh: 2026-10-18 late — URL/blog counts)
+**Scope:** Local `nextcoresoft` marketing repo only. No Cloudflare, DNS, certificate, or production changes made by this audit task.
 **Preferred URL (decision):** Apex HTTPS + **trailing slash** — `https://nextcoresoft.com/<path>/` (root: `https://nextcoresoft.com/`). This is the final URL the live server actually settles on, so canonical/sitemap/internal links now match it exactly instead of fighting Cloudflare Pages' redirect.
 
 ---
@@ -20,7 +20,7 @@
 **Findings:**
 
 1. **Trailing-slash 308 is Cloudflare Pages directory behaviour** (`dist/<path>/index.html`). The final served URL always has a trailing slash. Fighting it (301-stripping in middleware) previously caused redirect loops — see comment in `functions/_middleware.js`.
-2. **Canonical mismatch (confirmed defect, fixed locally):** live/prerendered pages declared `https://nextcoresoft.com/portfolio` (no slash) while the final URL is `…/portfolio/`. Same on all 14 non-root routes.
+2. **Canonical mismatch (confirmed defect, fixed in repo):** live/prerendered pages had declared `https://nextcoresoft.com/portfolio` (no slash) while the final URL is `…/portfolio/`. Same on all non-root indexable routes (**18** non-root paths at the time of the fix; **19** sitemap URLs today including **7** blog posts).
 3. **http → https works:** 301 upgrade on both hosts, plus `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload` (`public/_headers`, confirmed in live response headers). No evidence of an HTTPS serving failure or certificate problem (TLS handshake + HTTPS 200 via curl; no cert errors observed). **No certificate change is warranted.**
 4. **www → apex does NOT happen live (confirmed gap, owner action):** `www` URLs serve 200 on the `www` host after only a scheme upgrade + slash redirect. The `public/_redirects` host rules (`https://www.nextcoresoft.com/* → https://nextcoresoft.com/:splat 301`) are in the repo but are **not taking effect at the edge** for the www host. A repo-only change cannot be verified to fix this; it needs a Cloudflare Redirect Rule (see §6). Duplicate www/apex serving dilutes canonical signals even though the canonical tag points to apex.
 5. **GSC "Page is not served over HTTPS":** the page fetches over HTTPS 200 with valid HSTS, so this is most consistent with a **stale/unevaluated GSC status or an old http:// URL variant in the index**, not a current serving failure. It is **not claimed fixed** — it must be rechecked in GSC after deploy + recrawl (URL Inspection → Test Live URL on the exact reported URL).
@@ -50,7 +50,7 @@
 |---|---|
 | `shared/indexable-paths.mjs` | Policy comment rewritten; new `preferredPath()` helper (`/` → `/`, else trailing slash) |
 | `shared/route-meta.mjs` | `canonicalUrl()` now returns apex HTTPS + trailing slash; noscript links use it |
-| `scripts/generate-sitemap.mjs` | `<loc>` built with `preferredPath()` — all 15 sitemap URLs now end with `/` |
+| `scripts/generate-sitemap.mjs` | `<loc>` built with `preferredPath()` — all **19** sitemap URLs end with `/`; `<lastmod>` from blog dates or content-source mtimes (not build date for every URL) |
 | `shared/jsonld-graph.mjs` | `pageUrl()`/`entityBase()` emit trailing-slash URLs; offer/blog `url`s slashed |
 | `src/lib/seo.ts` | New `preferredUrl()`; `applyMeta` canonical + `og:url`, `articleSchema`, `serviceSchema`, `webPageSchema`, `breadcrumbSchema`, offer/contact URLs all trailing-slash |
 | `src/lib/site-url.ts` | Absolute on-site URLs normalised to preferred slash form |
@@ -64,13 +64,13 @@
 
 **Not changed:** `public/_redirects` route rules (no new redirects added, no loop risk introduced), `functions/_middleware.js` (404/noindex logic untouched), certificates, Cloudflare/DNS.
 
-*Also in the working tree from the immediately preceding request:* contact email `hello@` → `admin@nextcoresoft.com` (`Footer`, `ContactPage`, `InquiryForm`, `seo.ts`, `jsonld-static.mjs`, `llms.txt`, `README`, AEO audit doc) — included in the same build verification below.
+*Contact email in current `shared/site.json`:* `hello@nextcoresoft.com` (Organization JSON-LD and visible contact copy align with this).
 
 ---
 
 ## 4. Final URL format per route
 
-All 15 indexable routes: `https://nextcoresoft.com/` (root) and `https://nextcoresoft.com/<path>/` for `/about, /contact, /portfolio, /blog, /blog/<3 slugs>, /services, /services/<4 slugs>, /privacy, /terms`. Non-slash variants still resolve (308 → slash locally at the edge; both rewrite 200 in `_redirects`), but the slash URL is the only one declared in canonical/sitemap/og/JSON-LD/internal links.
+All **19** indexable routes in `SITEMAP_ENTRIES`: `https://nextcoresoft.com/` (root) and `https://nextcoresoft.com/<path>/` for `/about`, `/contact`, `/portfolio`, `/blog`, **seven** `/blog/<slug>/` posts (see `shared/blog-posts.json`), `/services`, four `/services/<slug>/` pages, `/privacy`, `/terms`. Non-slash variants still resolve (308 → slash at the edge; both rewrite 200 in `_redirects`), but the slash URL is the only one declared in canonical/sitemap/og/JSON-LD/internal links.
 
 ## 5. Mixed content
 
@@ -80,11 +80,11 @@ Searched `src/`, `public/`, `shared/`, `index.html` for `http://`: only XML name
 
 | Check | Result |
 |---|---|
-| `npm run build` (incl. `tsc -b`, prerender, `verify-seo-routes`) | ✅ Pass — "SEO route HTML verified for 15 paths" |
+| `npm run build` (incl. `tsc -b`, prerender, `verify-seo-routes`) | ✅ Pass — "SEO route HTML verified for **19** paths (sitemap + canonical policy OK)" |
 | `npm run lint` (oxlint) | ✅ Pass — only pre-existing warnings (unused vars, RichText export) |
 | `dist/portfolio/index.html` | canonical + og:url = `https://nextcoresoft.com/portfolio/`, title `Project Portfolio \| NextCoreSoft` |
 | `dist/about`, `dist/services/ai-automation`, `dist/blog/mvp-vs-full-product`, `dist/index.html` | canonical/og all apex-HTTPS trailing-slash; titles unchanged |
-| `public/sitemap.xml` | 15 `<loc>`s, all `https://nextcoresoft.com/…/` |
+| `public/sitemap.xml` | **19** `<loc>`s, all `https://nextcoresoft.com/…/` (7 blog posts + 12 other indexable routes) |
 | Preview (`127.0.0.1:4173`) `/portfolio/` | Renders, URL keeps trailing slash, H1 correct, rendered canonical/og = `https://nextcoresoft.com/portfolio/` |
 | Live redirect traces (curl, read-only) | Recorded in §1 — no production behaviour changed by this task |
 

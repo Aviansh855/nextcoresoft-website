@@ -7,7 +7,7 @@ export function siteAbsoluteUrl(href: string): string {
   if (/^https?:\/\/localhost(?::\d+)?/i.test(href)) {
     try {
       const u = new URL(href)
-      return `${origin}${u.pathname}${u.search}${u.hash}`
+      return `${origin}${preferredPathname(u.pathname)}${u.search}${u.hash}`
     } catch {
       return origin
     }
@@ -23,7 +23,12 @@ export function siteAbsoluteUrl(href: string): string {
   }
 
   if (href.startsWith("/")) {
-    return `${origin}${href}`
+    try {
+      const u = new URL(href, `${origin}/`)
+      return `${origin}${preferredPathname(u.pathname)}${u.search}${u.hash}`
+    } catch {
+      return `${origin}${href}`
+    }
   }
 
   return href

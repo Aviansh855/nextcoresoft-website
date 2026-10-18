@@ -24,7 +24,7 @@ export type PortfolioItem = {
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: "techwheels-service-management",
-    name: "Techwheels Service Management System",
+    name: "Dealership Service Management System",
     category: "Automotive & service centers",
     label: "Project showcase",
     summary:

@@ -1,14 +1,14 @@
 # NextCoreSoft — AEO / GEO Implementation Report (Local Only)
 
-**Date:** 2026-10-17 (Phase 6/7 update: 2026-10-18)  
-**Branch/worktree:** Phase 2–5 changes were committed by owner (`main`, clean at start of 2026-10-18 session); **Phase 6/7 changes below are local and uncommitted — not pushed, not deployed.**  
-**Audit baseline:** `docs/NEXTCORESOFT_AEO_GEO_AUDIT.md`
+**Date:** 2026-10-17 (Phase 6/7 update: 2026-10-18; documentation refresh: 2026-10-18 late)  
+**Branch/worktree:** Historical note — early Phase 6/7 work started uncommitted; repo now includes prerender fallback, trailing-slash canonicals, **7** blog posts, and **19** sitemap URLs per latest `npm run build`. Deploy/push status is owner-controlled.  
+**Audit baseline:** `docs/NEXTCORESOFT_AEO_GEO_AUDIT.md` (counts aligned with `shared/indexable-paths.mjs` + `public/sitemap.xml`)
 
 ---
 
 ## Summary
 
-Implemented answer-first blocks on all four service pages, a homepage engagement overview, services hub enrichments, About quick-answer + accessibility fix, softened contact response wording, and owner guidance comments in `robots.txt`. Blog (3 articles + index) was already wired from Markdown source; validated build, prerender, and preview rendering.
+Implemented answer-first blocks on all four service pages, a homepage engagement overview, services hub enrichments, About quick-answer + accessibility fix, softened contact response wording, and owner guidance comments in `robots.txt`. Blog index + posts compile from Markdown (**7** articles from two source files); build verifies **19** indexable URLs (sitemap + `verify-seo-routes.mjs`), prerender, and preview rendering.
 
 No guaranteed rankings, AI citations, or live production changes claimed.
 
@@ -95,7 +95,7 @@ Other routes: titles/descriptions unchanged unless rebuilt from existing `route-
 
 | Command | Result |
 |---------|--------|
-| `npm run build` | **Pass** — 15 SEO paths verified (`verify-seo-routes.mjs`), prerender 14 route folders + root |
+| `npm run build` | **Pass** — **19** SEO paths verified (`verify-seo-routes.mjs`), prerender **18** route folders + root `index.html` |
 | `npm run lint` | **Pass** (4 warnings: unused params, RichText export) |
 | `tsc -b` | Part of build — **Pass** |
 
@@ -109,7 +109,7 @@ Other routes: titles/descriptions unchanged unless rebuilt from existing `route-
 | `/services/custom-software` | H1 OK; **Quick answer**, Who it suits, quote list, decision checklist, FAQ buttons |
 | `/blog/custom-software-development-cost-india` *(2026-10-18)* | Single H1, full article + tables in rendered DOM, Marketlube/Clutch links, FAQs; React cleanly replaced static fallback (no duplicate H1) |
 | `/contact?service=custom-software&intent=quote` *(2026-10-18)* | Form heading “Request a quote”, service preselected, description prefilled, labels/required markers present |
-| All 15 routes + contact-prefill *(2026-10-18)* | Preview HTTP sweep: **200** for every route (SPA preview returns 200 for unknown paths too; production `functions/_middleware.js` returns real 404 + `noindex` — by design) |
+| All **19** indexable routes + contact-prefill *(2026-10-18)* | Preview HTTP sweep: **200** for every sitemap route (SPA preview returns 200 for unknown paths too; production `functions/_middleware.js` returns real 404 + `noindex` — by design) |
 
 **Console/network:** No React Router `<Routes>` error observed in rendered snapshots. Full console capture not retained — owner should glance at DevTools console on deploy preview.
 
@@ -119,10 +119,11 @@ Other routes: titles/descriptions unchanged unless rebuilt from existing `route-
 
 ## Blog source integrity
 
-- Source: `content/nextcoresoft_3_seo_blog_posts.md`
-- Build: `Wrote … blog-posts.json (3 posts from MD source)`
-- Slugs: `custom-software-development-cost-india`, `mobile-app-development-cost-india`, `mvp-vs-full-product`
-- **Live status:** Unknown until owner deploys; external inspection did not confirm readable production blog HTML.
+- Sources: `content/nextcoresoft_3_seo_blog_posts.md` (3) + `content/nextcoresoft_seo_blog_posts_batch2.md` (4)
+- Build: `Wrote … blog-posts.json (7 posts from MD source)` (first line of `npm run build`)
+- Slugs: `custom-software-development-cost-india`, `mobile-app-development-cost-india`, `mvp-vs-full-product`, `ai-automation-small-business-india`, `hire-custom-software-development-company-india`, `web-app-vs-mobile-app-for-business`, `api-integration-business-systems-guide`
+- Sitemap: blog index + 7 posts = **19** total URLs in `public/sitemap.xml`
+- **Live status:** May lag repo until owner deploys latest build.
 
 ---
 
@@ -162,7 +163,7 @@ npm run preview -- --host 127.0.0.1 --port 4173
 | 2026-10-18 | Google Search — yes (attempt) | `NextCoreSoft` | Not testable | — | Google `/sorry/` bot challenge in this browser |
 | 2026-10-18 | ChatGPT Search / Perplexity / Copilot / Gemini | Branded + unbranded list | Not tested | — | No permitted access here; use manual checklist below |
 
-**Production availability (read-only):** all 15 canonical URLs + `robots.txt`/`sitemap.xml`/`llms.txt` returned 200 on 2026-10-18; live robots matches local. Earlier “blog not readable” was extractor/redirect behaviour, not a current 404.
+**Production availability (read-only, 2026-10-18 sample):** core marketing URLs returned 200; local build now lists **19** sitemap URLs (7 blog posts). Live sitemap/post count may lag until deploy. Earlier “blog not readable” was extractor/redirect behaviour, not a current 404.
 
 ### Confirmed reasons AI tools may not mention the site
 
@@ -184,17 +185,27 @@ npm run preview -- --host 127.0.0.1 --port 4173
 ### Commands run (2026-10-18)
 
 ```powershell
-npm run build   # pass — 15 paths verified, static #root fallback asserted
+npm run build   # pass — 19 paths verified, static #root fallback asserted
 npm run lint    # pass — 4 pre-existing warnings
 npm run preview -- --host 127.0.0.1 --port 4173
 curl.exe <production URLs>  # read-only 200/robots/sitemap checks
 ```
 
-### Files changed in this addendum (uncommitted)
+### Files changed in Phase 6/7 addendum (representative)
 
 - `scripts/prerender-routes.mjs`, `scripts/verify-seo-routes.mjs`
-- `docs/NEXTCORESOFT_AEO_GEO_AUDIT.md`, `docs/NEXTCORESOFT_AEO_GEO_IMPLEMENTATION_REPORT.md`
-- Regenerated build outputs: `dist/**`, `public/sitemap.xml`, `public/_redirects`, `shared/blog-posts.json`, `shared/route-meta-snapshot.json` (via `npm run build`)
+- `scripts/compile-blogs-from-md.mjs`, batch2 MD, `scripts/generate-sitemap.mjs` (canonical `<loc>` + content-based `<lastmod>`)
+- `docs/NEXTCORESOFT_AEO_GEO_AUDIT.md`, `docs/NEXTCORESOFT_AEO_GEO_IMPLEMENTATION_REPORT.md`, `docs/HTTPS_CANONICAL_AUDIT.md`
+- Regenerated on build: `dist/**`, `public/sitemap.xml` (**19** URLs), `public/_redirects`, `public/feed.xml`, `shared/blog-posts.json`, `shared/route-meta-snapshot.json`
+
+### Canonical / URL count reference (current repo)
+
+| Item | Value | Source |
+|------|-------|--------|
+| Indexable paths | **19** | `shared/indexable-paths.mjs` → `INDEXABLE_PATHS` / `SITEMAP_ENTRIES` |
+| Blog posts | **7** | `shared/blog-posts.json` after compile |
+| Public URL form | Apex HTTPS + trailing slash (non-root) | `preferredPath()` — `docs/SEO.md` |
+| SEO verify | `SEO route HTML verified for 19 paths` | `scripts/verify-seo-routes.mjs` after `npm run build` |
 
 **Failures/limitations:** Google Search baseline blocked by Google bot challenge; ChatGPT/Perplexity/Copilot/Gemini not accessible; contact-form live submit not re-tested (backend is remote Cloudflare/Formspree via `FORMSPREE_FORM_URL` — only `.env.example` present locally, no production DB involved).
 

@@ -1,9 +1,9 @@
 # NextCoreSoft — AEO / GEO / Technical SEO Audit (Local Repository)
 
-**Date:** 2026-10-17 (Phase 6 addendum: 2026-10-18)  
+**Date:** 2026-10-17 (Phase 6 addendum: 2026-10-18; counts/policy refresh: 2026-10-18 late)  
 **Scope:** Read-only audit of the `nextcoresoft` marketing site repo (React 19 + Vite + TypeScript + Tailwind, Cloudflare Pages).  
 **Production URL (reference only):** https://nextcoresoft.com — not modified during this task.  
-**Canonical policy:** `shared/indexable-paths.mjs` — 15 indexable paths; sitemap/canonical use **no trailing slash** except `/`.
+**Canonical policy:** `shared/indexable-paths.mjs` — **19 indexable paths** (12 marketing routes + blog index + **7** posts). Internal route keys stay without a trailing slash; public canonical, sitemap `<loc>`, `og:url`, and JSON-LD use apex HTTPS + **`preferredPath()` trailing slash** (see `docs/SEO.md`, `docs/HTTPS_CANONICAL_AUDIT.md`).
 
 ---
 
@@ -15,10 +15,14 @@
 | `/about` | `AboutPage.tsx` | `content.ts` (principles, process) |
 | `/contact` | `ContactPage.tsx` | `InquiryForm.tsx`, `functions/api/contact.js` (prod proxy) |
 | `/portfolio` | `PortfolioPage.tsx` | `src/data/portfolio.ts` |
-| `/blog` | `BlogIndexPage.tsx` | `shared/blog-posts.json` ← `content/nextcoresoft_3_seo_blog_posts.md` |
+| `/blog` | `BlogIndexPage.tsx` | `shared/blog-posts.json` ← `content/nextcoresoft_3_seo_blog_posts.md` + `content/nextcoresoft_seo_blog_posts_batch2.md` |
 | `/blog/custom-software-development-cost-india` | `BlogPostPage.tsx` | Same JSON + `BlogArticleBody.tsx` / `RichText.tsx` |
 | `/blog/mobile-app-development-cost-india` | `BlogPostPage.tsx` | Same |
 | `/blog/mvp-vs-full-product` | `BlogPostPage.tsx` | Same |
+| `/blog/ai-automation-small-business-india` | `BlogPostPage.tsx` | Same |
+| `/blog/hire-custom-software-development-company-india` | `BlogPostPage.tsx` | Same |
+| `/blog/web-app-vs-mobile-app-for-business` | `BlogPostPage.tsx` | Same |
+| `/blog/api-integration-business-systems-guide` | `BlogPostPage.tsx` | Same |
 | `/services` | `ServicesIndexPage.tsx` | `content.ts` (`SERVICES`, hub FAQs) |
 | `/services/custom-software` | `ServicePage.tsx` | `src/data/service-details.ts` |
 | `/services/mobile-apps` | `ServicePage.tsx` | `service-details.ts` |
@@ -45,10 +49,10 @@
 | `/portfolio` | Project Portfolio \| NextCoreSoft | Software and apps we can show you today |
 | `/services` | Software Development Services \| Web, Mobile & AI… | Software development services for web, mobile, and AI automation |
 | Four service slugs | Service-specific titles | Service-specific H1s in `route-meta.mjs` |
-| `/blog` + 3 posts | From blog compile + route meta | Post `h1` from MD front matter |
+| `/blog` + 7 posts | From blog compile + route meta | Post `h1` from MD front matter |
 | `/privacy`, `/terms` | Legal titles | Privacy Policy / Terms of Service |
 
-**Canonical:** `https://nextcoresoft.com{path}` without trailing slash (see `docs/SEO.md`).  
+**Canonical:** `https://nextcoresoft.com` + `preferredPath(routeKey)` — trailing slash on all non-root routes (e.g. `https://nextcoresoft.com/portfolio/`). See `docs/SEO.md`.  
 **Client updates:** `src/lib/seo.ts` + `RouteMeta` on navigation; prerendered shell matches on first load.
 
 ---
@@ -66,7 +70,7 @@
 
 **Confirmed (2026-10-17):** Blog and service **full** copy was not in static HTML — JS-executing crawlers (Googlebot) see full content; non-JS agents saw only meta/JSON-LD + short `<noscript>` lead.
 
-**Fixed locally (2026-10-18, uncommitted):** `scripts/prerender-routes.mjs` now injects a faithful static fallback inside `#root` (`#static-prerender`): H1 + lead on every route, services catalog on service routes, and **full blog article text (headings, paragraphs, lists, tables, FAQs, author/dates from `blog-posts.json`)** on posts. React `createRoot` replaces it on load (verified in preview — single H1, full article). Old `<noscript>`-only block removed to avoid duplicate H1s for no-JS visitors; `verify-seo-routes.mjs` now asserts the static fallback. Live production still serves the previous build until owner deploys.
+**Fixed in repo (2026-10-18):** `scripts/prerender-routes.mjs` injects a faithful static fallback inside `#root` (`#static-prerender`): H1 + lead on every route, services catalog on service routes, and **full blog article text (headings, paragraphs, lists, tables, FAQs, author/dates from `blog-posts.json`)** on posts. React `createRoot` replaces it on load (verified in preview — single H1, full article). Old `<noscript>`-only block removed to avoid duplicate H1s for no-JS visitors; `verify-seo-routes.mjs` asserts the static fallback and trailing-slash canonicals for **19** sitemap paths. Live production may lag until the owner deploys the latest build.
 
 **Performance note:** Main bundle ~604 kB + three.js ~929 kB (Vite build warning) — may slow LCP/interaction on low-end mobile; hero uses WebGL (`HeroScene`).
 
@@ -77,13 +81,13 @@
 | Asset | Location | Notes |
 |-------|----------|--------|
 | `robots.txt` | `public/robots.txt` | `Allow: /` for `*` and `Googlebot`; sitemap URL; commented guidance for GPTBot/ClaudeBot vs search bots; **no active Disallow for AI training bots** until owner opts in |
-| `sitemap.xml` | Generated → `public/sitemap.xml` | 15 URLs from `SITEMAP_ENTRIES` |
+| `sitemap.xml` | Generated → `public/sitemap.xml` | **19 URLs** from `SITEMAP_ENTRIES`; `<loc>` uses `preferredPath()`; `<lastmod>` from blog `updated`/`published` or source-file mtimes (`scripts/generate-sitemap.mjs`) — not “today” on every build |
 | `_redirects` | `public/_redirects` | Cloudflare Pages trailing-slash handling for app routes |
 | `llms.txt` | `public/llms.txt` | First-party page list; optional, not a Google ranking requirement |
 
 **WAF / edge (live-only risk):** `docs/CLOUDFLARE-403-GOOGLEBOT.md` documents GSC **403 on `/sitemap.xml`** for verified Googlebot via Managed Rules. **Local robots changes cannot fix edge blocks.** Owner must apply Cloudflare custom rule for verified bots on SEO paths.
 
-**Production check (read-only, 2026-10-18):** All canonical URLs returned **200** (trailing-slash variants serve 200; non-slash service URL 308→slash, canonical stays non-slash): `/`, `/about/`, `/contact/`, `/portfolio/`, `/services/`, four service pages, `/blog/` + all three articles, `/robots.txt`, `/sitemap.xml` (15 URLs), `/llms.txt`. Live `robots.txt` matches local file. Earlier 308 observations were redirects, not 404s.
+**Production check (read-only, 2026-10-18):** All canonical (trailing-slash) URLs returned **200**: `/`, `/about/`, `/contact/`, `/portfolio/`, `/services/`, four service pages, `/blog/` + **seven** articles, `/privacy/`, `/terms/`, `/robots.txt`, `/sitemap.xml` (**19** `<loc>` entries in local build), `/llms.txt`. Non-slash paths typically **308 → slash** at the edge; declared canonical/sitemap URLs match the slash form. Live `robots.txt` may lag local (e.g. explicit `Bingbot` lines) until deploy. Earlier 308 observations were redirects, not 404s.
 
 ---
 
@@ -100,7 +104,7 @@
 - Organization name/url/logo from `shared/site.json` — matches footer and visible branding.
 - No fabricated `AggregateRating` / Review schema.
 - BlogPosting uses post title, dates, and canonical from compiled blog JSON when present.
-- Contact email in footer: `admin@nextcoresoft.com` — **no street address or phone** in `site.json`; schema should not invent them.
+- Contact email: `hello@nextcoresoft.com` (`shared/site.json`, footer, JSON-LD) — **no street address or phone**; schema should not invent them. `sameAs`: GitHub repo URL only (no LinkedIn/X in repo yet).
 
 **External validation still required:** Google Rich Results Test / Schema.org validator per URL after deploy.
 
@@ -110,14 +114,15 @@
 
 | Item | Status |
 |------|--------|
-| MD source | `content/nextcoresoft_3_seo_blog_posts.md` present |
-| Compile | `scripts/compile-blogs-from-md.mjs` → `shared/blog-posts.json` (3 posts) + `shared/blog-index.mjs` |
+| MD sources | `content/nextcoresoft_3_seo_blog_posts.md` (3 posts) + `content/nextcoresoft_seo_blog_posts_batch2.md` (4 posts) |
+| Compile | `scripts/compile-blogs-from-md.mjs` → `shared/blog-posts.json` (**7 posts**) + `shared/blog-index.mjs` |
 | Routes | `/blog`, `/blog/:slug` (+ slash variants) |
 | Index UI | `BlogIndexPage.tsx` with summaries and links |
 | Article UI | `BlogPostPage.tsx`, `BlogArticleBody.tsx`, internal links via `src/lib/site-url.ts` |
-| Sitemap | Blog index + 3 slugs in `SITEMAP_ENTRIES` |
-| Prerender | Per-post HTML with article meta + noscript excerpt |
-| Authors/dates | Only as declared in MD — **do not fabricate** |
+| Sitemap | Blog index + **7** slugs via `blogSitemapEntries()` in `SITEMAP_ENTRIES` (**19** URLs total) |
+| Prerender | Per-post HTML with article meta + full static `#root` fallback |
+| Authors/dates | Only as declared in MD / compile output — **do not fabricate** |
+| RSS | `scripts/generate-feed.mjs` → `public/feed.xml` (7 items; part of `npm run build`) |
 
 ---
 
@@ -131,7 +136,7 @@
 | Reply SLA copy | Was absolute “within one business day” in multiple places — **softened locally** to “aim… when volume allows” (owner must confirm ops) |
 | FAQs | `<button>` accordion pattern with visible question text — good for AT |
 | Skip link | “Skip to main content” present in preview snapshot |
-| Footer social | Placeholder text: profiles not published yet — honest, not fake links |
+| Footer social | GitHub in `site.json` `sameAs`; other profiles not published in footer — no fake links |
 
 ---
 
@@ -167,7 +172,7 @@ Not in repo or not verified for public schema:
 
 - Physical office address  
 - Phone number  
-- Official LinkedIn/GitHub/X URLs (footer states not published yet)  
+- Official LinkedIn/X URLs (GitHub repo in `sameAs` only)  
 - Founder names / credentials beyond generic studio copy  
 - Guaranteed response SLA  
 
@@ -211,10 +216,10 @@ Unbranded queries (`custom software development company in India…`, etc.) were
 | 3 | ChatGPT Search (OAI-SearchBot) | No explicit OAI-SearchBot rule, but `User-agent: * Allow: /` does not disallow it. Per OpenAI docs, OAI-SearchBot (search) ≠ GPTBot (training); opting out of OAI-SearchBot removes sites from ChatGPT search answers | ⚠️ Allowed by default; **WAF/edge behaviour unverified** — a UA string test is not a verified-bot check. No change made without owner policy decision |
 | 4 | Other AI crawlers | Same `* Allow: /` covers Claude-SearchBot/Claude-User/PerplexityBot/Bingbot at robots level; training bots (GPTBot, ClaudeBot) only in commented templates | ⚠️ Robots OK; edge/WAF unknown for each |
 | 5 | Search index coverage | Historical GSC 403 on `/sitemap.xml` (Cloudflare Managed Rules, `docs/CLOUDFLARE-403-GOOGLEBOT.md`); Bing sample suggests little/no Bing presence | 🔴 **Likely blocker (esp. Bing/Copilot)** — owner: GSC + Bing WMT index/sitemap checks |
-| 6 | Entity clarity | Consistent name/offerings/email (`admin@nextcoresoft.com`) across site, footer, Organization JSON-LD; **no** address/phone/founder/socials in `site.json`; footer honestly says socials unpublished; name collides with many similar firms on Bing page 1 | ⚠️ Thin entity footprint + name ambiguity |
+| 6 | Entity clarity | Consistent name/offerings/email (`hello@nextcoresoft.com`) across site, footer, Organization JSON-LD; **no** address/phone/founder; `sameAs` GitHub only; name collides with many similar firms on Bing page 1 | ⚠️ Thin entity footprint + name ambiguity |
 | 7 | Independent corroboration | No verified third-party profiles/listings/reviews in repo; GitHub repo is the only off-site hit in Bing sample | 🔴 **Gap** — only legitimate, owner-controlled profiles should be created; no fake listings |
-| 8 | Content usefulness | Service answer blocks, process, FAQs, 3 sourced blog guides (Marketlube/Clutch cited, ranges labelled estimates); portfolio features/stack often intentionally blank pending owner verification | ⚠️ Improving; differentiation still generic vs established firms |
-| 9 | Technical readability | **Was:** full body JS-only. **Fixed locally 2026-10-18:** static `#root` fallback with full blog text (uncommitted, needs deploy). Google renders JS; several AI retrieval crawlers may not | 🔴→⚠️ Fixed in source, live after deploy |
+| 8 | Content usefulness | Service answer blocks, process, FAQs, **7** blog guides (original 3 + batch2; external sources cited where present, ranges labelled estimates); portfolio features/stack often intentionally blank pending owner verification | ⚠️ Improving; differentiation still generic vs established firms |
+| 9 | Technical readability | **Was:** full body JS-only. **Fixed 2026-10-18:** static `#root` fallback with full blog text on all **19** indexable routes. Google renders JS; several AI retrieval crawlers may not | 🔴→⚠️ Fixed in repo; live after deploy |
 | 10 | Measurement | No GSC/Bing WMT data accessible here (`.env.example` only lists optional GSC API vars; no `.env.local`) | ⚠️ Owner to record baselines in GSC Generative-AI report + Bing AI Performance |
 
 **Official guidance consulted:** Google AI optimization guide (SEO fundamentals apply; `llms.txt`/special GEO markup **not required**; indexing ≠ guaranteed AI citation), OpenAI bots overview (OAI-SearchBot vs GPTBot independence; ~24h robots propagation), Bing AI Performance (owner tool).

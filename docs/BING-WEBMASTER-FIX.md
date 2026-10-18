@@ -6,16 +6,37 @@
 - **Crawl** step: red ✗  
 - **Live URL inspection:** “Error encountered while inspecting Live URL” (e.g. `https://nextcoresoft.com/about/`)
 
-## Root cause (confirmed for this site)
+## Do not guess the blocking rule from Bing UI alone
+
+A Bing **Live URL** failure only proves Microsoft’s fetch did not return usable HTML at inspection time. It does **not** by itself identify which Cloudflare rule fired. Treat WAF as a **hypothesis** until you match **one Security Event** to **one Bing inspection timestamp**.
+
+### Correlate Bing inspection time → Cloudflare Security Events
+
+1. In **Bing Webmaster Tools** → **URL Inspection** → open the failed run for `https://nextcoresoft.com/about/` (or `/about/` as entered). Note the **exact UTC/local time** of **Test live URL** / **Fetch** (screenshot or copy time from the UI).
+2. In **Cloudflare** → **Security** → **Events** (or **Analytics & logs** → **Security events**, depending on plan):
+   - Set the time window to **±5 minutes** around that Bing action.
+   - Filter **Path** (or URI) contains `/about` (or equals `/about/`).
+   - Filter **User agent** contains `bingbot` (case-insensitive) if the column is available.
+   - Sort by time; find the row closest to the Bing inspection moment.
+3. For that row, record **Action** (Allow / Block / Challenge / Managed Challenge), **Service** (e.g. WAF, Bot Fight, Rate limiting), **Rule ID** / rule name, **Verified Bot** (yes/no), and **Ray ID**.
+4. **Interpretation (evidence-based only):**
+   - **Block** + **Verified Bot: Yes** on `/about/` at the same minute → edge block is a plausible cause of Live URL error; fix is a **narrow** verified-bot allow/skip (see below), not repo changes.
+   - **Allow** or **Mitigation: Not mitigated** + verified Bingbot → edge likely **not** blocking; re-check Bing-side delay, DNS, or retry inspection; do not assume WAF without a matching Block event.
+   - **No events** in the window → widen to ±30 minutes, check `/` and `/sitemap.xml`, confirm zone and that Bing used apex HTTPS; absence of events is inconclusive, not proof of “no block.”
+5. Optional cross-check: same Ray ID in **Cloudflare** → **Analytics** → **Traffic** request log if your plan retains it.
+
+**This repository audit did not run Step 1–3 against your Cloudflare account** — only you can tie a specific rule to a specific Bing fetch.
+
+## Likely layers (repo vs edge)
 
 | Check | Result |
 |-------|--------|
-| `robots.txt` blocks Bingbot? | **No** — `User-agent: *` and `Bingbot` → `Allow: /` |
-| Page returns 200 from your PC with `bingbot` User-Agent? | **Often yes** — spoofed UA from home IP is **not** the same as Microsoft’s verified crawler |
-| Site HTML valid for `/about/`? | **Yes** — prerendered title, canonical, `#static-prerender` H1 |
-| **Actual blocker** | **Cloudflare WAF / Managed Rules** can **block verified search bots** (same class of issue as Google Search Console **403** on sitemap). Bing’s fetcher hits the edge; your browser/curl does not. |
+| `robots.txt` blocks Bingbot? | **No** in local repo — `User-agent: *` and explicit `Bingbot` → `Allow: /` |
+| Page HTML valid for `/about/` after local build? | **Yes** — prerendered title, trailing-slash canonical, `#static-prerender` H1 |
+| Spoofed `bingbot` curl from home IP? | **Not equivalent** to Microsoft’s verified crawler path through Cloudflare |
+| Edge WAF | **Possible** blocker when Security Events show **Block** for verified Bingbot on the inspected path — **verify with Step 1–3 above** |
 
-**robots.txt changes alone cannot fix a WAF block.**
+**robots.txt changes alone cannot fix an edge WAF block.**
 
 Official Cloudflare crawl troubleshooting:  
 https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/troubleshooting-crawl-errors/
