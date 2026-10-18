@@ -11,7 +11,7 @@ Google generally renders JavaScript, but **crawl and index timing can lag** comp
 1. `generate-redirects.mjs` / `generate-sitemap.mjs` from `shared/indexable-paths.mjs`
 2. `verify-jsonld-sync.mjs` — `shared/site.json` matches static JSON-LD
 3. `sync-index-seo-shell.mjs` — Organization/WebSite JSON-LD + root noscript from `shared/route-meta.mjs`
-4. Vite build → `prerender-routes.mjs` → `verify-seo-routes.mjs` (14 URLs, canonical, noscript H1)
+4. Vite build → `prerender-routes.mjs` → `verify-seo-routes.mjs` (19 indexable URLs incl. 7 blog posts)
 
 Copy and H1 strings: `shared/site.json`, `shared/page-headings.json` (imported by React via `src/data/content.ts`).
 
@@ -38,7 +38,7 @@ Canonical URLs are **HTTPS apex, non-www, WITH trailing slash** (e.g. `https://n
 - `/portfolio`
 - `/services` (hub linking to all four service pages)
 - `/blog`
-- `/blog/{slug}` (one post per entry in `shared/blog-posts.json`)
+- `/blog/{slug}` (one post per entry in `shared/blog-posts.json` — compile from `content/*.md`)
 - `/services/custom-software`
 - `/services/mobile-apps`
 - `/services/ai-automation`

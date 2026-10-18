@@ -16,5 +16,6 @@ Allow: /
 
 # Optional first-party summary for AI systems (not required for Google ranking):
 # https://nextcoresoft.com/llms.txt
+# Blog RSS (syndication / crawlers): https://nextcoresoft.com/feed.xml
 
 Sitemap: https://nextcoresoft.com/sitemap.xml

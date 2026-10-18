@@ -6,5 +6,6 @@
   "logoUrl": "https://nextcoresoft.com/nextcoresoft-logo.jpg",
   "tagline": "Custom software, mobile apps, and AI automation for growing businesses.",
   "description": "NextCoreSoft is a custom software development company for web applications, mobile apps (Android and iOS), and AI workflow automation — serving growing businesses worldwide.",
-  "contactEmail": "hello@nextcoresoft.com"
+  "contactEmail": "hello@nextcoresoft.com",
+  "sameAs": ["https://github.com/Aviansh855/nextcoresoft-website"]
 }

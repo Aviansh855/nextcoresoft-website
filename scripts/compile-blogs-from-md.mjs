@@ -52,34 +52,68 @@ function normalizeSection(section) {
   if (s.href) s.href = normalizeSiteHref(s.href)
   return s
 }
-const mdPath = join(root, "content", "nextcoresoft_3_seo_blog_posts.md")
 const outPath = join(root, "shared", "blog-posts.json")
 
-const md = readFileSync(mdPath, "utf8")
+/** Each file lists its blog markers in order (must match `# Blog N —` headings in that file). */
+const BLOG_SOURCES = [
+  {
+    mdPath: join(root, "content", "nextcoresoft_3_seo_blog_posts.md"),
+    endMarker: "\n# Implementation notes",
+    metas: [
+      {
+        marker: "# Blog 1 —",
+        primaryService: "custom-software",
+        categories: ["Custom software", "Pricing", "India"],
+        published: "2026-10-17",
+      },
+      {
+        marker: "# Blog 2 —",
+        primaryService: "mobile-apps",
+        categories: ["Mobile apps", "Pricing", "India"],
+        published: "2026-10-17",
+      },
+      {
+        marker: "# Blog 3 —",
+        primaryService: "custom-software",
+        categories: ["Product strategy", "MVP"],
+        published: "2026-10-17",
+      },
+    ],
+  },
+  {
+    mdPath: join(root, "content", "nextcoresoft_seo_blog_posts_batch2.md"),
+    endMarker: null,
+    metas: [
+      {
+        marker: "# Blog 4 —",
+        primaryService: "ai-automation",
+        categories: ["AI automation", "India", "Operations"],
+        published: "2026-10-18",
+      },
+      {
+        marker: "# Blog 5 —",
+        primaryService: "custom-software",
+        categories: ["Hiring", "India", "Custom software"],
+        published: "2026-10-18",
+      },
+      {
+        marker: "# Blog 6 —",
+        primaryService: "mobile-apps",
+        categories: ["Web apps", "Mobile apps", "Strategy"],
+        published: "2026-10-18",
+      },
+      {
+        marker: "# Blog 7 —",
+        primaryService: "cloud-api",
+        categories: ["APIs", "Integrations", "Cloud"],
+        published: "2026-10-18",
+      },
+    ],
+  },
+]
 
 const EDITORIAL_DISCLAIMER =
   "Indicative planning ranges for India in 2026 — not binding quotations or NextCoreSoft's official price list. Final estimates require a scoped brief."
-
-const BLOG_META = [
-  {
-    marker: "# Blog 1 —",
-    primaryService: "custom-software",
-    categories: ["Custom software", "Pricing", "India"],
-    published: "2026-10-17",
-  },
-  {
-    marker: "# Blog 2 —",
-    primaryService: "mobile-apps",
-    categories: ["Mobile apps", "Pricing", "India"],
-    published: "2026-10-17",
-  },
-  {
-    marker: "# Blog 3 —",
-    primaryService: "custom-software",
-    categories: ["Product strategy", "MVP"],
-    published: "2026-10-17",
-  },
-]
 
 function slugFromUrl(urlLine) {
   const m = urlLine.match(/\/blog\/([^/`]+)/)
@@ -356,13 +390,20 @@ function extractArticle(chunk, metaDefaults) {
 }
 
 const posts = []
-for (const meta of BLOG_META) {
-  const start = md.indexOf(meta.marker)
-  if (start === -1) throw new Error(`Missing ${meta.marker}`)
-  const nextBlog = md.indexOf("\n# Blog ", start + meta.marker.length)
-  const end = nextBlog === -1 ? md.indexOf("\n# Implementation notes") : nextBlog
-  const chunk = md.slice(start, end)
-  posts.push(extractArticle(chunk, meta))
+for (const source of BLOG_SOURCES) {
+  const md = readFileSync(source.mdPath, "utf8")
+  for (const meta of source.metas) {
+    const start = md.indexOf(meta.marker)
+    if (start === -1) throw new Error(`Missing ${meta.marker} in ${source.mdPath}`)
+    const nextBlog = md.indexOf("\n# Blog ", start + meta.marker.length)
+    let end = nextBlog === -1 ? md.length : nextBlog
+    if (nextBlog === -1 && source.endMarker) {
+      const impl = md.indexOf(source.endMarker)
+      if (impl !== -1) end = impl
+    }
+    const chunk = md.slice(start, end)
+    posts.push(extractArticle(chunk, meta))
+  }
 }
 
 writeFileSync(outPath, `${JSON.stringify(posts, null, 2)}\n`, "utf8")

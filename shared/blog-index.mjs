@@ -7,7 +7,11 @@ export const BLOG_INDEX_PATH = "/blog"
 export const BLOG_POST_SLUGS = [
   "custom-software-development-cost-india",
   "mobile-app-development-cost-india",
-  "mvp-vs-full-product"
+  "mvp-vs-full-product",
+  "ai-automation-small-business-india",
+  "hire-custom-software-development-company-india",
+  "web-app-vs-mobile-app-for-business",
+  "api-integration-business-systems-guide"
 ]
 
 export function blogPostIndexablePaths() {

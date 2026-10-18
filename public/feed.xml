@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>NextCoreSoft Blog</title>
+    <link>https://nextcoresoft.com/blog/</link>
+    <description>Guides on custom software, mobile apps, AI automation, and integrations for growing businesses.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Oct 2026 16:47:03 GMT</lastBuildDate>
+    <item>
+      <title>AI Automation for Small Business in India (2026 Guide)</title>
+      <link>https://nextcoresoft.com/blog/ai-automation-small-business-india/</link>
+      <guid isPermaLink="true">https://nextcoresoft.com/blog/ai-automation-small-business-india/</guid>
+      <pubDate>Sun, 18 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Learn how Indian SMBs use AI workflow automation to reduce manual work, connect tools, and scope automation projects without overbuying software.</description>
+    </item>
+    <item>
+      <title>How to Hire a Custom Software Company in India</title>
+      <link>https://nextcoresoft.com/blog/hire-custom-software-development-company-india/</link>
+      <guid isPermaLink="true">https://nextcoresoft.com/blog/hire-custom-software-development-company-india/</guid>
+      <pubDate>Sun, 18 Oct 2026 12:00:00 GMT</pubDate>
+      <description>A practical checklist for hiring a custom software development partner in India—scope, quotes, contracts, delivery milestones, and red flags to avoid.</description>
+    </item>
+    <item>
+      <title>Web App vs Mobile App: Which Should You Build First?</title>
+      <link>https://nextcoresoft.com/blog/web-app-vs-mobile-app-for-business/</link>
+      <guid isPermaLink="true">https://nextcoresoft.com/blog/web-app-vs-mobile-app-for-business/</guid>
+      <pubDate>Sun, 18 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Compare web apps and mobile apps for business—cost, reach, offline needs, and when to build one platform before the other.</description>
+    </item>
+    <item>
+      <title>API Integration Guide for Business Systems</title>
+      <link>https://nextcoresoft.com/blog/api-integration-business-systems-guide/</link>
+      <guid isPermaLink="true">https://nextcoresoft.com/blog/api-integration-business-systems-guide/</guid>
+      <pubDate>Sun, 18 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Learn how API integrations connect CRM, accounting, payments, and custom software—patterns, costs, and scoping tips for growing businesses.</description>
+    </item>
+    <item>
+      <title>Custom Software Development Cost in India (2026)</title>
+      <link>https://nextcoresoft.com/blog/custom-software-development-cost-india/</link>
+      <guid isPermaLink="true">https://nextcoresoft.com/blog/custom-software-development-cost-india/</guid>
+      <pubDate>Sat, 17 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Explore custom software development costs in India for 2026, including planning ranges, key price drivers, ongoing expenses, and ways to control scope.</description>
+    </item>
+    <item>
+      <title>Mobile App Development Cost in India: 2026 Guide</title>
+      <link>https://nextcoresoft.com/blog/mobile-app-development-cost-india/</link>
+      <guid isPermaLink="true">https://nextcoresoft.com/blog/mobile-app-development-cost-india/</guid>
+      <pubDate>Sat, 17 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Learn mobile app development costs in India, what affects Android, iOS and cross-platform pricing, and how to plan an app budget confidently.</description>
+    </item>
+    <item>
+      <title>MVP vs Full Product: What Should You Build First?</title>
+      <link>https://nextcoresoft.com/blog/mvp-vs-full-product/</link>
+      <guid isPermaLink="true">https://nextcoresoft.com/blog/mvp-vs-full-product/</guid>
+      <pubDate>Sat, 17 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Compare an MVP with a full product, learn what belongs in the first release, and use a practical framework to reduce risk before scaling.</description>
+    </item>
+  </channel>
+</rss>

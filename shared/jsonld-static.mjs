@@ -34,10 +34,13 @@ export function organizationJsonLd() {
         "@type": "ContactPoint",
         contactType: "sales",
         email: "hello@nextcoresoft.com",
-        url: `${SITE.url}/contact`,
+        url: `${SITE.url}/contact/`,
         availableLanguage: ["English"],
       },
     ],
+    ...(Array.isArray(SITE.sameAs) && SITE.sameAs.length
+      ? { sameAs: SITE.sameAs.filter((u) => typeof u === "string" && u.startsWith("https://")) }
+      : {}),
   }
 }
 
