@@ -11,7 +11,7 @@ How **nextcoresoft.com** aligns with Google’s Page indexing report, URL Inspec
 | **noindex on errors** | `NotFoundPage` + `applyMeta({ robots: "noindex, follow" })`; invalid `/services/:slug` keeps URL, shows 404 UI |
 | **Soft 404 (HTTP 200 + “not found”)** | `functions/_middleware.js` (Cloudflare Pages) and `middleware.js` (Vercel) return **HTTP 404** + `X-Robots-Tag: noindex` for paths not in `INDEXABLE_PATHS` |
 | **Trailing slash on Cloudflare Pages** | `_redirects` serves both `/path` and `/path/` as 200 → same prerendered HTML; do not 301-strip slashes in Pages middleware (308↔301 loop with directory `index.html`) |
-| **www duplicate** | 301 to `https://nextcoresoft.com` in `public/_redirects` and `vercel.json` |
+| **www duplicate** | **Not fixed in `_redirects`** — use Cloudflare Redirect Rule: `docs/CLOUDFLARE-WWW-REDIRECT-RULE.md` |
 | **User canonical** | `<link rel="canonical">` via `applyMeta()` — HTTPS apex, **trailing slash** on non-root routes (`preferredPath()` / `docs/SEO.md`) |
 | **403 Googlebot** | Not fixable in repo — Cloudflare WAF; see `CLOUDFLARE-403-GOOGLEBOT.md` |
 | **Structured data / rich results** | Org, WebSite, FAQPage, Service, BreadcrumbList — check **Rich results** in GSC after deploy |

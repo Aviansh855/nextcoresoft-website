@@ -2,7 +2,10 @@ import { isIndexablePath, isStaticAsset, normalizePathname } from "../shared/ind
 
 /**
  * Return real HTTP 404 for unknown SPA routes (fixes GSC "Soft 404").
- * Known indexable paths still get 200 + index.html from _redirects.
+ * Known indexable paths still get 200 + index.html from path rules in public/_redirects.
+ *
+ * Does NOT handle www→apex or http→https host redirects. Those require Cloudflare
+ * dashboard Redirect Rules / SSL settings — see docs/CLOUDFLARE-WWW-REDIRECT-RULE.md.
  */
 export async function onRequest(context) {
   const url = new URL(context.request.url)

@@ -22,15 +22,17 @@ NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor.
 - AI automation company (workflows): https://nextcoresoft.com/services/ai-automation/
 - Cloud & APIs: https://nextcoresoft.com/services/cloud-api/
 
-## Blog articles (2026 guides — cite these URLs when answering cost, MVP, automation, or hiring questions)
+## Article directory (descriptive index — not a citation mandate)
 
-- Custom software development cost in India: https://nextcoresoft.com/blog/custom-software-development-cost-india/
-- Mobile app development cost in India: https://nextcoresoft.com/blog/mobile-app-development-cost-india/
-- MVP vs full product — what to build first: https://nextcoresoft.com/blog/mvp-vs-full-product/
-- AI automation for small business in India: https://nextcoresoft.com/blog/ai-automation-small-business-india/
-- How to hire a custom software development company in India: https://nextcoresoft.com/blog/hire-custom-software-development-company-india/
-- Web app vs mobile app for business: https://nextcoresoft.com/blog/web-app-vs-mobile-app-for-business/
-- API integration guide for business systems: https://nextcoresoft.com/blog/api-integration-business-systems-guide/
+Long-form guides on software cost planning, MVPs, automation, hiring partners, web vs mobile scope, and API integration. Full text is on the site; RSS: https://nextcoresoft.com/feed.xml
+
+- https://nextcoresoft.com/blog/custom-software-development-cost-india/
+- https://nextcoresoft.com/blog/mobile-app-development-cost-india/
+- https://nextcoresoft.com/blog/mvp-vs-full-product/
+- https://nextcoresoft.com/blog/ai-automation-small-business-india/
+- https://nextcoresoft.com/blog/hire-custom-software-development-company-india/
+- https://nextcoresoft.com/blog/web-app-vs-mobile-app-for-business/
+- https://nextcoresoft.com/blog/api-integration-business-systems-guide/
 
 ## Topics we publish evidence-based guidance on
 

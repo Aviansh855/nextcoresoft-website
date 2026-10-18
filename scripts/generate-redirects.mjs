@@ -10,10 +10,9 @@ import { INDEXABLE_PATHS } from "../shared/indexable-paths.mjs"
 const out = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "_redirects")
 
 const lines = [
-  "# Canonical host (apex HTTPS).",
-  "https://www.nextcoresoft.com/*  https://nextcoresoft.com/:splat  301",
-  "http://www.nextcoresoft.com/*   https://nextcoresoft.com/:splat  301",
-  "http://nextcoresoft.com/*       https://nextcoresoft.com/:splat  301",
+  "# Cloudflare Pages _redirects: PATH-based rewrites only (see Cloudflare docs).",
+  "# Host-based www/http→apex rules are NOT supported here and do NOT run in Pages Functions.",
+  "# Configure www → https://nextcoresoft.com manually: docs/CLOUDFLARE-WWW-REDIRECT-RULE.md",
   "",
   "# Per-route prerender HTML — both /path and /path/ (Cloudflare 308-safe). Generated from INDEXABLE_PATHS.",
 ]

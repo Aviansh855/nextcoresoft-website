@@ -87,6 +87,7 @@ Full detail: `docs/CLOUDFLARE-403-GOOGLEBOT.md` (Google + Bing same fix).
 
 ### Step 4 — Bing property hygiene
 
+- **www → apex:** configure Cloudflare Redirect Rule — `docs/CLOUDFLARE-WWW-REDIRECT-RULE.md` (not via `_redirects`)
 - Add site as **`https://nextcoresoft.com/`** (apex, HTTPS) — not only `www`  
 - Submit sitemap: **`https://nextcoresoft.com/sitemap.xml`**  
 - After WAF fix + deploy, wait **15–30 minutes**, then **Retry** Live URL on `/about/`
