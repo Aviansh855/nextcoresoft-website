@@ -1,4 +1,6 @@
-# Cloudflare 403 — Googlebot blocked on `/sitemap.xml`
+# Cloudflare WAF — verified search bots blocked (Google + Bing)
+
+**Also applies to Bing Webmaster Tools:** “Discovered but not crawled”, Live URL inspection error, crawl step failed — see `docs/BING-WEBMASTER-FIX.md`.
 
 ## Confirmed symptom (Search Console)
 
@@ -10,7 +12,7 @@
   - **Verified Bot Category: Search Engine Crawler**
   - **Mitigation: Block by Managed rules**
 
-**Important:** A normal browser or `curl -A Googlebot` from your PC may still return **200**. Cloudflare validates bots differently at the edge. Do **not** treat a local 200 as proof that Google’s fetcher is allowed.
+**Important:** A normal browser or `curl -A Googlebot` / `curl -A Bingbot` from your PC may still return **200**. Cloudflare validates **verified** bots at the edge. Do **not** treat a local 200 as proof that Google’s or Bing’s fetcher is allowed.
 
 ## 1. Pull the exact rule (dashboard)
 

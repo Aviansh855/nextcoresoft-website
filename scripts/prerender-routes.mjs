@@ -7,7 +7,7 @@ import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import { INDEXABLE_PATHS, SITE_ORIGIN } from "../shared/indexable-paths.mjs"
 import { routeJsonLdGraph } from "../shared/jsonld-by-route.mjs"
-import { canonicalUrl, googlebotContent, ROUTE_META } from "../shared/route-meta.mjs"
+import { bingbotContent, canonicalUrl, googlebotContent, ROUTE_META } from "../shared/route-meta.mjs"
 import { BLOG_POSTS, getBlogPost } from "../shared/blog-posts.mjs"
 import { SERVICES_CATALOG } from "../shared/services-catalog.mjs"
 
@@ -119,6 +119,7 @@ function applyRouteMeta(template, path) {
   const description = escapeHtml(meta.description)
   const robots = meta.robots
   const googlebot = googlebotContent(robots)
+  const bingbot = bingbotContent(robots)
   const isBlogPost = path.startsWith("/blog/") && path !== "/blog"
   const ogType = isBlogPost ? "article" : "website"
 
@@ -133,6 +134,17 @@ function applyRouteMeta(template, path) {
     /<meta\s+name="googlebot"\s+content="[^"]*"\s*\/>/,
     `<meta name="googlebot" content="${googlebot}" />`,
   )
+  if (out.includes('name="bingbot"')) {
+    out = out.replace(
+      /<meta\s+name="bingbot"\s+content="[^"]*"\s*\/>/,
+      `<meta name="bingbot" content="${bingbot}" />`,
+    )
+  } else {
+    out = out.replace(
+      /<meta\s+name="googlebot"\s+content="[^"]*"\s*\/>/,
+      `<meta name="googlebot" content="${googlebot}" />\n    <meta name="bingbot" content="${bingbot}" />`,
+    )
+  }
   out = out.replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${canonical}" />`)
   out = out.replace(/<meta property="og:type" content="[^"]*" \/>/, `<meta property="og:type" content="${ogType}" />`)
   out = out.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${canonical}" />`)

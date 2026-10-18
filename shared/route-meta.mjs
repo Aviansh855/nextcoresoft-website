@@ -114,6 +114,11 @@ export function googlebotContent(robots) {
     : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
 }
 
+/** Bing Webmaster / Bingbot — mirror index policy (no special ranking promise). */
+export function bingbotContent(robots) {
+  return robots.includes("noindex") ? robots : "index, follow"
+}
+
 export function noscriptBlock(path) {
   const meta = ROUTE_META[path]
   if (!meta) return ""
