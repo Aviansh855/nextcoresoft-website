@@ -4,6 +4,15 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
+# Bing Webmaster Tools: no extra robots rules required for signup or sitemap submit.
+# Verify the site in the Bing dashboard (DNS / meta tag / file), then submit the Sitemap URL below.
+# Crawling is already allowed for Bingbot and legacy msnbot.
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
 # --- Owner policy (AEO/GEO) — edit only with explicit approval ---
 # Search/discovery crawlers (examples): OAI-SearchBot, Claude-SearchBot, Claude-User — often used for
 # retrieval/citation in products; separate from model-training bots (e.g. GPTBot, ClaudeBot).
