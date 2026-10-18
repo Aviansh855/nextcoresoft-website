@@ -1,6 +1,6 @@
 # NextCoreSoft — AEO / GEO / Technical SEO Audit (Local Repository)
 
-**Date:** 2026-10-17  
+**Date:** 2026-10-17 (Phase 6 addendum: 2026-10-18)  
 **Scope:** Read-only audit of the `nextcoresoft` marketing site repo (React 19 + Vite + TypeScript + Tailwind, Cloudflare Pages).  
 **Production URL (reference only):** https://nextcoresoft.com — not modified during this task.  
 **Canonical policy:** `shared/indexable-paths.mjs` — 15 indexable paths; sitemap/canonical use **no trailing slash** except `/`.
@@ -64,7 +64,9 @@
 | Blog posts | `og:type=article`, `article:published_time` / `modified_time` when set in source | Full article from JSON in client |
 | Service / home | Noscript lead is summary only | ServiceAnswerBlock, FAQs, portfolio cards, 3D hero on home |
 
-**Confirmed:** Blog and service **full** copy is not duplicated in static HTML — crawlers that execute JS (Googlebot) see full content; noscript-only agents see summary. **Not assumed:** production “empty body” from third-party extractors without JS.
+**Confirmed (2026-10-17):** Blog and service **full** copy was not in static HTML — JS-executing crawlers (Googlebot) see full content; non-JS agents saw only meta/JSON-LD + short `<noscript>` lead.
+
+**Fixed locally (2026-10-18, uncommitted):** `scripts/prerender-routes.mjs` now injects a faithful static fallback inside `#root` (`#static-prerender`): H1 + lead on every route, services catalog on service routes, and **full blog article text (headings, paragraphs, lists, tables, FAQs, author/dates from `blog-posts.json`)** on posts. React `createRoot` replaces it on load (verified in preview — single H1, full article). Old `<noscript>`-only block removed to avoid duplicate H1s for no-JS visitors; `verify-seo-routes.mjs` now asserts the static fallback. Live production still serves the previous build until owner deploys.
 
 **Performance note:** Main bundle ~604 kB + three.js ~929 kB (Vite build warning) — may slow LCP/interaction on low-end mobile; hero uses WebGL (`HeroScene`).
 
@@ -81,7 +83,7 @@
 
 **WAF / edge (live-only risk):** `docs/CLOUDFLARE-403-GOOGLEBOT.md` documents GSC **403 on `/sitemap.xml`** for verified Googlebot via Managed Rules. **Local robots changes cannot fix edge blocks.** Owner must apply Cloudflare custom rule for verified bots on SEO paths.
 
-**Production blog URLs (read-only, prior check):** HTTP **308** to trailing-slash variants — not evidence of 404. **Do not claim blog is live** until owner deploys and verifies.
+**Production check (read-only, 2026-10-18):** All canonical URLs returned **200** (trailing-slash variants serve 200; non-slash service URL 308→slash, canonical stays non-slash): `/`, `/about/`, `/contact/`, `/portfolio/`, `/services/`, four service pages, `/blog/` + all three articles, `/robots.txt`, `/sitemap.xml` (15 URLs), `/llms.txt`. Live `robots.txt` matches local file. Earlier 308 observations were redirects, not 404s.
 
 ---
 
@@ -182,6 +184,47 @@ node scripts/export-route-meta-json.mjs
 node scripts/prerender-routes.mjs
 npm run preview -- --host 127.0.0.1 --port 4173
 ```
+
+---
+
+## 12. Phase 6 — Why AI tools may not mention NextCoreSoft (2026-10-18)
+
+**Method & limits:** Read-only production HTTP checks (curl), live `robots.txt`/sitemap fetch, local + live HTML inspection, one manual Bing web-search sample in browser, Google Search attempt (blocked by Google `/sorry/` bot challenge — recorded as tool limitation, **not** a site defect). No private APIs, no scraping, no credentials used. ChatGPT Search / Perplexity / Copilot / Gemini were **not directly testable** in this environment — see manual checklist in the implementation report. Non-browsing chat answers were **not** used as visibility evidence.
+
+### A. Baseline sample (label: single sample, results vary by time/region/account)
+
+| Date | Tool / mode | Query | NextCoreSoft appeared? | Cited URL | Notes |
+|------|-------------|-------|------------------------|-----------|-------|
+| 2026-10-18 | Bing Web Search (browser) | `NextCoreSoft` (branded) | **No** `nextcoresoft.com` result in page-1 snapshot | — | Similar-name firms dominate (NextCore HR, Next Core Technologies, CoreSoft…); only the GitHub repo `Aviansh855/nextcoresoft-website` appeared |
+| 2026-10-18 | Bing Web Search (browser) | `site:nextcoresoft.com` | **No results listed** in snapshot | — | Suggests weak/absent Bing index at sample time; owner must confirm in Bing Webmaster Tools — a snapshot is not proof of deindexing |
+| 2026-10-18 | Google Search (browser) | `NextCoreSoft` | Not testable | — | Google returned `/sorry/` automated-query challenge to this browser |
+| 2026-10-18 | ChatGPT Search / Perplexity / Copilot / Gemini | — | Not tested | — | No permitted access in this session; manual checklist provided |
+
+Unbranded queries (`custom software development company in India…`, etc.) were **not** run as a mass test; they are highly competitive and a small sample would not be diagnostic. Owner should run the full branded + unbranded list manually (see report).
+
+### B. Layer-by-layer blockers
+
+| # | Layer | Evidence | Verdict |
+|---|-------|----------|---------|
+| 1 | Public availability | All canonical prod URLs 200 on 2026-10-18; no login/challenge for curl/browser | ✅ Not a blocker now |
+| 2 | Robots / meta / headers | Local+live `robots.txt`: `Allow: /` (`*`, Googlebot); indexable routes `index, follow`; `X-Robots-Tag: noindex` **only** on unknown/404 paths via `functions/_middleware.js` | ✅ No accidental noindex found |
+| 3 | ChatGPT Search (OAI-SearchBot) | No explicit OAI-SearchBot rule, but `User-agent: * Allow: /` does not disallow it. Per OpenAI docs, OAI-SearchBot (search) ≠ GPTBot (training); opting out of OAI-SearchBot removes sites from ChatGPT search answers | ⚠️ Allowed by default; **WAF/edge behaviour unverified** — a UA string test is not a verified-bot check. No change made without owner policy decision |
+| 4 | Other AI crawlers | Same `* Allow: /` covers Claude-SearchBot/Claude-User/PerplexityBot/Bingbot at robots level; training bots (GPTBot, ClaudeBot) only in commented templates | ⚠️ Robots OK; edge/WAF unknown for each |
+| 5 | Search index coverage | Historical GSC 403 on `/sitemap.xml` (Cloudflare Managed Rules, `docs/CLOUDFLARE-403-GOOGLEBOT.md`); Bing sample suggests little/no Bing presence | 🔴 **Likely blocker (esp. Bing/Copilot)** — owner: GSC + Bing WMT index/sitemap checks |
+| 6 | Entity clarity | Consistent name/offerings/email (`hello@nextcoresoft.com`) across site, footer, Organization JSON-LD; **no** address/phone/founder/socials in `site.json`; footer honestly says socials unpublished; name collides with many similar firms on Bing page 1 | ⚠️ Thin entity footprint + name ambiguity |
+| 7 | Independent corroboration | No verified third-party profiles/listings/reviews in repo; GitHub repo is the only off-site hit in Bing sample | 🔴 **Gap** — only legitimate, owner-controlled profiles should be created; no fake listings |
+| 8 | Content usefulness | Service answer blocks, process, FAQs, 3 sourced blog guides (Marketlube/Clutch cited, ranges labelled estimates); portfolio features/stack often intentionally blank pending owner verification | ⚠️ Improving; differentiation still generic vs established firms |
+| 9 | Technical readability | **Was:** full body JS-only. **Fixed locally 2026-10-18:** static `#root` fallback with full blog text (uncommitted, needs deploy). Google renders JS; several AI retrieval crawlers may not | 🔴→⚠️ Fixed in source, live after deploy |
+| 10 | Measurement | No GSC/Bing WMT data accessible here (`.env.example` only lists optional GSC API vars; no `.env.local`) | ⚠️ Owner to record baselines in GSC Generative-AI report + Bing AI Performance |
+
+**Official guidance consulted:** Google AI optimization guide (SEO fundamentals apply; `llms.txt`/special GEO markup **not required**; indexing ≠ guaranteed AI citation), OpenAI bots overview (OAI-SearchBot vs GPTBot independence; ~24h robots propagation), Bing AI Performance (owner tool).
+
+### C. Confirmed reasons (separated)
+
+- **Technical blockers:** (historical) Cloudflare 403 for verified Googlebot on sitemap; JS-only body (fixed locally, pending deploy); possible Bing non-indexing.
+- **Content/entity gaps:** new/thin entity, ambiguous brand name vs similar firms, few original proof assets (portfolio details withheld pending owner verification).
+- **Limited third-party evidence:** essentially no independent corroboration found in sample.
+- **Normal variability:** even indexed pages are not guaranteed citation; generic queries favour established firms; non-browsing models answer from training and cannot cite a new site.
 
 ---
 

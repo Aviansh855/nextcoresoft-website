@@ -114,7 +114,13 @@ for (const path of INDEXABLE_PATHS) {
     fail(`${path}: route JSON-LD must include BlogPosting`)
   }
   if (!html.includes(`<h1>${meta.h1.replace(/&/g, "&amp;")}</h1>`) && !html.includes(`<h1>${meta.h1}</h1>`)) {
-    fail(`${path}: prerender noscript h1 must match ROUTE_META.h1`)
+    fail(`${path}: prerender static h1 must match ROUTE_META.h1`)
+  }
+  if (!html.includes('id="static-prerender"')) {
+    fail(`${path}: missing static #root fallback (static-prerender) for no-JS crawlers/visitors`)
+  }
+  if (path.startsWith("/blog/") && path !== "/blog" && html.length < 8000) {
+    fail(`${path}: blog static fallback looks truncated (${html.length} bytes)`)
   }
 }
 

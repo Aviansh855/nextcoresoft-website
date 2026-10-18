@@ -5,9 +5,11 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
-import { INDEXABLE_PATHS } from "../shared/indexable-paths.mjs"
+import { INDEXABLE_PATHS, SITE_ORIGIN } from "../shared/indexable-paths.mjs"
 import { routeJsonLdGraph } from "../shared/jsonld-by-route.mjs"
-import { canonicalUrl, googlebotContent, noscriptBlock, ROUTE_META } from "../shared/route-meta.mjs"
+import { canonicalUrl, googlebotContent, ROUTE_META } from "../shared/route-meta.mjs"
+import { BLOG_POSTS, getBlogPost } from "../shared/blog-posts.mjs"
+import { SERVICES_CATALOG } from "../shared/services-catalog.mjs"
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const distIndex = join(root, "dist", "index.html")
@@ -18,6 +20,82 @@ function escapeHtml(s) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/"/g, "&quot;")
+}
+
+/** Plain-text cleanup for Markdown-ish blog copy already stored in blog-posts.json. */
+function stripMd(raw) {
+  return String(raw ?? "")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .trim()
+}
+function txt(raw) {
+  return escapeHtml(stripMd(raw))
+}
+function renderBlogSection(s) {
+  switch (s.type) {
+    case "h2":
+      return `<h2>${txt(s.text)}</h2>`
+    case "h3":
+      return `<h3>${txt(s.text)}</h3>`
+    case "p":
+      return `<p>${txt(s.text)}</p>`
+    case "ul":
+    case "ol":
+      return `<${s.type}>${(s.items ?? []).map((i) => `<li>${txt(i)}</li>`).join("")}</${s.type}>`
+    case "table": {
+      const head = (s.headers ?? []).map((h) => `<th>${txt(h)}</th>`).join("")
+      const rows = (s.rows ?? [])
+        .map((r) => `<tr>${r.map((c) => `<td>${txt(c)}</td>`).join("")}</tr>`)
+        .join("")
+      return `<table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>`
+    }
+    case "cta":
+      return `<p>${txt(s.text)}</p>${s.href ? `<p><a href="${escapeHtml(s.href)}">${txt(s.buttonLabel ?? "Contact NextCoreSoft")}</a></p>` : ""}`
+    default:
+      return s.text ? `<p>${txt(s.text)}</p>` : ""
+  }
+}
+
+/**
+ * Static fallback inside #root: real H1/lead (and full blog text) for no-JS
+ * visitors and crawlers that do not execute JavaScript. React's createRoot
+ * replaces this content on load, so JS users see the full app unchanged.
+ * Keep this faithful to visible page data — no hidden or extra claims.
+ */
+function staticRootBlock(path) {
+  const meta = ROUTE_META[path]
+  const nav = [
+    ["/", "Home"],
+    ["/about", "About"],
+    ["/contact", "Contact"],
+    ["/portfolio", "Portfolio"],
+    ["/blog", "Blog"],
+    ["/services", "Services"],
+  ]
+    .map(([href, label]) => `<a href="${SITE_ORIGIN}${href === "/" ? "/" : href}">${label}</a>`)
+    .join(" · ")
+  let extra = ""
+  if (path === "/blog") {
+    extra = `<ul>${BLOG_POSTS.map((p) => `<li><a href="${SITE_ORIGIN}/blog/${p.slug}">${txt(p.h1)}</a> — ${txt(p.excerpt)}</li>`).join("")}</ul>`
+  } else if (path.startsWith("/blog/")) {
+    const post = getBlogPost(path.slice("/blog/".length))
+    if (post) {
+      const metaLine = [post.author, post.published ? `Published ${post.published}` : "", post.updated ? `Updated ${post.updated}` : ""]
+        .filter(Boolean)
+        .map((x) => txt(x))
+        .join(" · ")
+      const faqs = (post.faqs ?? []).length
+        ? `<h2>Frequently asked questions</h2>${post.faqs.map((f) => `<h3>${txt(f.question)}</h3><p>${txt(f.answer)}</p>`).join("")}`
+        : ""
+      extra = `${metaLine ? `<p>${metaLine}</p>` : ""}${(post.sections ?? []).map(renderBlogSection).join("\n")}${faqs}`
+    }
+  } else if (path === "/services" || path.startsWith("/services/")) {
+    extra = `<ul>${SERVICES_CATALOG.map((s) => `<li><a href="${SITE_ORIGIN}/services/${s.slug}">${txt(s.title)}</a> — ${txt(s.summary)}</li>`).join("")}</ul>`
+  }
+  return `<main id="static-prerender"><h1>${escapeHtml(meta.h1)}</h1><p>${escapeHtml(meta.staticLead)}</p>${extra}<nav aria-label="Site">${nav}</nav></main>`
 }
 
 function jsonLdScript(data) {
@@ -68,7 +146,10 @@ function applyRouteMeta(template, path) {
     /<meta name="twitter:description" content="[^"]*" \/>/,
     `<meta name="twitter:description" content="${description}" />`,
   )
-  out = out.replace(/<noscript>[\s\S]*?<\/noscript>/, noscriptBlock(path))
+  // Static fallback now lives inside #root (serves no-JS users too); remove
+  // the old <noscript>-only block so no-JS visitors don't see duplicated H1s.
+  out = out.replace(/<noscript>[\s\S]*?<\/noscript>/, "")
+  out = out.replace('<div id="root"></div>', `<div id="root">${staticRootBlock(path)}</div>`)
 
   const dates = isBlogPost ? blogPostDates(path) : null
   out = out.replace(/\s*<meta property="article:published_time" content="[^"]*" \/>/g, "")

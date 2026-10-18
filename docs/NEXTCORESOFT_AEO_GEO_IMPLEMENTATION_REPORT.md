@@ -1,7 +1,7 @@
 # NextCoreSoft — AEO / GEO Implementation Report (Local Only)
 
-**Date:** 2026-10-17  
-**Branch/worktree:** Local uncommitted changes — **not pushed, not deployed.**  
+**Date:** 2026-10-17 (Phase 6/7 update: 2026-10-18)  
+**Branch/worktree:** Phase 2–5 changes were committed by owner (`main`, clean at start of 2026-10-18 session); **Phase 6/7 changes below are local and uncommitted — not pushed, not deployed.**  
 **Audit baseline:** `docs/NEXTCORESOFT_AEO_GEO_AUDIT.md`
 
 ---
@@ -32,6 +32,9 @@ No guaranteed rankings, AI citations, or live production changes claimed.
 | `public/robots.txt` | Comments: OAI-SearchBot vs GPTBot/ClaudeBot; WAF note |
 | `docs/NEXTCORESOFT_AEO_GEO_AUDIT.md` | **New** — Phase 1 audit |
 | `docs/NEXTCORESOFT_AEO_GEO_IMPLEMENTATION_REPORT.md` | **New** — this report |
+| `scripts/prerender-routes.mjs` *(2026-10-18)* | Static `#root` fallback (`#static-prerender`): H1+lead all routes, full blog text, services catalog; removes old `<noscript>`-only block |
+| `scripts/verify-seo-routes.mjs` *(2026-10-18)* | Asserts static fallback present; blog fallback not truncated |
+| `docs/NEXTCORESOFT_AEO_GEO_AUDIT.md` §12 *(2026-10-18)* | Phase 6 AI-visibility diagnosis |
 
 **Build outputs regenerated (not committed):** `shared/blog-posts.json`, `shared/blog-index.mjs`, `shared/route-meta-snapshot.json`, `public/sitemap.xml`, `public/_redirects`, `dist/**`
 
@@ -104,9 +107,11 @@ Other routes: titles/descriptions unchanged unless rebuilt from existing `route-
 |-----|--------|
 | `/` | Title OK; nav includes **Blog**; heading “Who we help and how projects work” present |
 | `/services/custom-software` | H1 OK; **Quick answer**, Who it suits, quote list, decision checklist, FAQ buttons |
-| Other routes | Not every route clicked in this session; build + prerender verify covers 15 paths — **owner should spot-check** `/contact`, `/portfolio`, `/blog`, three articles, `/privacy`, `/terms` before deploy |
+| `/blog/custom-software-development-cost-india` *(2026-10-18)* | Single H1, full article + tables in rendered DOM, Marketlube/Clutch links, FAQs; React cleanly replaced static fallback (no duplicate H1) |
+| `/contact?service=custom-software&intent=quote` *(2026-10-18)* | Form heading “Request a quote”, service preselected, description prefilled, labels/required markers present |
+| All 15 routes + contact-prefill *(2026-10-18)* | Preview HTTP sweep: **200** for every route (SPA preview returns 200 for unknown paths too; production `functions/_middleware.js` returns real 404 + `noindex` — by design) |
 
-**Console/network:** Not exhaustively logged in this pass; no React Router `<Routes>` regression observed.
+**Console/network:** No React Router `<Routes>` error observed in rendered snapshots. Full console capture not retained — owner should glance at DevTools console on deploy preview.
 
 **Contact form on preview:** `/api/contact` requires Cloudflare function or dev `.env.local` `FORMSPREE_FORM_URL` — test submit on **production** or `npm run dev` with env, not only static preview.
 
@@ -143,6 +148,55 @@ node scripts/export-route-meta-json.mjs
 node scripts/prerender-routes.mjs
 npm run preview -- --host 127.0.0.1 --port 4173
 ```
+
+---
+
+## Phase 6/7 addendum (2026-10-18) — AI visibility
+
+### AI visibility baseline (sample only)
+
+| Date | Tool / mode (web search?) | Query | Appeared? | Cited URL | Limitation |
+|------|---------------------------|-------|-----------|-----------|------------|
+| 2026-10-18 | Bing Web Search — yes | `NextCoreSoft` | No | — | Single sample; similar-name firms dominate page 1; GitHub repo appeared |
+| 2026-10-18 | Bing Web Search — yes | `site:nextcoresoft.com` | No results listed | — | Snapshot may omit results; confirm in Bing Webmaster Tools |
+| 2026-10-18 | Google Search — yes (attempt) | `NextCoreSoft` | Not testable | — | Google `/sorry/` bot challenge in this browser |
+| 2026-10-18 | ChatGPT Search / Perplexity / Copilot / Gemini | Branded + unbranded list | Not tested | — | No permitted access here; use manual checklist below |
+
+**Production availability (read-only):** all 15 canonical URLs + `robots.txt`/`sitemap.xml`/`llms.txt` returned 200 on 2026-10-18; live robots matches local. Earlier “blog not readable” was extractor/redirect behaviour, not a current 404.
+
+### Confirmed reasons AI tools may not mention the site
+
+- **Technical:** historical Cloudflare 403 for verified Googlebot on sitemap; JS-only body (fixed locally 2026-10-18, pending deploy); possible weak Bing indexing.
+- **Content/entity:** young, thin entity footprint; brand name collides with many similar firms; portfolio proof details withheld pending owner verification.
+- **Third-party evidence:** no verified independent profiles/citations found in sample (GitHub only).
+- **Normal variability:** indexing ≠ citation; generic queries are competitive; non-browsing chat cannot cite the site and must not be used as a visibility test.
+
+**No guarantee:** local changes cannot guarantee future AI citation, ranking, or indexing.
+
+### Exact manual checks for owner (after approved deploy)
+
+1. **ChatGPT (Search on):** ask `NextCoreSoft`, `NextCoreSoft custom software development`, plus one unbranded query; note whether `nextcoresoft.com` is cited and which URL. Repeat logged-out if possible.
+2. **Google:** Search Console → URL Inspection for `/`, service pages, blog posts; Generative AI performance report; check sitemap fetch succeeds (Cloudflare verified-bot rule per `docs/CLOUDFLARE-403-GOOGLEBOT.md` if 403 persists).
+3. **Bing:** Bing Webmaster Tools → submit/verify sitemap, check index coverage, AI Performance report; re-run `site:nextcoresoft.com`.
+4. **Cloudflare:** Security → Events, filter by verified bot + path, confirm OAI-SearchBot/Googlebot/Bingbot are not blocked (robots `Allow: /` does not override edge blocks). Do **not** add broad WAF skips.
+5. **Rich Results Test:** one service page + one blog post after deploy.
+
+### Commands run (2026-10-18)
+
+```powershell
+npm run build   # pass — 15 paths verified, static #root fallback asserted
+npm run lint    # pass — 4 pre-existing warnings
+npm run preview -- --host 127.0.0.1 --port 4173
+curl.exe <production URLs>  # read-only 200/robots/sitemap checks
+```
+
+### Files changed in this addendum (uncommitted)
+
+- `scripts/prerender-routes.mjs`, `scripts/verify-seo-routes.mjs`
+- `docs/NEXTCORESOFT_AEO_GEO_AUDIT.md`, `docs/NEXTCORESOFT_AEO_GEO_IMPLEMENTATION_REPORT.md`
+- Regenerated build outputs: `dist/**`, `public/sitemap.xml`, `public/_redirects`, `shared/blog-posts.json`, `shared/route-meta-snapshot.json` (via `npm run build`)
+
+**Failures/limitations:** Google Search baseline blocked by Google bot challenge; ChatGPT/Perplexity/Copilot/Gemini not accessible; contact-form live submit not re-tested (backend is remote Cloudflare/Formspree via `FORMSPREE_FORM_URL` — only `.env.example` present locally, no production DB involved).
 
 ---
 
