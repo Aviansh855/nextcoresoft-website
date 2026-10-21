@@ -4,7 +4,13 @@ import { BrowserRouter } from "react-router-dom"
 import App from "./App.tsx"
 import "./index.css"
 
-createRoot(document.getElementById("root")!).render(
+const rootEl = document.getElementById("root")
+if (!rootEl) {
+  throw new Error("Missing #root — cannot start NextCoreSoft app.")
+}
+rootEl.classList.remove("ncs-app-loading")
+
+createRoot(rootEl).render(
   <StrictMode>
     <BrowserRouter>
       <App />

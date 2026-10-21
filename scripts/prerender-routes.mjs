@@ -95,7 +95,7 @@ function staticRootBlock(path) {
   } else if (path === "/services" || path.startsWith("/services/")) {
     extra = `<ul>${SERVICES_CATALOG.map((s) => `<li><a href="${SITE_ORIGIN}/services/${s.slug}/">${txt(s.title)}</a> — ${txt(s.summary)}</li>`).join("")}</ul>`
   }
-  return `<main id="static-prerender"><h1>${escapeHtml(meta.h1)}</h1><p>${escapeHtml(meta.staticLead)}</p>${extra}<nav aria-label="Site">${nav}</nav></main>`
+  return `<main id="static-prerender" class="static-prerender"><h1>${escapeHtml(meta.h1)}</h1><p>${escapeHtml(meta.staticLead)}</p>${extra}<nav aria-label="Site">${nav}</nav></main>`
 }
 
 function jsonLdScript(data) {

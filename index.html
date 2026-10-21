@@ -38,6 +38,49 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap"
     />
+    <!-- Critical: styled SEO fallback + hide raw prerender while JS bundles load (SPA). -->
+    <style>
+      #static-prerender {
+        font-family: Inter, system-ui, sans-serif;
+        max-width: 42rem;
+        margin: 2rem auto;
+        padding: 0 1.25rem;
+        color: #334155;
+        line-height: 1.6;
+      }
+      #static-prerender h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin: 0 0 0.75rem;
+      }
+      #static-prerender nav {
+        margin-top: 1.25rem;
+        font-size: 0.875rem;
+      }
+      #static-prerender a {
+        color: #0369a1;
+        text-decoration: none;
+      }
+      #static-prerender a:hover {
+        text-decoration: underline;
+      }
+      html.ncs-js #static-prerender {
+        display: none !important;
+      }
+      html.ncs-js #root.ncs-app-loading {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Inter, system-ui, sans-serif;
+        color: #64748b;
+        font-size: 0.9375rem;
+      }
+      html.ncs-js #root.ncs-app-loading::before {
+        content: "Loading…";
+      }
+    </style>
 
     <!-- BEGIN:ORG_JSONLD -->
 <script type="application/ld+json">
@@ -115,6 +158,19 @@
     </noscript>
     <!-- END:ROOT_NOSCRIPT -->
     <div id="root"></div>
+    <script>
+      (function () {
+        document.documentElement.classList.add("ncs-js")
+        var root = document.getElementById("root")
+        if (root) root.classList.add("ncs-app-loading")
+        window.setTimeout(function () {
+          if (document.getElementById("static-prerender")) {
+            document.documentElement.classList.remove("ncs-js")
+            if (root) root.classList.remove("ncs-app-loading")
+          }
+        }, 15000)
+      })()
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
