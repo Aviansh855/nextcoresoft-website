@@ -91,7 +91,6 @@ export function articleSchema(slug: string) {
   const post = getBlogPost(slug)
   if (!post) return null
   const url = `${SITE.url}/blog/${post.slug}/`
-  const logo = { "@type": "ImageObject" as const, url: SITE.logoUrl, contentUrl: SITE.logoUrl }
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -100,13 +99,9 @@ export function articleSchema(slug: string) {
     description: post.metaDescription,
     datePublished: post.published,
     dateModified: post.updated,
-    author: {
-      "@type": "Organization",
-      "@id": ORG_ID,
-      name: "author" in post && post.author ? post.author : `${SITE.name} Editorial Team`,
-    },
-    publisher: { "@type": "Organization", "@id": ORG_ID, name: SITE.name, logo },
-    image: logo,
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    image: { "@id": `${SITE.url}/#logo` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${url}#webpage` },
     url,
     inLanguage: "en-US",
@@ -216,37 +211,36 @@ export function organizationSchema() {
 }
 
 /** Visible on homepage — describes what the business offers (not a guarantee of local map rankings). */
+const OFFER_CATALOG_ID = `${SITE.url}/#offer-catalog`
+const LOGO_ID = `${SITE.url}/#logo`
+
 export function professionalServiceSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${SITE.url}/#professional-service`,
     name: SITE.name,
-    url: SITE.url,
-    image: SITE.logoUrl,
+    url: `${SITE.url}/`,
+    image: { "@id": LOGO_ID },
     description: SITE.description,
     provider: { "@id": ORG_ID },
     areaServed: { "@type": "Place", name: "Worldwide" },
-    serviceType: [
-      "Custom software development",
-      "Web development",
-      "Mobile application development",
-      "AI automation consulting and implementation",
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Software development services",
-      itemListElement: SERVICES.map((s, i) => ({
-        "@type": "Offer",
-        position: i + 1,
-        itemOffered: {
-          "@type": "Service",
-          name: s.title,
-          url: `${SITE.url}/services/${s.slug}/`,
-          description: s.summary,
-        },
-      })),
-    },
+    hasOfferCatalog: { "@id": OFFER_CATALOG_ID },
+  }
+}
+
+/** Matches homepage @graph OfferCatalog — keep aligned with shared/jsonld-graph.mjs */
+export function offerCatalogSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "@id": OFFER_CATALOG_ID,
+    name: "Software development services",
+    itemListElement: SERVICES.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: { "@id": `${SITE.url}/services/${s.slug}/#service` },
+    })),
   }
 }
 
@@ -315,12 +309,14 @@ export function serviceSchema(slug: string) {
   const service = SERVICES.find((s) => s.slug === slug)
   const details = SERVICE_DETAILS[slug as keyof typeof SERVICE_DETAILS]
   if (!service || !details) return null
+  const url = `${SITE.url}/services/${service.slug}/`
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${url}#service`,
     name: details.h1,
     description: details.metaDescription,
-    url: `${SITE.url}/services/${service.slug}/`,
+    url,
     provider: { "@id": ORG_ID },
     serviceType: service.title,
     areaServed: {

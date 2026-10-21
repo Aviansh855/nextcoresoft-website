@@ -113,6 +113,35 @@ for (const path of INDEXABLE_PATHS) {
   if (path === "/" && !html.includes('"FAQPage"')) {
     fail("/: route JSON-LD must include FAQPage")
   }
+  if (path === "/") {
+    const graphMatch = html.match(/id="jsonld-route-graph"[^>]*>\s*([\s\S]*?)\s*<\/script>/)
+    if (graphMatch) {
+      try {
+        const parsed = JSON.parse(graphMatch[1])
+        const nodes = parsed["@graph"] ?? [parsed]
+        const pro = nodes.find((n) => n["@type"] === "ProfessionalService")
+        if (pro?.serviceType) {
+          fail("/: ProfessionalService JSON-LD must not include serviceType (use separate Service nodes)")
+        }
+        if (nodes.some((n) => n["@type"] === "Offer")) {
+          fail("/: homepage graph must not use Offer nodes with invalid position — use OfferCatalog + ListItem")
+        }
+        const catalog = nodes.find((n) => n["@type"] === "OfferCatalog")
+        if (!catalog?.["@id"]) {
+          fail("/: homepage must include OfferCatalog with @id")
+        }
+        if (pro?.hasOfferCatalog && typeof pro.hasOfferCatalog === "object" && pro.hasOfferCatalog["@type"]) {
+          fail("/: ProfessionalService hasOfferCatalog must reference OfferCatalog by @id only (no nested duplicate)")
+        }
+        const serviceCount = nodes.filter((n) => n["@type"] === "Service").length
+        if (serviceCount < 4) {
+          fail(`/: homepage graph expected 4 Service nodes, found ${serviceCount}`)
+        }
+      } catch (e) {
+        fail(`/: failed to parse jsonld-route-graph: ${e.message}`)
+      }
+    }
+  }
   if (path.startsWith("/blog/") && path !== "/blog" && !html.includes('"BlogPosting"')) {
     fail(`${path}: route JSON-LD must include BlogPosting`)
   }

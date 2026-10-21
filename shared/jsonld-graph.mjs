@@ -76,51 +76,58 @@ function webPageNode(path, meta, webPageType = "WebPage", extra = {}) {
   }
 }
 
+const OFFER_CATALOG_ID = `${SITE.url}/#offer-catalog`
+
+function serviceIdForSlug(slug) {
+  return `${SITE.url}/services/${slug}/#service`
+}
+
+/** One Service node per catalog offering — linked from OfferCatalog and service pages. */
+function serviceNodeForSlug(slug, meta) {
+  const catalog = SERVICES_CATALOG.find((s) => s.slug === slug)
+  if (!catalog) return null
+  const path = `/services/${slug}`
+  return {
+    "@type": "Service",
+    "@id": serviceIdForSlug(slug),
+    name: meta?.h1 ?? catalog.title,
+    description: meta?.description ?? catalog.summary,
+    url: pageUrl(path),
+    provider: { "@id": ORG_ID },
+    serviceType: catalog.title,
+    areaServed: { "@type": "Place", name: "Worldwide" },
+  }
+}
+
+function offerCatalogNode() {
+  return {
+    "@type": "OfferCatalog",
+    "@id": OFFER_CATALOG_ID,
+    name: "Software development services",
+    itemListElement: SERVICES_CATALOG.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: { "@id": serviceIdForSlug(s.slug) },
+    })),
+  }
+}
+
 function professionalServiceNode() {
   return {
     "@type": "ProfessionalService",
     "@id": `${SITE.url}/#professional-service`,
     name: SITE.name,
     url: `${SITE.url}/`,
-    image: SITE.logoUrl,
+    image: { "@id": LOGO_ID },
     description: SITE.description,
     provider: { "@id": ORG_ID },
     areaServed: { "@type": "Place", name: "Worldwide" },
-    serviceType: [
-      "Custom software development",
-      "Web development",
-      "Mobile application development",
-      "AI automation consulting and implementation",
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Software development services",
-      itemListElement: SERVICES_CATALOG.map((s, i) => ({
-        "@type": "Offer",
-        position: i + 1,
-        itemOffered: {
-          "@type": "Service",
-          name: s.title,
-          url: `${SITE.url}/services/${s.slug}/`,
-          description: s.summary,
-        },
-      })),
-    },
+    hasOfferCatalog: { "@id": OFFER_CATALOG_ID },
   }
 }
 
 function serviceNode(path, meta, slug) {
-  const catalog = SERVICES_CATALOG.find((s) => s.slug === slug)
-  return {
-    "@type": "Service",
-    "@id": `${entityBase(path)}#service`,
-    name: meta.h1,
-    description: meta.description,
-    url: pageUrl(path),
-    provider: { "@id": ORG_ID },
-    serviceType: catalog?.title ?? meta.h1,
-    areaServed: { "@type": "Place", name: "Worldwide" },
-  }
+  return serviceNodeForSlug(slug, meta)
 }
 
 function blogPostingNode(post, path) {
@@ -135,18 +142,9 @@ function blogPostingNode(post, path) {
     url,
     datePublished: post.published,
     dateModified: post.updated,
-    author: {
-      "@type": "Organization",
-      "@id": ORG_ID,
-      name: post.author ?? `${SITE.name} Editorial Team`,
-    },
-    publisher: {
-      "@type": "Organization",
-      "@id": ORG_ID,
-      name: SITE.name,
-      logo: logoImageObject(),
-    },
-    image: logoImageObject(),
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    image: { "@id": LOGO_ID },
     inLanguage: "en-US",
   }
 }
@@ -183,6 +181,11 @@ export function buildRouteJsonLdGraph(path, ctx = {}) {
     const faq = faqNode(SEO_FAQS.home, `${SITE.url}/#faq`)
     if (faq) graph.push(faq)
     graph.push(professionalServiceNode())
+    graph.push(offerCatalogNode())
+    for (const entry of SERVICES_CATALOG) {
+      const node = serviceNodeForSlug(entry.slug)
+      if (node) graph.push(node)
+    }
     return wrapGraph(graph)
   }
 
