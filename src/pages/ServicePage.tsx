@@ -6,6 +6,8 @@ import { AUTOMATION_EXTRA_FAQS } from "../data/ai-automation-offerings"
 import { ServiceAnswerBlock } from "../components/services/ServiceAnswerBlock"
 import { ServiceFaq } from "../components/services/ServiceFaq"
 import { ServiceLeadCTAs } from "../components/services/ServiceLeadCTAs"
+import { ServiceSeoGuides } from "../components/services/ServiceSeoGuides"
+import { SERVICE_SEO_GUIDES } from "../data/service-seo-guides"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { Reveal } from "../components/ui/Reveal"
 import { PORTFOLIO_ITEMS, SERVICE_DETAILS, SERVICES, SITE, type Service } from "../data/content"
@@ -52,6 +54,7 @@ export function ServicePage() {
   const details = SERVICE_DETAILS[service.slug]
   const faqs = isAiAutomation ? [...details.faqs, ...AUTOMATION_EXTRA_FAQS] : details.faqs
   const others = SERVICES.filter((item) => item.slug !== service.slug)
+  const seoGuides = SERVICE_SEO_GUIDES[service.slug] ?? []
   const relatedPortfolio = details.portfolioIds
     .map((id) => PORTFOLIO_ITEMS.find((p) => p.id === id))
     .filter(Boolean)
@@ -77,6 +80,7 @@ export function ServicePage() {
           decisionChecklist={details.aeo.decisionChecklist}
         />
         <ServiceLeadCTAs service={service} className="mt-8" />
+        {seoGuides.length > 0 ? <ServiceSeoGuides guides={seoGuides} /> : null}
       </Reveal>
 
       {isAiAutomation ? <AiAutomationServiceContent /> : null}

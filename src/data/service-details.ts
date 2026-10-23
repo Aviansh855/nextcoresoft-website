@@ -101,6 +101,11 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
         answer:
           "After discovery we quote fixed milestones when requirements are clear, or time-and-materials with caps when they are still evolving. Budget ranges on the contact form help us suggest a realistic first phase.",
       },
+      {
+        question: "What is CRM software development cost in India?",
+        answer:
+          "Custom CRM cost overlaps with custom software: a focused CRM MVP might be planned in the mid single-digit to low double-digit lakhs depending on pipelines, roles, integrations, and mobile needs — not a fixed market rate. See our custom CRM software development in India guide and the custom software cost guide on the blog; we quote after discovery.",
+      },
     ],
     portfolioIds: ["techwheels-service-management", "pbic-attendance", "milk-delivery-management"],
     aeo: {
@@ -123,12 +128,12 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     },
   },
   "mobile-apps": {
-    seoTitle: "Android & iOS App Development",
+    seoTitle: "Mobile App Development Cost India — Android & iOS",
     metaDescription:
-      "NextCoreSoft builds Android and iOS apps for customer self-service and field teams. Store launch, secure APIs, offline-ready workflows. For service, retail, and ops-heavy businesses.",
-    h1: "Android & iOS App Development for Customers and Field Teams",
+      "Mobile app development in India: Android and iOS apps for customers and field teams. Planning bands for app development cost in India, store launch, APIs, and maintenance. Chennai and India-wide delivery.",
+    h1: "Mobile App Development for Android and iOS (India)",
     intro:
-      "We build mobile applications for both major platforms — for your customers in the app stores, and for staff who need reliable tools away from a desk. We recommend cross-platform or native based on what fits your budget and timeline.",
+      "We build mobile applications for both major platforms — for your customers in the app stores, and for staff who need reliable tools away from a desk. If you are researching mobile app development cost in India or app development cost for iOS and Android in cities like Chennai, see our linked cost guide for planning bands; we quote only after scope is defined.",
     audience:
       "Service businesses, retailers, logistics and field operations, and product teams that need a branded mobile experience for customers or employees who work on the move.",
     problems: [
@@ -179,6 +184,21 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     ],
     faqs: [
       {
+        question: "How much does mobile app development cost in India?",
+        answer:
+          "Cost depends on screens, user roles, backend, integrations, and testing — not city alone. As a planning exercise, many teams model a simple app around ₹1.5 lakh–₹5 lakh, a focused MVP around ₹4 lakh–₹12 lakh, and a multi-role product at ₹8 lakh–₹25 lakh or more. These are indicative bands, not our quotation. See our mobile app development cost in India guide on the blog for detail, then contact us with your workflow for a written quote.",
+      },
+      {
+        question: "What is the cost of iOS and Android app development in Chennai?",
+        answer:
+          "Chennai vendors and remote studios often price by scope, not geography. iOS and Android together usually cost less to build when one cross-platform codebase covers both stores, but Apple and Google fees, backend hosting, and maintenance still apply. Use the same India planning bands as other cities; we deliver remotely for Chennai teams and quote after discovery.",
+      },
+      {
+        question: "Does NextCoreSoft offer mobile apps for iOS and Android?",
+        answer:
+          "Yes. NextCoreSoft builds customer and staff apps for Google Play and the Apple App Store, typically from one cross-platform codebase when that fits the features. We do not resell third-party “suite” products — we build custom apps for your workflow and can pair them with a web admin or APIs.",
+      },
+      {
         question: "One codebase for Android and iOS, or separate native apps?",
         answer:
           "For most business apps we use a cross-platform stack so both stores are covered efficiently. If you need deep platform-specific hardware features, we explain the native option and the cost difference before you commit.",
@@ -202,7 +222,7 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     portfolioIds: ["food-explore", "pg-booking", "milk-delivery-management", "anonymous-chat"],
     aeo: {
       quickAnswer:
-        "Mobile app development covers Android and iOS apps for customers, field staff, or internal teams — usually paired with a secure backend or your existing admin system. We recommend cross-platform or native based on your features, timeline, and budget; store submission support and post-launch maintenance can be included in scope.",
+        "Mobile app development covers Android and iOS apps for customers, field staff, or internal teams — usually paired with a secure backend or your existing admin system. App development cost in India varies by scope: simple apps, MVPs, and multi-role products fall into different planning bands (see our blog guide). We recommend cross-platform or native based on features, timeline, and budget; store submission and maintenance can be included in scope.",
       suitableFor:
         "Businesses whose users need reliable mobile access — bookings, status updates, field data capture, or branded customer apps — not only a mobile website.",
       quoteNeeds: [
@@ -317,12 +337,12 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     },
   },
   "cloud-api": {
-    seoTitle: "Cloud Deployment, APIs & Integrations",
+    seoTitle: "Cloud API Integration & Business System Connections",
     metaDescription:
-      "NextCoreSoft connects CRMs, accounting, payments, and custom software with REST APIs, cloud hosting, and ongoing maintenance — for teams tired of manual exports and broken integrations.",
-    h1: "Cloud, API Integrations & Software Maintenance",
+      "Cloud API integration for CRM, accounting, payments, messaging, and custom software. Learn how NextCoreSoft connects business software systems with REST APIs, webhooks, and cloud communication APIs — plus hosting and maintenance.",
+    h1: "Cloud API Integration and Business Software Connections",
     intro:
-      "We build the connective layer between your systems: REST APIs, third-party integrations, cloud deployment, monitoring, and the maintenance that keeps everything running after launch.",
+      "We build the connective layer between your systems: cloud API integration, REST and webhook endpoints, third-party connectors, deployment, monitoring, and maintenance — so CRM, accounting, apps, and messaging share data without manual exports.",
     audience:
       "Businesses running on several SaaS tools or a mix of custom and off-the-shelf software, where staff export CSVs, email files, or re-enter data because systems do not talk to each other.",
     problems: [
@@ -373,6 +393,21 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     ],
     faqs: [
       {
+        question: "What is cloud API integration?",
+        answer:
+          "Cloud API integration connects your business software — CRM, ecommerce, accounting, mobile apps, or custom admin — through documented APIs hosted in the cloud or reachable over HTTPS. Data moves on schedules or events (webhooks) instead of CSV exports. We design auth, error handling, and monitoring for each connection.",
+      },
+      {
+        question: "How do you connect business software systems?",
+        answer:
+          "We map systems and data flows, prefer official APIs, then implement one-way sync, two-way sync, or webhook-driven updates with conflict rules and alerts. See our blog guide on how to connect business software systems for patterns and scoping questions, or contact us with your stack for a integration plan.",
+      },
+      {
+        question: "What is a cloud communication API in business software?",
+        answer:
+          "In practice this usually means programmatic messaging or voice — SMS, WhatsApp Business Platform, email APIs, or voice platforms — wired into your CRM or workflows so customers get updates and staff see conversations in one place. We integrate only with providers and consent flows appropriate to your region and use case.",
+      },
+      {
         question: "Can you integrate with our legacy on-premise software?",
         answer:
           "Sometimes, via exports, database read replicas, or middleware — only after we understand licensing and security constraints. We will say no if the risk or access is unrealistic.",
@@ -396,7 +431,7 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     portfolioIds: ["anonymous-chat", "pbic-attendance"],
     aeo: {
       quickAnswer:
-        "Cloud and API work connects your software to CRMs, accounting, payments, and other systems — plus deployment, monitoring, backups, and maintenance after launch. We document integrations, handle auth and errors, and plan for vendor API changes; hosting and third-party fees depend on the providers you choose.",
+        "Cloud API integration connects CRMs, accounting, payments, mobile apps, and custom software so data syncs automatically. We document how to connect each business system, implement REST/webhook flows with auth and retries, and maintain integrations when vendors change APIs. Hosting and third-party usage fees depend on providers you choose.",
       suitableFor:
         "Businesses running several tools where staff still export CSVs, email files, or re-enter data because systems do not sync reliably.",
       quoteNeeds: [

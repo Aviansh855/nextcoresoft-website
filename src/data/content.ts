@@ -65,9 +65,9 @@ export const SERVICES = [
   },
   {
     slug: "mobile-apps",
-    title: "Android & iOS App Development",
+    title: "Android & iOS App Development (India)",
     summary:
-      "Mobile applications for customers, field teams, and internal staff — built for both major platforms.",
+      "Mobile app development for customers, field teams, and staff on Android and iOS — with India cost planning guides and store launch support.",
     outcomes: [
       "Customer-facing apps for both stores",
       "Field and operations apps for staff",
@@ -98,9 +98,9 @@ export const SERVICES = [
   },
   {
     slug: "cloud-api",
-    title: "Cloud, APIs & Maintenance",
+    title: "Cloud API Integration & Maintenance",
     summary:
-      "The connective layer: third-party integrations, cloud deployment, and the maintenance that keeps software reliable after launch.",
+      "Cloud API integration and webhooks that connect CRM, accounting, payments, and custom software — plus deployment and maintenance after launch.",
     outcomes: [
       "API and third-party integrations",
       "Cloud deployment, monitoring, and backups",
@@ -347,6 +347,16 @@ export const SERVICES_HUB_FAQS = [
     answer:
       "Use the contact form and mention the service (or open a service page and click Request a quote). We aim to reply within one business day with scope questions and how we would structure the quotation when volume allows.",
   },
+  {
+    question: "How much does mobile app development cost in India?",
+    answer:
+      "Scope drives price more than city. Our blog guide on mobile app development cost in India explains planning bands for Android, iOS, and cross-platform apps; the mobile apps service page links to it. Contact us with your user roles and features for a written quotation.",
+  },
+  {
+    question: "How do you connect business software systems?",
+    answer:
+      "Through cloud API integration: REST APIs, webhooks, and scheduled sync between CRM, accounting, payments, and custom software. Our API integration guide on the blog walks through patterns; the cloud and API service page covers how NextCoreSoft scopes and maintains connections.",
+  },
 ] as const
 
 /** Blog index — common questions for search and answer engines. */
@@ -365,6 +375,16 @@ export const BLOG_HUB_FAQS = [
     question: "How often is new content published?",
     answer:
       "We add articles when we have something useful and verified to say. The blog index lists current guides — including custom software and mobile app costs in India and MVP vs full product planning.",
+  },
+  {
+    question: "Where can I read about app development cost in India?",
+    answer:
+      "Start with /blog/mobile-app-development-cost-india/ for Android, iOS, and cross-platform planning bands, including notes for cities such as Chennai. It is a budgeting guide, not a price list.",
+  },
+  {
+    question: "Where is the guide on cloud API integration?",
+    answer:
+      "See /blog/api-integration-business-systems-guide/ for how to connect business software systems, and /services/cloud-api/ for how NextCoreSoft delivers integrations, hosting, and maintenance.",
   },
 ] as const
 
@@ -438,5 +458,15 @@ export const FAQS = [
     question: "Can NextCoreSoft help if I searched “best software company near me”?",
     answer:
       "“Near me” results depend on your location, Google listings, and competition — we do not guarantee map placement or a #1 rank for that phrase. We explain how “software company near me” works on our blog and deliver custom software, mobile apps, and automation remotely for Jaipur, Rajasthan, India, and other clients. Contact us if milestone-based remote delivery fits your project.",
+  },
+  {
+    question: "How much does mobile app development cost in India?",
+    answer:
+      "It depends on features, platforms, backend, and integrations. Our blog guide on mobile app development cost in India gives planning bands for Android and iOS — not a fixed price list. NextCoreSoft quotes after discovery when you describe your app workflow.",
+  },
+  {
+    question: "How do you connect business software systems?",
+    answer:
+      "With cloud API integration: REST APIs and webhooks between CRM, accounting, payments, and custom software, plus monitoring and maintenance. Read our API integration guide on the blog or the cloud and API service page for how NextCoreSoft scopes connections.",
   },
 ] as const

@@ -10,6 +10,9 @@ import { NotFoundPage } from "../pages/NotFoundPage"
 import { PortfolioPage } from "../pages/PortfolioPage"
 import { ServicePage } from "../pages/ServicePage"
 import { ServicesIndexPage } from "../pages/ServicesIndexPage"
+import { AiAutomationPricingPage } from "../pages/AiAutomationPricingPage"
+import { DealershipPricingPage } from "../pages/DealershipPricingPage"
+import { DealershipSolutionPage } from "../pages/DealershipSolutionPage"
 
 /** Each indexable path and its trailing-slash alias — must stay direct `<Route>` children of `<Routes>`. */
 function pathWithTrailingSlash(path: string, element: ReactNode) {
@@ -39,6 +42,9 @@ export function createAppRouteElements() {
     <Route key="/services/:slug" path="/services/:slug" element={<ServicePage />} />,
     <Route key="/services/:slug/" path="/services/:slug/" element={<ServicePage />} />,
     ...pathWithTrailingSlash("/services", <ServicesIndexPage />),
+    ...pathWithTrailingSlash("/pricing", <DealershipPricingPage />),
+    ...pathWithTrailingSlash("/pricing/ai-automation", <AiAutomationPricingPage />),
+    ...pathWithTrailingSlash("/solutions/dealership-service-management", <DealershipSolutionPage />),
     ...pathWithTrailingSlash("/privacy", <LegalPage kind="privacy" />),
     ...pathWithTrailingSlash("/terms", <LegalPage kind="terms" />),
     <Route key="*" path="*" element={<NotFoundPage />} />,

@@ -59,12 +59,12 @@ export const ROUTE_META = {
     robots: "index, follow",
   },
   "/services/mobile-apps": {
-    title: "Mobile App Development Company (Android & iOS) | NextCoreSoft",
+    title: "Mobile App Development Cost India — Android & iOS | NextCoreSoft",
     description:
-      "Mobile app development company for Android and iOS — customer apps, field teams, secure APIs, and store launch support. NextCoreSoft builds for service, retail, and operations.",
-    h1: "Mobile App Development for Android, iOS, and Field Teams",
+      "Mobile app development in India: Android and iOS apps, app development cost planning bands, store launch, APIs, and maintenance. Chennai and India-wide remote delivery.",
+    h1: "Mobile App Development for Android and iOS (India)",
     staticLead:
-      "Mobile apps for both major platforms — for customers in the app stores and for staff who work away from a desk.",
+      "Android and iOS apps for customers and field teams — with honest cost planning guides and written quotes after scope is defined.",
     robots: "index, follow",
   },
   "/services/ai-automation": {
@@ -77,12 +77,39 @@ export const ROUTE_META = {
     robots: "index, follow",
   },
   "/services/cloud-api": {
-    title: "Cloud Deployment, APIs & Integrations | NextCoreSoft",
+    title: "Cloud API Integration & Business Software Connections | NextCoreSoft",
     description:
-      "NextCoreSoft connects CRMs, accounting, payments, and custom software with REST APIs, cloud hosting, and ongoing maintenance — for teams tired of manual exports and broken integrations.",
-    h1: "Cloud, API Integrations & Software Maintenance",
+      "Cloud API integration for CRM, accounting, payments, and custom software. Connect business software systems with REST APIs, webhooks, and cloud communication APIs — plus hosting and maintenance.",
+    h1: "Cloud API Integration and Business Software Connections",
     staticLead:
-      "APIs and integrations that move data between your tools, plus cloud hosting and maintenance after launch.",
+      "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",
+    robots: "index, follow",
+  },
+  "/pricing": {
+    title: "Dealership Service Management Pricing | NextCoreSoft",
+    description:
+      "Pricing for the Dealership Service Management Solution — Basic, Medium, and Premium plans with setup fee, monthly license, and first-year totals for Indian dealerships and service centers.",
+    h1: "Dealership Service Management Solution pricing",
+    staticLead:
+      "Setup plus monthly license plans for dealership service operations — customer app on Medium and Premium; taxes extra.",
+    robots: "index, follow",
+  },
+  "/pricing/ai-automation": {
+    title: "AI Automation Pricing Plans India | NextCoreSoft",
+    description:
+      "AI automation pricing for Indian businesses — Starter, Growth, and Enterprise plans with setup fee and monthly license for WhatsApp, chatbots, and workflow automation.",
+    h1: "AI Automation & Intelligent Workflows — plans & pricing",
+    staticLead:
+      "Competitive setup and monthly plans for AI workflows, chatbots, and integrations — third-party API usage and taxes extra.",
+    robots: "index, follow",
+  },
+  "/solutions/dealership-service-management": {
+    title: "Dealership Service Management System | NextCoreSoft",
+    description:
+      "Overview of NextCoreSoft Dealership Service Management software — job tracking, vehicle records, staff workflows, and optional customer mobile apps. See pricing for plans.",
+    h1: "Dealership Service Management Solution",
+    staticLead:
+      "Service-center and dealership operations software with optional customer mobile apps — pricing published separately.",
     robots: "index, follow",
   },
   "/privacy": {
@@ -134,6 +161,9 @@ export function noscriptBlock(path) {
     ["/services", "Services"],
     ["/services/ai-automation", "AI automation"],
     ["/services/cloud-api", "Cloud & API"],
+    ["/pricing", "Dealership pricing"],
+    ["/pricing/ai-automation", "AI automation pricing"],
+    ["/solutions/dealership-service-management", "Dealership solution"],
   ]
     .map(
       ([href, label]) => `<a href="${canonicalUrl(href)}">${escapeHtml(label)}</a>`,

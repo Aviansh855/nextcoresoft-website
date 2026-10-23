@@ -51,6 +51,8 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5">
             {[
               { label: "Portfolio", to: "/portfolio/" },
+              { label: "Dealership pricing", to: "/pricing/" },
+              { label: "AI automation pricing", to: "/pricing/ai-automation/" },
               { label: "Blog", to: "/blog/" },
               { label: "About", to: "/about/" },
               { label: "Contact", to: "/contact/" },

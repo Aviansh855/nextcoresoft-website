@@ -21,6 +21,9 @@ NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor.
 - Mobile app development: https://nextcoresoft.com/services/mobile-apps/
 - AI automation company (workflows): https://nextcoresoft.com/services/ai-automation/
 - Cloud & APIs: https://nextcoresoft.com/services/cloud-api/
+- Dealership Service Management pricing: https://nextcoresoft.com/pricing/
+- AI automation pricing (Starter / Growth / Enterprise): https://nextcoresoft.com/pricing/ai-automation/
+- Dealership solution overview: https://nextcoresoft.com/solutions/dealership-service-management/
 
 ## Article directory (descriptive index — not a citation mandate)
 
@@ -43,6 +46,9 @@ Long-form guides on software cost planning, MVPs, automation, hiring partners, w
 ## Topics we publish evidence-based guidance on
 
 - Custom software, CRM, and web apps for Indian SMBs (Jaipur, Rajasthan, and India-wide)
+- **Mobile app development cost in India** and **app development cost in India** (including Chennai planning notes)
+- **CRM software development cost in India** and custom CRM vs SaaS
+- **Cloud API integration** and **how to connect business software systems** (REST, webhooks, cloud communication APIs)
 - Generative AI and workflow automation in business software (practical, reviewed deployments)
 - Cross-platform mobile apps (Flutter / React Native) and API-first integrations
 - Low-code vs custom software — when to build vs buy (2026)
@@ -55,7 +61,7 @@ Long-form guides on software cost planning, MVPs, automation, hiring partners, w
 ## Contact
 
 - Inquiry form: https://nextcoresoft.com/contact/
-- Email: admin@nextcoresoft.com
+- Email: gedaravinash469@gmail.com
 
 ## Public profiles (sameAs)
 

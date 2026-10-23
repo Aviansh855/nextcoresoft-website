@@ -69,6 +69,24 @@ export const ROUTE_SEO = {
       "Guides on custom software and mobile app development costs in India, MVP planning, and software project scoping for Indian SMBs and founders.",
     path: "/blog",
   },
+  pricing: {
+    title: "Dealership Service Management Pricing | NextCoreSoft",
+    description:
+      "Pricing for the Dealership Service Management Solution — Basic, Medium, and Premium plans with setup fee, monthly license, and first-year totals for Indian dealerships and service centers.",
+    path: "/pricing",
+  },
+  dealershipSolution: {
+    title: "Dealership Service Management System | NextCoreSoft",
+    description:
+      "Overview of NextCoreSoft Dealership Service Management software — job tracking, vehicle records, staff workflows, and optional customer mobile apps. See pricing for plans.",
+    path: "/solutions/dealership-service-management",
+  },
+  aiAutomationPricing: {
+    title: "AI Automation Pricing Plans India | NextCoreSoft",
+    description:
+      "AI automation pricing for Indian businesses — Starter, Growth, and Enterprise plans with setup fee and monthly license for WhatsApp, chatbots, and workflow automation.",
+    path: "/pricing/ai-automation",
+  },
   notFound: {
     title: "Page Not Found | NextCoreSoft",
     description: "This page does not exist. Visit the NextCoreSoft homepage or contact us about your project.",

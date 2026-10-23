@@ -99,9 +99,22 @@ export function PortfolioPage() {
                     )
                   })}
                 </p>
-                <ButtonLink to={`/contact/?service=${item.relatedServices[0] ?? "custom-software"}&project=${item.id}`} className="mt-6 self-start">
-                  Discuss this project
-                </ButtonLink>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {item.id === "techwheels-service-management" ? (
+                    <>
+                      <ButtonLink to="/pricing/">View pricing</ButtonLink>
+                      <ButtonLink to="/solutions/dealership-service-management/" variant="secondary">
+                        Solution overview
+                      </ButtonLink>
+                    </>
+                  ) : null}
+                  <ButtonLink
+                    to={`/contact/?service=${item.relatedServices[0] ?? "custom-software"}&project=${item.id}`}
+                    variant={item.id === "techwheels-service-management" ? "secondary" : "primary"}
+                  >
+                    Discuss this project
+                  </ButtonLink>
+                </div>
               </article>
             </Reveal>
           ))}

@@ -17,6 +17,8 @@ import {
   SITE,
   type Service,
 } from "../../data/content"
+import { AI_AUTOMATION_PLANS, AI_AUTOMATION_PRODUCT } from "../../data/ai-automation-pricing"
+import { DEALERSHIP_PLANS, DEALERSHIP_PRODUCT } from "../../data/dealership-pricing"
 
 interface Fields {
   name: string
@@ -138,8 +140,26 @@ function initialFieldsFromSearch(params: URLSearchParams): Fields {
   if (intent === "quote") {
     parts.push("I would like a written quotation for this project.")
   }
+  if (intent === "demo") {
+    parts.push("I would like a product demonstration.")
+  }
   if (project) {
     parts.push(`Portfolio item: ${project.name}.`)
+  }
+  const product = params.get("product")?.trim()
+  if (product === DEALERSHIP_PRODUCT.slug) {
+    parts.push(`Product: ${DEALERSHIP_PRODUCT.name}.`)
+  }
+  if (product === AI_AUTOMATION_PRODUCT.slug) {
+    parts.push(`Product: ${AI_AUTOMATION_PRODUCT.name}.`)
+  }
+  const planId = params.get("plan")?.trim()
+  const dealershipPlan = DEALERSHIP_PLANS.find((p) => p.id === planId)
+  const aiPlan = AI_AUTOMATION_PLANS.find((p) => p.id === planId)
+  if (dealershipPlan && (product === DEALERSHIP_PRODUCT.slug || !product)) {
+    parts.push(`Selected plan: ${dealershipPlan.name} (${DEALERSHIP_PRODUCT.shortName}).`)
+  } else if (aiPlan) {
+    parts.push(`Selected plan: ${aiPlan.name} (${AI_AUTOMATION_PRODUCT.shortName}).`)
   }
   const topic = params.get("topic")?.trim()
   if (topic) {

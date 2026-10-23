@@ -42,10 +42,10 @@
     "robots": "index, follow"
   },
   "/services/mobile-apps": {
-    "title": "Mobile App Development Company (Android & iOS) | NextCoreSoft",
-    "description": "Mobile app development company for Android and iOS — customer apps, field teams, secure APIs, and store launch support. NextCoreSoft builds for service, retail, and operations.",
-    "h1": "Mobile App Development for Android, iOS, and Field Teams",
-    "staticLead": "Mobile apps for both major platforms — for customers in the app stores and for staff who work away from a desk.",
+    "title": "Mobile App Development Cost India — Android & iOS | NextCoreSoft",
+    "description": "Mobile app development in India: Android and iOS apps, app development cost planning bands, store launch, APIs, and maintenance. Chennai and India-wide remote delivery.",
+    "h1": "Mobile App Development for Android and iOS (India)",
+    "staticLead": "Android and iOS apps for customers and field teams — with honest cost planning guides and written quotes after scope is defined.",
     "robots": "index, follow"
   },
   "/services/ai-automation": {
@@ -56,10 +56,31 @@
     "robots": "index, follow"
   },
   "/services/cloud-api": {
-    "title": "Cloud Deployment, APIs & Integrations | NextCoreSoft",
-    "description": "NextCoreSoft connects CRMs, accounting, payments, and custom software with REST APIs, cloud hosting, and ongoing maintenance — for teams tired of manual exports and broken integrations.",
-    "h1": "Cloud, API Integrations & Software Maintenance",
-    "staticLead": "APIs and integrations that move data between your tools, plus cloud hosting and maintenance after launch.",
+    "title": "Cloud API Integration & Business Software Connections | NextCoreSoft",
+    "description": "Cloud API integration for CRM, accounting, payments, and custom software. Connect business software systems with REST APIs, webhooks, and cloud communication APIs — plus hosting and maintenance.",
+    "h1": "Cloud API Integration and Business Software Connections",
+    "staticLead": "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",
+    "robots": "index, follow"
+  },
+  "/pricing": {
+    "title": "Dealership Service Management Pricing | NextCoreSoft",
+    "description": "Pricing for the Dealership Service Management Solution — Basic, Medium, and Premium plans with setup fee, monthly license, and first-year totals for Indian dealerships and service centers.",
+    "h1": "Dealership Service Management Solution pricing",
+    "staticLead": "Setup plus monthly license plans for dealership service operations — customer app on Medium and Premium; taxes extra.",
+    "robots": "index, follow"
+  },
+  "/pricing/ai-automation": {
+    "title": "AI Automation Pricing Plans India | NextCoreSoft",
+    "description": "AI automation pricing for Indian businesses — Starter, Growth, and Enterprise plans with setup fee and monthly license for WhatsApp, chatbots, and workflow automation.",
+    "h1": "AI Automation & Intelligent Workflows — plans & pricing",
+    "staticLead": "Competitive setup and monthly plans for AI workflows, chatbots, and integrations — third-party API usage and taxes extra.",
+    "robots": "index, follow"
+  },
+  "/solutions/dealership-service-management": {
+    "title": "Dealership Service Management System | NextCoreSoft",
+    "description": "Overview of NextCoreSoft Dealership Service Management software — job tracking, vehicle records, staff workflows, and optional customer mobile apps. See pricing for plans.",
+    "h1": "Dealership Service Management Solution",
+    "staticLead": "Service-center and dealership operations software with optional customer mobile apps — pricing published separately.",
     "robots": "index, follow"
   },
   "/privacy": {
@@ -92,7 +113,7 @@
   },
   "/blog/mobile-app-development-cost-india": {
     "title": "Mobile App Development Cost in India: 2026 Guide | NextCoreSoft",
-    "description": "Learn mobile app development costs in India, what affects Android, iOS and cross-platform pricing, and how to plan an app budget confidently.",
+    "description": "Mobile app development cost India and app development cost in India — Android, iOS, cross-platform planning bands, Chennai notes, and how to budget before you quote.",
     "h1": "How Much Does Mobile App Development Cost in India?",
     "staticLead": "A simple mobile app with limited screens and no complex backend can cost much less than a customer app that includes login, payments, notifications, an admin dashboard, multiple user roles and integrations. As an initial…",
     "robots": "index, follow"
@@ -126,10 +147,10 @@
     "robots": "index, follow"
   },
   "/blog/api-integration-business-systems-guide": {
-    "title": "API Integration Guide for Business Systems | NextCoreSoft",
-    "description": "Learn how API integrations connect CRM, accounting, payments, and custom software—patterns, costs, and scoping tips for growing businesses.",
-    "h1": "Why Do Business Systems Need API Integrations?",
-    "staticLead": "API integrations let your CRM, website, mobile app, accounting tool, and warehouse system share data automatically instead of manual exports. Done well, they reduce errors and speed up operations. Done poorly, they creat…",
+    "title": "How to Connect Business Software Systems (Cloud API Guide) | NextCoreSoft",
+    "description": "How to connect business software systems with cloud API integration — CRM, accounting, payments, webhooks, and cloud communication APIs. Patterns, costs, and scoping.",
+    "h1": "How to Connect Business Software Systems",
+    "staticLead": "To connect business software systems, map each tool (CRM, accounting, ecommerce, mobile app, warehouse), list the data that must flow, then use **cloud API integration** — REST endpoints, webhooks, or scheduled jobs — wi…",
     "robots": "index, follow"
   },
   "/blog/software-development-company-jaipur": {

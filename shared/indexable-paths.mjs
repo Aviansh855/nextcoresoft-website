@@ -26,6 +26,9 @@ export const INDEXABLE_PATHS = [
   "/services/mobile-apps",
   "/services/ai-automation",
   "/services/cloud-api",
+  "/pricing",
+  "/pricing/ai-automation",
+  "/solutions/dealership-service-management",
   "/privacy",
   "/terms",
 ]
@@ -72,6 +75,9 @@ export const SITEMAP_ENTRIES = [
   { loc: "/services/mobile-apps", changefreq: "monthly", priority: "0.85" },
   { loc: "/services/ai-automation", changefreq: "monthly", priority: "0.85" },
   { loc: "/services/cloud-api", changefreq: "monthly", priority: "0.85" },
+  { loc: "/pricing", changefreq: "monthly", priority: "0.82" },
+  { loc: "/pricing/ai-automation", changefreq: "monthly", priority: "0.82" },
+  { loc: "/solutions/dealership-service-management", changefreq: "monthly", priority: "0.8" },
   { loc: "/privacy", changefreq: "yearly", priority: "0.3" },
   { loc: "/terms", changefreq: "yearly", priority: "0.3" },
 ]

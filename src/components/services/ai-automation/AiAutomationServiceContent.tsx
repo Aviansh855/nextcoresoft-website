@@ -285,7 +285,10 @@ export function AiAutomationServiceContent() {
           <div>
             <p className="text-sm font-medium text-slate-700">
               Custom AI solutions built around your business — human handoff, consent-first messaging, and integrations
-              with tools you already use.
+              with tools you already use.{" "}
+              <Link to="/pricing/ai-automation/" className="font-semibold text-cyan-700 hover:underline">
+                View published AI automation pricing →
+              </Link>
             </p>
             <ul className="mt-6 space-y-2 text-sm text-slate-600">
               <li className="flex gap-2">

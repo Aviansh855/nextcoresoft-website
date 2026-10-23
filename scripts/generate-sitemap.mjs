@@ -22,6 +22,17 @@ const ROUTE_CONTENT_SOURCES = {
     "shared/route-meta.mjs",
   ],
   "/portfolio": ["src/pages/PortfolioPage.tsx", "src/data/portfolio.ts", "shared/route-meta.mjs"],
+  "/pricing": ["src/pages/DealershipPricingPage.tsx", "src/data/dealership-pricing.ts", "shared/route-meta.mjs"],
+  "/pricing/ai-automation": [
+    "src/pages/AiAutomationPricingPage.tsx",
+    "src/data/ai-automation-pricing.ts",
+    "shared/route-meta.mjs",
+  ],
+  "/solutions/dealership-service-management": [
+    "src/pages/DealershipSolutionPage.tsx",
+    "src/data/dealership-pricing.ts",
+    "shared/route-meta.mjs",
+  ],
   "/services": [
     "src/pages/ServicesIndexPage.tsx",
     "src/data/content.ts",

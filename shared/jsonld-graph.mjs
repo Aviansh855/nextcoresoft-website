@@ -212,6 +212,35 @@ export function buildRouteJsonLdGraph(path, ctx = {}) {
     return wrapGraph(graph)
   }
 
+  if (path === "/pricing") {
+    addPageWithBreadcrumb("WebPage", [
+      { name: "Home", path: "/" },
+      { name: "Pricing", path: "/pricing" },
+    ])
+    const faq = faqNode(SEO_FAQS.pricing, `${base}#faq`)
+    if (faq) graph.push(faq)
+    return wrapGraph(graph)
+  }
+
+  if (path === "/pricing/ai-automation") {
+    addPageWithBreadcrumb("WebPage", [
+      { name: "Home", path: "/" },
+      { name: "Pricing", path: "/pricing" },
+      { name: "AI automation pricing", path: "/pricing/ai-automation" },
+    ])
+    const faq = faqNode(SEO_FAQS.pricingAiAutomation, `${base}#faq`)
+    if (faq) graph.push(faq)
+    return wrapGraph(graph)
+  }
+
+  if (path === "/solutions/dealership-service-management") {
+    addPageWithBreadcrumb("WebPage", [
+      { name: "Home", path: "/" },
+      { name: "Dealership solution", path: "/solutions/dealership-service-management" },
+    ])
+    return wrapGraph(graph)
+  }
+
   if (path === "/services") {
     addPageWithBreadcrumb("WebPage", [
       { name: "Home", path: "/" },

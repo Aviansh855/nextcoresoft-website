@@ -47,13 +47,24 @@ export function ProjectShowcase() {
                   ))}
                 </ul>
               )}
-              <Link
-                to={`/contact/?project=${project.id}`}
-                className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-cyan-700 hover:text-slate-900"
-              >
-                Discuss this project
-                <ArrowRight size={14} aria-hidden="true" />
-              </Link>
+              <div className="mt-5 flex flex-col gap-2">
+                {project.id === "techwheels-service-management" ? (
+                  <Link
+                    to="/pricing/"
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-cyan-700 hover:text-slate-900"
+                  >
+                    View dealership pricing
+                    <ArrowRight size={14} aria-hidden="true" />
+                  </Link>
+                ) : null}
+                <Link
+                  to={`/contact/?project=${project.id}`}
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-cyan-700 hover:text-slate-900"
+                >
+                  Discuss this project
+                  <ArrowRight size={14} aria-hidden="true" />
+                </Link>
+              </div>
             </article>
           </Reveal>
         ))}

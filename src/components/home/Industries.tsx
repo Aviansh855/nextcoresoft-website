@@ -1,4 +1,5 @@
 import { Briefcase, Car, HeartPulse, Store, Truck, Wallet } from "lucide-react"
+import { Link } from "react-router-dom"
 import { INDUSTRIES } from "../../data/content"
 import { Reveal } from "../ui/Reveal"
 import { Section, SectionHeading } from "../ui/Section"
@@ -25,6 +26,11 @@ export function Industries() {
                 <Icon size={22} className="text-cyan-600" aria-hidden="true" />
                 <h3 className="mt-4 font-display text-lg font-semibold text-slate-900">{industry.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">{industry.description}</p>
+                {i === 0 ? (
+                  <Link to="/pricing/" className="mt-4 inline-block text-sm font-semibold text-cyan-700 hover:text-slate-900">
+                    Dealership service management pricing →
+                  </Link>
+                ) : null}
               </article>
             </Reveal>
           )
