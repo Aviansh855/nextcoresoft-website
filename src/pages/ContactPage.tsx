@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
+import { ConnectWithFounder } from "../components/layout/ConnectWithFounder"
 import { InquiryForm } from "../components/contact/InquiryForm"
 import { Reveal } from "../components/ui/Reveal"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
@@ -50,6 +51,10 @@ export function ContactPage() {
                 </dd>
               </div>
             </dl>
+
+            <div className="mt-10">
+              <ConnectWithFounder />
+            </div>
 
             <div className="mt-10 border-t border-slate-200 pt-8">
               <ServicePageLinks heading="Not sure which service fits?" />

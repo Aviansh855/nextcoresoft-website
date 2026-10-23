@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { SERVICES, SITE } from "../../data/content"
+import { ConnectWithFounder } from "./ConnectWithFounder"
 import { Logo } from "./Logo"
 
 /** Current year, computed after mount so server and client markup agree. */
@@ -16,8 +17,6 @@ function Copyright() {
     </>
   )
 }
-
-const SOCIALS = ["LinkedIn", "GitHub", "X"] as const
 
 export function Footer() {
   return (
@@ -79,15 +78,8 @@ export function Footer() {
                 {SITE.contactEmail}
               </a>
             </li>
-            <li className="pt-2">
-              <p className="text-xs tracking-wide text-slate-500 uppercase">Social</p>
-              <p className="mt-2 text-sm text-slate-500">
-                {SOCIALS.join(" · ")} — profiles not published yet.{" "}
-                <Link to="/contact/" className="font-medium text-cyan-700 hover:underline">
-                  Contact us
-                </Link>{" "}
-                in the meantime.
-              </p>
+            <li>
+              <ConnectWithFounder variant="compact" />
             </li>
           </ul>
         </div>

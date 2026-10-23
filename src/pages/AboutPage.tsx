@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { CTABand } from "../components/home/CTABand"
 import { Reveal } from "../components/ui/Reveal"
+import { ConnectWithFounder } from "../components/layout/ConnectWithFounder"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { ServicePageLinks } from "../components/seo/ServicePageLinks"
 import { SITE } from "../data/content"
@@ -65,7 +66,11 @@ export function AboutPage() {
           </div>
         </Reveal>
 
-        <div className="mt-16 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
+        <div className="mt-16">
+          <ConnectWithFounder />
+        </div>
+
+        <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
           <ServicePageLinks heading="What we build" />
           <p className="mt-4 text-sm leading-relaxed text-slate-600">
             Each link goes to a dedicated page with scope, who it&apos;s for, and typical deliverables.
