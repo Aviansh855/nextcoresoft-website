@@ -120,7 +120,6 @@ function professionalServiceNode() {
     url: `${SITE.url}/`,
     image: { "@id": LOGO_ID },
     description: SITE.description,
-    provider: { "@id": ORG_ID },
     areaServed: { "@type": "Place", name: "Worldwide" },
     hasOfferCatalog: { "@id": OFFER_CATALOG_ID },
   }

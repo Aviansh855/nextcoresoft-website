@@ -1,7 +1,7 @@
 {
   "/": {
-    "title": "NextCoreSoft | Custom Software, Web & App Development, AI Automation",
-    "description": "Custom software development company for web apps, business websites, Android & iOS apps, and AI automation. NextCoreSoft works with SMBs worldwide. Free consultation.",
+    "title": "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
+    "description": "Custom software development company for web apps, mobile apps, and AI automation — Jaipur, Rajasthan, India, and remote clients. Guides for “software company near me” on our blog. Free consultation.",
     "h1": "Custom software, web development, mobile apps and AI automation",
     "staticLead": "NextCoreSoft is a software development studio for custom web applications, mobile app development, and practical AI workflow automation for growing businesses.",
     "robots": "index, follow"
@@ -49,10 +49,10 @@
     "robots": "index, follow"
   },
   "/services/ai-automation": {
-    "title": "AI Automation Company for Business Workflows | NextCoreSoft",
-    "description": "AI automation company for document processing, inquiry routing, and workflow integration — practical AI with human review where it matters. NextCoreSoft serves SMBs and growing teams.",
-    "h1": "AI Automation and Intelligent Workflows for Business",
-    "staticLead": "Practical AI for inquiry routing, document extraction, and routine handoffs — with humans in the loop when accuracy matters.",
+    "title": "AI Automation Company — WhatsApp, Voice, Chatbots & Workflows | NextCoreSoft",
+    "description": "AI automation for WhatsApp, voice agents, chatbots, lead workflows, dashboards, and CRM integration — with human review where it matters. NextCoreSoft builds practical systems for growing businesses.",
+    "h1": "AI Automation — WhatsApp, Voice, Chatbots and Intelligent Workflows",
+    "staticLead": "WhatsApp automation, voice agents, chatbots, lead workflows, and dashboards — integrated with your CRM and tools, with human review where accuracy matters.",
     "robots": "index, follow"
   },
   "/services/cloud-api": {
@@ -130,6 +130,48 @@
     "description": "Learn how API integrations connect CRM, accounting, payments, and custom software—patterns, costs, and scoping tips for growing businesses.",
     "h1": "Why Do Business Systems Need API Integrations?",
     "staticLead": "API integrations let your CRM, website, mobile app, accounting tool, and warehouse system share data automatically instead of manual exports. Done well, they reduce errors and speed up operations. Done poorly, they creat…",
+    "robots": "index, follow"
+  },
+  "/blog/software-development-company-jaipur": {
+    "title": "Software Development Company in Jaipur (2026 Guide) | NextCoreSoft",
+    "description": "How Jaipur businesses evaluate custom software, web, and mobile app partners — scope, cost, delivery, and what to ask before you hire a development company in Rajasthan.",
+    "h1": "Quick answer: what Jaipur businesses usually need",
+    "staticLead": "How Jaipur businesses evaluate custom software, web, and mobile app partners — scope, cost, delivery, and what to ask before you hire a development company in Rajasthan.",
+    "robots": "index, follow"
+  },
+  "/blog/software-company-near-me": {
+    "title": "Software Company Near Me: How Local Search Works (2026) | NextCoreSoft",
+    "description": "Searched “best software company near me”? Learn how Google shows local results, when remote custom software teams make sense, and what to ask before you hire.",
+    "h1": "Quick answer",
+    "staticLead": "Searched “best software company near me”? Learn how Google shows local results, when remote custom software teams make sense, and what to ask before you hire.",
+    "robots": "index, follow"
+  },
+  "/blog/generative-ai-business-software-india": {
+    "title": "Generative AI for Business Software in India (2026 Guide) | NextCoreSoft",
+    "description": "When generative AI belongs in your CRM, app, or internal tools — and when simpler automation is enough. Practical scoping for Indian SMBs.",
+    "h1": "Quick answer",
+    "staticLead": "When generative AI belongs in your CRM, app, or internal tools — and when simpler automation is enough. Practical scoping for Indian SMBs.",
+    "robots": "index, follow"
+  },
+  "/blog/flutter-vs-react-native-india-2026": {
+    "title": "Flutter vs React Native for Business Apps in India (2026) | NextCoreSoft",
+    "description": "Compare Flutter and React Native for Android and iOS business apps — team skills, integrations, release cadence, and when each fits Indian SMB budgets.",
+    "h1": "Quick answer",
+    "staticLead": "Compare Flutter and React Native for Android and iOS business apps — team skills, integrations, release cadence, and when each fits Indian SMB budgets.",
+    "robots": "index, follow"
+  },
+  "/blog/custom-crm-software-development-india": {
+    "title": "Custom CRM Software Development in India (2026 Guide) | NextCoreSoft",
+    "description": "When a custom CRM beats Zoho or HubSpot for Indian SMBs — workflows, GST-ready fields, WhatsApp, and integration requirements.",
+    "h1": "Quick answer",
+    "staticLead": "When a custom CRM beats Zoho or HubSpot for Indian SMBs — workflows, GST-ready fields, WhatsApp, and integration requirements.",
+    "robots": "index, follow"
+  },
+  "/blog/low-code-vs-custom-software-india": {
+    "title": "Low-Code vs Custom Software in India (2026 Guide) | NextCoreSoft",
+    "description": "Low-code, no-code, AI-generated apps, or custom development — how Indian SMBs choose speed, cost, and long-term control.",
+    "h1": "Quick answer",
+    "staticLead": "Low-code, no-code, AI-generated apps, or custom development — how Indian SMBs choose speed, cost, and long-term control.",
     "robots": "index, follow"
   }
 }

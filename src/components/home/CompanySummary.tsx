@@ -35,8 +35,9 @@ export function CompanySummary() {
           </p>
           <ServicePageLinks variant="list" heading="Explore each service" className="mt-6 border-t border-slate-200 pt-6" />
           <p className="mt-4 text-sm leading-relaxed text-slate-600">
-            We serve clients remotely and work in English. We do not sell pre-packaged SaaS; each engagement is scoped
-            to the business in front of us.{" "}
+            We serve clients remotely — including businesses in{" "}
+            <strong className="font-medium text-slate-700">Jaipur and across Rajasthan</strong> — and work in English.
+            We do not sell pre-packaged SaaS; each engagement is scoped to the business in front of us.{" "}
             <Link to="/about/" className="font-medium text-cyan-700 underline-offset-2 hover:underline">
               Learn about our approach
             </Link>{" "}

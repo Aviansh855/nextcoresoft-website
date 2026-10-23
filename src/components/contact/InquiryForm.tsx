@@ -9,7 +9,14 @@ import {
   type ReactNode,
 } from "react"
 import { Link, useSearchParams } from "react-router-dom"
-import { BUDGET_OPTIONS, PORTFOLIO_ITEMS, SERVICE_OPTIONS, SERVICE_SLUG_TO_FORM, type Service } from "../../data/content"
+import {
+  BUDGET_OPTIONS,
+  PORTFOLIO_ITEMS,
+  SERVICE_OPTIONS,
+  SERVICE_SLUG_TO_FORM,
+  SITE,
+  type Service,
+} from "../../data/content"
 
 interface Fields {
   name: string
@@ -86,7 +93,7 @@ async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
     })
   } catch {
     throw new Error(
-      "Could not reach the server. Check your connection or email hello@nextcoresoft.com directly.",
+      `Could not reach the server. Check your connection or email ${SITE.contactEmail} directly.`,
     )
   }
 
@@ -101,7 +108,9 @@ async function sendInquiry(fields: Fields, gotcha = ""): Promise<void> {
   try {
     payload = (await response.json()) as ApiResult
   } catch {
-    throw new Error("The server returned an invalid response. Please try again or email hello@nextcoresoft.com directly.")
+    throw new Error(
+      `The server returned an invalid response. Please try again or email ${SITE.contactEmail} directly.`,
+    )
   }
 
   if (!response.ok || payload.ok !== true) {
@@ -131,6 +140,10 @@ function initialFieldsFromSearch(params: URLSearchParams): Fields {
   }
   if (project) {
     parts.push(`Portfolio item: ${project.name}.`)
+  }
+  const topic = params.get("topic")?.trim()
+  if (topic) {
+    parts.push(`Interested in: ${topic}.`)
   }
   if (parts.length) next.description = parts.join(" ")
   return next
@@ -343,7 +356,7 @@ export function InquiryForm() {
           <p className="font-medium">We couldn&apos;t send your inquiry.</p>
           <p className="mt-1 leading-relaxed">
             {submitError ??
-              "Please try again in a moment, or email us directly at hello@nextcoresoft.com."}
+              `Please try again in a moment, or email us directly at ${SITE.contactEmail}.`}
           </p>
         </div>
       )}

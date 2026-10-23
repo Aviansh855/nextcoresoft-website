@@ -86,7 +86,14 @@ export const SERVICES = [
       "Automated follow-ups and handoffs",
       "Assistants grounded in your own data",
     ],
-    technologies: ["LLM APIs", "Workflow engines", "Webhooks", "Vector search"],
+    technologies: [
+      "WhatsApp Business Platform",
+      "n8n & webhooks",
+      "LLM APIs",
+      "Voice AI",
+      "CRM integrations",
+      "Python & TypeScript",
+    ],
     cta: "Explore automation",
   },
   {
@@ -421,5 +428,15 @@ export const FAQS = [
     question: "Do you work with clients searching “near me” or only remotely?",
     answer:
       "We deliver remotely and work in English with clients in many countries. This website does not list a public office address. Google’s local “near me” map results usually require a verified Google Business Profile and address — we do not claim map-pack placement here. You can still contact us for a video consultation from anywhere.",
+  },
+  {
+    question: "Do you work with businesses in Jaipur looking for a software development company?",
+    answer:
+      "Yes. We scope custom software, web apps, mobile apps, and integrations for Jaipur and Rajasthan teams via remote delivery. We do not claim to be the single “best” vendor for every project — fit depends on your scope. Read our Jaipur software company guide on the blog or contact us with a short problem brief.",
+  },
+  {
+    question: "Can NextCoreSoft help if I searched “best software company near me”?",
+    answer:
+      "“Near me” results depend on your location, Google listings, and competition — we do not guarantee map placement or a #1 rank for that phrase. We explain how “software company near me” works on our blog and deliver custom software, mobile apps, and automation remotely for Jaipur, Rajasthan, India, and other clients. Contact us if milestone-based remote delivery fits your project.",
   },
 ] as const

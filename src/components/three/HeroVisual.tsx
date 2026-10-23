@@ -62,7 +62,7 @@ export function HeroVisual() {
   }, [enabled])
 
   return (
-    <div className="relative h-[420px] w-full sm:h-[520px] lg:h-[640px]" aria-hidden="true">
+    <div className="relative h-[min(52vh,320px)] w-full sm:h-[520px] lg:h-[640px]" aria-hidden="true">
       {enabled === true ? (
         <Suspense fallback={<HeroFallback />}>
           <HeroSceneCanvas pointer={pointer} reducedMotion={reducedMotion} />

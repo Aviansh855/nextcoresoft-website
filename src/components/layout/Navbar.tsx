@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 import { Link, useLocation } from "react-router-dom"
 import { NAV_LINKS } from "../../data/content"
 import { ButtonLink } from "../ui/Button"
@@ -39,13 +40,59 @@ export function Navbar() {
     }
   }, [open])
 
+  const headerSurface =
+    scrolled || open
+      ? open
+        ? "border-b border-slate-200 bg-white"
+        : "border-b border-slate-200 bg-white/95 backdrop-blur-lg"
+      : "border-b border-transparent bg-transparent"
+
+  const mobileMenu =
+    open &&
+    typeof document !== "undefined" &&
+    createPortal(
+      <>
+        <button
+          type="button"
+          className="fixed inset-0 z-[90] bg-slate-900/20 lg:hidden"
+          aria-label="Close menu"
+          onClick={() => setOpen(false)}
+        />
+        <div
+          id="mobile-menu"
+          className="fixed inset-x-0 bottom-0 z-[100] overflow-y-auto overscroll-contain border-t border-slate-200 bg-white px-5 pt-4 pb-[max(2.5rem,env(safe-area-inset-bottom))] lg:hidden"
+          style={{ top: "calc(4rem + env(safe-area-inset-top, 0px))" }}
+        >
+          <ul className="flex flex-col">
+            {NAV_LINKS.map((link) => {
+              const current = isCurrent(link.href, location.pathname, location.hash)
+              return (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    aria-current={current ? "page" : undefined}
+                    className={`block rounded-lg px-2 py-3 text-base hover:bg-slate-50 hover:text-slate-900 ${
+                      current ? "text-slate-900" : "text-slate-700"
+                    }`}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+          <ButtonLink to="/contact/" className="mt-3 w-full" onClick={() => setOpen(false)}>
+            Let&apos;s Talk
+          </ButtonLink>
+        </div>
+      </>,
+      document.body,
+    )
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "border-b border-slate-200 bg-white/95 backdrop-blur-lg"
-          : "border-b border-transparent bg-transparent"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-colors duration-300 ${headerSurface}`}
     >
       <nav className="shell flex h-16 items-center justify-between" aria-label="Primary">
         <Logo onClick={() => setOpen(false)} />
@@ -81,31 +128,7 @@ export function Navbar() {
         </button>
       </nav>
 
-      {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-slate-200 bg-white px-5 pt-4 pb-10 lg:hidden">
-          <ul className="flex flex-col">
-            {NAV_LINKS.map((link) => {
-              const current = isCurrent(link.href, location.pathname, location.hash)
-              return (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    aria-current={current ? "page" : undefined}
-                    className={`block rounded-lg px-2 py-3 text-base hover:bg-slate-50 hover:text-slate-900 ${
-                      current ? "text-slate-900" : "text-slate-700"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-          <ButtonLink to="/contact/" className="mt-3 w-full">
-            Let&apos;s Talk
-          </ButtonLink>
-        </div>
-      )}
+      {mobileMenu}
     </header>
   )
 }

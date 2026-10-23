@@ -4,6 +4,7 @@ import { InquiryForm } from "../components/contact/InquiryForm"
 import { Reveal } from "../components/ui/Reveal"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { ServicePageLinks } from "../components/seo/ServicePageLinks"
+import { SITE } from "../data/content"
 import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 export function ContactPage() {
@@ -43,8 +44,8 @@ export function ContactPage() {
               <div>
                 <dt className="text-xs font-semibold tracking-[0.16em] text-slate-400 uppercase">Prefer email?</dt>
                 <dd className="mt-1.5 text-sm text-slate-600">
-                  <a href="mailto:hello@nextcoresoft.com" className="text-cyan-600 hover:text-slate-900">
-                    hello@nextcoresoft.com
+                  <a href={`mailto:${SITE.contactEmail}`} className="text-cyan-600 hover:text-slate-900">
+                    {SITE.contactEmail}
                   </a>
                 </dd>
               </div>

@@ -11,7 +11,13 @@ export const BLOG_POST_SLUGS = [
   "ai-automation-small-business-india",
   "hire-custom-software-development-company-india",
   "web-app-vs-mobile-app-for-business",
-  "api-integration-business-systems-guide"
+  "api-integration-business-systems-guide",
+  "software-development-company-jaipur",
+  "software-company-near-me",
+  "generative-ai-business-software-india",
+  "flutter-vs-react-native-india-2026",
+  "custom-crm-software-development-india",
+  "low-code-vs-custom-software-india"
 ]
 
 export function blogPostIndexablePaths() {

@@ -5,9 +5,9 @@ import { HOME_H1, SERVICES_HUB_H1 } from "./page-headings.mjs"
 /** Static HTML meta per indexable route. Service h1/lead must match `SERVICE_DETAILS` in `src/data/content.ts`. */
 export const ROUTE_META = {
   "/": {
-    title: "NextCoreSoft | Custom Software, Web & App Development, AI Automation",
+    title: "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
     description:
-      "Custom software development company for web apps, business websites, Android & iOS apps, and AI automation. NextCoreSoft works with SMBs worldwide. Free consultation.",
+      "Custom software development company for web apps, mobile apps, and AI automation — Jaipur, Rajasthan, India, and remote clients. Guides for “software company near me” on our blog. Free consultation.",
     h1: HOME_H1,
     staticLead:
       "NextCoreSoft is a software development studio for custom web applications, mobile app development, and practical AI workflow automation for growing businesses.",
@@ -68,12 +68,12 @@ export const ROUTE_META = {
     robots: "index, follow",
   },
   "/services/ai-automation": {
-    title: "AI Automation Company for Business Workflows | NextCoreSoft",
+    title: "AI Automation Company — WhatsApp, Voice, Chatbots & Workflows | NextCoreSoft",
     description:
-      "AI automation company for document processing, inquiry routing, and workflow integration — practical AI with human review where it matters. NextCoreSoft serves SMBs and growing teams.",
-    h1: "AI Automation and Intelligent Workflows for Business",
+      "AI automation for WhatsApp, voice agents, chatbots, lead workflows, dashboards, and CRM integration — with human review where it matters. NextCoreSoft builds practical systems for growing businesses.",
+    h1: "AI Automation — WhatsApp, Voice, Chatbots and Intelligent Workflows",
     staticLead:
-      "Practical AI for inquiry routing, document extraction, and routine handoffs — with humans in the loop when accuracy matters.",
+      "WhatsApp automation, voice agents, chatbots, lead workflows, and dashboards — integrated with your CRM and tools, with human review where accuracy matters.",
     robots: "index, follow",
   },
   "/services/cloud-api": {

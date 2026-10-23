@@ -1,6 +1,8 @@
 import { useEffect, useMemo } from "react"
 import { Link, useParams } from "react-router-dom"
 import { NotFoundPage } from "./NotFoundPage"
+import { AiAutomationServiceContent } from "../components/services/ai-automation/AiAutomationServiceContent"
+import { AUTOMATION_EXTRA_FAQS } from "../data/ai-automation-offerings"
 import { ServiceAnswerBlock } from "../components/services/ServiceAnswerBlock"
 import { ServiceFaq } from "../components/services/ServiceFaq"
 import { ServiceLeadCTAs } from "../components/services/ServiceLeadCTAs"
@@ -46,14 +48,20 @@ export function ServicePage() {
 
   if (!service) return <NotFoundPage />
 
+  const isAiAutomation = service.slug === "ai-automation"
   const details = SERVICE_DETAILS[service.slug]
+  const faqs = isAiAutomation ? [...details.faqs, ...AUTOMATION_EXTRA_FAQS] : details.faqs
   const others = SERVICES.filter((item) => item.slug !== service.slug)
   const relatedPortfolio = details.portfolioIds
     .map((id) => PORTFOLIO_ITEMS.find((p) => p.id === id))
     .filter(Boolean)
 
   return (
-    <article className="mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8">
+    <article
+      className={
+        isAiAutomation ? "shell w-full pt-32 pb-24 max-w-6xl" : "mx-auto w-full max-w-3xl px-5 pt-32 pb-24 sm:px-8"
+      }
+    >
       <Breadcrumbs items={crumbs} />
 
       <Reveal>
@@ -70,6 +78,8 @@ export function ServicePage() {
         />
         <ServiceLeadCTAs service={service} className="mt-8" />
       </Reveal>
+
+      {isAiAutomation ? <AiAutomationServiceContent /> : null}
 
       <Reveal delay={0.03}>
         <h2 className="mt-12 font-display text-2xl font-semibold text-slate-900">Business problems we address</h2>
@@ -155,7 +165,7 @@ export function ServicePage() {
       )}
 
       <Reveal delay={0.11}>
-        <ServiceFaq faqs={details.faqs} serviceTitle={service.title} />
+        <ServiceFaq faqs={faqs} serviceTitle={service.title} />
       </Reveal>
 
       <Reveal delay={0.12}>

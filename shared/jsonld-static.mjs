@@ -12,7 +12,7 @@ export function organizationJsonLd() {
     url: `${SITE.url}/`,
     logo: logoImageObject(),
     description: SITE.description,
-    email: "hello@nextcoresoft.com",
+    email: SITE.contactEmail,
     knowsAbout: [
       "Custom software development",
       "Web application development",
@@ -23,17 +23,23 @@ export function organizationJsonLd() {
       "API integration",
       "Cloud software deployment",
     ],
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-      description:
-        "Remote delivery; consult via video and email. No public storefront address listed on this site.",
-    },
+    areaServed: [
+      {
+        "@type": "Place",
+        name: "Jaipur, Rajasthan, India",
+        description: "Remote software delivery for Jaipur-based businesses; no public storefront address on this site.",
+      },
+      {
+        "@type": "Place",
+        name: "Worldwide",
+        description: "Remote delivery; consult via video and email.",
+      },
+    ],
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        email: "hello@nextcoresoft.com",
+        email: SITE.contactEmail,
         url: `${SITE.url}/contact/`,
         availableLanguage: ["English"],
       },

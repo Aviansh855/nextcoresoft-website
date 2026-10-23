@@ -71,10 +71,10 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm text-slate-600">
             <li>
               <a
-                href="mailto:hello@nextcoresoft.com"
+                href={`mailto:${SITE.contactEmail}`}
                 className="rounded font-medium text-slate-800 transition-colors hover:text-cyan-700"
               >
-                hello@nextcoresoft.com
+                {SITE.contactEmail}
               </a>
             </li>
             <li className="pt-2">

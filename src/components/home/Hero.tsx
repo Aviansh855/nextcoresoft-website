@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion"
+import { motion } from "framer-motion"
+import { useSkipStaggerMotion } from "../../hooks/useSkipStaggerMotion"
 import { ArrowRight } from "lucide-react"
 import { HOME_H1, HOME_TAGLINE } from "../../data/content"
 import { ServicePageLinks } from "../seo/ServicePageLinks"
@@ -7,7 +8,7 @@ import { HeroEntrance, HeroEntranceItem } from "../ui/HeroEntrance"
 import { HeroVisual } from "../three/HeroVisual"
 
 export function Hero() {
-  const reduced = useReducedMotion()
+  const skipMotion = useSkipStaggerMotion()
 
   return (
     <section className="relative overflow-hidden pt-16">
@@ -58,7 +59,7 @@ export function Hero() {
           </HeroEntranceItem>
         </HeroEntrance>
 
-        {reduced ? (
+        {skipMotion ? (
           <HeroVisual />
         ) : (
           <motion.div

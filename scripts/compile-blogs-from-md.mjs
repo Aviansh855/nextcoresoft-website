@@ -108,6 +108,42 @@ const BLOG_SOURCES = [
         categories: ["APIs", "Integrations", "Cloud"],
         published: "2026-10-18",
       },
+      {
+        marker: "# Blog 8 —",
+        primaryService: "custom-software",
+        categories: ["Jaipur", "Custom software", "India"],
+        published: "2026-10-21",
+      },
+      {
+        marker: "# Blog 9 —",
+        primaryService: "custom-software",
+        categories: ["Local SEO", "Custom software", "India"],
+        published: "2026-10-21",
+      },
+      {
+        marker: "# Blog 10 —",
+        primaryService: "ai-automation",
+        categories: ["Generative AI", "India", "Custom software"],
+        published: "2026-10-21",
+      },
+      {
+        marker: "# Blog 11 —",
+        primaryService: "mobile-apps",
+        categories: ["Flutter", "React Native", "India"],
+        published: "2026-10-21",
+      },
+      {
+        marker: "# Blog 12 —",
+        primaryService: "custom-software",
+        categories: ["CRM", "Custom software", "India"],
+        published: "2026-10-21",
+      },
+      {
+        marker: "# Blog 13 —",
+        primaryService: "custom-software",
+        categories: ["Low-code", "Strategy", "India"],
+        published: "2026-10-21",
+      },
     ],
   },
 ]

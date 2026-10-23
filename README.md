@@ -43,10 +43,10 @@ forwards the message to Formspree using the server environment variable
 repository.
 
 1. In [Formspree](https://formspree.io), create or open your form. Set the form’s
-   **notification / target email** to `hello@nextcoresoft.com` (must match
+   **notification / target email** to `admin@nextcoresoft.com` (must match
    `shared/site.json` → `contactEmail`). Under **Settings → Allowed domains**, include
    `nextcoresoft.com`. If you use **Form Rules**, add an **Always → Send email** rule
-   to `hello@nextcoresoft.com` — otherwise rules can block notifications even when
+   to `admin@nextcoresoft.com` — otherwise rules can block notifications even when
    submissions appear in the dashboard.
 2. In **Cloudflare Pages** → your project → **Settings** → **Environment
    variables** → **Production** (and Preview if needed), add:
@@ -142,6 +142,6 @@ every coarse pointer as "no WebGL" was hiding the animation in production.
   The portfolio shows three clearly labeled **demonstration projects** with
   concept mockups; replace them in `src/data/content.ts` when real projects
   can be shown.
-- The email address `hello@nextcoresoft.com` and the social links in the footer
+- The email address `admin@nextcoresoft.com` and the social links in the footer
   are marked placeholders. Update them before launch.
 - Structured data includes only the organization name, URL, and description.

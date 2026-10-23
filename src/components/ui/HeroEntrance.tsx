@@ -1,5 +1,6 @@
-import { motion, useReducedMotion, type Variants } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import { type ReactNode } from "react"
+import { useSkipStaggerMotion } from "../../hooks/useSkipStaggerMotion"
 
 const container: Variants = {
   hidden: {},
@@ -17,8 +18,8 @@ const item: Variants = {
 
 /** First-paint stagger for the hero copy. Does not depend on scroll. */
 export function HeroEntrance({ children }: { children: ReactNode }) {
-  const reduced = useReducedMotion()
-  if (reduced) return <>{children}</>
+  const skip = useSkipStaggerMotion()
+  if (skip) return <>{children}</>
   return (
     <motion.div variants={container} initial="hidden" animate="show">
       {children}
@@ -27,8 +28,8 @@ export function HeroEntrance({ children }: { children: ReactNode }) {
 }
 
 export function HeroEntranceItem({ children, className }: { children: ReactNode; className?: string }) {
-  const reduced = useReducedMotion()
-  if (reduced) return <div className={className}>{children}</div>
+  const skip = useSkipStaggerMotion()
+  if (skip) return <div className={className}>{children}</div>
   return (
     <motion.div variants={item} className={className}>
       {children}

@@ -220,12 +220,12 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     },
   },
   "ai-automation": {
-    seoTitle: "AI Automation Company for Business Workflows",
+    seoTitle: "AI Automation Company — WhatsApp, Voice, Chatbots & Workflows",
     metaDescription:
-      "AI automation company for document processing, inquiry routing, and workflow integration — practical AI with human review where it matters. NextCoreSoft serves SMBs and growing teams.",
-    h1: "AI Automation and Intelligent Workflows for Business",
+      "AI automation for WhatsApp, voice agents, chatbots, lead workflows, dashboards, and CRM integration — with human review where it matters. NextCoreSoft builds practical systems for growing businesses.",
+    h1: "AI Automation — WhatsApp, Voice, Chatbots and Intelligent Workflows",
     intro:
-      "We connect AI to real business steps: reading incoming inquiries, extracting fields from documents, drafting routine replies, and routing work to the right person — only where that genuinely saves time, with humans kept in the loop when accuracy matters.",
+      "NextCoreSoft builds AI-powered systems that automate customer conversations, generate and manage leads, streamline operations, and connect to the tools you already use — with humans kept in the loop when accuracy matters.",
     audience:
       "Operations, sales, and admin teams at SMBs and growing companies where people still read, classify, and retype the same kinds of messages, forms, or documents every day.",
     problems: [

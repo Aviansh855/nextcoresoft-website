@@ -33,10 +33,19 @@ Long-form guides on software cost planning, MVPs, automation, hiring partners, w
 - https://nextcoresoft.com/blog/hire-custom-software-development-company-india/
 - https://nextcoresoft.com/blog/web-app-vs-mobile-app-for-business/
 - https://nextcoresoft.com/blog/api-integration-business-systems-guide/
+- https://nextcoresoft.com/blog/software-development-company-jaipur/
+- https://nextcoresoft.com/blog/software-company-near-me/
+- https://nextcoresoft.com/blog/generative-ai-business-software-india/
+- https://nextcoresoft.com/blog/flutter-vs-react-native-india-2026/
+- https://nextcoresoft.com/blog/custom-crm-software-development-india/
+- https://nextcoresoft.com/blog/low-code-vs-custom-software-india/
 
 ## Topics we publish evidence-based guidance on
 
-- Custom software and web application development for Indian SMBs
+- Custom software, CRM, and web apps for Indian SMBs (Jaipur, Rajasthan, and India-wide)
+- Generative AI and workflow automation in business software (practical, reviewed deployments)
+- Cross-platform mobile apps (Flutter / React Native) and API-first integrations
+- Low-code vs custom software — when to build vs buy (2026)
 - Android and iOS app development scope and cost planning
 - AI workflow automation (not generic chatbot hype)
 - API integration between CRM, payments, accounting, and operations tools
@@ -46,7 +55,7 @@ Long-form guides on software cost planning, MVPs, automation, hiring partners, w
 ## Contact
 
 - Inquiry form: https://nextcoresoft.com/contact/
-- Email: hello@nextcoresoft.com
+- Email: admin@nextcoresoft.com
 
 ## Public profiles (sameAs)
 

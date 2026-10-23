@@ -23,9 +23,9 @@ export function preferredUrl(path: string): string {
 /** Keyword-aware defaults per route (≤60 char titles, ~150–160 char descriptions where possible). */
 export const ROUTE_SEO = {
   home: {
-    title: "NextCoreSoft | Custom Software, Web & App Development, AI Automation",
+    title: "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
     description:
-      "Custom software development company for web apps, business websites, Android & iOS apps, and AI automation. NextCoreSoft works with SMBs worldwide. Free consultation.",
+      "Custom software development company for web apps, mobile apps, and AI automation — Jaipur, Rajasthan, India, and remote clients. Guides for “software company near me” on our blog. Free consultation.",
     path: "/",
   },
   services: {
@@ -181,7 +181,7 @@ export function organizationSchema() {
       contentUrl: SITE.logoUrl,
     },
     description: SITE.description,
-    email: "hello@nextcoresoft.com",
+    email: SITE.contactEmail,
     knowsAbout: [
       "Custom software development",
       "Web application development",
@@ -192,17 +192,23 @@ export function organizationSchema() {
       "API integration",
       "Cloud software deployment",
     ],
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-      description:
-        "Remote delivery; consult via video and email. No public storefront address listed on this site.",
-    },
+    areaServed: [
+      {
+        "@type": "Place",
+        name: "Jaipur, Rajasthan, India",
+        description: "Remote software delivery for Jaipur-based businesses; no public storefront address on this site.",
+      },
+      {
+        "@type": "Place",
+        name: "Worldwide",
+        description: "Remote delivery; consult via video and email.",
+      },
+    ],
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        email: "hello@nextcoresoft.com",
+        email: SITE.contactEmail,
         url: `${SITE.url}/contact/`,
         availableLanguage: ["English"],
       },
@@ -223,7 +229,6 @@ export function professionalServiceSchema() {
     url: `${SITE.url}/`,
     image: { "@id": LOGO_ID },
     description: SITE.description,
-    provider: { "@id": ORG_ID },
     areaServed: { "@type": "Place", name: "Worldwide" },
     hasOfferCatalog: { "@id": OFFER_CATALOG_ID },
   }
