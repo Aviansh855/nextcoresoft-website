@@ -25,13 +25,13 @@ export const ROUTE_SEO = {
   home: {
     title: "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
     description:
-      "Custom software, cloud API integration, mobile app development cost in India guides, and AI automation — Jaipur, Rajasthan, India, and remote clients. Free consultation.",
+      "Custom software, cloud API integration, and mobile app cost guides for India — Jaipur, Rajasthan, and remote clients. Free consultation.",
     path: "/",
   },
   services: {
     title: "Software Development Services | Web, Mobile & AI | NextCoreSoft",
     description:
-      "Explore custom software development, web development, Android and iOS app development, AI automation, and API integrations — one studio, milestone-based delivery.",
+      "Custom software, web and mobile apps, AI automation, and API integrations — one studio with milestone-based delivery for growing businesses.",
     path: "/services",
   },
   about: {
@@ -43,7 +43,7 @@ export const ROUTE_SEO = {
   contact: {
     title: "Contact NextCoreSoft | Free Software Consultation",
     description:
-      "Describe your project and book a free consultation with NextCoreSoft. Custom software, mobile development, AI automation, and integrations for growing businesses.",
+      "Book a free consultation with NextCoreSoft — custom software, mobile apps, AI automation, and integrations for growing businesses.",
     path: "/contact",
   },
   privacy: {
@@ -60,7 +60,7 @@ export const ROUTE_SEO = {
   portfolio: {
     title: "Project Portfolio | NextCoreSoft",
     description:
-      "Explore software and app builds from NextCoreSoft — service management, mobile apps, booking systems, and automation. Project showcases, not verified client case studies unless stated.",
+      "Project showcases from NextCoreSoft — mobile apps, service software, booking, and automation. Demos on request; not client case studies unless agreed.",
     path: "/portfolio",
   },
   blog: {
@@ -72,19 +72,19 @@ export const ROUTE_SEO = {
   pricing: {
     title: "Dealership Service Management Pricing | NextCoreSoft",
     description:
-      "Pricing for the Dealership Service Management Solution — Basic, Medium, and Premium plans with setup fee, monthly license, and first-year totals for Indian dealerships and service centers.",
+      "Dealership Service Management pricing — Basic, Medium, and Premium plans with setup fee, monthly license, and first-year totals for Indian service centers.",
     path: "/pricing",
   },
   dealershipSolution: {
     title: "Dealership Service Management System | NextCoreSoft",
     description:
-      "Overview of NextCoreSoft Dealership Service Management software — job tracking, vehicle records, staff workflows, and optional customer mobile apps. See pricing for plans.",
+      "Dealership service software — job tracking, vehicle records, staff workflows, and optional customer mobile apps. See published pricing plans.",
     path: "/solutions/dealership-service-management",
   },
   aiAutomationPricing: {
     title: "AI Automation Pricing Plans India | NextCoreSoft",
     description:
-      "AI automation pricing for Indian businesses — Starter, Growth, and Enterprise plans with setup fee and monthly license for WhatsApp, chatbots, and workflow automation.",
+      "AI automation pricing in India — Starter, Growth, and Enterprise plans with setup fee and monthly license for WhatsApp, chatbots, and workflows.",
     path: "/pricing/ai-automation",
   },
   notFound: {

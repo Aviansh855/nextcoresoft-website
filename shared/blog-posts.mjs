@@ -24,7 +24,7 @@ export function blogRouteMetaByPath() {
     [BLOG_INDEX_PATH]: {
       title: "Blog | NextCoreSoft — Custom Software & Automation",
       description:
-        "Guides on custom software and mobile apps in India, AI workflow automation, API integrations, hiring a dev partner, MVP planning, and project scoping for SMBs and founders.",
+        "Guides on custom software and mobile app costs in India, AI automation, API integrations, MVP planning, and hiring a development partner.",
       h1: "Insights on software, automation, and growing operations",
       staticLead:
         "Long-form guides for Indian SMBs and founders — software and app costs, AI automation, integrations, hiring a partner, MVP vs full product, and honest scoping advice.",

@@ -7,7 +7,7 @@ export const ROUTE_META = {
   "/": {
     title: "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
     description:
-      "Custom software, cloud API integration, mobile app development cost in India guides, and AI automation — Jaipur, Rajasthan, India, and remote clients. Free consultation.",
+      "Custom software, cloud API integration, and mobile app cost guides for India — Jaipur, Rajasthan, and remote clients. Free consultation.",
     h1: HOME_H1,
     staticLead:
       "NextCoreSoft is a software development studio for custom web applications, mobile app development, and practical AI workflow automation for growing businesses.",
@@ -16,7 +16,7 @@ export const ROUTE_META = {
   "/services": {
     title: "Software Development Services | Web, Mobile & AI | NextCoreSoft",
     description:
-      "Explore custom software development, web development, Android and iOS app development, AI automation, and API integrations — one studio, milestone-based delivery.",
+      "Custom software, web and mobile apps, AI automation, and API integrations — one studio with milestone-based delivery for growing businesses.",
     h1: SERVICES_HUB_H1,
     staticLead:
       "Service overview for businesses looking for a software, web, mobile, or AI automation development partner.",
@@ -34,7 +34,7 @@ export const ROUTE_META = {
   "/contact": {
     title: "Contact NextCoreSoft | Free Software Consultation",
     description:
-      "Describe your project and book a free consultation with NextCoreSoft. Custom software, mobile development, AI automation, and integrations for growing businesses.",
+      "Book a free consultation with NextCoreSoft — custom software, mobile apps, AI automation, and integrations for growing businesses.",
     h1: "Discuss your project or request a quote",
     staticLead:
       "Tell us what you need built or automated. We aim to reply within one business day with scope guidance and how we would quote the work when volume allows.",
@@ -43,7 +43,7 @@ export const ROUTE_META = {
   "/portfolio": {
     title: "Project Portfolio | NextCoreSoft",
     description:
-      "Explore software and app builds from NextCoreSoft — service management, mobile apps, booking systems, and automation. Project showcases, not verified client case studies unless stated.",
+      "Project showcases from NextCoreSoft — mobile apps, service software, booking, and automation. Demos on request; not client case studies unless agreed.",
     h1: "Software and apps we can show you today",
     staticLead:
       "Real builds and product-style projects from NextCoreSoft, presented as project showcases — ask us for a walkthrough during a consultation.",
@@ -52,7 +52,7 @@ export const ROUTE_META = {
   "/services/custom-software": {
     title: "Custom Software & Web Development Company | NextCoreSoft",
     description:
-      "Custom software and web development for business apps, admin panels, and internal tools. NextCoreSoft replaces spreadsheets with systems built for your workflow. Free consultation.",
+      "Custom software and web apps — admin panels and internal tools that replace spreadsheets. Built for your workflow. Free consultation with NextCoreSoft.",
     h1: "Custom Software and Web Development for Growing Businesses",
     staticLead:
       "Purpose-built web apps, admin panels, and internal tools for teams that have outgrown spreadsheets and generic SaaS.",
@@ -61,7 +61,7 @@ export const ROUTE_META = {
   "/services/mobile-apps": {
     title: "Mobile App Development Cost India — Android & iOS | NextCoreSoft",
     description:
-      "Mobile app development in India: Android and iOS apps, app development cost planning bands, store launch, APIs, and maintenance. Chennai and India-wide remote delivery.",
+      "Android and iOS app development in India — cost planning bands, store launch, APIs, and maintenance. Remote delivery for Chennai and teams across India.",
     h1: "Mobile App Development for Android and iOS (India)",
     staticLead:
       "Android and iOS apps for customers and field teams — with honest cost planning guides and written quotes after scope is defined.",
@@ -70,7 +70,7 @@ export const ROUTE_META = {
   "/services/ai-automation": {
     title: "AI Automation Company — WhatsApp, Voice, Chatbots & Workflows | NextCoreSoft",
     description:
-      "AI automation for WhatsApp, voice agents, chatbots, lead workflows, dashboards, and CRM integration — with human review where it matters. NextCoreSoft builds practical systems for growing businesses.",
+      "WhatsApp, chatbot, and workflow automation with CRM integration and human review where it matters. Practical AI systems for growing businesses.",
     h1: "AI Automation — WhatsApp, Voice, Chatbots and Intelligent Workflows",
     staticLead:
       "WhatsApp automation, voice agents, chatbots, lead workflows, and dashboards — integrated with your CRM and tools, with human review where accuracy matters.",
@@ -79,7 +79,7 @@ export const ROUTE_META = {
   "/services/cloud-api": {
     title: "Cloud API Integration & Business Software Connections | NextCoreSoft",
     description:
-      "Cloud API integration for CRM, accounting, payments, and custom software. Connect business software systems with REST APIs, webhooks, and cloud communication APIs — plus hosting and maintenance.",
+      "Cloud API integration for CRM, accounting, payments, and custom software — REST, webhooks, messaging APIs, hosting, and maintenance.",
     h1: "Cloud API Integration and Business Software Connections",
     staticLead:
       "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",
@@ -88,7 +88,7 @@ export const ROUTE_META = {
   "/pricing": {
     title: "Dealership Service Management Pricing | NextCoreSoft",
     description:
-      "Pricing for the Dealership Service Management Solution — Basic, Medium, and Premium plans with setup fee, monthly license, and first-year totals for Indian dealerships and service centers.",
+      "Dealership Service Management pricing — Basic, Medium, and Premium plans with setup fee, monthly license, and first-year totals for Indian service centers.",
     h1: "Dealership Service Management Solution pricing",
     staticLead:
       "Setup plus monthly license plans for dealership service operations — customer app on Medium and Premium; taxes extra.",
@@ -97,7 +97,7 @@ export const ROUTE_META = {
   "/pricing/ai-automation": {
     title: "AI Automation Pricing Plans India | NextCoreSoft",
     description:
-      "AI automation pricing for Indian businesses — Starter, Growth, and Enterprise plans with setup fee and monthly license for WhatsApp, chatbots, and workflow automation.",
+      "AI automation pricing in India — Starter, Growth, and Enterprise plans with setup fee and monthly license for WhatsApp, chatbots, and workflows.",
     h1: "AI Automation & Intelligent Workflows — plans & pricing",
     staticLead:
       "Competitive setup and monthly plans for AI workflows, chatbots, and integrations — third-party API usage and taxes extra.",
@@ -106,7 +106,7 @@ export const ROUTE_META = {
   "/solutions/dealership-service-management": {
     title: "Dealership Service Management System | NextCoreSoft",
     description:
-      "Overview of NextCoreSoft Dealership Service Management software — job tracking, vehicle records, staff workflows, and optional customer mobile apps. See pricing for plans.",
+      "Dealership service software — job tracking, vehicle records, staff workflows, and optional customer mobile apps. See published pricing plans.",
     h1: "Dealership Service Management Solution",
     staticLead:
       "Service-center and dealership operations software with optional customer mobile apps — pricing published separately.",

@@ -27,7 +27,7 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
   "custom-software": {
     seoTitle: "Custom Software & Web Development Company",
     metaDescription:
-      "Custom software and web development for business apps, admin panels, and internal tools. NextCoreSoft replaces spreadsheets with systems built for your workflow. Free consultation.",
+      "Custom software and web apps — admin panels and internal tools that replace spreadsheets. Built for your workflow. Free consultation with NextCoreSoft.",
     h1: "Custom Software and Web Development for Growing Businesses",
     intro:
       "NextCoreSoft designs and builds web applications, admin panels, dashboards, and internal tools around how your team actually works — not how a generic product expects you to work.",
@@ -130,7 +130,7 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
   "mobile-apps": {
     seoTitle: "Mobile App Development Cost India — Android & iOS",
     metaDescription:
-      "Mobile app development in India: Android and iOS apps for customers and field teams. Planning bands for app development cost in India, store launch, APIs, and maintenance. Chennai and India-wide delivery.",
+      "Android and iOS app development in India — cost planning bands, store launch, APIs, and maintenance. Remote delivery for Chennai and teams across India.",
     h1: "Mobile App Development for Android and iOS (India)",
     intro:
       "We build mobile applications for both major platforms — for your customers in the app stores, and for staff who need reliable tools away from a desk. If you are researching mobile app development cost in India or app development cost for iOS and Android in cities like Chennai, see our linked cost guide for planning bands; we quote only after scope is defined.",
@@ -247,7 +247,7 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
   "ai-automation": {
     seoTitle: "AI Automation Company — WhatsApp, Voice, Chatbots & Workflows",
     metaDescription:
-      "AI automation for WhatsApp, voice agents, chatbots, lead workflows, dashboards, and CRM integration — with human review where it matters. NextCoreSoft builds practical systems for growing businesses.",
+      "WhatsApp, chatbot, and workflow automation with CRM integration and human review where it matters. Practical AI systems for growing businesses.",
     h1: "AI Automation — WhatsApp, Voice, Chatbots and Intelligent Workflows",
     intro:
       "NextCoreSoft builds AI-powered systems that automate customer conversations, generate and manage leads, streamline operations, and connect to the tools you already use — with humans kept in the loop when accuracy matters.",
@@ -344,7 +344,7 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
   "cloud-api": {
     seoTitle: "Cloud API Integration & Business System Connections",
     metaDescription:
-      "Cloud API integration for CRM, accounting, payments, messaging, and custom software. Learn how NextCoreSoft connects business software systems with REST APIs, webhooks, and cloud communication APIs — plus hosting and maintenance.",
+      "Cloud API integration for CRM, accounting, payments, and custom software — REST, webhooks, messaging APIs, hosting, and maintenance.",
     h1: "Cloud API Integration and Business Software Connections",
     intro:
       "We build the connective layer between your systems: cloud API integration, REST and webhook endpoints, third-party connectors, deployment, monitoring, and maintenance — so CRM, accounting, apps, and messaging share data without manual exports.",
