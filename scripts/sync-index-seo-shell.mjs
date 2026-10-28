@@ -56,12 +56,22 @@ const homeCanonical = canonicalUrl("/")
 const homeTitle = home.title.replace(/&/g, "&amp;")
 const homeDescription = home.description.replace(/&/g, "&amp;")
 
+html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${homeTitle}</title>`)
+html = html.replace(
+  /<meta name="description" content="[^"]*" \/>/,
+  `<meta name="description" content="${homeDescription}" />`,
+)
 html = html.replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${homeTitle}" />`)
 html = html.replace(
   /<meta property="og:description" content="[^"]*" \/>/,
   `<meta property="og:description" content="${homeDescription}" />`,
 )
 html = html.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${homeCanonical}" />`)
+html = html.replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${homeTitle}" />`)
+html = html.replace(
+  /<meta name="twitter:description" content="[^"]*" \/>/,
+  `<meta name="twitter:description" content="${homeDescription}" />`,
+)
 
 writeFileSync(indexPath, html, "utf8")
 console.log("Synced index.html JSON-LD, OG tags, and root noscript from shared SEO sources.")

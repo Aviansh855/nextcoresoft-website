@@ -10,6 +10,8 @@ import { routeJsonLdGraph } from "../shared/jsonld-by-route.mjs"
 import { bingbotContent, canonicalUrl, googlebotContent, ROUTE_META } from "../shared/route-meta.mjs"
 import { BLOG_POSTS, getBlogPost } from "../shared/blog-posts.mjs"
 import { SERVICES_CATALOG } from "../shared/services-catalog.mjs"
+import { aboutPageExtra } from "../shared/about-prerender.mjs"
+import { htmlSitemapBlock } from "../shared/crawler-html-sitemap.mjs"
 import {
   aiAutomationPricingExtra,
   dealershipPricingExtra,
@@ -113,8 +115,15 @@ function staticRootBlock(path) {
     extra = `${aiAutomationPricingExtra()}${renderStaticFaqs(seoFaqs.pricingAiAutomation)}`
   } else if (path === "/solutions/dealership-service-management") {
     extra = `${dealershipSolutionExtra()}${renderStaticFaqs(seoFaqs.dealershipSolution)}`
+  } else if (path === "/about") {
+    extra = aboutPageExtra()
+  } else if (path === "/contact") {
+    extra = `<p>Email inquiries via the contact form on this page or request a free consultation for custom software, mobile apps, AI automation, and integrations.</p>`
+  } else if (path === "/portfolio") {
+    extra = `<p>Project showcases we can demonstrate on a call — not verified client case studies unless agreed in writing.</p>`
   }
-  return `<main id="static-prerender" class="static-prerender"><h1>${escapeHtml(meta.h1)}</h1><p>${escapeHtml(meta.staticLead)}</p>${extra}<nav aria-label="Site">${nav}</nav></main>`
+  const siteMap = htmlSitemapBlock()
+  return `<main id="static-prerender" class="static-prerender"><h1>${escapeHtml(meta.h1)}</h1><p>${escapeHtml(meta.staticLead)}</p>${extra}<nav aria-label="Site">${nav}</nav>${siteMap}</main>`
 }
 
 function jsonLdScript(data) {
@@ -165,6 +174,11 @@ function applyRouteMeta(template, path) {
     )
   }
   out = out.replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${canonical}" />`)
+  const discoveryLinks = `<link rel="sitemap" type="application/xml" title="Sitemap" href="https://nextcoresoft.com/sitemap.xml" />
+    <link rel="alternate" type="application/rss+xml" title="NextCoreSoft Blog" href="https://nextcoresoft.com/feed.xml" />`
+  if (!out.includes('rel="sitemap"')) {
+    out = out.replace(/<link rel="canonical"[^/]*\/>/, (m) => `${m}\n    ${discoveryLinks}`)
+  }
   out = out.replace(/<meta property="og:type" content="[^"]*" \/>/, `<meta property="og:type" content="${ogType}" />`)
   out = out.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${canonical}" />`)
   out = out.replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${title}" />`)
