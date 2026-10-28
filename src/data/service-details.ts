@@ -130,7 +130,7 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
   "mobile-apps": {
     seoTitle: "Mobile App Development Cost India — Android & iOS",
     metaDescription:
-      "Android and iOS app development in India — cost planning bands, store launch, APIs, and maintenance. Remote delivery for Chennai and teams across India.",
+      "Mobile app development cost in India — Android, iOS, app making cost bands, APIs, and store launch. Written quotes after discovery.",
     h1: "Mobile App Development for Android and iOS (India)",
     intro:
       "We build mobile applications for both major platforms — for your customers in the app stores, and for staff who need reliable tools away from a desk. If you are researching mobile app development cost in India or app development cost for iOS and Android in cities like Chennai, see our linked cost guide for planning bands; we quote only after scope is defined.",
@@ -342,9 +342,9 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     },
   },
   "cloud-api": {
-    seoTitle: "Cloud API Integration & Business System Connections",
+    seoTitle: "Cloud API Integration | Connect Business Software",
     metaDescription:
-      "Cloud API integration for CRM, accounting, payments, and custom software — REST, webhooks, messaging APIs, hosting, and maintenance.",
+      "Cloud API integration and cloud communication APIs — connect CRM, accounting, payments, and custom software with REST, webhooks, and maintenance.",
     h1: "Cloud API Integration and Business Software Connections",
     intro:
       "We build the connective layer between your systems: cloud API integration, REST and webhook endpoints, third-party connectors, deployment, monitoring, and maintenance — so CRM, accounting, apps, and messaging share data without manual exports.",

@@ -469,4 +469,9 @@ export const FAQS = [
     answer:
       "With cloud API integration: REST APIs and webhooks between CRM, accounting, payments, and custom software, plus monitoring and maintenance. Read our API integration guide on the blog or the cloud and API service page for how NextCoreSoft scopes connections.",
   },
+  {
+    question: "Do you support app development in Sikar or other Rajasthan cities?",
+    answer:
+      "Yes — we scope custom software and mobile apps for Sikar, Jaipur, and Rajasthan via remote delivery. We do not list a Sikar office or guarantee local map results. See our Jaipur software company guide and mobile app cost guide on the blog before you request quotes.",
+  },
 ] as const

@@ -54,17 +54,25 @@ export function HomeEngagementOverview() {
               <Link to="/pricing/ai-automation/" className="font-medium text-cyan-700 underline-offset-2 hover:underline">
                 AI automation plans
               </Link>
-              . Guides:{" "}
-              <Link to="/blog/software-company-near-me/" className="text-cyan-700 hover:underline">
-                software company near me
+              . Popular guides (cost, APIs, Rajasthan):{" "}
+              <Link to="/services/cloud-api/" className="text-cyan-700 hover:underline">
+                cloud API integration
               </Link>
               ,{" "}
-              <Link to="/blog/generative-ai-business-software-india/" className="text-cyan-700 hover:underline">
-                generative AI in business software
+              <Link to="/blog/mobile-app-development-cost-india/" className="text-cyan-700 hover:underline">
+                mobile app development cost in India
               </Link>
               ,{" "}
-              <Link to="/blog/flutter-vs-react-native-india-2026/" className="text-cyan-700 hover:underline">
-                Flutter vs React Native
+              <Link to="/blog/api-integration-business-systems-guide/" className="text-cyan-700 hover:underline">
+                connect business software systems
+              </Link>
+              ,{" "}
+              <Link to="/blog/custom-crm-software-development-india/" className="text-cyan-700 hover:underline">
+                CRM software development cost in India
+              </Link>
+              ,{" "}
+              <Link to="/blog/software-development-company-jaipur/" className="text-cyan-700 hover:underline">
+                software &amp; app development in Jaipur and Rajasthan
               </Link>
               .
             </p>

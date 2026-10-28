@@ -110,18 +110,36 @@ export function BlogIndexPage() {
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-slate-600 sm:text-base">
               <li>
+                <Link to="/services/cloud-api/" className="font-medium text-cyan-700 hover:underline">
+                  Cloud API integration service
+                </Link>
+                {" · "}
+                <Link to="/blog/api-integration-business-systems-guide/" className="font-medium text-cyan-700 hover:underline">
+                  How to connect business software systems
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog/mobile-app-development-cost-india/" className="font-medium text-cyan-700 hover:underline">
+                  Mobile app development cost in India (2026)
+                </Link>
+                {" · "}
+                <Link to="/services/mobile-apps/" className="font-medium text-cyan-700 hover:underline">
+                  Web &amp; mobile apps
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog/custom-crm-software-development-india/" className="font-medium text-cyan-700 hover:underline">
+                  CRM software development cost in India
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog/software-development-company-jaipur/" className="font-medium text-cyan-700 hover:underline">
+                  Software &amp; app development — Jaipur, Sikar, Rajasthan
+                </Link>
+              </li>
+              <li>
                 <Link to="/blog/software-company-near-me/" className="font-medium text-cyan-700 hover:underline">
                   What “software company near me” really means
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog/generative-ai-business-software-india/" className="font-medium text-cyan-700 hover:underline">
-                  Generative AI in business software (India)
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog/flutter-vs-react-native-india-2026/" className="font-medium text-cyan-700 hover:underline">
-                  Flutter vs React Native for India app projects
                 </Link>
               </li>
               <li>

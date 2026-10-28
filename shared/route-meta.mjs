@@ -5,18 +5,18 @@ import { HOME_H1, SERVICES_HUB_H1 } from "./page-headings.mjs"
 /** Static HTML meta per indexable route. Service h1/lead must match `SERVICE_DETAILS` in `src/data/content.ts`. */
 export const ROUTE_META = {
   "/": {
-    title: "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
+    title: "NextCoreSoft | Cloud API & App Cost Guides — India",
     description:
-      "Custom software, cloud API integration, and mobile app cost guides for India — Jaipur, Rajasthan, and remote clients. Free consultation.",
+      "Cloud API integration and mobile app development cost in India — web & mobile apps, CRM guides, Jaipur & remote. Free consultation.",
     h1: HOME_H1,
     staticLead:
       "NextCoreSoft is a software development studio for custom web applications, mobile app development, and practical AI workflow automation for growing businesses.",
     robots: "index, follow",
   },
   "/services": {
-    title: "Software Development Services | Web, Mobile & AI | NextCoreSoft",
+    title: "Web & Mobile Apps, Cloud API Integration | NextCoreSoft",
     description:
-      "Custom software, web and mobile apps, AI automation, and API integrations — one studio with milestone-based delivery for growing businesses.",
+      "Web & mobile apps, custom software, cloud API integration, and AI automation — milestone delivery plus India cost and CRM guides on the blog.",
     h1: SERVICES_HUB_H1,
     staticLead:
       "Service overview for businesses looking for a software, web, mobile, or AI automation development partner.",
@@ -61,7 +61,7 @@ export const ROUTE_META = {
   "/services/mobile-apps": {
     title: "Mobile App Development Cost India — Android & iOS | NextCoreSoft",
     description:
-      "Android and iOS app development in India — cost planning bands, store launch, APIs, and maintenance. Remote delivery for Chennai and teams across India.",
+      "Mobile app development cost in India — Android, iOS, app making cost bands, APIs, and store launch. Written quotes after discovery.",
     h1: "Mobile App Development for Android and iOS (India)",
     staticLead:
       "Android and iOS apps for customers and field teams — with honest cost planning guides and written quotes after scope is defined.",
@@ -77,9 +77,9 @@ export const ROUTE_META = {
     robots: "index, follow",
   },
   "/services/cloud-api": {
-    title: "Cloud API Integration & Business Software Connections | NextCoreSoft",
+    title: "Cloud API Integration | Connect Business Software | NextCoreSoft",
     description:
-      "Cloud API integration for CRM, accounting, payments, and custom software — REST, webhooks, messaging APIs, hosting, and maintenance.",
+      "Cloud API integration and cloud communication APIs — connect CRM, accounting, payments, and custom software with REST, webhooks, and maintenance.",
     h1: "Cloud API Integration and Business Software Connections",
     staticLead:
       "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",

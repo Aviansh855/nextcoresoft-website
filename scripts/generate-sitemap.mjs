@@ -14,6 +14,8 @@ const SITEMAP_PRIORITY_OVERRIDE = {
   "/blog/mobile-app-development-cost-india": "0.82",
   "/blog/api-integration-business-systems-guide": "0.82",
   "/blog/custom-crm-software-development-india": "0.81",
+  "/blog/software-development-company-jaipur": "0.8",
+  "/": "0.9",
   "/blog/custom-software-development-cost-india": "0.78",
   "/blog/generative-ai-business-software-india": "0.79",
   "/blog/flutter-vs-react-native-india-2026": "0.79",

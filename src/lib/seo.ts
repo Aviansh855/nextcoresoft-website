@@ -23,15 +23,15 @@ export function preferredUrl(path: string): string {
 /** Keyword-aware defaults per route (≤60 char titles, ~150–160 char descriptions where possible). */
 export const ROUTE_SEO = {
   home: {
-    title: "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
+    title: "NextCoreSoft | Cloud API & App Cost Guides — India",
     description:
-      "Custom software, cloud API integration, and mobile app cost guides for India — Jaipur, Rajasthan, and remote clients. Free consultation.",
+      "Cloud API integration and mobile app development cost in India — web & mobile apps, CRM guides, Jaipur & remote. Free consultation.",
     path: "/",
   },
   services: {
-    title: "Software Development Services | Web, Mobile & AI | NextCoreSoft",
+    title: "Web & Mobile Apps, Cloud API Integration | NextCoreSoft",
     description:
-      "Custom software, web and mobile apps, AI automation, and API integrations — one studio with milestone-based delivery for growing businesses.",
+      "Web & mobile apps, custom software, cloud API integration, and AI automation — milestone delivery plus India cost and CRM guides on the blog.",
     path: "/services",
   },
   about: {
