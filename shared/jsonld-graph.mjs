@@ -238,6 +238,8 @@ export function buildRouteJsonLdGraph(path, ctx = {}) {
       { name: "Home", path: "/" },
       { name: "Dealership solution", path: "/solutions/dealership-service-management" },
     ])
+    const faq = faqNode(SEO_FAQS.dealershipSolution, `${base}#faq`)
+    if (faq) graph.push(faq)
     return wrapGraph(graph)
   }
 

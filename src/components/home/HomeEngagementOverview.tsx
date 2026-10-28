@@ -46,6 +46,26 @@ export function HomeEngagementOverview() {
               <Link to="/services/cloud-api/" className="text-cyan-700 hover:underline">
                 cloud &amp; API
               </Link>
+              . Published product pricing:{" "}
+              <Link to="/pricing/" className="font-medium text-cyan-700 underline-offset-2 hover:underline">
+                dealership service management
+              </Link>
+              ,{" "}
+              <Link to="/pricing/ai-automation/" className="font-medium text-cyan-700 underline-offset-2 hover:underline">
+                AI automation plans
+              </Link>
+              . Guides:{" "}
+              <Link to="/blog/software-company-near-me/" className="text-cyan-700 hover:underline">
+                software company near me
+              </Link>
+              ,{" "}
+              <Link to="/blog/generative-ai-business-software-india/" className="text-cyan-700 hover:underline">
+                generative AI in business software
+              </Link>
+              ,{" "}
+              <Link to="/blog/flutter-vs-react-native-india-2026/" className="text-cyan-700 hover:underline">
+                Flutter vs React Native
+              </Link>
               .
             </p>
           </div>

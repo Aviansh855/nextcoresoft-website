@@ -1,11 +1,12 @@
+import { getCanonicalRedirectUrl } from "../shared/canonical-request.mjs"
 import { isIndexablePath, isStaticAsset, normalizePathname } from "../shared/indexable-paths.mjs"
 
 /**
  * Return real HTTP 404 for unknown SPA routes (fixes GSC "Soft 404").
  * Known indexable paths still get 200 + index.html from path rules in public/_redirects.
  *
- * Does NOT handle www→apex or http→https host redirects. Those require Cloudflare
- * dashboard Redirect Rules / SSL settings — see docs/CLOUDFLARE-WWW-REDIRECT-RULE.md.
+ * www→apex and non-slash→slash 301s run here (single hop). Also configure Cloudflare
+ * Redirect Rules if needed — see docs/CLOUDFLARE-WWW-REDIRECT-RULE.md.
  */
 export async function onRequest(context) {
   const url = new URL(context.request.url)
@@ -13,6 +14,11 @@ export async function onRequest(context) {
 
   if (isStaticAsset(rawPath)) {
     return context.next()
+  }
+
+  const canonicalRedirect = getCanonicalRedirectUrl(url)
+  if (canonicalRedirect) {
+    return Response.redirect(canonicalRedirect, 301)
   }
 
   const path = normalizePathname(rawPath)
@@ -25,6 +31,18 @@ export async function onRequest(context) {
   // directory index.html routes, which caused /portfolio ↔ /portfolio/ redirect loops.
 
   const response = await context.next()
+
+  // Contact form prefill URLs (?service=, ?project=, etc.) must not compete with /contact/ in Search.
+  if (path === "/contact" && url.search) {
+    const headers = new Headers(response.headers)
+    headers.set("X-Robots-Tag", "noindex, follow")
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    })
+  }
+
   if (isIndexablePath(path)) {
     return response
   }

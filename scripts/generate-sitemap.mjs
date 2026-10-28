@@ -7,6 +7,20 @@ import { SITE_ORIGIN, SITEMAP_ENTRIES, preferredPath } from "../shared/indexable
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
 
+/** GSC query targets — higher sitemap priority (still one URL per route; no query strings). */
+const SITEMAP_PRIORITY_OVERRIDE = {
+  "/services/cloud-api": "0.88",
+  "/services/mobile-apps": "0.87",
+  "/blog/mobile-app-development-cost-india": "0.82",
+  "/blog/api-integration-business-systems-guide": "0.82",
+  "/blog/custom-crm-software-development-india": "0.81",
+  "/blog/custom-software-development-cost-india": "0.78",
+  "/blog/generative-ai-business-software-india": "0.79",
+  "/blog/flutter-vs-react-native-india-2026": "0.79",
+  "/blog/software-company-near-me": "0.79",
+  "/solutions/dealership-service-management": "0.84",
+}
+
 /** Primary content sources per route — lastmod = latest mtime among these (not “today” on every build). */
 const ROUTE_CONTENT_SOURCES = {
   "/": [
@@ -108,7 +122,8 @@ function urlEntry(entry) {
   const loc = `${SITE_ORIGIN}${preferredPath(entry.loc)}`
   const lastmod = lastmodForRoute(entry.loc)
   const lastmodTag = lastmod ? `<lastmod>${lastmod}</lastmod>` : ""
-  return `  <url><loc>${loc}</loc>${lastmodTag}<changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority></url>`
+  const priority = SITEMAP_PRIORITY_OVERRIDE[entry.loc] ?? entry.priority
+  return `  <url><loc>${loc}</loc>${lastmodTag}<changefreq>${entry.changefreq}</changefreq><priority>${priority}</priority></url>`
 }
 
 const urls = SITEMAP_ENTRIES.map(urlEntry).join("\n")

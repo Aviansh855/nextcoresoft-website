@@ -104,6 +104,40 @@ export function BlogIndexPage() {
         </Reveal>
 
         <Reveal>
+          <section className="mt-14 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" aria-labelledby="featured-guides-heading">
+            <h2 id="featured-guides-heading" className="font-display text-lg font-semibold text-slate-900">
+              Featured guides
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm text-slate-600 sm:text-base">
+              <li>
+                <Link to="/blog/software-company-near-me/" className="font-medium text-cyan-700 hover:underline">
+                  What “software company near me” really means
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog/generative-ai-business-software-india/" className="font-medium text-cyan-700 hover:underline">
+                  Generative AI in business software (India)
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog/flutter-vs-react-native-india-2026/" className="font-medium text-cyan-700 hover:underline">
+                  Flutter vs React Native for India app projects
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing/" className="font-medium text-cyan-700 hover:underline">
+                  Dealership service management pricing
+                </Link>
+                {" · "}
+                <Link to="/solutions/dealership-service-management/" className="font-medium text-cyan-700 hover:underline">
+                  Product overview
+                </Link>
+              </li>
+            </ul>
+          </section>
+        </Reveal>
+
+        <Reveal>
           <div className="mt-14 rounded-2xl border border-slate-200 bg-slate-50/50 p-6 sm:p-8">
             <h2 className="font-display text-lg font-semibold text-slate-900">Ready to scope a project?</h2>
             <p className="mt-2 text-sm text-slate-600 sm:text-base">

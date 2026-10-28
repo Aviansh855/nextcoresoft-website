@@ -10,8 +10,8 @@ How **nextcoresoft.com** aligns with Google’s Page indexing report, URL Inspec
 | **robots.txt allows crawl** | `public/robots.txt` — `Allow: /`, `Sitemap:` line |
 | **noindex on errors** | `NotFoundPage` + `applyMeta({ robots: "noindex, follow" })`; invalid `/services/:slug` keeps URL, shows 404 UI |
 | **Soft 404 (HTTP 200 + “not found”)** | `functions/_middleware.js` (Cloudflare Pages) and `middleware.js` (Vercel) return **HTTP 404** + `X-Robots-Tag: noindex` for paths not in `INDEXABLE_PATHS` |
-| **Trailing slash on Cloudflare Pages** | `_redirects` serves both `/path` and `/path/` as 200 → same prerendered HTML; do not 301-strip slashes in Pages middleware (308↔301 loop with directory `index.html`) |
-| **www duplicate** | **Not fixed in `_redirects`** — use Cloudflare Redirect Rule: `docs/CLOUDFLARE-WWW-REDIRECT-RULE.md` |
+| **Trailing slash on Cloudflare Pages** | `_redirects`: `/path/` → prerender **200**; `/path` → **301** `/path/`. Middleware also 301s non-slash indexable URLs (absolute apex URL). Do not strip trailing slashes in middleware. |
+| **www duplicate** | `functions/_middleware.js` 301s all `www` URLs (including `/sitemap.xml`, `/feed.xml`) to apex; also use Cloudflare Redirect Rule: `docs/CLOUDFLARE-WWW-REDIRECT-RULE.md` |
 | **User canonical** | `<link rel="canonical">` via `applyMeta()` — HTTPS apex, **trailing slash** on non-root routes (`preferredPath()` / `docs/SEO.md`) |
 | **403 Googlebot** | Not fixable in repo — Cloudflare WAF; see `CLOUDFLARE-403-GOOGLEBOT.md` |
 | **Structured data / rich results** | Org, WebSite, FAQPage, Service, BreadcrumbList — check **Rich results** in GSC after deploy |
@@ -38,10 +38,11 @@ How **nextcoresoft.com** aligns with Google’s Page indexing report, URL Inspec
 | **Blocked by robots.txt** | Should not happen for indexable pages |
 | **noindex** | Only 404/unknown URLs (intentional) |
 | **Duplicate / alternate with proper canonical** | OK for `/privacy`, `/terms`; www should 301 to apex |
-| **Crawled – currently not indexed** | Normal for new/small sites; improve content + internal links; request indexing for key URLs |
+| **Crawled – currently not indexed** | Google fetched the page but chose not to index yet (new URLs, low signals, or queue). Fix: richer prerender text on pricing/solution pages, internal links from home/blog/services, FAQ JSON-LD, sitemap priority — then **Request indexing** per URL. Not a robots/noindex bug if URL Inspection shows “index, follow”. |
 | **Discovered – currently not indexed** | Wait or request indexing; ensure sitemap + internal links |
 | **403** | Cloudflare — allow verified Googlebot |
-| **Redirect page** | Use only www→apex; no redirect chains on content URLs |
+| **Redirect page** | Expected for **non-canonical** URLs (www, no trailing slash, `http://`). `functions/_middleware.js` 301s to apex + slash in one hop; sitemap/internal links use only canonical URLs. Validate in GSC after deploy. |
+| **Redirect error** | Usually a bad or looping redirect on a non-slash URL. Fix: `public/_redirects` **301** `/path` → `/path/` (not 200 rewrite on both), plus middleware `shared/canonical-request.mjs`. Re-test with URL Inspection after deploy. |
 
 ## After deploy checklist
 

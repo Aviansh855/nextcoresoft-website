@@ -3,11 +3,17 @@ import { BLOG_POSTS, type BlogPost } from "../../data/blog"
 import { sortBlogPostsNewestFirst } from "../../lib/blog-utils"
 
 export function BlogRelatedPosts({ current, limit = 3 }: { current: BlogPost; limit?: number }) {
-  const picks = sortBlogPostsNewestFirst(BLOG_POSTS)
-    .filter(
-      (p) => p.slug !== current.slug && p.categories.some((c) => current.categories.includes(c)),
-    )
-    .slice(0, limit)
+  const sorted = sortBlogPostsNewestFirst(BLOG_POSTS).filter((p) => p.slug !== current.slug)
+  let picks = sorted.filter((p) => p.categories.some((c) => current.categories.includes(c))).slice(0, limit)
+  if (picks.length < limit) {
+    const seen = new Set([current.slug, ...picks.map((p) => p.slug)])
+    for (const p of sorted) {
+      if (picks.length >= limit) break
+      if (seen.has(p.slug)) continue
+      picks = [...picks, p]
+      seen.add(p.slug)
+    }
+  }
 
   if (picks.length === 0) return null
 

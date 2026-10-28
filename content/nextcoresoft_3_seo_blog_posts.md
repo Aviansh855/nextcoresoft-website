@@ -214,7 +214,7 @@ Share the problem, users, priority workflows, required integrations, preferred p
 
 If your business is relying on spreadsheets, repeated manual entry or disconnected tools, start by documenting one workflow you would most like to improve. NextCoreSoft can discuss the problem, help identify the first-release scope and outline the questions that need to be answered before a reliable estimate is possible.
 
-**[Request a custom software quote](https://nextcoresoft.com/contact?intent=quote&service=custom-software)** — share your workflow and goals to start a scoping conversation. A quote should follow the requirements; you should not have to commit to a build just to ask informed questions.
+**[Request a custom software quote](https://nextcoresoft.com/contact/?intent=quote&service=custom-software)** — share your workflow and goals to start a scoping conversation. A quote should follow the requirements; you should not have to commit to a build just to ask informed questions.
 
 ---
 
@@ -226,7 +226,7 @@ If your business is relying on spreadsheets, repeated manual entry or disconnect
 - **SEO title:** `Mobile App Development Cost in India: 2026 Guide`
 - **Meta description:** `Mobile app development cost India and app development cost in India — Android, iOS, cross-platform planning bands, Chennai notes, and how to budget before you quote.`
 - **Primary keyword:** mobile app development cost in India
-- **Secondary phrases:** mobile app development cost india, app development cost india, app development cost in india, cost of ios and android app development chennai, Android app cost, iOS app development cost, cross-platform app cost
+- **Secondary phrases:** mobile app development cost india, app development cost india, app development cost in india, mobile app making cost in india, cost of ios and android app development chennai, Android app cost, iOS app development cost, cross-platform app cost
 - **Search intent:** Commercial investigation / app project budgeting
 - **Suggested author label:** NextCoreSoft Editorial Team
 - **Suggested update date:** October 2026
@@ -409,7 +409,7 @@ Describe the intended users, primary journey, platforms, user roles, integration
 
 Before investing in a complete app, identify the one task users must be able to finish successfully and list the supporting workflows the business needs. NextCoreSoft can discuss platform options, define the first-release scope and help surface the technical decisions that affect cost.
 
-**[Discuss your mobile app project](https://nextcoresoft.com/contact?service=mobile-apps)** to start a scoped conversation. You can begin with a problem statement; a complete technical specification is not required.
+**[Discuss your mobile app project](https://nextcoresoft.com/contact/?service=mobile-apps)** to start a scoped conversation. You can begin with a problem statement; a complete technical specification is not required.
 
 ---
 
@@ -647,7 +647,7 @@ Launch when the essential user journey works, required safeguards are in place, 
 
 If you have a product idea or a manual business process you want to improve, start with the user, the problem and the critical journey—not a long feature wishlist. NextCoreSoft can help turn that brief into a first-release scope, identify technical dependencies and separate must-haves from later phases.
 
-**[Discuss your product or MVP](https://nextcoresoft.com/contact?intent=quote&service=custom-software)** to plan a focused first release. You do not need to know every technical detail before beginning a scoping conversation.
+**[Discuss your product or MVP](https://nextcoresoft.com/contact/?intent=quote&service=custom-software)** to plan a focused first release. You do not need to know every technical detail before beginning a scoping conversation.
 
 ---
 

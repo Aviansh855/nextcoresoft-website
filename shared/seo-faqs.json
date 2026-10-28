@@ -63,6 +63,26 @@
     {
       "question": "How do you connect business software systems?",
       "answer": "With cloud API integration: REST APIs and webhooks between CRM, accounting, payments, and custom software, plus monitoring and maintenance. Read our API integration guide on the blog or the cloud and API service page for how NextCoreSoft scopes connections."
+    },
+    {
+      "question": "What is cloud API integration?",
+      "answer": "Cloud API integration connects CRM, accounting, payments, mobile apps, and custom software through HTTPS APIs and webhooks so data syncs without manual exports. NextCoreSoft scopes auth, retries, and monitoring per connection — see /services/cloud-api/ and /blog/api-integration-business-systems-guide/."
+    },
+    {
+      "question": "What is app development cost in India?",
+      "answer": "App development cost in India depends on screens, user roles, backend, and integrations — not city alone. Our guide at /blog/mobile-app-development-cost-india/ explains planning bands for Android, iOS, and cross-platform apps (including Chennai notes). NextCoreSoft quotes in writing after discovery."
+    },
+    {
+      "question": "What is CRM software development cost in India?",
+      "answer": "Custom CRM cost overlaps with custom software: pipelines, roles, integrations, and mobile access drive price. See /blog/custom-crm-software-development-india/ and /blog/custom-software-development-cost-india/ for planning questions — not fixed market rates. Contact us with your workflow for a quotation."
+    },
+    {
+      "question": "What is a cloud communication API?",
+      "answer": "In business software it usually means programmatic SMS, email, WhatsApp Business Platform, or voice wired into CRM and workflows. NextCoreSoft integrates messaging APIs with consent and regional rules in mind — overview on /services/cloud-api/ and patterns in /blog/api-integration-business-systems-guide/."
+    },
+    {
+      "question": "Does NextCoreSoft build mobile apps for iOS and Android?",
+      "answer": "Yes. We build customer and staff apps for Google Play and the Apple App Store, typically from one cross-platform codebase when that fits the features. We are a custom development studio — not a resold “suite” product. See /services/mobile-apps/ and /portfolio/ for showcases."
     }
   ],
   "servicesHub": [
@@ -111,6 +131,18 @@
     {
       "question": "Where is the guide on cloud API integration?",
       "answer": "See /blog/api-integration-business-systems-guide/ for how to connect business software systems, and /services/cloud-api/ for how NextCoreSoft delivers integrations, hosting, and maintenance."
+    },
+    {
+      "question": "Where can I read about generative AI in business software?",
+      "answer": "See /blog/generative-ai-business-software-india/ for practical uses, limits, and scoping — not hype. Pair with /services/ai-automation/ for how NextCoreSoft implements workflows."
+    },
+    {
+      "question": "Is there a guide for choosing a software company near me?",
+      "answer": "Yes — /blog/software-company-near-me/ explains map results, remote delivery, and questions to ask vendors. NextCoreSoft works remotely from Jaipur for clients in India and worldwide."
+    },
+    {
+      "question": "Flutter vs React Native for India app projects?",
+      "answer": "/blog/flutter-vs-react-native-india-2026/ compares stack choice, store coverage, and cost planning for Android and iOS apps."
     }
   ],
   "services": {
@@ -140,6 +172,10 @@
       {
         "question": "How much does mobile app development cost in India?",
         "answer": "Cost depends on screens, user roles, backend, integrations, and testing — not city alone. As a planning exercise, many teams model a simple app around ₹1.5 lakh–₹5 lakh, a focused MVP around ₹4 lakh–₹12 lakh, and a multi-role product at ₹8 lakh–₹25 lakh or more. These are indicative bands, not our quotation. See our mobile app development cost in India guide on the blog for detail, then contact us with your workflow for a written quote."
+      },
+      {
+        "question": "What is mobile app making cost in India?",
+        "answer": "“App making cost” is the same planning question as mobile app development cost: scope, platforms, backend, and integrations set the range. Use our India cost guide on the blog for Android, iOS, and cross-platform bands, then share your user roles and must-have features for a written quote."
       },
       {
         "question": "What is the cost of iOS and Android app development in Chennai?",
@@ -215,6 +251,20 @@
       }
     ]
   },
+  "dealershipSolution": [
+    {
+      "question": "What is the Dealership Service Management Solution?",
+      "answer": "Web-based software for dealership and service-center operations — job tracking, customer and vehicle records, staff workflows, and optional customer mobile apps on Medium and Premium plans. It is a NextCoreSoft product with published INR pricing, not generic off-the-shelf SaaS."
+    },
+    {
+      "question": "Where are pricing and plan details published?",
+      "answer": "Full Basic, Medium, and Premium setup and monthly license amounts are on https://nextcoresoft.com/pricing/ with first-year totals and FAQs. This overview page explains who the product is for before you choose a plan."
+    },
+    {
+      "question": "Can we see a demo before buying?",
+      "answer": "Yes. Use the contact form or Book a Demo on the Medium plan pricing card. Demos walk through the management system and customer app where applicable — as a product showcase, not a guarantee of identical configuration for every dealership."
+    }
+  ],
   "pricingAiAutomation": [
     {
       "question": "What is included in the setup fee?",

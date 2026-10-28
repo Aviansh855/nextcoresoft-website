@@ -7,7 +7,7 @@ export const ROUTE_META = {
   "/": {
     title: "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
     description:
-      "Custom software development company for web apps, mobile apps, and AI automation — Jaipur, Rajasthan, India, and remote clients. Guides for “software company near me” on our blog. Free consultation.",
+      "Custom software, cloud API integration, mobile app development cost in India guides, and AI automation — Jaipur, Rajasthan, India, and remote clients. Free consultation.",
     h1: HOME_H1,
     staticLead:
       "NextCoreSoft is a software development studio for custom web applications, mobile app development, and practical AI workflow automation for growing businesses.",

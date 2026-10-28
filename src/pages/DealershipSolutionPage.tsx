@@ -4,15 +4,33 @@ import { Link } from "react-router-dom"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { ButtonLink } from "../components/ui/Button"
 import { Reveal } from "../components/ui/Reveal"
+import { ServiceFaq } from "../components/services/ServiceFaq"
 import { DEALERSHIP_PRODUCT } from "../data/dealership-pricing"
 import { SITE } from "../data/content"
-import { applyMeta, ROUTE_SEO } from "../lib/seo"
+import { applyMeta, ROUTE_SEO, faqPageSchemaFromItems } from "../lib/seo"
+import dealershipFaqs from "../../shared/seo-faqs.json"
 
 /** Product overview (brochure-style) — full pricing lives on /pricing/. */
 export function DealershipSolutionPage() {
+  const faqs = dealershipFaqs.dealershipSolution
+
   useEffect(() => {
     applyMeta(ROUTE_SEO.dealershipSolution)
-  }, [])
+    const schema = faqPageSchemaFromItems(faqs)
+    if (!schema) return
+    const id = "jsonld-dealership-solution-faq"
+    let el = document.getElementById(id) as HTMLScriptElement | null
+    if (!el) {
+      el = document.createElement("script")
+      el.id = id
+      el.type = "application/ld+json"
+      document.head.appendChild(el)
+    }
+    el.textContent = JSON.stringify(schema)
+    return () => {
+      el?.remove()
+    }
+  }, [faqs])
 
   return (
     <div className="shell pb-24 pt-32">
@@ -63,6 +81,12 @@ export function DealershipSolutionPage() {
             </ul>
           </div>
         </section>
+      </Reveal>
+
+      <Reveal delay={0.08}>
+        <div className="mt-16 border-t border-slate-200 pt-12">
+          <ServiceFaq faqs={faqs} serviceTitle="Dealership solution" />
+        </div>
       </Reveal>
 
       <Reveal delay={0.08}>

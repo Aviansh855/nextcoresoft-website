@@ -32,6 +32,11 @@ export const SERVICE_SEO_GUIDES: Partial<Record<ServiceSlug, ServiceSeoGuide[]>>
       label: "AI automation for small business",
       description: "Practical workflows before you choose a plan.",
     },
+    {
+      href: "/blog/generative-ai-business-software-india/",
+      label: "Generative AI in business software",
+      description: "Where LLMs help operations — and where human review is required.",
+    },
   ],
   "cloud-api": [
     {
@@ -65,6 +70,11 @@ export const SERVICE_SEO_GUIDES: Partial<Record<ServiceSlug, ServiceSeoGuide[]>>
       href: "/blog/custom-crm-software-development-india/",
       label: "CRM software development cost in India",
       description: "When custom CRM beats SaaS and what MVP scope looks like.",
+    },
+    {
+      href: "/blog/software-company-near-me/",
+      label: "Software company near me — what it means",
+      description: "Map results, remote partners, and how to evaluate fit.",
     },
     {
       href: "/blog/api-integration-business-systems-guide/",

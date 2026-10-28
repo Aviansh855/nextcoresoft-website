@@ -10,6 +10,12 @@ import { routeJsonLdGraph } from "../shared/jsonld-by-route.mjs"
 import { bingbotContent, canonicalUrl, googlebotContent, ROUTE_META } from "../shared/route-meta.mjs"
 import { BLOG_POSTS, getBlogPost } from "../shared/blog-posts.mjs"
 import { SERVICES_CATALOG } from "../shared/services-catalog.mjs"
+import {
+  aiAutomationPricingExtra,
+  dealershipPricingExtra,
+  dealershipSolutionExtra,
+} from "../shared/pricing-prerender.mjs"
+import seoFaqs from "../shared/seo-faqs.json" with { type: "json" }
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const distIndex = join(root, "dist", "index.html")
@@ -59,6 +65,11 @@ function renderBlogSection(s) {
   }
 }
 
+function renderStaticFaqs(faqs) {
+  if (!faqs?.length) return ""
+  return `<h2>Frequently asked questions</h2>${faqs.map((f) => `<h3>${txt(f.question)}</h3><p>${txt(f.answer)}</p>`).join("")}`
+}
+
 /**
  * Static fallback inside #root: real H1/lead (and full blog text) for no-JS
  * visitors and crawlers that do not execute JavaScript. React's createRoot
@@ -74,6 +85,8 @@ function staticRootBlock(path) {
     ["/portfolio", "Portfolio"],
     ["/blog", "Blog"],
     ["/services", "Services"],
+    ["/pricing", "Pricing"],
+    ["/solutions/dealership-service-management", "Dealership solution"],
   ]
     .map(([href, label]) => `<a href="${canonicalUrl(href)}">${label}</a>`)
     .join(" · ")
@@ -94,6 +107,12 @@ function staticRootBlock(path) {
     }
   } else if (path === "/services" || path.startsWith("/services/")) {
     extra = `<ul>${SERVICES_CATALOG.map((s) => `<li><a href="${SITE_ORIGIN}/services/${s.slug}/">${txt(s.title)}</a> — ${txt(s.summary)}</li>`).join("")}</ul>`
+  } else if (path === "/pricing") {
+    extra = `${dealershipPricingExtra()}${renderStaticFaqs(seoFaqs.pricing)}`
+  } else if (path === "/pricing/ai-automation") {
+    extra = `${aiAutomationPricingExtra()}${renderStaticFaqs(seoFaqs.pricingAiAutomation)}`
+  } else if (path === "/solutions/dealership-service-management") {
+    extra = `${dealershipSolutionExtra()}${renderStaticFaqs(seoFaqs.dealershipSolution)}`
   }
   return `<main id="static-prerender" class="static-prerender"><h1>${escapeHtml(meta.h1)}</h1><p>${escapeHtml(meta.staticLead)}</p>${extra}<nav aria-label="Site">${nav}</nav></main>`
 }

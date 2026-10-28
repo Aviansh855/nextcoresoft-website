@@ -25,7 +25,7 @@ export const ROUTE_SEO = {
   home: {
     title: "NextCoreSoft | Custom Software Company — Jaipur, India & Remote",
     description:
-      "Custom software development company for web apps, mobile apps, and AI automation — Jaipur, Rajasthan, India, and remote clients. Guides for “software company near me” on our blog. Free consultation.",
+      "Custom software, cloud API integration, mobile app development cost in India guides, and AI automation — Jaipur, Rajasthan, India, and remote clients. Free consultation.",
     path: "/",
   },
   services: {

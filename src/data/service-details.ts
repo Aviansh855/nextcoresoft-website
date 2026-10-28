@@ -189,6 +189,11 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
           "Cost depends on screens, user roles, backend, integrations, and testing — not city alone. As a planning exercise, many teams model a simple app around ₹1.5 lakh–₹5 lakh, a focused MVP around ₹4 lakh–₹12 lakh, and a multi-role product at ₹8 lakh–₹25 lakh or more. These are indicative bands, not our quotation. See our mobile app development cost in India guide on the blog for detail, then contact us with your workflow for a written quote.",
       },
       {
+        question: "What is mobile app making cost in India?",
+        answer:
+          "“App making cost” is the same planning question as mobile app development cost: scope, platforms, backend, and integrations set the range. Use our India cost guide on the blog for Android, iOS, and cross-platform bands, then share your user roles and must-have features for a written quote.",
+      },
+      {
         question: "What is the cost of iOS and Android app development in Chennai?",
         answer:
           "Chennai vendors and remote studios often price by scope, not geography. iOS and Android together usually cost less to build when one cross-platform codebase covers both stores, but Apple and Google fees, backend hosting, and maintenance still apply. Use the same India planning bands as other cities; we deliver remotely for Chennai teams and quote after discovery.",

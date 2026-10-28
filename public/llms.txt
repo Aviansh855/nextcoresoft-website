@@ -6,7 +6,8 @@ NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor.
 
 ## Canonical site
 
-- https://nextcoresoft.com/
+- https://nextcoresoft.com/ (preferred; `www` should redirect to this apex host)
+- Contact form prefill links use query parameters; the indexable contact URL is https://nextcoresoft.com/contact/ only
 
 ## Key pages
 

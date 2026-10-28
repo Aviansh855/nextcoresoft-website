@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+# Canonical host: https://nextcoresoft.com/ — configure www → apex in Cloudflare (see docs/CLOUDFLARE-WWW-REDIRECT-RULE.md).
+# Contact URLs with ?service= / ?project= are form prefills; canonical index URL is https://nextcoresoft.com/contact/
 
 User-agent: Googlebot
 Allow: /

@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import { preferredTrailingSlashPath } from "../../lib/canonical-path"
 
 /**
  * Resets scroll on real navigations while letting in-page hash links work.
@@ -11,8 +12,12 @@ export function ScrollToTop() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Keep the trailing-slash URL the server settled on (preferred canonical
-    // form) — do not rewrite /portfolio/ → /portfolio in the address bar.
+    const slashPath = preferredTrailingSlashPath(pathname)
+    if (slashPath) {
+      navigate({ pathname: slashPath, search, hash }, { replace: true })
+      return
+    }
+
     if (hash === "#about") {
       navigate("/about/", { replace: true })
       return

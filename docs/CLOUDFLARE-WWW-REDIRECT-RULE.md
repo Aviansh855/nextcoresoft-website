@@ -1,8 +1,8 @@
 # Cloudflare Redirect Rule — www → apex (manual, required)
 
-Cloudflare **Pages** `_redirects` only supports **path-based** source patterns (e.g. `/about` → `/about/index.html`). It does **not** apply host-based rules like `https://www.nextcoresoft.com/*` → apex, and **Pages Functions** (`functions/_middleware.js`) do not run host redirect logic in this project.
+Cloudflare **Pages** `_redirects` only supports **path-based** source patterns (e.g. `/about` → `/about/index.html`). It does **not** apply host-based rules like `https://www.nextcoresoft.com/*` → apex.
 
-**Do not rely on `public/_redirects` for www-to-apex.** Configure the rule below in the Cloudflare **dashboard** for zone `nextcoresoft.com`.
+**Repo:** `functions/_middleware.js` returns **301** to apex + trailing-slash URLs via `shared/canonical-request.mjs` (www and non-slash indexable paths). Keep the dashboard rule below as a belt-and-suspenders edge redirect if Functions ever fail to run.
 
 ## Recommended Redirect Rule (301, preserve path and query)
 

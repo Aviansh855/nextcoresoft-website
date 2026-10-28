@@ -12,8 +12,12 @@ export function ContactPage() {
   const [searchParams] = useSearchParams()
 
   useEffect(() => {
-    applyMeta(ROUTE_SEO.contact)
-  }, [])
+    const hasPrefillParams = searchParams.toString().length > 0
+    applyMeta({
+      ...ROUTE_SEO.contact,
+      robots: hasPrefillParams ? "noindex, follow" : "index, follow",
+    })
+  }, [searchParams])
 
   return (
     <section className="relative pt-32 pb-24">

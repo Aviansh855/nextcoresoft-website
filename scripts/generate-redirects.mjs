@@ -14,7 +14,7 @@ const lines = [
   "# Host-based www/http→apex rules are NOT supported here and do NOT run in Pages Functions.",
   "# Configure www → https://nextcoresoft.com manually: docs/CLOUDFLARE-WWW-REDIRECT-RULE.md",
   "",
-  "# Per-route prerender HTML — both /path and /path/ (Cloudflare 308-safe). Generated from INDEXABLE_PATHS.",
+  "# Canonical trailing slash: /path/ serves prerendered HTML; /path → 301 /path/ (avoids Cloudflare 308 + GSC redirect errors).",
 ]
 
 for (const path of INDEXABLE_PATHS) {
@@ -22,10 +22,10 @@ for (const path of INDEXABLE_PATHS) {
   const asset = `${path.slice(1)}/index.html`
   const pad = path.length < 28 ? " ".repeat(28 - path.length) : " "
   lines.push(`${path}/${pad} /${asset}  200`)
-  lines.push(`${path}${pad} /${asset}  200`)
+  lines.push(`${path}${pad} ${path}/  301`)
 }
 
 lines.push("", "# SPA fallback for unknown client routes.", "/*    /index.html   200", "")
 
 writeFileSync(out, lines.join("\n"), "utf8")
-console.log(`Wrote ${out} (${INDEXABLE_PATHS.length - 1} app routes × 2 slash variants)`)
+console.log(`Wrote ${out} (${INDEXABLE_PATHS.length - 1} routes: slash 200 + no-slash 301)`)

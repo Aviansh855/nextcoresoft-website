@@ -5,6 +5,7 @@
 import { readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
+import { canonicalPublicHref } from "../shared/canonical-request.mjs"
 import { SITE_ORIGIN } from "../shared/indexable-paths.mjs"
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
@@ -16,7 +17,11 @@ function normalizeMarkdownLinks(text) {
     /\]\(https?:\/\/localhost(?::\d+)?([^)]*)\)/gi,
     `](${SITE_ORIGIN}$1)`,
   )
-  out = out.replace(/\]\((\/[^)]+)\)/g, `](${SITE_ORIGIN}$1)`)
+  out = out.replace(/\]\((\/[^)]+)\)/g, (_, path) => `](${canonicalPublicHref(`${SITE_ORIGIN}${path}`)})`)
+  out = out.replace(
+    /\]\((https?:\/\/(?:www\.)?nextcoresoft\.com[^)]*)\)/gi,
+    (_, url) => `](${canonicalPublicHref(url)})`,
+  )
   return out
 }
 
@@ -25,19 +30,14 @@ function normalizeSiteHref(href) {
   if (/^https?:\/\/localhost(?::\d+)?/i.test(href)) {
     try {
       const u = new URL(href)
-      return `${SITE_ORIGIN}${u.pathname}${u.search}${u.hash}`
+      return canonicalPublicHref(`${SITE_ORIGIN}${u.pathname}${u.search}${u.hash}`)
     } catch {
       return SITE_ORIGIN
     }
   }
-  if (href.startsWith("/")) return `${SITE_ORIGIN}${href}`
+  if (href.startsWith("/")) return canonicalPublicHref(`${SITE_ORIGIN}${href}`)
   if (/^https?:\/\/(www\.)?nextcoresoft\.com/i.test(href)) {
-    try {
-      const u = new URL(href)
-      return `${SITE_ORIGIN}${u.pathname}${u.search}${u.hash}`
-    } catch {
-      return href
-    }
+    return canonicalPublicHref(href)
   }
   return href
 }

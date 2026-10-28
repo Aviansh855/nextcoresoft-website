@@ -379,7 +379,7 @@
         "type": "cta",
         "text": "If your business is relying on spreadsheets, repeated manual entry or disconnected tools, start by documenting one workflow you would most like to improve. NextCoreSoft can discuss the problem, help identify the first-release scope and outline the questions that need to be answered before a reliable estimate is possible.",
         "buttonLabel": "Request a custom software quote",
-        "href": "https://nextcoresoft.com/contact?intent=quote&service=custom-software"
+        "href": "https://nextcoresoft.com/contact/?intent=quote&service=custom-software"
       }
     ],
     "faqs": [
@@ -742,7 +742,7 @@
         "type": "cta",
         "text": "Before investing in a complete app, identify the one task users must be able to finish successfully and list the supporting workflows the business needs. NextCoreSoft can discuss platform options, define the first-release scope and help surface the technical decisions that affect cost.",
         "buttonLabel": "Discuss your mobile app project",
-        "href": "https://nextcoresoft.com/contact?service=mobile-apps"
+        "href": "https://nextcoresoft.com/contact/?service=mobile-apps"
       }
     ],
     "faqs": [
@@ -1199,7 +1199,7 @@
         "type": "cta",
         "text": "If you have a product idea or a manual business process you want to improve, start with the user, the problem and the critical journey—not a long feature wishlist. NextCoreSoft can help turn that brief into a first-release scope, identify technical dependencies and separate must-haves from later phases.",
         "buttonLabel": "Discuss your product or MVP",
-        "href": "https://nextcoresoft.com/contact?intent=quote&service=custom-software"
+        "href": "https://nextcoresoft.com/contact/?intent=quote&service=custom-software"
       }
     ],
     "faqs": [
