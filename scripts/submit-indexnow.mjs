@@ -38,7 +38,11 @@ for (const endpoint of endpoints) {
       headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify(body),
     })
-    console.log(`${endpoint} → HTTP ${res.status}`)
+    const text = await res.text()
+    console.log(`${endpoint} → HTTP ${res.status}${text ? ` ${text.slice(0, 120)}` : ""}`)
+    if (!res.ok) {
+      console.warn(`IndexNow warning: ${endpoint} returned ${res.status}`)
+    }
   } catch (err) {
     console.warn(`${endpoint} failed:`, err instanceof Error ? err.message : err)
   }

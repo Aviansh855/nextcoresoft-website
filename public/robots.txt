@@ -28,6 +28,8 @@ Allow: /
 
 # Optional first-party summary for AI systems (not required for Google ranking):
 # https://nextcoresoft.com/llms.txt
-# Blog RSS (syndication / crawlers): https://nextcoresoft.com/feed.xml
+# Blog RSS (syndication — submit in Bing Webmaster Tools): https://nextcoresoft.com/feed.xml
+# IndexNow key (Bing/Yandex URL notify): https://nextcoresoft.com/8f3c2a9e1b4d7e6f0a2c5b8d1e4f7a0c.txt
+# AI summary (GEO/AEO, optional): https://nextcoresoft.com/llms.txt
 
 Sitemap: https://nextcoresoft.com/sitemap.xml

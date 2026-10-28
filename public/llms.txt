@@ -4,6 +4,13 @@
 
 NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor. We build custom web applications, business software, mobile apps, and practical AI automations for SMBs and startups. Projects are scoped and quoted individually. We work remotely worldwide in English.
 
+## Discovery for search engines (Bing, Google)
+
+- Sitemap: https://nextcoresoft.com/sitemap.xml
+- RSS: https://nextcoresoft.com/feed.xml
+- IndexNow key: https://nextcoresoft.com/8f3c2a9e1b4d7e6f0a2c5b8d1e4f7a0c.txt
+- robots.txt allows Bingbot, Googlebot, and `User-agent: *`
+
 ## Canonical site
 
 - https://nextcoresoft.com/ (preferred; `www` should redirect to this apex host)

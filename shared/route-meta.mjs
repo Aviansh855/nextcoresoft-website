@@ -164,6 +164,7 @@ export function noscriptBlock(path) {
     ["/pricing", "Dealership pricing"],
     ["/pricing/ai-automation", "AI automation pricing"],
     ["/solutions/dealership-service-management", "Dealership solution"],
+    ["/blog", "Blog"],
   ]
     .map(
       ([href, label]) => `<a href="${canonicalUrl(href)}">${escapeHtml(label)}</a>`,

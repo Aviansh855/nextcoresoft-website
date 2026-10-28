@@ -1,5 +1,17 @@
 # Bing Webmaster — “Discovered but not crawled” / Live URL error
 
+## Root causes (most common for this site)
+
+| Cause | In repo? | What to do |
+|-------|----------|------------|
+| **Cloudflare WAF / Bot Fight blocks verified Bingbot** | Edge only | Security → Events: match Bing inspection time to **Block** on `/about/` etc. Add **Skip** rule for `cf.bot_management.verified_bot` (Step 2 below). `robots.txt` cannot fix this. |
+| **Sitemap / property on wrong host** | Dashboard | Bing site = **`https://nextcoresoft.com/`** (apex). Submit **`https://nextcoresoft.com/sitemap.xml`** and optionally **`https://nextcoresoft.com/feed.xml`**. |
+| **IndexNow not pinged after deploy** | Fixed in build | Cloudflare Pages runs `maybe-submit-indexnow.mjs` when `CF_PAGES=1`. Locally run `npm run indexnow:submit` after each production deploy. |
+| **New site / low crawl budget** | Normal | Bing indexes slower than Google; use URL Inspection → **Request indexing** on key pages after Live URL succeeds. |
+| **Live URL error (fetch failed)** | Usually WAF | Not the same as “wait in queue” — fix fetch first, then indexing. |
+
+GEO/AEO (`llms.txt`, FAQs, RSS) helps discovery in AI/copilot products; **Bing Webmaster still requires successful Bingbot crawl** for traditional Bing search indexing.
+
 ## What you see in Bing
 
 - **Discovered but not crawled** → URL cannot appear on Bing  
