@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# GSC export zips / drilldown CSVs (local only)
+.gsc-*/
+
+# Optional local clone of directory list (not part of the site)
+_PlacesToPostYourStartup/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

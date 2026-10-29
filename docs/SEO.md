@@ -11,7 +11,10 @@ Google generally renders JavaScript, but **crawl and index timing can lag** comp
 1. `generate-redirects.mjs` / `generate-sitemap.mjs` from `shared/indexable-paths.mjs`
 2. `verify-jsonld-sync.mjs` — `shared/site.json` matches static JSON-LD
 3. `sync-index-seo-shell.mjs` — Organization/WebSite JSON-LD + root noscript from `shared/route-meta.mjs`
-4. Vite build → `prerender-routes.mjs` → `verify-seo-routes.mjs` (19 indexable URLs incl. 7 blog posts)
+4. `sync-llms-txt.mjs` — `public/llms.txt` from sitemap/blog/topics
+5. Vite build → `prerender-routes.mjs` → `verify-seo-routes.mjs` (28 indexable URLs incl. 13 blog posts)
+
+**Regular maintenance:** `npm run seo:check` — see `docs/SEO-GEO-REGULAR-UPDATES.md`.
 
 Copy and H1 strings: `shared/site.json`, `shared/page-headings.json` (imported by React via `src/data/content.ts`).
 
@@ -83,14 +86,15 @@ No Review, AggregateRating, or LocalBusiness street address (no verified public 
 
 Homepage and service copy mention **custom software development**, **web development**, **mobile app development**, and **AI automation company** in natural language — not keyword stuffing. Blog and `/services` hub support long-tail queries. **#1 on Google is not promised**; continue GSC monitoring with `npm run gsc:report`.
 
-## llms.txt
+## llms.txt (GEO)
 
-Factual summary for AI crawlers: https://nextcoresoft.com/llms.txt — optional, not a Google ranking requirement.
+Factual summary for AI crawlers: https://nextcoresoft.com/llms.txt — optional, not a Google ranking requirement.  
+Regenerated on every build from `shared/site.json`, blog posts, and `shared/seo-query-topics.mjs`.
 
-## Regenerate sitemap
+## Regenerate sitemap / feed / llms only
 
 ```bash
-node scripts/generate-sitemap.mjs
+npm run seo:sync
 ```
 
-Runs automatically before `npm run build`.
+Full build runs the same generators automatically.

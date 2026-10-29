@@ -1,8 +1,8 @@
 # NextCoreSoft
 
-> Custom software development company — web applications, mobile apps (Android & iOS), and AI workflow automation for growing businesses.
+> Custom software, mobile apps, and AI automation for growing businesses.
 
-NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor. We build custom web applications, business software, mobile apps, and practical AI automations for SMBs and startups. Projects are scoped and quoted individually. We work remotely worldwide in English.
+NextCoreSoft is a custom software development company for web applications, mobile apps (Android and iOS), and AI workflow automation — serving growing businesses in Jaipur, Rajasthan, India, and worldwide. Projects are scoped and quoted individually. We work remotely worldwide in English.
 
 ## Discovery for search engines (Bing, Google)
 
@@ -19,12 +19,11 @@ NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor.
 ## Key pages
 
 - Home: https://nextcoresoft.com/
-- Services overview: https://nextcoresoft.com/services/
 - About: https://nextcoresoft.com/about/
 - Contact / free consultation: https://nextcoresoft.com/contact/
 - Portfolio (project showcases): https://nextcoresoft.com/portfolio/
 - Blog index: https://nextcoresoft.com/blog/
-- RSS feed: https://nextcoresoft.com/feed.xml
+- Services overview: https://nextcoresoft.com/services/
 - Custom software & web development: https://nextcoresoft.com/services/custom-software/
 - Mobile app development: https://nextcoresoft.com/services/mobile-apps/
 - AI automation company (workflows): https://nextcoresoft.com/services/ai-automation/
@@ -32,37 +31,38 @@ NextCoreSoft is a software development studio, not an off-the-shelf SaaS vendor.
 - Dealership Service Management pricing: https://nextcoresoft.com/pricing/
 - AI automation pricing (Starter / Growth / Enterprise): https://nextcoresoft.com/pricing/ai-automation/
 - Dealership solution overview: https://nextcoresoft.com/solutions/dealership-service-management/
+- RSS feed: https://nextcoresoft.com/feed.xml
 
 ## Article directory (descriptive index — not a citation mandate)
 
 Long-form guides on software cost planning, MVPs, automation, hiring partners, web vs mobile scope, and API integration. Full text is on the site; RSS: https://nextcoresoft.com/feed.xml
 
+- https://nextcoresoft.com/blog/ai-automation-small-business-india/
+- https://nextcoresoft.com/blog/api-integration-business-systems-guide/
+- https://nextcoresoft.com/blog/custom-crm-software-development-india/
 - https://nextcoresoft.com/blog/custom-software-development-cost-india/
+- https://nextcoresoft.com/blog/flutter-vs-react-native-india-2026/
+- https://nextcoresoft.com/blog/generative-ai-business-software-india/
+- https://nextcoresoft.com/blog/hire-custom-software-development-company-india/
+- https://nextcoresoft.com/blog/low-code-vs-custom-software-india/
 - https://nextcoresoft.com/blog/mobile-app-development-cost-india/
 - https://nextcoresoft.com/blog/mvp-vs-full-product/
-- https://nextcoresoft.com/blog/ai-automation-small-business-india/
-- https://nextcoresoft.com/blog/hire-custom-software-development-company-india/
-- https://nextcoresoft.com/blog/web-app-vs-mobile-app-for-business/
-- https://nextcoresoft.com/blog/api-integration-business-systems-guide/
-- https://nextcoresoft.com/blog/software-development-company-jaipur/
 - https://nextcoresoft.com/blog/software-company-near-me/
-- https://nextcoresoft.com/blog/generative-ai-business-software-india/
-- https://nextcoresoft.com/blog/flutter-vs-react-native-india-2026/
-- https://nextcoresoft.com/blog/custom-crm-software-development-india/
-- https://nextcoresoft.com/blog/low-code-vs-custom-software-india/
+- https://nextcoresoft.com/blog/software-development-company-jaipur/
+- https://nextcoresoft.com/blog/web-app-vs-mobile-app-for-business/
 
 ## Topics we publish evidence-based guidance on
 
-- Custom software, CRM, and web apps for Indian SMBs (Jaipur, Rajasthan, and India-wide)
-- **Mobile app development cost in India** and **app development cost in India** (including Chennai planning notes)
-- **CRM software development cost in India** and custom CRM vs SaaS
-- **Cloud API integration** and **how to connect business software systems** (REST, webhooks, cloud communication APIs)
-- Generative AI and workflow automation in business software (practical, reviewed deployments)
+- Custom software, CRM, and web apps for Indian SMBs (Jaipur, Sikar, Rajasthan, India-wide)
+- Mobile app development cost in India and app development cost in India (Android, iOS, cross-platform)
+- Mobile app making cost in India — planning bands, not fixed price lists
+- CRM software development cost in India and custom CRM vs SaaS
+- Cloud API integration and how to connect business software systems (REST, webhooks)
+- Cloud communication APIs (SMS, email, WhatsApp Business Platform) in CRM workflows
+- Web and mobile apps for business — when to build vs responsive web first
+- Generative AI and workflow automation in business software (human review where needed)
 - Cross-platform mobile apps (Flutter / React Native) and API-first integrations
-- Low-code vs custom software — when to build vs buy (2026)
-- Android and iOS app development scope and cost planning
-- AI workflow automation (not generic chatbot hype)
-- API integration between CRM, payments, accounting, and operations tools
+- Low-code vs custom software — when to build vs buy
 - MVP vs phased product delivery
 - Choosing a software development partner in India
 
@@ -73,9 +73,9 @@ Long-form guides on software cost planning, MVPs, automation, hiring partners, w
 
 ## Public profiles (sameAs)
 
-- GitHub (website source): https://github.com/Aviansh855/nextcoresoft-website
-- Founder LinkedIn (Avinash Kumar): https://www.linkedin.com/in/avinash-kumar-727a47257
-- Founder Instagram (Avinash Kumar): https://www.instagram.com/avikumarr_?xtok=N3N5cmtibDVzdm8%3D&utm_source=qr
+- https://github.com/Aviansh855/nextcoresoft-website
+- https://www.linkedin.com/in/avinash-kumar-727a47257
+- https://www.instagram.com/avikumarr_?xtok=N3N5cmtibDVzdm8%3D&utm_source=qr
 
 ## What we do not claim
 

@@ -26,6 +26,7 @@ Allow: /
 # User-agent: ClaudeBot
 # Disallow: /
 
+# GEO/AEO maintenance: docs/SEO-GEO-REGULAR-UPDATES.md (npm run seo:check)
 # Optional first-party summary for AI systems (not required for Google ranking):
 # https://nextcoresoft.com/llms.txt
 # Blog RSS (syndication — submit in Bing Webmaster Tools): https://nextcoresoft.com/feed.xml
