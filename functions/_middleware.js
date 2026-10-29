@@ -31,13 +31,15 @@ export async function onRequest(context) {
   // directory index.html routes, which caused /portfolio ↔ /portfolio/ redirect loops.
 
   if (isAppPath(path)) {
-    // _redirects is not applied inside context.next(), so /login/ would otherwise
-    // be the static 404 page. Serve the SPA shell and keep it out of search.
-    const indexUrl = new URL("/index.html", url)
-    const page = await context.env.ASSETS.fetch(new Request(indexUrl, context.request))
+    // /index.html 308s to /. Fetch the site shell directly so /login/ is the SPA,
+    // not the static 404 page. The browser URL stays /login/ for the client router.
+    const shellUrl = new URL("/", url)
+    const page = await context.env.ASSETS.fetch(new Request(shellUrl, { method: "GET" }))
     const headers = new Headers(page.headers)
+    headers.delete("location")
     headers.set("X-Robots-Tag", "noindex, follow")
     headers.set("Cache-Control", "no-store")
+    headers.set("Content-Type", "text/html; charset=utf-8")
     return new Response(page.body, { status: 200, statusText: "OK", headers })
   }
 
