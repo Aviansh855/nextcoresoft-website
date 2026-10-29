@@ -7,9 +7,9 @@
     "robots": "index, follow"
   },
   "/services": {
-    "title": "Web & Mobile Apps, Cloud API Integration | NextCoreSoft",
-    "description": "Web & mobile apps, custom software, cloud API integration, and AI automation — milestone delivery plus India cost and CRM guides on the blog.",
-    "h1": "Software development services for web, mobile, and AI automation",
+    "title": "Web, Mobile, SEO & GEO Services | NextCoreSoft",
+    "description": "Custom software, mobile apps, cloud API, AI automation, and SEO / AEO / GEO services — search and AI discovery setup with honest scope.",
+    "h1": "Software, mobile, AI, cloud, and SEO / GEO services",
     "staticLead": "Service overview for businesses looking for a software, web, mobile, or AI automation development partner.",
     "robots": "index, follow"
   },
@@ -60,6 +60,13 @@
     "description": "Cloud API integration and cloud communication APIs — connect CRM, accounting, payments, and custom software with REST, webhooks, and maintenance.",
     "h1": "Cloud API Integration and Business Software Connections",
     "staticLead": "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",
+    "robots": "index, follow"
+  },
+  "/services/seo-geo": {
+    "title": "SEO, AEO & GEO Services | NextCoreSoft",
+    "description": "SEO, AEO, and GEO services — technical SEO, structured data, sitemaps, and AI-discovery content. No guaranteed rankings; honest scope from NextCoreSoft.",
+    "h1": "SEO, AEO & GEO Services for Search and AI Discovery",
+    "staticLead": "NextCoreSoft provides SEO, AEO, and GEO services for business sites — metadata, structured data, sitemaps, and crawl-ready content, not empty ranking promises.",
     "robots": "index, follow"
   },
   "/pricing": {

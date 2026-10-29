@@ -29,9 +29,9 @@ export const ROUTE_SEO = {
     path: "/",
   },
   services: {
-    title: "Web & Mobile Apps, Cloud API Integration | NextCoreSoft",
+    title: "Web, Mobile, SEO & GEO Services | NextCoreSoft",
     description:
-      "Web & mobile apps, custom software, cloud API integration, and AI automation — milestone delivery plus India cost and CRM guides on the blog.",
+      "Custom software, mobile apps, cloud API, AI automation, and SEO / AEO / GEO services — search and AI discovery setup with honest scope.",
     path: "/services",
   },
   about: {

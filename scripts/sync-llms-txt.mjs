@@ -24,6 +24,7 @@ const KEY_PAGE_LABELS = {
   "/services/mobile-apps": "Mobile app development",
   "/services/ai-automation": "AI automation company (workflows)",
   "/services/cloud-api": "Cloud & APIs",
+  "/services/seo-geo": "SEO, AEO & GEO services",
   "/pricing": "Dealership Service Management pricing",
   "/pricing/ai-automation": "AI automation pricing (Starter / Growth / Enterprise)",
   "/solutions/dealership-service-management": "Dealership solution overview",

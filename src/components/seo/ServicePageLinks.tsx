@@ -11,7 +11,7 @@ type ServicePageLinksProps = {
 const linkClass =
   "font-medium text-cyan-700 underline-offset-2 transition-colors hover:text-cyan-900 hover:underline"
 
-/** All four service detail URLs — use on homepage, about, contact, and legal pages. */
+/** All service detail URLs — use on homepage, about, contact, and legal pages. */
 export function ServicePageLinks({ variant = "list", className = "", heading }: ServicePageLinksProps) {
   if (variant === "inline") {
     return (

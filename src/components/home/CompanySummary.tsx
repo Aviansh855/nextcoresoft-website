@@ -29,6 +29,10 @@ export function CompanySummary() {
             , and{" "}
             <Link to="/services/cloud-api/" className="font-medium text-cyan-800 underline-offset-2 hover:underline">
               cloud integrations and API work
+            </Link>
+            , and{" "}
+            <Link to="/services/seo-geo/" className="font-medium text-cyan-800 underline-offset-2 hover:underline">
+              SEO, AEO &amp; GEO services
             </Link>{" "}
             for small and medium-sized businesses and startups. We focus on replacing manual, repetitive work with
             systems your team actually uses — with scope, timeline, and cost agreed before build begins.

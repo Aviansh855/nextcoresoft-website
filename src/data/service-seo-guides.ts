@@ -50,6 +50,23 @@ export const SERVICE_SEO_GUIDES: Partial<Record<ServiceSlug, ServiceSeoGuide[]>>
       description: "How CRM, API, and backend work affects total project cost.",
     },
   ],
+  "seo-geo": [
+    {
+      href: "/blog/generative-ai-business-software-india/",
+      label: "Generative AI in business software",
+      description: "Practical GEO-related content patterns for Indian SMBs.",
+    },
+    {
+      href: "/blog/software-company-near-me/",
+      label: "Software company near me",
+      description: "How search and local results work — honest expectations.",
+    },
+    {
+      href: "/blog/mobile-app-development-cost-india/",
+      label: "Mobile app cost guide (SEO example)",
+      description: "Long-form guide structure we use for answer-style queries.",
+    },
+  ],
   "custom-software": [
     {
       href: "/pricing/",

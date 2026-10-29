@@ -24,6 +24,12 @@ export const SERVICES_CATALOG = [
     summary:
       "The connective layer: third-party integrations, cloud deployment, and the maintenance that keeps software reliable after launch.",
   },
+  {
+    slug: "seo-geo",
+    title: "SEO, AEO & GEO Services",
+    summary:
+      "Technical SEO, structured data, sitemaps, and AI-discovery content for business websites — without guaranteed rankings.",
+  },
 ]
 
 export const SERVICE_SLUGS = SERVICES_CATALOG.map((s) => s.slug)

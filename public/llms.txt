@@ -1,8 +1,8 @@
 # NextCoreSoft
 
-> Custom software, mobile apps, and AI automation for growing businesses.
+> Custom software, mobile apps, AI automation, and SEO / GEO services.
 
-NextCoreSoft is a custom software development company for web applications, mobile apps (Android and iOS), and AI workflow automation — serving growing businesses in Jaipur, Rajasthan, India, and worldwide. Projects are scoped and quoted individually. We work remotely worldwide in English.
+NextCoreSoft is a custom software development company for web applications, mobile apps (Android and iOS), AI workflow automation, and SEO / AEO / GEO services — serving growing businesses in Jaipur, Rajasthan, India, and worldwide. Projects are scoped and quoted individually. We work remotely worldwide in English.
 
 ## Discovery for search engines (Bing, Google)
 
@@ -28,6 +28,7 @@ NextCoreSoft is a custom software development company for web applications, mobi
 - Mobile app development: https://nextcoresoft.com/services/mobile-apps/
 - AI automation company (workflows): https://nextcoresoft.com/services/ai-automation/
 - Cloud & APIs: https://nextcoresoft.com/services/cloud-api/
+- SEO, AEO & GEO services: https://nextcoresoft.com/services/seo-geo/
 - Dealership Service Management pricing: https://nextcoresoft.com/pricing/
 - AI automation pricing (Starter / Growth / Enterprise): https://nextcoresoft.com/pricing/ai-automation/
 - Dealership solution overview: https://nextcoresoft.com/solutions/dealership-service-management/

@@ -109,6 +109,19 @@ export const SERVICES = [
     technologies: ["REST", "Cloud hosting", "CI/CD", "Monitoring"],
     cta: "Connect your systems",
   },
+  {
+    slug: "seo-geo",
+    title: "SEO, AEO & GEO Services",
+    summary:
+      "Technical SEO, answer-engine (AEO), and generative-engine (GEO) setup for business sites — metadata, structured data, sitemaps, and crawl-ready content.",
+    outcomes: [
+      "On-page SEO and meta descriptions within search guidelines",
+      "FAQ and JSON-LD aligned with visible page content",
+      "llms.txt, RSS, and indexing support (no guaranteed rankings)",
+    ],
+    technologies: ["Search Console", "Structured data", "Sitemap & IndexNow", "Content architecture"],
+    cta: "Discuss SEO & GEO",
+  },
 ] as const
 
 export type Service = (typeof SERVICES)[number]
@@ -272,6 +285,7 @@ export const SERVICE_SLUG_TO_FORM: Record<Service["slug"], (typeof SERVICE_OPTIO
   "mobile-apps": "Android & iOS app development",
   "ai-automation": "AI automation & workflows",
   "cloud-api": "Cloud solutions & API integration",
+  "seo-geo": "SEO, GEO & AEO (search & AI discovery)",
 }
 
 export const REASONS = [
@@ -312,6 +326,7 @@ export const SERVICE_OPTIONS = [
   "Android & iOS app development",
   "AI automation & workflows",
   "Cloud solutions & API integration",
+  "SEO, GEO & AEO (search & AI discovery)",
   "Maintenance & consulting",
   "Not sure yet — advise me",
 ] as const
@@ -330,7 +345,7 @@ export const SERVICES_HUB_FAQS = [
   {
     question: "Which software development services does NextCoreSoft offer?",
     answer:
-      "Custom software and web applications, Android and iOS mobile apps, AI workflow automation, and cloud hosting with API integrations. Each service has its own page with deliverables and FAQs; start at /services or contact us if you are unsure which fits.",
+      "Custom software and web applications, Android and iOS mobile apps, AI workflow automation, cloud hosting with API integrations, and SEO / AEO / GEO services for search and AI discovery. Each service has its own page with deliverables and FAQs; start at /services or contact us if you are unsure which fits.",
   },
   {
     question: "Do you quote web development and mobile apps separately?",
@@ -473,5 +488,10 @@ export const FAQS = [
     question: "Do you support app development in Sikar or other Rajasthan cities?",
     answer:
       "Yes — we scope custom software and mobile apps for Sikar, Jaipur, and Rajasthan via remote delivery. We do not list a Sikar office or guarantee local map results. See our Jaipur software company guide and mobile app cost guide on the blog before you request quotes.",
+  },
+  {
+    question: "Do you provide SEO, AEO, and GEO services?",
+    answer:
+      "Yes. NextCoreSoft offers SEO, AEO, and GEO services — metadata, structured data, sitemaps, and content structured for search and AI discovery. We do not promise #1 rankings. See the SEO & GEO service page or contact us with your website URL.",
   },
 ] as const

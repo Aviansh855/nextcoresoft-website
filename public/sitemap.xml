@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://nextcoresoft.com/</loc><lastmod>2026-10-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://nextcoresoft.com/about/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nextcoresoft.com/contact/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://nextcoresoft.com/portfolio/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://nextcoresoft.com/</loc><lastmod>2026-10-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nextcoresoft.com/about/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nextcoresoft.com/contact/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nextcoresoft.com/portfolio/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://nextcoresoft.com/blog/</loc><lastmod>2026-10-21</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>
   <url><loc>https://nextcoresoft.com/blog/custom-software-development-cost-india/</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
   <url><loc>https://nextcoresoft.com/blog/mobile-app-development-cost-india/</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
@@ -18,14 +18,15 @@
   <url><loc>https://nextcoresoft.com/blog/flutter-vs-react-native-india-2026/</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.79</priority></url>
   <url><loc>https://nextcoresoft.com/blog/custom-crm-software-development-india/</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.81</priority></url>
   <url><loc>https://nextcoresoft.com/blog/low-code-vs-custom-software-india/</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nextcoresoft.com/services/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://nextcoresoft.com/services/custom-software/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://nextcoresoft.com/services/mobile-apps/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.87</priority></url>
-  <url><loc>https://nextcoresoft.com/services/ai-automation/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://nextcoresoft.com/services/cloud-api/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://nextcoresoft.com/pricing/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
-  <url><loc>https://nextcoresoft.com/pricing/ai-automation/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
-  <url><loc>https://nextcoresoft.com/solutions/dealership-service-management/</loc><lastmod>2026-10-28</lastmod><changefreq>monthly</changefreq><priority>0.84</priority></url>
-  <url><loc>https://nextcoresoft.com/privacy/</loc><lastmod>2026-10-28</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://nextcoresoft.com/terms/</loc><lastmod>2026-10-28</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://nextcoresoft.com/services/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://nextcoresoft.com/services/custom-software/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://nextcoresoft.com/services/mobile-apps/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.87</priority></url>
+  <url><loc>https://nextcoresoft.com/services/ai-automation/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://nextcoresoft.com/services/cloud-api/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://nextcoresoft.com/services/seo-geo/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.84</priority></url>
+  <url><loc>https://nextcoresoft.com/pricing/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://nextcoresoft.com/pricing/ai-automation/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://nextcoresoft.com/solutions/dealership-service-management/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.84</priority></url>
+  <url><loc>https://nextcoresoft.com/privacy/</loc><lastmod>2026-10-29</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://nextcoresoft.com/terms/</loc><lastmod>2026-10-29</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

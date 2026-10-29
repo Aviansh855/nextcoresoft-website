@@ -1,4 +1,4 @@
-export type ServiceSlug = "custom-software" | "mobile-apps" | "ai-automation" | "cloud-api"
+export type ServiceSlug = "custom-software" | "mobile-apps" | "ai-automation" | "cloud-api" | "seo-geo"
 
 export type ServiceDetail = {
   seoTitle: string
@@ -450,6 +450,103 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
         "Do you need event-driven sync, scheduled jobs, or on-demand APIs?",
         "What monitoring and alerting do you expect when a sync fails?",
         "Is ongoing maintenance budgeted when vendors change APIs?",
+      ],
+    },
+  },
+  "seo-geo": {
+    seoTitle: "SEO, AEO & GEO Services for Business Websites",
+    metaDescription:
+      "SEO, AEO, and GEO services — technical SEO, structured data, sitemaps, and AI-discovery content. No guaranteed rankings; honest scope from NextCoreSoft.",
+    h1: "SEO, AEO & GEO Services for Search and AI Discovery",
+    intro:
+      "NextCoreSoft provides SEO (search engine optimization), AEO (answer-engine optimization), and GEO (generative-engine / AI discovery) services for business websites and products we build or maintain — focused on crawlability, accurate metadata, structured data, and clear content — not empty promises of #1 rankings.",
+    audience:
+      "Founders and marketing teams whose site is live but under-indexed, hard to find in search, or not structured for Google, Bing, and AI overview-style answers.",
+    problems: [
+      "Pages load in a browser but Google or Bing show few indexed URLs or confusing canonical/redirect reports.",
+      "Meta descriptions are too long, duplicated, or missing — tools flag SEO errors.",
+      "FAQs and JSON-LD do not match what visitors actually see on the page.",
+      "You want AI systems and search engines to understand your services, but you do not know what is safe to change.",
+    ],
+    benefits: [
+      "Technical SEO fixes aligned with Google and Bing guidelines (canonical URLs, sitemap, robots, prerendered text)",
+      "FAQ and schema work that matches visible copy — better fit for rich results and answer-style queries",
+      "GEO-oriented assets such as llms.txt, RSS, and internal linking plans — optional, not a ranking guarantee",
+      "Honest reporting: we explain what owner actions (Search Console, Cloudflare) still require your login",
+    ],
+    deliverables: [
+      "Audit summary of indexable URLs, meta tags, structured data, and crawl blockers we can fix in code",
+      "Implemented or documented fixes in your site repo (or our build pipeline for sites we host)",
+      "Checklist for Google Search Console and Bing Webmaster after deploy",
+      "Maintenance option for meta, sitemap, and content-structure updates when you publish new pages",
+    ],
+    process: [
+      {
+        title: "Audit",
+        description:
+          "Review indexing reports, live URLs, canonical policy, and content depth for the pages that should rank.",
+      },
+      {
+        title: "Prioritize",
+        description:
+          "Fix blockers first (noindex, redirects, bot access), then metadata, then content and internal links.",
+      },
+      {
+        title: "Implement",
+        description:
+          "Ship SEO/AEO/GEO changes through your normal deploy process with build-time verification where possible.",
+      },
+      {
+        title: "Measure",
+        description:
+          "You track Performance and indexing in GSC/Bing; we help interpret trends — we do not guarantee impression counts.",
+      },
+    ],
+    includes: [
+      "Technical on-page SEO and meta description length checks",
+      "JSON-LD / FAQ alignment with visible content",
+      "Sitemap, RSS, robots.txt, and optional llms.txt updates",
+      "Guidance on Generative AI settings in Search Console (Include vs Exclude)",
+    ],
+    faqs: [
+      {
+        question: "Do you guarantee #1 ranking or Generative AI impressions?",
+        answer:
+          "No. We improve technical and content foundations; Google and Bing decide rankings and AI citations. We document realistic expectations in docs/GSC-GENERATIVE-AI-ZERO.md style checklists.",
+      },
+      {
+        question: "What is the difference between SEO, AEO, and GEO?",
+        answer:
+          "SEO helps search engines crawl and understand classic results. AEO structures clear answers and FAQs for question-style queries. GEO adds first-party summaries (e.g. llms.txt) and content patterns that may help AI discovery — none of these force ChatGPT or AI Overviews to cite you.",
+      },
+      {
+        question: "Can SEO/GEO be added to a site NextCoreSoft did not build?",
+        answer:
+          "Sometimes, if you grant repo or staging access and the stack is maintainable. We prefer engagements where we can deploy and verify fixes. Contact us with your platform (e.g. React, WordPress, static site).",
+      },
+      {
+        question: "Do you only do SEO for India?",
+        answer:
+          "We work in English for India and international sites. Local map-pack SEO usually requires a verified Google Business Profile and address — we do not fabricate local listings.",
+      },
+    ],
+    portfolioIds: [],
+    aeo: {
+      quickAnswer:
+        "NextCoreSoft provides SEO, AEO, and GEO services: technical search setup (meta, canonical, sitemap, structured data), answer-style FAQs, and optional AI-discovery files — for sites we build or maintain. Rankings and AI Overview citations are not guaranteed; we fix what is in your control and guide Search Console/Bing steps you run as site owner.",
+      suitableFor:
+        "Businesses with a live website that needs indexing, metadata, and content-structure help — especially alongside a software or redesign project.",
+      quoteNeeds: [
+        "Site URL and platform (source code access or CMS)",
+        "Current GSC/Bing issues or screenshots",
+        "Pages you care about most (services, blog, product)",
+        "Whether SEO is standalone or bundled with development",
+      ],
+      decisionChecklist: [
+        "Are crawl errors or Cloudflare bot blocks still open?",
+        "Is content visible in page source without JavaScript?",
+        "Do meta descriptions and titles match each URL?",
+        "Who will own Search Console and deploy approvals after our work?",
       ],
     },
   },

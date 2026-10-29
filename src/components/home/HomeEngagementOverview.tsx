@@ -82,6 +82,10 @@ export function HomeEngagementOverview() {
               <Link to="/services/ai-automation/" className="text-cyan-700 hover:underline">
                 AI automation services
               </Link>
+              ,{" "}
+              <Link to="/services/seo-geo/" className="text-cyan-700 hover:underline">
+                SEO &amp; GEO services
+              </Link>
               .
             </p>
           </div>

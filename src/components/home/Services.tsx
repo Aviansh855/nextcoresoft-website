@@ -1,18 +1,19 @@
-import { ArrowUpRight, Cloud, Cpu, Smartphone, Workflow } from "lucide-react"
+import { ArrowUpRight, Cloud, Cpu, Search, Smartphone, Workflow } from "lucide-react"
 import { Link } from "react-router-dom"
 import { SERVICES } from "../../data/content"
 import { Reveal } from "../ui/Reveal"
 import { Section, SectionHeading } from "../ui/Section"
 import { TiltCard } from "../ui/TiltCard"
 
-const ICONS = [Cpu, Smartphone, Workflow, Cloud]
+const ICONS = [Cpu, Smartphone, Workflow, Cloud, Search]
 
-/** A distinct accent per card so the four services read as a set, not clones. */
+/** A distinct accent per card so services read as a set, not clones. */
 const ACCENTS = [
   { chip: "text-cyan-600 bg-cyan-300/10 border-cyan-300/20", glow: "bg-cyan-400/10" },
   { chip: "text-blue-300 bg-blue-400/10 border-blue-300/20", glow: "bg-blue-500/10" },
   { chip: "text-violet-300 bg-violet-400/10 border-violet-300/20", glow: "bg-violet-500/10" },
   { chip: "text-sky-200 bg-sky-300/10 border-sky-200/20", glow: "bg-sky-400/10" },
+  { chip: "text-emerald-300 bg-emerald-400/10 border-emerald-300/20", glow: "bg-emerald-500/10" },
 ]
 
 export function Services() {
@@ -21,7 +22,7 @@ export function Services() {
       <Reveal>
         <SectionHeading
           eyebrow="Services"
-          title="Four ways we build for your business."
+          title="Five ways we help your business grow online."
           description="Each engagement starts from the problem, not the technology. Here is where we work."
         />
       </Reveal>

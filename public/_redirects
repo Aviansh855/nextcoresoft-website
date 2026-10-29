@@ -47,6 +47,8 @@
 /services/ai-automation      /services/ai-automation/  301
 /services/cloud-api/          /services/cloud-api/index.html  200
 /services/cloud-api          /services/cloud-api/  301
+/services/seo-geo/            /services/seo-geo/index.html  200
+/services/seo-geo            /services/seo-geo/  301
 /pricing/                     /pricing/index.html  200
 /pricing                     /pricing/  301
 /pricing/ai-automation/       /pricing/ai-automation/index.html  200

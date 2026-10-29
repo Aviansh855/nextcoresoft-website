@@ -22,7 +22,7 @@ export function Hero() {
           <HeroEntranceItem>
             <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-medium tracking-wide text-cyan-600 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-cyan-300" aria-hidden="true" />
-              Custom software · Web & app development · AI automation
+              Hello · Custom software · SEO & GEO services
             </p>
           </HeroEntranceItem>
 
@@ -37,7 +37,7 @@ export function Hero() {
 
           <HeroEntranceItem>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 text-pretty sm:text-lg">
-              {`We are a software development partner for custom web applications, business websites, Android and iOS apps, and AI automation — helping teams replace manual work with systems that fit how you operate.`}
+              {`Hello — we are NextCoreSoft, a software development partner for custom web applications, Android and iOS apps, and AI automation. We also provide SEO, AEO, and GEO services so your site is easier for Google, Bing, and AI systems to understand — without fake ranking guarantees.`}
             </p>
           </HeroEntranceItem>
 

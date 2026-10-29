@@ -19,6 +19,7 @@ const SITEMAP_PRIORITY_OVERRIDE = {
   "/blog/custom-software-development-cost-india": "0.78",
   "/blog/generative-ai-business-software-india": "0.83",
   "/services/ai-automation": "0.85",
+  "/services/seo-geo": "0.84",
   "/blog/flutter-vs-react-native-india-2026": "0.79",
   "/blog/software-company-near-me": "0.79",
   "/solutions/dealership-service-management": "0.84",
@@ -72,6 +73,11 @@ const ROUTE_CONTENT_SOURCES = {
     "src/components/services/ServiceAnswerBlock.tsx",
   ],
   "/services/cloud-api": [
+    "src/pages/ServicePage.tsx",
+    "src/data/service-details.ts",
+    "src/components/services/ServiceAnswerBlock.tsx",
+  ],
+  "/services/seo-geo": [
     "src/pages/ServicePage.tsx",
     "src/data/service-details.ts",
     "src/components/services/ServiceAnswerBlock.tsx",

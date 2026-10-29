@@ -87,6 +87,10 @@
     {
       "question": "Do you support app development in Sikar or other Rajasthan cities?",
       "answer": "Yes — we scope custom software and mobile apps for Sikar, Jaipur, and Rajasthan via remote delivery (video, email, milestones). We do not list a Sikar office or guarantee local map results. See /blog/software-development-company-jaipur/ for a regional checklist and /blog/mobile-app-development-cost-india/ for cost planning before you request quotes."
+    },
+    {
+      "question": "Do you provide SEO, AEO, and GEO services?",
+      "answer": "Yes. We help business sites with technical SEO, answer-style FAQs, structured data, sitemaps, and optional AI-discovery files (GEO). Rankings are not guaranteed — see /services/seo-geo/ and contact us with your site URL."
     }
   ],
   "servicesHub": [
@@ -222,6 +226,20 @@
       {
         "question": "Can you automate our industry-specific documents?",
         "answer": "Usually, after we see samples. Layout, handwriting, and edge cases affect accuracy. We quote only after a pilot on representative documents."
+      }
+    ],
+    "seo-geo": [
+      {
+        "question": "Do you provide SEO and GEO services?",
+        "answer": "Yes. NextCoreSoft offers SEO (search engine optimization), AEO (answer-engine optimization), and GEO (generative-engine / AI discovery) services — technical metadata, structured data, sitemaps, llms.txt, and content structure. We do not guarantee rankings or AI Overview citations. See /services/seo-geo/ for scope."
+      },
+      {
+        "question": "What is included in SEO / GEO work?",
+        "answer": "Audits, on-page meta, canonical and sitemap fixes, FAQ and JSON-LD aligned with visible text, RSS/IndexNow where appropriate, and owner checklists for Google Search Console and Bing. Ongoing updates can be part of maintenance when we host or maintain your site."
+      },
+      {
+        "question": "Can SEO be bundled with custom software development?",
+        "answer": "Often yes — new sites ship with crawl-ready HTML, schema, and internal links from day one. Standalone SEO/GEO engagements are available when you already have a live site."
       }
     ],
     "cloud-api": [

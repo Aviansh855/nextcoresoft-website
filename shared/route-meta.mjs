@@ -14,9 +14,9 @@ export const ROUTE_META = {
     robots: "index, follow",
   },
   "/services": {
-    title: "Web & Mobile Apps, Cloud API Integration | NextCoreSoft",
+    title: "Web, Mobile, SEO & GEO Services | NextCoreSoft",
     description:
-      "Web & mobile apps, custom software, cloud API integration, and AI automation — milestone delivery plus India cost and CRM guides on the blog.",
+      "Custom software, mobile apps, cloud API, AI automation, and SEO / AEO / GEO services — search and AI discovery setup with honest scope.",
     h1: SERVICES_HUB_H1,
     staticLead:
       "Service overview for businesses looking for a software, web, mobile, or AI automation development partner.",
@@ -83,6 +83,15 @@ export const ROUTE_META = {
     h1: "Cloud API Integration and Business Software Connections",
     staticLead:
       "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",
+    robots: "index, follow",
+  },
+  "/services/seo-geo": {
+    title: "SEO, AEO & GEO Services | NextCoreSoft",
+    description:
+      "SEO, AEO, and GEO services — technical SEO, structured data, sitemaps, and AI-discovery content. No guaranteed rankings; honest scope from NextCoreSoft.",
+    h1: "SEO, AEO & GEO Services for Search and AI Discovery",
+    staticLead:
+      "NextCoreSoft provides SEO, AEO, and GEO services for business sites — metadata, structured data, sitemaps, and crawl-ready content, not empty ranking promises.",
     robots: "index, follow",
   },
   "/pricing": {
@@ -161,6 +170,7 @@ export function noscriptBlock(path) {
     ["/services", "Services"],
     ["/services/ai-automation", "AI automation"],
     ["/services/cloud-api", "Cloud & API"],
+    ["/services/seo-geo", "SEO & GEO"],
     ["/pricing", "Dealership pricing"],
     ["/pricing/ai-automation", "AI automation pricing"],
     ["/solutions/dealership-service-management", "Dealership solution"],
