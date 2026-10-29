@@ -28,6 +28,8 @@ const KEY_PAGE_LABELS = {
   "/pricing": "Dealership Service Management pricing",
   "/pricing/ai-automation": "AI automation pricing (Starter / Growth / Enterprise)",
   "/solutions/dealership-service-management": "Dealership solution overview",
+  "/how-we-work": "How we work (onboarding & delivery)",
+  "/engagement-models": "Engagement models, support plans & cost guidance",
 }
 
 function absolute(path) {

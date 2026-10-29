@@ -29,6 +29,8 @@ NextCoreSoft is a custom software development company for web applications, mobi
 - AI automation company (workflows): https://nextcoresoft.com/services/ai-automation/
 - Cloud & APIs: https://nextcoresoft.com/services/cloud-api/
 - SEO, AEO & GEO services: https://nextcoresoft.com/services/seo-geo/
+- How we work (onboarding & delivery): https://nextcoresoft.com/how-we-work/
+- Engagement models, support plans & cost guidance: https://nextcoresoft.com/engagement-models/
 - Dealership Service Management pricing: https://nextcoresoft.com/pricing/
 - AI automation pricing (Starter / Growth / Enterprise): https://nextcoresoft.com/pricing/ai-automation/
 - Dealership solution overview: https://nextcoresoft.com/solutions/dealership-service-management/

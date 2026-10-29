@@ -82,6 +82,8 @@ const ROUTE_CONTENT_SOURCES = {
     "src/data/service-details.ts",
     "src/components/services/ServiceAnswerBlock.tsx",
   ],
+  "/how-we-work": ["src/pages/HowWeWorkPage.tsx", "src/data/service-provider.ts", "shared/route-meta.mjs"],
+  "/engagement-models": ["src/pages/EngagementModelsPage.tsx", "src/data/service-provider.ts", "shared/route-meta.mjs"],
   "/privacy": ["src/pages/LegalPage.tsx", "shared/route-meta.mjs"],
   "/terms": ["src/pages/LegalPage.tsx", "shared/route-meta.mjs"],
 }

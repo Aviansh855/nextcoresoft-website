@@ -12,6 +12,7 @@ import { WhyUs } from "../components/home/WhyUs"
 import { WorkflowShowcase } from "../components/home/WorkflowShowcase"
 import { CompanySummary } from "../components/home/CompanySummary"
 import { HomeEngagementOverview } from "../components/home/HomeEngagementOverview"
+import { EngagementModelsSection, SupportPlansSection, TechStackSection } from "../components/provider/ProviderSections"
 import { applyMeta, ROUTE_SEO } from "../lib/seo"
 
 export function HomePage() {
@@ -30,6 +31,9 @@ export function HomePage() {
       <Solutions />
       <Industries />
       <Process />
+      <EngagementModelsSection compact />
+      <TechStackSection />
+      <SupportPlansSection />
       <ProjectShowcase />
       <WhyUs />
       <FAQ />

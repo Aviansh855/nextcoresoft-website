@@ -94,6 +94,24 @@ export const ROUTE_META = {
       "NextCoreSoft provides SEO, AEO, and GEO services for business sites — metadata, structured data, sitemaps, and crawl-ready content, not empty ranking promises.",
     robots: "index, follow",
   },
+  "/how-we-work": {
+    title: "How We Work | Onboarding & Delivery Process | NextCoreSoft",
+    description:
+      "How NextCoreSoft onboards clients — free consultation, NDA, written proposal, milestones, launch and support for software projects.",
+    h1: "How NextCoreSoft onboards & delivers projects",
+    staticLead:
+      "From first call to launch and support — free consultation, written proposal, milestone demos, handover and optional maintenance.",
+    robots: "index, follow",
+  },
+  "/engagement-models": {
+    title: "Engagement Models & Support Plans | NextCoreSoft",
+    description:
+      "Fixed-price, time and materials, monthly retainer and maintenance plans for software services, plus cost guidance from NextCoreSoft.",
+    h1: "Engagement models, support plans & cost guidance",
+    staticLead:
+      "Fixed-price projects, time & materials, dedicated monthly retainer and maintenance plans — plus India cost guidance for apps and custom software.",
+    robots: "index, follow",
+  },
   "/pricing": {
     title: "Dealership Service Management Pricing | NextCoreSoft",
     description:
@@ -174,6 +192,8 @@ export function noscriptBlock(path) {
     ["/pricing", "Dealership pricing"],
     ["/pricing/ai-automation", "AI automation pricing"],
     ["/solutions/dealership-service-management", "Dealership solution"],
+    ["/how-we-work", "How we work"],
+    ["/engagement-models", "Engagement models"],
     ["/blog", "Blog"],
   ]
     .map(

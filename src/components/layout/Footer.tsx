@@ -62,6 +62,8 @@ export function Footer() {
               { label: "AI automation pricing", to: "/pricing/ai-automation/" },
               { label: "Blog", to: "/blog/" },
               { label: "About", to: "/about/" },
+              { label: "How We Work", to: "/how-we-work/" },
+              { label: "Engagement & Support Plans", to: "/engagement-models/" },
               { label: "Contact", to: "/contact/" },
               { label: "Privacy Policy", to: "/privacy/" },
               { label: "Terms of Service", to: "/terms/" },

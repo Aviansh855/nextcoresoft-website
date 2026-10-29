@@ -13,6 +13,8 @@ import { ServicesIndexPage } from "../pages/ServicesIndexPage"
 import { AiAutomationPricingPage } from "../pages/AiAutomationPricingPage"
 import { DealershipPricingPage } from "../pages/DealershipPricingPage"
 import { DealershipSolutionPage } from "../pages/DealershipSolutionPage"
+import { HowWeWorkPage } from "../pages/HowWeWorkPage"
+import { EngagementModelsPage } from "../pages/EngagementModelsPage"
 
 /** Each indexable path and its trailing-slash alias — must stay direct `<Route>` children of `<Routes>`. */
 function pathWithTrailingSlash(path: string, element: ReactNode) {
@@ -42,6 +44,8 @@ export function createAppRouteElements() {
     <Route key="/services/:slug" path="/services/:slug" element={<ServicePage />} />,
     <Route key="/services/:slug/" path="/services/:slug/" element={<ServicePage />} />,
     ...pathWithTrailingSlash("/services", <ServicesIndexPage />),
+    ...pathWithTrailingSlash("/how-we-work", <HowWeWorkPage />),
+    ...pathWithTrailingSlash("/engagement-models", <EngagementModelsPage />),
     ...pathWithTrailingSlash("/pricing", <DealershipPricingPage />),
     ...pathWithTrailingSlash("/pricing/ai-automation", <AiAutomationPricingPage />),
     ...pathWithTrailingSlash("/solutions/dealership-service-management", <DealershipSolutionPage />),

@@ -336,6 +336,22 @@ export function buildRouteJsonLdGraph(path, ctx = {}) {
     return wrapGraph(graph)
   }
 
+  if (path === "/how-we-work") {
+    addPageWithBreadcrumb("WebPage", [
+      { name: "Home", path: "/" },
+      { name: "How We Work", path: "/how-we-work" },
+    ])
+    return wrapGraph(graph)
+  }
+
+  if (path === "/engagement-models") {
+    addPageWithBreadcrumb("WebPage", [
+      { name: "Home", path: "/" },
+      { name: "Engagement Models", path: "/engagement-models" },
+    ])
+    return wrapGraph(graph)
+  }
+
   if (path === "/privacy" || path === "/terms") {
     const label = path === "/privacy" ? "Privacy Policy" : "Terms of Service"
     addPageWithBreadcrumb("WebPage", [

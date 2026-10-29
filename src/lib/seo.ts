@@ -69,6 +69,18 @@ export const ROUTE_SEO = {
       "Guides on custom software and mobile app development costs in India, MVP planning, and software project scoping for Indian SMBs and founders.",
     path: "/blog",
   },
+  howWeWork: {
+    title: "How We Work | Onboarding & Delivery Process | NextCoreSoft",
+    description:
+      "How NextCoreSoft onboards clients — free consultation, NDA, written proposal, milestones, launch and support for software projects.",
+    path: "/how-we-work",
+  },
+  engagementModels: {
+    title: "Engagement Models & Support Plans | NextCoreSoft",
+    description:
+      "Fixed-price, time and materials, monthly retainer and maintenance plans for software services, plus cost guidance from NextCoreSoft.",
+    path: "/engagement-models",
+  },
   pricing: {
     title: "Dealership Service Management Pricing | NextCoreSoft",
     description:

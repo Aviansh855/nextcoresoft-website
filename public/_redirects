@@ -49,6 +49,10 @@
 /services/cloud-api          /services/cloud-api/  301
 /services/seo-geo/            /services/seo-geo/index.html  200
 /services/seo-geo            /services/seo-geo/  301
+/how-we-work/                 /how-we-work/index.html  200
+/how-we-work                 /how-we-work/  301
+/engagement-models/           /engagement-models/index.html  200
+/engagement-models           /engagement-models/  301
 /pricing/                     /pricing/index.html  200
 /pricing                     /pricing/  301
 /pricing/ai-automation/       /pricing/ai-automation/index.html  200
