@@ -26,6 +26,14 @@ export function Footer() {
         <p className="mt-5 max-w-md text-pretty text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem]">
           {SITE.tagline}
         </p>
+        <p className="mt-2 max-w-md text-pretty text-xs leading-relaxed text-slate-500">
+          Official site:{" "}
+          <a href="https://nextcoresoft.com/" className="font-medium text-slate-600 hover:text-cyan-700">
+            nextcoresoft.com
+          </a>
+          {" — "}
+          {SITE.name} custom software studio (Jaipur, India). Not affiliated with similarly named unrelated companies.
+        </p>
       </div>
 
       <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">

@@ -93,6 +93,10 @@ ${topicLines}
 
 ${sameAs}
 
+## Official brand (disambiguation)
+
+${site.disambiguatingDescription ?? `${site.name} official site: ${absolute("/")}`}
+
 ## What we do not claim
 
 No guaranteed Google rankings, Bing placement, or mandatory appearance in AI chat answers. No published client case studies with measured results unless stated on the site. No public office address on this site — local “near me” map results require a verified Google Business Profile separately. Demonstration portfolio items are labeled as showcases. Blog cost ranges are indicative planning examples for India, not binding quotations.

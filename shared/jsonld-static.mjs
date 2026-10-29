@@ -12,6 +12,9 @@ export function organizationJsonLd() {
     url: `${SITE.url}/`,
     logo: logoImageObject(),
     description: SITE.description,
+    ...(SITE.disambiguatingDescription
+      ? { disambiguatingDescription: SITE.disambiguatingDescription }
+      : {}),
     email: SITE.contactEmail,
     knowsAbout: [
       "Custom software development",

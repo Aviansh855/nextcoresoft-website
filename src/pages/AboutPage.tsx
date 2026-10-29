@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 import { CTABand } from "../components/home/CTABand"
 import { Reveal } from "../components/ui/Reveal"
 import { ConnectWithFounder } from "../components/layout/ConnectWithFounder"
@@ -69,6 +70,43 @@ export function AboutPage() {
         <div className="mt-16">
           <ConnectWithFounder />
         </div>
+
+        <Reveal>
+          <div className="mt-10 rounded-2xl border border-cyan-200/60 bg-cyan-50/40 p-6 sm:p-8">
+            <h2 className="font-display text-lg font-semibold text-slate-900">Finding the real NextCoreSoft online</h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+              Our official site is{" "}
+              <a
+                href="https://nextcoresoft.com/"
+                className="font-medium text-cyan-800 underline-offset-2 hover:underline"
+              >
+                nextcoresoft.com
+              </a>
+              . We are a custom software studio in Jaipur, India (remote worldwide) —{" "}
+              <strong className="font-medium text-slate-800">not</strong> affiliated with similarly named companies
+              such as Next Big Technology, CoreSoft HR, or other unrelated &ldquo;Next&rdquo; / &ldquo;Core&rdquo; brands
+              you may see in search results.
+            </p>
+            <p className="mt-3 text-sm text-slate-600">
+              Key pages:{" "}
+              <Link to="/contact/" className="font-medium text-cyan-700 hover:underline">
+                Contact
+              </Link>
+              {" · "}
+              <Link to="/portfolio/" className="font-medium text-cyan-700 hover:underline">
+                Portfolio
+              </Link>
+              {" · "}
+              <Link to="/pricing/" className="font-medium text-cyan-700 hover:underline">
+                Pricing
+              </Link>
+              {" · "}
+              <Link to="/services/" className="font-medium text-cyan-700 hover:underline">
+                Services
+              </Link>
+            </p>
+          </div>
+        </Reveal>
 
         <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
           <ServicePageLinks heading="What we build" />

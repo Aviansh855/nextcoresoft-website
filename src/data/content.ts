@@ -494,4 +494,9 @@ export const FAQS = [
     answer:
       "Yes. NextCoreSoft offers SEO, AEO, and GEO services — metadata, structured data, sitemaps, and content structured for search and AI discovery. We do not promise #1 rankings. See the SEO & GEO service page or contact us with your website URL.",
   },
+  {
+    question: "How do I find the real NextCoreSoft in Google search?",
+    answer:
+      "Use nextcoresoft.com or search “NextCoreSoft nextcoresoft.com”. We are not affiliated with similarly named companies you may see in results. Google may show only our homepage for brand searches at first — open Contact, Portfolio, Pricing, and Services from this site or from the About page.",
+  },
 ] as const
