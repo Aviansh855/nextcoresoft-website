@@ -18,6 +18,9 @@ dist-ssr
 # Optional local clone of directory list (not part of the site)
 _PlacesToPostYourStartup/
 
+# Cloned third-party repos (local reference only)
+external/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
