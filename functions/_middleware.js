@@ -30,6 +30,17 @@ export async function onRequest(context) {
   // Do not 301 strip trailing slashes here — Cloudflare Pages may 308-add them for
   // directory index.html routes, which caused /portfolio ↔ /portfolio/ redirect loops.
 
+  if (isAppPath(path)) {
+    // _redirects is not applied inside context.next(), so /login/ would otherwise
+    // be the static 404 page. Serve the SPA shell and keep it out of search.
+    const indexUrl = new URL("/index.html", url)
+    const page = await context.env.ASSETS.fetch(new Request(indexUrl, context.request))
+    const headers = new Headers(page.headers)
+    headers.set("X-Robots-Tag", "noindex, follow")
+    headers.set("Cache-Control", "no-store")
+    return new Response(page.body, { status: 200, statusText: "OK", headers })
+  }
+
   const response = await context.next()
 
   // Contact form prefill URLs (?service=, ?project=, etc.) must not compete with /contact/ in Search.
@@ -45,12 +56,6 @@ export async function onRequest(context) {
 
   if (isIndexablePath(path)) {
     return response
-  }
-
-  if (isAppPath(path)) {
-    const headers = new Headers(response.headers)
-    headers.set("X-Robots-Tag", "noindex, follow")
-    return new Response(response.body, { status: 200, statusText: "OK", headers })
   }
 
   const contentType = response.headers.get("content-type") ?? ""
