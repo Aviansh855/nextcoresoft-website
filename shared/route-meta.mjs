@@ -5,12 +5,12 @@ import { HOME_H1, SERVICES_HUB_H1 } from "./page-headings.mjs"
 /** Static HTML meta per indexable route. Service h1/lead must match `SERVICE_DETAILS` in `src/data/content.ts`. */
 export const ROUTE_META = {
   "/": {
-    title: "NextCoreSoft | Cloud API & App Cost Guides — India",
+    title: "NextCoreSoft | Custom Software Company — Jaipur, India",
     description:
-      "Cloud API integration and mobile app development cost in India — web & mobile apps, CRM guides, Jaipur & remote. Free consultation.",
+      "NextCoreSoft at nextcoresoft.com — official custom software, mobile apps, AI automation & SEO in Jaipur, India. Free consultation.",
     h1: HOME_H1,
     staticLead:
-      "NextCoreSoft is a software development studio for custom web applications, mobile app development, and practical AI workflow automation for growing businesses.",
+      "NextCoreSoft is the custom software studio at nextcoresoft.com — web applications, mobile app development, AI automation, and SEO / GEO services for growing businesses in Jaipur, India, and worldwide.",
     robots: "index, follow",
   },
   "/services": {

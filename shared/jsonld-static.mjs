@@ -59,6 +59,7 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     "@id": `${SITE.url}/#website`,
     name: SITE.name,
+    alternateName: ["NextCore Soft", "nextcoresoft.com"],
     url: `${SITE.url}/`,
     description: SITE.description,
     publisher: { "@id": ORG_ID },

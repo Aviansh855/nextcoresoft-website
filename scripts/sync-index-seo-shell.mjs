@@ -56,6 +56,13 @@ const homeCanonical = canonicalUrl("/")
 const homeTitle = home.title.replace(/&/g, "&amp;")
 const homeDescription = home.description.replace(/&/g, "&amp;")
 
+if (!html.includes('name="application-name"')) {
+  html = html.replace(
+    /<meta name="viewport"[^/]*\/>/,
+    (m) => `${m}\n    <meta name="application-name" content="NextCoreSoft" />`,
+  )
+}
+
 html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${homeTitle}</title>`)
 html = html.replace(
   /<meta name="description" content="[^"]*" \/>/,
