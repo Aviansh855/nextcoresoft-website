@@ -5,7 +5,7 @@
 import { writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
-import { INDEXABLE_PATHS } from "../shared/indexable-paths.mjs"
+import { APP_PATHS, INDEXABLE_PATHS } from "../shared/indexable-paths.mjs"
 
 const out = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "_redirects")
 
@@ -22,6 +22,13 @@ for (const path of INDEXABLE_PATHS) {
   const asset = `${path.slice(1)}/index.html`
   const pad = path.length < 28 ? " ".repeat(28 - path.length) : " "
   lines.push(`${path}/${pad} /${asset}  200`)
+  lines.push(`${path}${pad} ${path}/  301`)
+}
+
+lines.push("", "# App routes (login/auth) — SPA shell, noindex, not in sitemap.")
+for (const path of APP_PATHS) {
+  const pad = path.length < 28 ? " ".repeat(28 - path.length) : " "
+  lines.push(`${path}/${pad} /index.html  200`)
   lines.push(`${path}${pad} ${path}/  301`)
 }
 

@@ -6,6 +6,7 @@ import { NAV_LINKS } from "../../data/content"
 import { ButtonLink } from "../ui/Button"
 import { NavLinkAnimated } from "../ui/NavLinkAnimated"
 import { Logo } from "./Logo"
+import { useAuth } from "../../auth/AuthProvider"
 
 function isCurrent(href: string, pathname: string, hash: string) {
   const hashIndex = href.indexOf("#")
@@ -17,6 +18,7 @@ function isCurrent(href: string, pathname: string, hash: string) {
 }
 
 export function Navbar() {
+  const { user } = useAuth()
   const [scrolled, setScrolled] = useState(() => typeof window !== "undefined" && window.scrollY > 12)
   const [open, setOpen] = useState(false)
   const location = useLocation()
@@ -82,6 +84,9 @@ export function Navbar() {
               )
             })}
           </ul>
+          <ButtonLink to={user ? "/dashboard/" : "/login/"} variant="secondary" className="mt-3 w-full" onClick={() => setOpen(false)}>
+            {user ? "My Dashboard" : "Login"}
+          </ButtonLink>
           <ButtonLink to="/contact/" className="mt-3 w-full" onClick={() => setOpen(false)}>
             Let&apos;s Talk
           </ButtonLink>
@@ -110,7 +115,10 @@ export function Navbar() {
           })}
         </ul>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
+          <ButtonLink to={user ? "/dashboard/" : "/login/"} variant="secondary" className="px-5 py-2.5">
+            {user ? "My Dashboard" : "Login"}
+          </ButtonLink>
           <ButtonLink to="/contact/" className="px-5 py-2.5">
             Let&apos;s Talk
           </ButtonLink>

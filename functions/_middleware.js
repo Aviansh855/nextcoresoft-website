@@ -1,5 +1,5 @@
 import { getCanonicalRedirectUrl } from "../shared/canonical-request.mjs"
-import { isIndexablePath, isStaticAsset, normalizePathname } from "../shared/indexable-paths.mjs"
+import { isAppPath, isIndexablePath, isStaticAsset, normalizePathname } from "../shared/indexable-paths.mjs"
 
 /**
  * Return real HTTP 404 for unknown SPA routes (fixes GSC "Soft 404").
@@ -45,6 +45,12 @@ export async function onRequest(context) {
 
   if (isIndexablePath(path)) {
     return response
+  }
+
+  if (isAppPath(path)) {
+    const headers = new Headers(response.headers)
+    headers.set("X-Robots-Tag", "noindex, follow")
+    return new Response(response.body, { status: 200, statusText: "OK", headers })
   }
 
   const contentType = response.headers.get("content-type") ?? ""

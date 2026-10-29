@@ -36,7 +36,11 @@ export const INDEXABLE_PATHS = [
   "/terms",
 ]
 
+/** Client-only app routes (login/auth) — served by the SPA, never in sitemap. */
+export const APP_PATHS = ["/login", "/auth/callback", "/dashboard"]
+
 const INDEXABLE = new Set(INDEXABLE_PATHS)
+const APP = new Set(APP_PATHS)
 
 /** Normalize pathname: decode, collapse slashes, strip trailing slash (except root). */
 export function normalizePathname(pathname) {
@@ -64,6 +68,14 @@ export function isStaticAsset(pathname) {
 
 export function isIndexablePath(pathname) {
   return INDEXABLE.has(normalizePathname(pathname))
+}
+
+export function isAppPath(pathname) {
+  return APP.has(normalizePathname(pathname))
+}
+
+export function isKnownPath(pathname) {
+  return isIndexablePath(pathname) || isAppPath(pathname)
 }
 
 /** Sitemap entries (loc without origin). */

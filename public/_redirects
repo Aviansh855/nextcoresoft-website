@@ -64,5 +64,13 @@
 /terms/                       /terms/index.html  200
 /terms                       /terms/  301
 
+# App routes (login/auth) — SPA shell, noindex, not in sitemap.
+/login/                       /index.html  200
+/login                       /login/  301
+/auth/callback/               /index.html  200
+/auth/callback               /auth/callback/  301
+/dashboard/                   /index.html  200
+/dashboard                   /dashboard/  301
+
 # SPA fallback for unknown client routes.
 /*    /index.html   200

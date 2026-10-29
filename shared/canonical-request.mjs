@@ -1,4 +1,4 @@
-import { SITE_ORIGIN, isIndexablePath, normalizePathname, preferredPath } from "./indexable-paths.mjs"
+import { SITE_ORIGIN, isIndexablePath, isKnownPath, normalizePathname, preferredPath } from "./indexable-paths.mjs"
 
 /**
  * One-hop 301 target for non-canonical request URLs (GSC "Page with redirect").
@@ -11,11 +11,11 @@ export function getCanonicalRedirectUrl(requestUrl) {
   const pathNorm = normalizePathname(url.pathname)
   const onWww = host === "www.nextcoresoft.com"
   const needsTrailingSlash =
-    isIndexablePath(pathNorm) && pathNorm !== "/" && !url.pathname.endsWith("/")
+    isKnownPath(pathNorm) && pathNorm !== "/" && !url.pathname.endsWith("/")
 
   if (!onWww && !needsTrailingSlash) return null
 
-  const pathname = isIndexablePath(pathNorm) ? preferredPath(pathNorm) : url.pathname
+  const pathname = isKnownPath(pathNorm) ? preferredPath(pathNorm) : url.pathname
   const dest = new URL(pathname, SITE_ORIGIN)
   dest.search = url.search
   dest.hash = url.hash
