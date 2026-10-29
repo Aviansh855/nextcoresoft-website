@@ -2,11 +2,16 @@
 
 **Hindi summary:** Har deploy ke baad GSC/Bing par “Test live URL” karo. Har hafte Performance → Queries dekho. Is repo mein `npm run seo:check` chalao — meta, JSON-LD, aur `llms.txt` sync ho jata hai. Naye search queries aaye to `shared/seo-query-topics.mjs` update karo, phir `npm run build` + push.
 
+## Generative AI tab in GSC shows 0?
+
+That is **normal** until Google shows your links inside **AI Overviews / AI Mode**. Read **`docs/GSC-GENERATIVE-AI-ZERO.md`** and set **Settings → Search generative AI → Include**. Run `npm run gsc:gen-ai-check`.
+
 ## Weekly (~10 minutes)
 
 | Step | Command / action |
 |------|------------------|
 | Automated checks | `npm run seo:check` |
+| Generative AI readiness | `npm run gsc:gen-ai-check` |
 | GSC Performance | `npm run gsc:report` **or** Search Console → Performance → Queries & Pages |
 | New blog or meta change? | `npm run build` → push `main` → Cloudflare deploy Success |
 | After deploy | URL Inspection on changed URLs → **Request indexing** (Google + Bing) |

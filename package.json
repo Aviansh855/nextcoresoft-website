@@ -12,6 +12,7 @@
     "discoverability:ping": "node scripts/submit-indexnow.mjs",
     "blogs:compile": "node scripts/compile-blogs-from-md.mjs",
     "gsc:report": "node scripts/gsc-performance-report.mjs",
+    "gsc:gen-ai-check": "node scripts/check-generative-ai-readiness.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },

@@ -133,6 +133,15 @@ export function BlogIndexPage() {
                 </Link>
               </li>
               <li>
+                <Link to="/blog/generative-ai-business-software-india/" className="font-medium text-cyan-700 hover:underline">
+                  Generative AI for business software (India)
+                </Link>
+                {" · "}
+                <Link to="/services/ai-automation/" className="font-medium text-cyan-700 hover:underline">
+                  AI automation
+                </Link>
+              </li>
+              <li>
                 <Link to="/blog/software-development-company-jaipur/" className="font-medium text-cyan-700 hover:underline">
                   Software &amp; app development — Jaipur, Sikar, Rajasthan
                 </Link>

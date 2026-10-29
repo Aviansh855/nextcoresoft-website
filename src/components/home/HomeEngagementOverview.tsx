@@ -74,6 +74,14 @@ export function HomeEngagementOverview() {
               <Link to="/blog/software-development-company-jaipur/" className="text-cyan-700 hover:underline">
                 software &amp; app development in Jaipur and Rajasthan
               </Link>
+              ,{" "}
+              <Link to="/blog/generative-ai-business-software-india/" className="text-cyan-700 hover:underline">
+                generative AI in business software (India)
+              </Link>
+              ,{" "}
+              <Link to="/services/ai-automation/" className="text-cyan-700 hover:underline">
+                AI automation services
+              </Link>
               .
             </p>
           </div>
