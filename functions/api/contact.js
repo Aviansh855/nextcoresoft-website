@@ -1,14 +1,6 @@
 import { inquiryFieldsFromClientPayload } from "../../shared/inquiry-payload.mjs"
+import { isContactOriginAllowed } from "../../shared/contact-origin.mjs"
 import { normalizeFormspreeUrl, proxyInquiryToFormspree } from "../../shared/formspree-proxy.mjs"
-
-const ALLOWED_ORIGINS = new Set([
-  "https://nextcoresoft.com",
-  "https://www.nextcoresoft.com",
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-  "http://localhost:4173",
-  "http://127.0.0.1:4173",
-])
 
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -21,15 +13,7 @@ function jsonResponse(body, status = 200) {
 }
 
 function originAllowed(request) {
-  const origin = request.headers.get("Origin")
-  if (origin && ALLOWED_ORIGINS.has(origin)) return true
-  const referer = request.headers.get("Referer")
-  if (!referer) return false
-  try {
-    return ALLOWED_ORIGINS.has(new URL(referer).origin)
-  } catch {
-    return false
-  }
+  return isContactOriginAllowed((name) => request.headers.get(name))
 }
 
 /** POST /api/contact — forwards to Formspree using FORMSPREE_FORM_URL (Cloudflare env only). */

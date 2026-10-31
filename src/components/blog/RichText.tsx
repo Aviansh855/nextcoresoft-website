@@ -1,5 +1,18 @@
 import { isOnSiteHref, siteAbsoluteUrl } from "../../lib/site-url"
 
+/** http(s) absolute URLs only; site-relative paths use isOnSiteHref separately. */
+function safeExternalHref(href: string): string | null {
+  const trimmed = href.trim()
+  if (!trimmed || isOnSiteHref(trimmed)) return null
+  try {
+    const u = new URL(trimmed)
+    if (u.protocol === "https:" || u.protocol === "http:") return u.href
+  } catch {
+    /* not an absolute URL */
+  }
+  return null
+}
+
 type Segment =
   | { kind: "text"; value: string }
   | { kind: "bold"; value: string }
@@ -56,10 +69,18 @@ export function RichText({ text, className }: { text: string; className?: string
             </a>
           )
         }
+        const externalHref = safeExternalHref(seg.href)
+        if (!externalHref) {
+          return (
+            <span key={idx} className="font-medium text-slate-800">
+              {seg.label}
+            </span>
+          )
+        }
         return (
           <a
             key={idx}
-            href={seg.href}
+            href={externalHref}
             className="font-medium text-cyan-700 hover:underline"
             rel="noopener noreferrer"
             target="_blank"

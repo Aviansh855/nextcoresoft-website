@@ -2,6 +2,7 @@
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig, loadEnv } from 'vite'
+import { isContactOriginAllowed } from './shared/contact-origin.mjs'
 
 function readJsonBody(req: import('node:http').IncomingMessage): Promise<unknown> {
   return new Promise((resolve, reject) => {
@@ -33,6 +34,17 @@ function createContactApiMiddleware(formspreeUrl: string | undefined) {
       res.statusCode = 405
       res.setHeader('Content-Type', 'application/json')
       res.end(JSON.stringify({ ok: false, error: 'Method not allowed' }))
+      return
+    }
+
+    const getHeader = (name: string) => {
+      const raw = req.headers[name.toLowerCase()]
+      return Array.isArray(raw) ? raw[0] : raw
+    }
+    if (!isContactOriginAllowed(getHeader)) {
+      res.statusCode = 403
+      res.setHeader('Content-Type', 'application/json')
+      res.end(JSON.stringify({ ok: false, error: 'Forbidden' }))
       return
     }
 
