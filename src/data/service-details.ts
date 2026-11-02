@@ -349,7 +349,7 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
   "cloud-api": {
     seoTitle: "Cloud API Integration Services | CRM, Payments & Apps",
     metaDescription:
-      "Cloud API integration for Indian businesses — connect CRM, accounting, payments, and mobile apps with REST, webhooks, and ongoing maintenance. Free scoping call.",
+      "Cloud API integration for Indian businesses — connect CRM, accounting, payments, and apps with REST, webhooks, and maintenance. Free scoping call.",
     h1: "Cloud API Integration — Connect Business Software Systems",
     intro:
       "We build the connective layer between your systems: **cloud API integration**, REST and webhook endpoints, third-party connectors, deployment, monitoring, and maintenance — so CRM, accounting, apps, and messaging share data without manual exports. If you searched how to connect business software systems, start with our integration guide linked below or book a scoping call.",

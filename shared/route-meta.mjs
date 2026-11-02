@@ -79,7 +79,7 @@ export const ROUTE_META = {
   "/services/cloud-api": {
     title: "Cloud API Integration Services | CRM, Payments & Apps | NextCoreSoft",
     description:
-      "Cloud API integration for Indian businesses — connect CRM, accounting, payments, and mobile apps with REST, webhooks, and ongoing maintenance. Free scoping call.",
+      "Cloud API integration for Indian businesses — connect CRM, accounting, payments, and apps with REST, webhooks, and maintenance. Free scoping call.",
     h1: "Cloud API Integration — Connect Business Software Systems",
     staticLead:
       "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",
