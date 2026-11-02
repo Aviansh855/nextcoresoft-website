@@ -1,8 +1,11 @@
 import { readFileSync, existsSync } from "node:fs"
 import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
-import { INDEXABLE_PATHS, SITEMAP_ENTRIES } from "../shared/indexable-paths.mjs"
+import { INDEXABLE_PATHS, SITE_ORIGIN, SITEMAP_ENTRIES } from "../shared/indexable-paths.mjs"
 import { ROUTE_META, canonicalUrl } from "../shared/route-meta.mjs"
+import site from "../shared/site.json" with { type: "json" }
+
+const LOGIN_WALL_H1 = "Sign in required"
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const dist = join(root, "dist")
@@ -145,13 +148,28 @@ for (const path of INDEXABLE_PATHS) {
   if (path.startsWith("/blog/") && path !== "/blog" && !html.includes('"BlogPosting"')) {
     fail(`${path}: route JSON-LD must include BlogPosting`)
   }
-  if (!html.includes(`<h1>${meta.h1.replace(/&/g, "&amp;")}</h1>`) && !html.includes(`<h1>${meta.h1}</h1>`)) {
+  if (site.requiresLogin) {
+    if (!html.includes(`<h1>${LOGIN_WALL_H1}</h1>`)) {
+      fail(`${path}: prerender login wall h1 missing`)
+    }
+    if (!html.includes(`${SITE_ORIGIN}/login/`)) {
+      fail(`${path}: prerender login wall must link to login`)
+    }
+  } else if (
+    !html.includes(`<h1>${meta.h1.replace(/&/g, "&amp;")}</h1>`) &&
+    !html.includes(`<h1>${meta.h1}</h1>`)
+  ) {
     fail(`${path}: prerender static h1 must match ROUTE_META.h1`)
   }
   if (!html.includes('id="static-prerender"')) {
     fail(`${path}: missing static #root fallback (static-prerender) for no-JS crawlers/visitors`)
   }
-  if (path.startsWith("/blog/") && path !== "/blog" && html.length < 8000) {
+  if (
+    !site.requiresLogin &&
+    path.startsWith("/blog/") &&
+    path !== "/blog" &&
+    html.length < 8000
+  ) {
     fail(`${path}: blog static fallback looks truncated (${html.length} bytes)`)
   }
 }
