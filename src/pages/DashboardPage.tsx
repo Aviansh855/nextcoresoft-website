@@ -9,7 +9,9 @@ export function DashboardPage() {
   const navigate = useNavigate()
 
   useEffect(() => { applyMeta({ title: "My Dashboard | NextCoreSoft", description: "Your NextCoreSoft account dashboard.", path: "/dashboard", robots: "noindex, follow" }) }, [])
-  useEffect(() => { if (configured && !loading && !user) navigate("/login/?next=/dashboard/", { replace: true }) }, [configured, loading, navigate, user])
+  useEffect(() => {
+    if (configured && !loading && !user) navigate("/login/?next=/dashboard/", { replace: true })
+  }, [configured, loading, navigate, user])
 
   if (!configured) return <section className="mx-auto max-w-2xl px-5 pt-36 pb-24 text-center"><h1 className="font-display text-3xl font-semibold">Supabase setup pending</h1><p className="mt-3 text-slate-600">Add your Supabase URL and publishable key, restart the site, then login again.</p><Link to="/login/" className="mt-5 inline-block font-semibold text-cyan-700 hover:underline">Back to login</Link></section>
   if (loading || !user) return <section className="px-5 pt-36 pb-24 text-center text-slate-600">Loading your account…</section>

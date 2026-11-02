@@ -189,6 +189,11 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
           "Cost depends on screens, user roles, backend, integrations, and testing — not city alone. As a planning exercise, many teams model a simple app around ₹1.5 lakh–₹5 lakh, a focused MVP around ₹4 lakh–₹12 lakh, and a multi-role product at ₹8 lakh–₹25 lakh or more. These are indicative bands, not our quotation. See our mobile app development cost in India guide on the blog for detail, then contact us with your workflow for a written quote.",
       },
       {
+        question: "What is app development cost in India?",
+        answer:
+          "App development cost in India follows the same scope drivers as mobile app development cost: platforms, backend, auth, payments, and integrations. Read our India mobile app cost guide on the blog for planning bands, then share your user roles for a written quote from NextCoreSoft.",
+      },
+      {
         question: "What is mobile app making cost in India?",
         answer:
           "“App making cost” is the same planning question as mobile app development cost: scope, platforms, backend, and integrations set the range. Use our India cost guide on the blog for Android, iOS, and cross-platform bands, then share your user roles and must-have features for a written quote.",
@@ -342,12 +347,12 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
     },
   },
   "cloud-api": {
-    seoTitle: "Cloud API Integration | Connect Business Software",
+    seoTitle: "Cloud API Integration Services | CRM, Payments & Apps",
     metaDescription:
-      "Cloud API integration and cloud communication APIs — connect CRM, accounting, payments, and custom software with REST, webhooks, and maintenance.",
-    h1: "Cloud API Integration and Business Software Connections",
+      "Cloud API integration for Indian businesses — connect CRM, accounting, payments, and mobile apps with REST, webhooks, and ongoing maintenance. Free scoping call.",
+    h1: "Cloud API Integration — Connect Business Software Systems",
     intro:
-      "We build the connective layer between your systems: cloud API integration, REST and webhook endpoints, third-party connectors, deployment, monitoring, and maintenance — so CRM, accounting, apps, and messaging share data without manual exports.",
+      "We build the connective layer between your systems: **cloud API integration**, REST and webhook endpoints, third-party connectors, deployment, monitoring, and maintenance — so CRM, accounting, apps, and messaging share data without manual exports. If you searched how to connect business software systems, start with our integration guide linked below or book a scoping call.",
     audience:
       "Businesses running on several SaaS tools or a mix of custom and off-the-shelf software, where staff export CSVs, email files, or re-enter data because systems do not talk to each other.",
     problems: [
@@ -405,7 +410,12 @@ export const SERVICE_DETAILS: Record<ServiceSlug, ServiceDetail> = {
       {
         question: "How do you connect business software systems?",
         answer:
-          "We map systems and data flows, prefer official APIs, then implement one-way sync, two-way sync, or webhook-driven updates with conflict rules and alerts. See our blog guide on how to connect business software systems for patterns and scoping questions, or contact us with your stack for a integration plan.",
+          "We map systems and data flows, prefer official APIs, then implement one-way sync, two-way sync, or webhook-driven updates with conflict rules and alerts. See our blog guide on how to connect business software systems for patterns and scoping questions, or contact us with your stack for an integration plan.",
+      },
+      {
+        question: "What is CRM software development cost in India?",
+        answer:
+          "Custom CRM cost depends on pipelines, roles, integrations, and mobile access — similar to other custom business software. Planning bands are in our CRM software development cost in India guide on the blog; we quote in writing after discovery.",
       },
       {
         question: "What is a cloud communication API in business software?",

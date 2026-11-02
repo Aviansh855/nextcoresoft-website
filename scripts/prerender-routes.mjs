@@ -18,6 +18,7 @@ import {
   dealershipSolutionExtra,
 } from "../shared/pricing-prerender.mjs"
 import seoFaqs from "../shared/seo-faqs.json" with { type: "json" }
+import site from "../shared/site.json" with { type: "json" }
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const distIndex = join(root, "dist", "index.html")
@@ -79,6 +80,9 @@ function renderStaticFaqs(faqs) {
  * Keep this faithful to visible page data — no hidden or extra claims.
  */
 function staticRootBlock(path) {
+  if (site.requiresLogin) {
+    return `<main id="static-prerender" class="static-prerender"><h1>Sign in required</h1><p>Login with Google or phone to access NextCoreSoft.</p><p><a href="${SITE_ORIGIN}/login/">Go to login</a></p></main>`
+  }
   const meta = ROUTE_META[path]
   const nav = [
     ["/", "Home"],

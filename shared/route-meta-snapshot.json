@@ -1,7 +1,7 @@
 {
   "/": {
-    "title": "NextCoreSoft | Custom Software Company — Jaipur, India",
-    "description": "NextCoreSoft at nextcoresoft.com — official custom software, mobile apps, AI automation & SEO in Jaipur, India. Free consultation.",
+    "title": "NextCoreSoft | Cloud API, Mobile Apps & Custom Software (India)",
+    "description": "Cloud API integration, mobile app development cost in India, CRM & custom software — guides + free consultation. Official site nextcoresoft.com.",
     "h1": "NextCoreSoft — custom software, mobile apps and AI automation",
     "staticLead": "NextCoreSoft is the custom software studio at nextcoresoft.com — web applications, mobile app development, AI automation, and SEO / GEO services for growing businesses in Jaipur, India, and worldwide.",
     "robots": "index, follow"
@@ -42,8 +42,8 @@
     "robots": "index, follow"
   },
   "/services/mobile-apps": {
-    "title": "Mobile App Development Cost India — Android & iOS | NextCoreSoft",
-    "description": "Mobile app development cost in India — Android, iOS, app making cost bands, APIs, and store launch. Written quotes after discovery.",
+    "title": "Mobile App Development Cost in India — Android & iOS | NextCoreSoft",
+    "description": "Mobile app development cost in India & app development cost planning — Android, iOS, MVP bands, APIs, store launch. Written quote after discovery.",
     "h1": "Mobile App Development for Android and iOS (India)",
     "staticLead": "Android and iOS apps for customers and field teams — with honest cost planning guides and written quotes after scope is defined.",
     "robots": "index, follow"
@@ -56,9 +56,9 @@
     "robots": "index, follow"
   },
   "/services/cloud-api": {
-    "title": "Cloud API Integration | Connect Business Software | NextCoreSoft",
-    "description": "Cloud API integration and cloud communication APIs — connect CRM, accounting, payments, and custom software with REST, webhooks, and maintenance.",
-    "h1": "Cloud API Integration and Business Software Connections",
+    "title": "Cloud API Integration Services | CRM, Payments & Apps | NextCoreSoft",
+    "description": "Cloud API integration for Indian businesses — connect CRM, accounting, payments, and mobile apps with REST, webhooks, and ongoing maintenance. Free scoping call.",
+    "h1": "Cloud API Integration — Connect Business Software Systems",
     "staticLead": "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",
     "robots": "index, follow"
   },
@@ -128,14 +128,14 @@
   "/blog/custom-software-development-cost-india": {
     "title": "Custom Software Development Cost in India (2026) | NextCoreSoft",
     "description": "Explore custom software development costs in India for 2026, including planning ranges, key price drivers, ongoing expenses, and ways to control scope.",
-    "h1": "How Much Does Custom Software Cost in India in 2026?",
+    "h1": "Custom Software Development Cost in India (2026 Guide)",
     "staticLead": "In India, a focused internal business tool may be planned in the low single-digit lakhs, a custom CRM or customer portal may require several lakhs to the mid-teens, and a multi-module ERP or multi-role platform can cost …",
     "robots": "index, follow"
   },
   "/blog/mobile-app-development-cost-india": {
     "title": "Mobile App Development Cost in India: 2026 Guide | NextCoreSoft",
     "description": "Mobile app development cost in India — Android, iOS, and cross-platform planning bands, Chennai notes, and how to budget before you quote.",
-    "h1": "How Much Does Mobile App Development Cost in India?",
+    "h1": "Mobile App Development Cost in India: 2026 Guide",
     "staticLead": "A simple mobile app with limited screens and no complex backend can cost much less than a customer app that includes login, payments, notifications, an admin dashboard, multiple user roles and integrations. As an initial…",
     "robots": "index, follow"
   },
@@ -149,70 +149,70 @@
   "/blog/ai-automation-small-business-india": {
     "title": "AI Automation for Small Business in India (2026 Guide) | NextCoreSoft",
     "description": "Learn how Indian SMBs use AI workflow automation to reduce manual work, connect tools, and scope automation projects without overbuying software.",
-    "h1": "What Is AI Automation for Small Business?",
+    "h1": "AI Automation for Small Business in India",
     "staticLead": "AI automation for a small business usually means connecting your existing tools (email, spreadsheets, CRM, WhatsApp, accounting) with rules or AI-assisted steps so repetitive work happens reliably—without hiring a large …",
     "robots": "index, follow"
   },
   "/blog/hire-custom-software-development-company-india": {
     "title": "How to Hire a Custom Software Company in India | NextCoreSoft",
     "description": "A practical checklist for hiring a custom software development partner in India—scope, quotes, contracts, delivery milestones, and red flags to avoid.",
-    "h1": "How Do You Choose a Custom Software Partner in India?",
+    "h1": "How to Hire a Custom Software Development Company in India",
     "staticLead": "Hire for fit on communication, relevant delivery experience, and a clear scoping process—not for the lowest headline price alone. The best partner asks detailed questions about users, workflows, integrations, and success…",
     "robots": "index, follow"
   },
   "/blog/web-app-vs-mobile-app-for-business": {
     "title": "Web App vs Mobile App: Which Should You Build First? | NextCoreSoft",
     "description": "Compare web apps and mobile apps for business—cost, reach, offline needs, and when to build one platform before the other.",
-    "h1": "Should You Build a Web App or a Mobile App First?",
+    "h1": "Web App vs Mobile App for Your Business",
     "staticLead": "Choose a web app first when you need fast iteration, broad device reach, and mostly office or desk workflows. Choose a native mobile app first when offline use, device features (camera, GPS, push notifications), or app-s…",
     "robots": "index, follow"
   },
   "/blog/api-integration-business-systems-guide": {
-    "title": "How to Connect Business Software Systems (Cloud API Guide) | NextCoreSoft",
-    "description": "Connect business software with cloud API integration — CRM, accounting, payments, webhooks, and messaging APIs. Patterns, costs, and scoping.",
-    "h1": "How to Connect Business Software Systems",
+    "title": "Cloud API Integration — Connect Business Software (2026) | NextCoreSoft",
+    "description": "Cloud API integration guide: connect CRM, accounting, payments & apps — webhooks, REST, security, and scoping for Indian teams.",
+    "h1": "API Integration for Business Systems",
     "staticLead": "To connect business software systems, map each tool (CRM, accounting, ecommerce, mobile app, warehouse), list the data that must flow, then use **cloud API integration** — REST endpoints, webhooks, or scheduled jobs — wi…",
     "robots": "index, follow"
   },
   "/blog/software-development-company-jaipur": {
     "title": "Software Development Company in Jaipur (2026 Guide) | NextCoreSoft",
     "description": "How Jaipur businesses evaluate software and mobile app partners — scope, cost, delivery, and questions before you hire a dev company in Rajasthan.",
-    "h1": "Quick answer: what Jaipur businesses usually need",
+    "h1": "Software Development Company in Jaipur",
     "staticLead": "How Jaipur businesses evaluate software and mobile app partners — scope, cost, delivery, and questions before you hire a dev company in Rajasthan.",
     "robots": "index, follow"
   },
   "/blog/software-company-near-me": {
     "title": "Software Company Near Me: How Local Search Works (2026) | NextCoreSoft",
     "description": "Searched “best software company near me”? Learn how Google shows local results, when remote custom software teams make sense, and what to ask before you hire.",
-    "h1": "Quick answer",
+    "h1": "Software Company Near Me",
     "staticLead": "Searched “best software company near me”? Learn how Google shows local results, when remote custom software teams make sense, and what to ask before you hire.",
     "robots": "index, follow"
   },
   "/blog/generative-ai-business-software-india": {
     "title": "Generative AI for Business Software in India (2026 Guide) | NextCoreSoft",
     "description": "When generative AI belongs in your CRM, app, or internal tools — and when simpler automation is enough. Practical scoping for Indian SMBs.",
-    "h1": "Quick answer",
+    "h1": "Generative AI for Business Software in India",
     "staticLead": "When generative AI belongs in your CRM, app, or internal tools — and when simpler automation is enough. Practical scoping for Indian SMBs.",
     "robots": "index, follow"
   },
   "/blog/flutter-vs-react-native-india-2026": {
     "title": "Flutter vs React Native for Business Apps in India (2026) | NextCoreSoft",
     "description": "Compare Flutter and React Native for Android and iOS business apps — team skills, integrations, release cadence, and when each fits Indian SMB budgets.",
-    "h1": "Quick answer",
+    "h1": "Flutter vs React Native for Business Apps (India 2026)",
     "staticLead": "Compare Flutter and React Native for Android and iOS business apps — team skills, integrations, release cadence, and when each fits Indian SMB budgets.",
     "robots": "index, follow"
   },
   "/blog/custom-crm-software-development-india": {
     "title": "Custom CRM Software Development in India (2026 Guide) | NextCoreSoft",
-    "description": "When a custom CRM beats Zoho or HubSpot for Indian SMBs — workflows, GST-ready fields, WhatsApp, and integration requirements.",
-    "h1": "Quick answer",
-    "staticLead": "When a custom CRM beats Zoho or HubSpot for Indian SMBs — workflows, GST-ready fields, WhatsApp, and integration requirements.",
+    "description": "CRM software development cost in India — when custom CRM beats SaaS, MVP scope, integrations, and planning bands (not fixed rates).",
+    "h1": "Custom CRM Software Development in India",
+    "staticLead": "CRM software development cost in India — when custom CRM beats SaaS, MVP scope, integrations, and planning bands (not fixed rates).",
     "robots": "index, follow"
   },
   "/blog/low-code-vs-custom-software-india": {
     "title": "Low-Code vs Custom Software in India (2026 Guide) | NextCoreSoft",
     "description": "Low-code, no-code, AI-generated apps, or custom development — how Indian SMBs choose speed, cost, and long-term control.",
-    "h1": "Quick answer",
+    "h1": "Low-Code vs Custom Software for Indian SMBs",
     "staticLead": "Low-code, no-code, AI-generated apps, or custom development — how Indian SMBs choose speed, cost, and long-term control.",
     "robots": "index, follow"
   }

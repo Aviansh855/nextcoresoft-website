@@ -5,9 +5,9 @@ import { HOME_H1, SERVICES_HUB_H1 } from "./page-headings.mjs"
 /** Static HTML meta per indexable route. Service h1/lead must match `SERVICE_DETAILS` in `src/data/content.ts`. */
 export const ROUTE_META = {
   "/": {
-    title: "NextCoreSoft | Custom Software Company — Jaipur, India",
+    title: "NextCoreSoft | Cloud API, Mobile Apps & Custom Software (India)",
     description:
-      "NextCoreSoft at nextcoresoft.com — official custom software, mobile apps, AI automation & SEO in Jaipur, India. Free consultation.",
+      "Cloud API integration, mobile app development cost in India, CRM & custom software — guides + free consultation. Official site nextcoresoft.com.",
     h1: HOME_H1,
     staticLead:
       "NextCoreSoft is the custom software studio at nextcoresoft.com — web applications, mobile app development, AI automation, and SEO / GEO services for growing businesses in Jaipur, India, and worldwide.",
@@ -59,9 +59,9 @@ export const ROUTE_META = {
     robots: "index, follow",
   },
   "/services/mobile-apps": {
-    title: "Mobile App Development Cost India — Android & iOS | NextCoreSoft",
+    title: "Mobile App Development Cost in India — Android & iOS | NextCoreSoft",
     description:
-      "Mobile app development cost in India — Android, iOS, app making cost bands, APIs, and store launch. Written quotes after discovery.",
+      "Mobile app development cost in India & app development cost planning — Android, iOS, MVP bands, APIs, store launch. Written quote after discovery.",
     h1: "Mobile App Development for Android and iOS (India)",
     staticLead:
       "Android and iOS apps for customers and field teams — with honest cost planning guides and written quotes after scope is defined.",
@@ -77,10 +77,10 @@ export const ROUTE_META = {
     robots: "index, follow",
   },
   "/services/cloud-api": {
-    title: "Cloud API Integration | Connect Business Software | NextCoreSoft",
+    title: "Cloud API Integration Services | CRM, Payments & Apps | NextCoreSoft",
     description:
-      "Cloud API integration and cloud communication APIs — connect CRM, accounting, payments, and custom software with REST, webhooks, and maintenance.",
-    h1: "Cloud API Integration and Business Software Connections",
+      "Cloud API integration for Indian businesses — connect CRM, accounting, payments, and mobile apps with REST, webhooks, and ongoing maintenance. Free scoping call.",
+    h1: "Cloud API Integration — Connect Business Software Systems",
     staticLead:
       "Cloud API integration and webhooks so CRM, accounting, apps, and messaging share data — with maintenance when vendors change APIs.",
     robots: "index, follow",

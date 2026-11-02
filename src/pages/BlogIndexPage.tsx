@@ -50,6 +50,51 @@ export function BlogIndexPage() {
           </p>
         </Reveal>
 
+        <Reveal delay={0.02}>
+          <section
+            className="mt-10 rounded-2xl border border-cyan-100 bg-cyan-50/40 p-6 sm:p-8"
+            aria-labelledby="featured-guides-top-heading"
+          >
+            <h2 id="featured-guides-top-heading" className="font-display text-lg font-semibold text-slate-900">
+              Start here — popular planning guides
+            </h2>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              <li>
+                <Link
+                  to="/services/cloud-api/"
+                  className="block rounded-xl border border-white bg-white px-4 py-3 text-sm font-semibold text-cyan-800 shadow-sm hover:border-cyan-200"
+                >
+                  Cloud API integration service
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/blog/mobile-app-development-cost-india/"
+                  className="block rounded-xl border border-white bg-white px-4 py-3 text-sm font-semibold text-cyan-800 shadow-sm hover:border-cyan-200"
+                >
+                  Mobile app development cost in India
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/blog/api-integration-business-systems-guide/"
+                  className="block rounded-xl border border-white bg-white px-4 py-3 text-sm font-semibold text-cyan-800 shadow-sm hover:border-cyan-200"
+                >
+                  How to connect business software systems
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/blog/custom-crm-software-development-india/"
+                  className="block rounded-xl border border-white bg-white px-4 py-3 text-sm font-semibold text-cyan-800 shadow-sm hover:border-cyan-200"
+                >
+                  CRM software development cost in India
+                </Link>
+              </li>
+            </ul>
+          </section>
+        </Reveal>
+
         <Reveal delay={0.03}>
           <nav className="mt-10 flex flex-wrap gap-2" aria-label="Filter posts by topic">
             {["All", ...categories].map((cat) => {

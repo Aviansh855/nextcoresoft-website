@@ -45,6 +45,11 @@ export const SERVICE_SEO_GUIDES: Partial<Record<ServiceSlug, ServiceSeoGuide[]>>
       description: "API patterns, webhooks, security, and scoping integrations.",
     },
     {
+      href: "/blog/custom-crm-software-development-india/",
+      label: "CRM software development cost in India",
+      description: "Custom CRM MVP scope, integrations, and planning bands.",
+    },
+    {
       href: "/blog/custom-software-development-cost-india/",
       label: "Custom software & integration cost in India",
       description: "How CRM, API, and backend work affects total project cost.",

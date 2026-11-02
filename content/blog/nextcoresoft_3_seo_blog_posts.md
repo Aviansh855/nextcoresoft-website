@@ -224,7 +224,7 @@ If your business is relying on spreadsheets, repeated manual entry or disconnect
 
 - **Suggested URL:** `/blog/mobile-app-development-cost-india/`
 - **SEO title:** `Mobile App Development Cost in India: 2026 Guide`
-- **Meta description:** `Learn mobile app development costs in India, what affects Android, iOS and cross-platform pricing, and how to plan an app budget confidently.`
+- **Meta description:** `Mobile app development cost in India & app development cost planning — Android, iOS, MVP bands, and integrations. Free checklist before you quote vendors.`
 - **Primary keyword:** mobile app development cost in India
 - **Secondary phrases:** app development cost, cost to build an app, Android app cost, iOS app development cost, cross-platform app cost, mobile app budget
 - **Search intent:** Commercial investigation / app project budgeting

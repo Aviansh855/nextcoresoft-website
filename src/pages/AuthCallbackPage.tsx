@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { applyMeta } from "../lib/seo"
+import { consumePostLoginPath } from "../lib/auth-gate"
 import { supabase } from "../lib/supabase"
 
 export function AuthCallbackPage() {
@@ -15,7 +16,7 @@ export function AuthCallbackPage() {
     supabase.auth.getSession().then(({ data, error: sessionError }) => {
       if (!active) return
       if (sessionError) setError(sessionError.message)
-      else if (data.session) navigate("/dashboard/", { replace: true })
+      else if (data.session) navigate(consumePostLoginPath("/"), { replace: true })
       else {
         // OAuth sometimes needs a moment for the URL session to be exchanged.
         setTimeout(() => {

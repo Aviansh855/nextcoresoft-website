@@ -1,4 +1,5 @@
 {
+  "requiresLogin": true,
   "name": "NextCoreSoft",
   "domain": "nextcoresoft.com",
   "url": "https://nextcoresoft.com",

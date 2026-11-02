@@ -6,11 +6,13 @@ import { Footer } from "./components/layout/Footer"
 import { Navbar } from "./components/layout/Navbar"
 import { ScrollToTop } from "./components/layout/ScrollToTop"
 import { createAppRouteElements } from "./routes/appRoutes"
+import { AuthGate } from "./auth/AuthGate"
 import { AuthProvider } from "./auth/AuthProvider"
 
 export default function App() {
   return (
     <AuthProvider>
+      <AuthGate>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:text-white"
@@ -26,6 +28,7 @@ export default function App() {
       <Footer />
       <BackToTop />
       <Analytics />
+      </AuthGate>
     </AuthProvider>
   )
 }

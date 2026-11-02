@@ -372,11 +372,19 @@ function extractArticle(chunk, metaDefaults) {
   const implIdx = body.indexOf("\n# Implementation notes")
   if (implIdx !== -1) body = body.slice(0, implIdx).trim()
 
-  const titleMatch = body.match(/^## (.+)\n/m)
-  if (!titleMatch) throw new Error(`Missing article H2 title for ${seo.slug}`)
-  const h1 = titleMatch[1].trim()
-  const title = h1
-  body = body.slice(titleMatch.index + titleMatch[0].length).trim()
+  const blogHeaderMatch = chunk.match(/^#\s+Blog\s+\d+\s+[—-]\s+(.+)$/m)
+  let h1
+  let title
+  if (blogHeaderMatch) {
+    h1 = blogHeaderMatch[1].trim()
+    title = h1
+  } else {
+    const titleMatch = body.match(/^## (.+)\n/m)
+    if (!titleMatch) throw new Error(`Missing article H2 title for ${seo.slug}`)
+    h1 = titleMatch[1].trim()
+    title = h1
+    body = body.slice(titleMatch.index + titleMatch[0].length).trim()
+  }
 
   const faqs = []
   const sections = parseBodyToSections(body, faqs)

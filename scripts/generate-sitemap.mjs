@@ -9,11 +9,11 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
 
 /** GSC query targets — higher sitemap priority (still one URL per route; no query strings). */
 const SITEMAP_PRIORITY_OVERRIDE = {
-  "/services/cloud-api": "0.88",
-  "/services/mobile-apps": "0.87",
-  "/blog/mobile-app-development-cost-india": "0.82",
-  "/blog/api-integration-business-systems-guide": "0.82",
-  "/blog/custom-crm-software-development-india": "0.81",
+  "/services/cloud-api": "0.92",
+  "/services/mobile-apps": "0.9",
+  "/blog/mobile-app-development-cost-india": "0.86",
+  "/blog/api-integration-business-systems-guide": "0.86",
+  "/blog/custom-crm-software-development-india": "0.85",
   "/blog/software-development-company-jaipur": "0.8",
   "/": "0.9",
   "/blog/custom-software-development-cost-india": "0.78",
@@ -29,6 +29,8 @@ const SITEMAP_PRIORITY_OVERRIDE = {
 const ROUTE_CONTENT_SOURCES = {
   "/": [
     "src/pages/HomePage.tsx",
+    "src/components/home/SearchGuidesHub.tsx",
+    "src/data/gsc-topic-guides.ts",
     "src/data/content.ts",
     "shared/route-meta.mjs",
     "shared/seo-faqs.json",

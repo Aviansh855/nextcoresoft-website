@@ -11,6 +11,7 @@ import { Solutions } from "../components/home/Solutions"
 import { WhyUs } from "../components/home/WhyUs"
 import { WorkflowShowcase } from "../components/home/WorkflowShowcase"
 import { CompanySummary } from "../components/home/CompanySummary"
+import { SearchGuidesHub } from "../components/home/SearchGuidesHub"
 import { HomeEngagementOverview } from "../components/home/HomeEngagementOverview"
 import { EngagementModelsSection, SupportPlansSection, TechStackSection } from "../components/provider/ProviderSections"
 import { applyMeta, ROUTE_SEO } from "../lib/seo"
@@ -24,6 +25,7 @@ export function HomePage() {
     <>
       <Hero />
       <CompanySummary />
+      <SearchGuidesHub />
       <HomeEngagementOverview />
       <Benefits />
       <Services />

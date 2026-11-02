@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom"
 import { Reveal } from "../components/ui/Reveal"
 import { useAuth } from "../auth/AuthProvider"
 import { applyMeta } from "../lib/seo"
+import { rememberPostLoginPath, safeNextPath } from "../lib/auth-gate"
 import { authRedirectUrl, supabase } from "../lib/supabase"
 
 function GoogleIcon() {
@@ -39,7 +40,7 @@ export function LoginPage() {
   const { configured, user, loading } = useAuth()
   const navigate = useNavigate()
   const [params] = useSearchParams()
-  const next = params.get("next")?.startsWith("/") ? params.get("next")! : "/dashboard/"
+  const next = safeNextPath(params.get("next"), "/")
   const [dialCode, setDialCode] = useState("+91")
   const [phone, setPhone] = useState("")
   const [otp, setOtp] = useState("")
@@ -60,6 +61,7 @@ export function LoginPage() {
   async function google() {
     if (!supabase) return
     setBusy("google"); setError(""); setMessage("")
+    rememberPostLoginPath(next)
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
@@ -107,7 +109,9 @@ export function LoginPage() {
         <div className="mx-auto w-full max-w-md rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_24px_60px_-30px_rgba(15,23,42,0.25)] sm:p-9">
           <p className="text-xs font-semibold tracking-[0.22em] text-cyan-600 uppercase">Account</p>
           <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-slate-900">Welcome back</h1>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">Login to access your NextCoreSoft dashboard, project updates and support.</p>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            Sign in to access the NextCoreSoft website — services, blog, contact, and your account dashboard.
+          </p>
 
           {!configured && (
             <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-amber-900" role="status">
